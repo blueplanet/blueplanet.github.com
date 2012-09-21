@@ -22,8 +22,8 @@ deploy_dir      = "_deploy"   # deploy directory (for Github pages deployment)
 stash_dir       = "_stash"    # directory to stash posts for speedy generation
 posts_dir       = "_posts"    # directory for blog files
 themes_dir      = ".themes"   # directory for blog files
-new_post_ext    = "markdown"  # default new post file extension when using the new_post task
-new_page_ext    = "markdown"  # default new page file extension when using the new_page task
+new_post_ext    = "md"  # default new post file extension when using the new_post task
+new_page_ext    = "md"  # default new page file extension when using the new_page task
 server_port     = "4000"      # port for preview server eg. localhost:4000
 
 
@@ -219,8 +219,24 @@ task :deploy do
   Rake::Task["#{deploy_default}"].execute
 end
 
+desc "push source branch"
+task :push_source do
+  puts "## Deploying source branch "
+
+  system "git add ."
+  message = "source updated at #{Time.now}"
+  system "git commit -m \"#{message}\""
+  puts "\n## Pushing source branch"
+  system "git push origin source --force"
+  puts "\n## Source branch push complete"
+end
+
 desc "Generate website and deploy"
 task :gen_deploy => [:integrate, :generate, :deploy] do
+end
+
+desc "published website and deploy and push source"
+task :public => [:gen_deploy, :push_source ] do
 end
 
 desc "copy dot files for deployment"
