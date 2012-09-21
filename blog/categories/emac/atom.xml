@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Emac | Welcome to my Blog]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/emac/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2012-09-21T22:35:29+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Emac Markdown Modeを試してみる]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/13/emac-markdown/"/>
+    <updated>2012-04-13T00:00:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/13/emac-markdown</id>
+    <content type="html"><![CDATA[<p>最近Emacに夢中です。ブログはJekyll on Githubでやってるので、Emacで書こう！</p>
+
+<p>調べてみたら、やはりありますね。はい、<a href="http://jblevins.org/projects/markdown-mode/">Makdown Mode</a> です。</p>
+
+<p>もっと嬉しいのは、Github Flavored Markdownも対応してくれます。</p>
+
+<p>が、試しに設定ファイルに<code>markdown-mode</code>ではなく、<code>gfm-mode</code>に変更してみても、差が見えなかった！ｗｗｗ</p>
+
+<p>とりあえずは、<code>gfm-mode</code>のまま行きます。</p>
+]]></content>
+  </entry>
+  
+</feed>

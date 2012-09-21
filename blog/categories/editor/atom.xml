@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Editor | Welcome to my Blog]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/editor/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2012-09-21T22:35:29+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RSpec-modeを試してみた]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/28/rspec-mode/"/>
+    <updated>2012-04-28T00:00:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/28/rspec-mode</id>
+    <content type="html"><![CDATA[<p>Emacsの設定をちょっとずつ進めたいと思って、Yasnippetのカスタマイズスニペットを使いたいが、自分のスニペットのパスはどうやって設定できるかはイマイチわかってないため、出来なかった</p>
+
+<p>ちょっと調べたら、<code>RSpec-mode</code>があるのをわかって、導入してみた。</p>
+
+<p><a href="https://github.com/pezra/rspec-mode">rspec-mode</a></p>
+
+<h2>状況</h2>
+
+<ul>
+<li>インストールができて、specファイルを開いたらちゃんとrspec-modeになる</li>
+<li><code>c-c , v</code>でspecを実行するのはうまく出来てない</li>
+</ul>
+
+
+<h2>問題</h2>
+
+<ul>
+<li>この<code>rspec-mode</code>は、rails向けらしく、<code>Rakefile</code>によってプロジェクトのルートパスを確定していく
+
+<ul>
+<li>実際試したのは、<code>spec/game_spec.rb</code>と<code>lib/game.rb</code>のような２つファイルしかない軽いものなので、<code>rails</code>ではないので、困った</li>
+<li><code>touch Rakefile</code>で空のファイルを作成してみると、実行できたっぽいが、内容はおかしい。実際はspecは走ってないらしい</li>
+<li>要するに、実際は失敗のケースを実行しても、「成功したよ」とのメッセージが来るわけ</li>
+<li><a href="http://d.hatena.ne.jp/nbahide/20100721/1279676604">rspec-modeをrake意外で使う方法</a>を参考して、設定してみたら、今回は<code>zsh:rspec command not found</code>になった</li>
+</ul>
+</li>
+<li>調べてみたら、<code>zsh</code>と<code>rvm</code>とを併用する場合は、別の設定が必要らしい
+
+<ul>
+<li><a href="https://github.com/pezra/rspec-mode">rspec-mode</a>のReadmeに書かれていますが、<code>Zsh and RVM</code>だったら、また別の設定が必要</li>
+<li>設定してみたら、<code>bash :rspec command not found</code>になった</li>
+<li><code>rvm</code>の設定がおかしいかと、確認したら、問題なさそう</li>
+</ul>
+</li>
+</ul>
+
+
+<p>明日調べよう</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Subline Text 2を試してみた]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/27/subline/"/>
+    <updated>2012-04-27T00:00:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/27/subline</id>
+    <content type="html"><![CDATA[<p><a href="http://www.sublimetext.com/">http://www.sublimetext.com/</a></p>
+
+<ul>
+<li>マルチOSサポートの軽量エディター</li>
+<li>シェアウェア：$59。
+
+<ul>
+<li>ライセンスがない場合は、一定の時間を經つと、購入の催促ダイアログが出てくるだけ</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>気になる箇所</h3>
+
+<ul>
+<li>マルチOS Windows / MacOS</li>
+<li>優れるデザイン
+
+<ul>
+<li>綺麗なカラースキーム</li>
+<li>ChromeライクなTab</li>
+<li>Minimap：ファイル全体を縮小して表示する機能</li>
+</ul>
+</li>
+<li>多数の言語サポート　Ruby / Html / CSS</li>
+<li>フルカスタマイズできるキーバインド</li>
+<li>Vimキーバインドあり(デフォルトはOFF)</li>
+</ul>
+
+
+<h3>Emacsの課題</h3>
+
+<p>今メインのエディターはCocoa Emacsを使っていますが、コマンドラインからの起動はうまく出来てない</p>
+
+<p>Emacsをdamonモードで起動しておいて、コマンドラインからは<code>emacsclient</code>を使えばよさそうですが、自分の場合は、<code>Emacs --daemon</code>を実行すると、エラーで落ちる</p>
+
+<pre><code>/Applications/Emacs.app/Contents/MacOS/Emacs --daemon
+("/Applications/Emacs.app/Contents/MacOS/Emacs")
+Install-elisp compatibility installed.
+install-elisp                = auto-install-from-url
+install-elisp-from-emacswiki = auto-install-from-emacswiki
+install-elisp-from-gist      = auto-install-from-gist
+Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-example.el (source)...
+Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-example.el (source)...done
+Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-library.el (source)...
+Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-library.el (source)...done
+Error: server did not start correctly
+</code></pre>
+
+<p>しばらくは<code>subline text</code>を触って見るが、メインはEmacsに間違いない</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs初期設定]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/08/emacs-settings/"/>
+    <updated>2012-04-08T00:00:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/08/emacs-settings</id>
+    <content type="html"><![CDATA[<p>Emacsを勉強したいので、簡単な初期設定をメモ<br/>
+* バージョン：Emacs 23.4 by <a href="http://emacsformacosx.com/">Cocoa Emacs</a></p>
+
+<p><div>
+  <pre><code class='cl'>;; load-path設定
+(setq load-path
+  (append&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(list
+  (expand-file-name &quot;~/.emacs.d/site-list/ruby&quot;)
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;   load-path))&lt;/p&gt;
+
+&lt;p&gt;;; 行番号表示
+(setq line-number-mode t)
+(global-set-key[f9] 'linu-mode)
+(global-linum-mode t)&lt;/p&gt;
+
+&lt;p&gt;;; ruby-electric 対応括弧やEndなどの補完
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))</code></pre>
+</div>
+</p>
+
+<ul>
+<li>疑問
+
+<ul>
+<li>ruby-modeはデフォルトで動いているらしい？？　ので、特に設定してない</li>
+<li>インデントは、Ctrl+J/Ctrl+Oで改行すると、インデントしてくれるが、普通の改行はインデントなし</li>
+</ul>
+</li>
+<li>課題
+
+<ul>
+<li>Railsについては、後で調べて設定する</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>この記事の一部は、githubのオンライン編集機能で書きました、意外に<code>*</code>などでリストを作る時に、インデントしてくれる。いいですね。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails開発の場合は vim と emacsとは、どっち？]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/07/rails-develop--vim-or-emacs/"/>
+    <updated>2012-04-07T00:00:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/07/rails-develop--vim-or-emacs</id>
+    <content type="html"><![CDATA[<p>Rails開発を勉強中。Editorについての考え</p>
+
+<ul>
+<li>Textmate：No1なんですが、日本語や中国語の入力がおかしいのは痛いので断念</li>
+<li>Vim：最初から今まで使ってるが、さすがに設定をこなさないと
+
+<ul>
+<li>使ってるもの <code>vim-rails</code>,<code>neocomplcache</code>,<code>unite</code>,<code>nerdtree</code>(不要かな？)<br/>
+と言っても、入れているだけで全然こなしてないので、もっと調べないと</li>
+<li>括弧やクォーテーションなどの入力は、対になってるものが自動補完　←　vimrcでキーバインドで解決</li>
+<li><code>def</code>や<code>if</code>などをタイプする場合、<code>end</code>を自動挿入してもらいたいが、今まだ出来てない<br/>
+調べてみたら、<code>vim-endwise</code>があるらしいが、使い方は今だに分かってない</li>
+</ul>
+</li>
+<li>Emacs：角谷さんのRspecの実演を見ると、カッコよくてすごく刺激を受けましたので、勉強したい
+
+<ul>
+<li>これからなので、まだ評価できないレベル</li>
+<li>Matzさんが使ってるので、Rubyの周りは完璧じゃないかなと期待してる</li>
+<li><code>Rinari</code>というプラグインがあるらしい</li>
+</ul>
+</li>
+</ul>
+
+
+<p>しばらくはVimを使って、Emacsも使ってみようと</p>
+]]></content>
+  </entry>
+  
+</feed>

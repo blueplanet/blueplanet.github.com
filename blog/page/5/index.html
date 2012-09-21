@@ -1,0 +1,951 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to my Blog</title>
+  <meta name="author" content="blueplanet">
+
+  
+  <meta name="description" content="昨日買った本ですが、一日で読み終わった。すっごく参考になる本です。おすすめです。 Emacs実践入門　~思考を直感的にコード化し、開発を加速する (WEB+DB PRESS plus) 本の写経みたいですが、自分の.emacs.dもいろいろ追加して設定しました。→init.el 行列番号表示 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blueplanet.github.com/blog/page/5/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Welcome to my Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Welcome to my Blog</a></h1>
+  
+    <h2>memo for programs</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blueplanet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/10/emacs/">Emacs実践入門　読了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-10T00:00:00+09:00" pubdate data-updated="true">Apr 10<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>昨日買った本ですが、一日で読み終わった。すっごく参考になる本です。おすすめです。</p>
+
+<p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774150029/hatena-hamazou-22/">Emacs実践入門　~思考を直感的にコード化し、開発を加速する (WEB+DB PRESS plus)</a></p>
+
+<p>本の写経みたいですが、自分の<code>.emacs.d</code>もいろいろ追加して設定しました。→<a href="https://github.com/blueplanet/dotfiles/blob/master/.emacs.d/init.el">init.el</a></p>
+
+<ul>
+<li>行列番号表示</li>
+<li>バックアップ・自動保存ファイル場所を変更</li>
+<li>Rubyモード設定
+
+<ul>
+<li>クォーテーションは対に補完</li>
+<li><code>def</code>、<code>do</code>などは<code>end</code>を補完</li>
+<li><code>Emacs</code>上で<code>irb</code>を利用できるように</li>
+</ul>
+</li>
+<li>Markdownモード設定
+
+<ul>
+<li>いまだに色付け以外は、補完や整形のメリットはまだ感じていません</li>
+</ul>
+</li>
+<li><p>フォント関連の設定</p>
+
+<ul>
+<li>できるだけ等幅フォントを使いたいのですが、英字:日本語が1:2に設定するのは、意外に深そうなので、後でまた調べる</li>
+</ul>
+</li>
+<li><p>残りの課題</p>
+
+<ul>
+<li>デーモンにより起動高速化</li>
+<li><code>git</code>関連を調べたい</li>
+<li><code>shell</code>関連</li>
+</ul>
+</li>
+</ul>
+
+
+<p>これからもどんどん追加してきます！</p>
+
+<hr />
+
+<p><strong>2012/04/11更新</strong></p>
+
+<p>起動してみるとすっごく遅くなったので、原因を調べた。</p>
+
+<ul>
+<li>フォントの設定がおかしかったので、直した</li>
+<li>auto-installを入れていると、更新しに行くため、結構時間がかかるので、とりあえずは更新をやめる</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/09/install-htop-to-macos-107/">Install Htop to MacOS 10.7</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-09T00:00:00+09:00" pubdate data-updated="true">Apr 9<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>&#8221;@<strong>69</strong>&#8221;</p>
+
+<p>　さんのつぶやきで、<code>htop</code>というカッコイイアプリを知りました。早速MacOS 10.7にインストール</p>
+
+<p><code>brew info htop</code>で検索してみたら、<a href="https://github.com/mxcl/homebrew/issues/10355">homebrew issue</a>の説明を見ると、既に公式リポジトリから削除され、<code>Homebrew-alt</code>でそうぞとのこと。</p>
+
+<p>なるほど。じゃ、やっちゃおう！</p>
+
+<p><code>brew install --HEAD https://raw.github.com/adamv/homebrew-alt/master/unmaintained/htop.rb</code>の一発でOK。</p>
+
+<p>ジャン〜
+<img src="https://lh5.googleusercontent.com/-ZbutrCWxabg/T4LgZ7gX1-I/AAAAAAAAAuA/b8nEZ8brAEs/s800/Screen%2520Shot%25202012-04-09%2520at%252022.11.37.png" alt="image" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/08/emacs-settings/">Emacs初期設定</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-08T00:00:00+09:00" pubdate data-updated="true">Apr 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Emacsを勉強したいので、簡単な初期設定をメモ<br/>
+* バージョン：Emacs 23.4 by <a href="http://emacsformacosx.com/">Cocoa Emacs</a></p>
+
+<div>
+  <pre><code class='cl'>;; load-path設定
+(setq load-path
+  (append
+    (list
+      (expand-file-name &quot;~/.emacs.d/site-list/ruby&quot;)
+    )
+   load-path))
+
+;; 行番号表示
+(setq line-number-mode t)
+(global-set-key[f9] 'linu-mode)
+(global-linum-mode t)
+
+;; ruby-electric 対応括弧やEndなどの補完
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))</code></pre>
+</div>
+
+
+<ul>
+<li>疑問
+
+<ul>
+<li>ruby-modeはデフォルトで動いているらしい？？　ので、特に設定してない</li>
+<li>インデントは、Ctrl+J/Ctrl+Oで改行すると、インデントしてくれるが、普通の改行はインデントなし</li>
+</ul>
+</li>
+<li>課題
+
+<ul>
+<li>Railsについては、後で調べて設定する</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>この記事の一部は、githubのオンライン編集機能で書きました、意外に<code>*</code>などでリストを作る時に、インデントしてくれる。いいですね。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/07/rails-develop--vim-or-emacs/">Rails開発の場合は Vim と Emacsとは、どっち？</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-07T00:00:00+09:00" pubdate data-updated="true">Apr 7<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Rails開発を勉強中。Editorについての考え</p>
+
+<ul>
+<li>Textmate：No1なんですが、日本語や中国語の入力がおかしいのは痛いので断念</li>
+<li>Vim：最初から今まで使ってるが、さすがに設定をこなさないと
+
+<ul>
+<li>使ってるもの <code>vim-rails</code>,<code>neocomplcache</code>,<code>unite</code>,<code>nerdtree</code>(不要かな？)<br/>
+と言っても、入れているだけで全然こなしてないので、もっと調べないと</li>
+<li>括弧やクォーテーションなどの入力は、対になってるものが自動補完　←　vimrcでキーバインドで解決</li>
+<li><code>def</code>や<code>if</code>などをタイプする場合、<code>end</code>を自動挿入してもらいたいが、今まだ出来てない<br/>
+調べてみたら、<code>vim-endwise</code>があるらしいが、使い方は今だに分かってない</li>
+</ul>
+</li>
+<li>Emacs：角谷さんのRspecの実演を見ると、カッコよくてすごく刺激を受けましたので、勉強したい
+
+<ul>
+<li>これからなので、まだ評価できないレベル</li>
+<li>Matzさんが使ってるので、Rubyの周りは完璧じゃないかなと期待してる</li>
+<li><code>Rinari</code>というプラグインがあるらしい</li>
+</ul>
+</li>
+</ul>
+
+
+<p>しばらくはVimを使って、Emacsも使ってみようと</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/06/kobita-by-qiita/">Kobita by Qiitaを試す</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-06T00:00:00+09:00" pubdate data-updated="true">Apr 6<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>昨日先行利用ユーザとして登録した<code>kobito</code>からリリースのお知らせが来ました。早速落としてみました。</p>
+
+<p><a href="http://kobitoapp.com/">公式サイト</a>にアクセスすればイメージできるので、画像とかは割愛</p>
+
+<p>今使ってる<code>Mou.app</code>とはちょっと比較してみました。</p>
+
+<p><strong>メインはJekyllのブロク書く前提とするお話し</strong></p>
+
+<ul>
+<li><p>共通の足りないところ</p>
+
+<ul>
+<li>Jekyllの対応はない　まあ、対応しているアプリはなさそうけど</li>
+</ul>
+</li>
+<li><p>Kobita</p>
+
+<ul>
+<li>位置付け：<strong>「メモアプリ」</strong>、かつQiitaに投稿するアプリ.
+
+<ul>
+<li>１行目はメモのタイトルになる</li>
+<li>タグが付けられる</li>
+</ul>
+</li>
+<li>メリット
+
+<ul>
+<li>見た目はもっとMacOSライク的な感じ</li>
+<li>ソースコードの場合は、独自の拡張（？かな）によって、より見やすい感じ</li>
+</ul>
+</li>
+<li>デメリット
+
+<ul>
+<li>任意ファイルを開いて編集するのは不可</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mou
+
+<ul>
+<li>位置付け：<strong>Markdownファイル編集アプリ</strong></li>
+<li>メリット
+
+<ul>
+<li>Jekyllで作ったファイルを開いて編集できる</li>
+</ul>
+</li>
+<li>デメリット
+
+<ul>
+<li>特に気付いたことはない。見た目も人によっていいのもあるし、出来れば、自分でCSSを書いちゃえばいいし</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p>うむ、メリットはそれほど多くはないので、しばらくはMouを使う</p>
+
+<p><strong>自分でJekyll専用のアプリを開発すれば良いじゃん！</strong></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/05/change-to-jekyll/">OctopressからJekyllへ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-05T00:00:00+09:00" pubdate data-updated="true">Apr 5<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>いろいろ考えた結果、やはりJekyllのほうが使い勝手が好きで、移行するメモ</p>
+
+<h2>方針</h2>
+
+<p>今までの記録を保持したいので、githubのリポジトリは、クリアしなくて、できるだけ記録を保持するままで移行</p>
+
+<h2>手順</h2>
+
+<ul>
+<li><code>git pull origin master</code></li>
+<li><code>rm -rf *</code></li>
+<li><code>cp ../jekyll/* .</code></li>
+<li><code>git add .</code></li>
+<li><code>git ci -m 'jekyll init'</code></li>
+<li>以降は、jekyllの手順を従って設定するだけ</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/04/jekyll/">Jekyllにする？（2）</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-04T00:00:00+09:00" pubdate data-updated="true">Apr 4<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>とりあえずローカルでいじって見る。</p>
+
+<ul>
+<li>OctoressのpostをJekyllにコピー
+
+<ul>
+<li>拡張子が異なるので、変換する</li>
+</ul>
+</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>for nm in *.markdown
+    mv $nm ${nm%.markdown}.md
+done</code></pre>
+</div>
+
+
+<pre><code>* `{codeblock}`は無いので、"```"に置換する
+</code></pre>
+
+<ul>
+<li>一覧はいいけど、詳細の画面は、いろいろレイアウトが崩れてしまう箇所がある</li>
+</ul>
+
+
+<p><img src="https://lh3.googleusercontent.com/-H67Pj0AYzJM/T3xeTmPcFAI/AAAAAAAAAls/dyMOpOEJTo8/s800/Screen%2520Shot%25202012-04-04%2520at%252023.43.08.png" alt="image" />
+<img src="https://lh4.googleusercontent.com/-NljCDo36W3s/T3xeUDlfWpI/AAAAAAAAAlw/a81JP2wOwDI/s800/Screen%2520Shot%25202012-04-04%2520at%252023.43.45.png" alt="image" /></p>
+
+<p>書き方が悪いところもあるけど、修正しないと無理だよね。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/03/rails3dojo/">「浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編」の写経(1)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-03T07:30:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.slideshare.net/mackato/rails3dojo-routing">浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編</a></p>
+
+<ul>
+<li><code>Ruby 1.9.2 @ Rails3.0.7</code>環境作成</li>
+<li><code>pow</code>導入
+
+<ul>
+<li><code>curl get.pow.cx | sh</code>一発でOK</li>
+<li><code>ln -s rails3dojo</code>で追加</li>
+<li><code>open rails3dojo.dev</code>で確認できる！素晴らしい！</li>
+</ul>
+</li>
+<li><code>spork</code>導入
+
+<ul>
+<li><code>config/environments/test.rb</code>の<code>config.cache_classes</code>を<code>false</code>に変更</li>
+</ul>
+</li>
+<li>写経内容は割愛
+
+<ul>
+<li>スライドだけでは、ちょっと何かが足りないなーと感じた。</li>
+<li><code>config/route.rb</code>修正した場合、sporkも再起動する必要があるらしい</li>
+</ul>
+</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/02/rails3-dot-2-on-heroku/">rails3.2 on Heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-02T07:29:00+09:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Rails 3.2のアプリをHerokuにデプロイする場合、ハマったことをメモ</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>Rails 3.2.2</li>
+<li>ローカルDBはsqlite</li>
+</ul>
+
+
+<h2>手順</h2>
+
+<ul>
+<li>Railsアプリを作成
+
+<ul>
+<li><code>rails new myblog</code></li>
+<li><code>cd myblog</code></li>
+<li><code>git init</code></li>
+<li><code>git add .</code></li>
+<li><code>git ci -m 'init'</code></li>
+</ul>
+</li>
+<li>Scaffold
+
+<ul>
+<li><code>rails g scaffold post title:string body:text</code></li>
+<li><code>rake db:migrate</code></li>
+<li><code>rm public/index.html</code></li>
+<li><code>vi config/route.rb</code>
+
+<ul>
+<li><code>root :to =&gt; "pots#index"</code>を追加</li>
+</ul>
+</li>
+<li><code>git rm public/index.html</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'scaffold'</code></li>
+</ul>
+</li>
+<li>Heroku
+
+<ul>
+<li><code>vi Gemfile</code>heroku側は下記を追加</li>
+</ul>
+</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>group :production do  
+     gem 'pg'  
+end</code></pre>
+</div>
+
+
+<ul>
+<li><code>rake assets:precompile RAILS_ENV=production</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'heroku'</code></li>
+<li><code>heroku create</code></li>
+<li><code>git push heroku master</code></li>
+<li><code>heroku rake db:migrate</code></li>
+<li><code>heroku open</code>で確認できるはず</li>
+</ul>
+
+
+<h2>問題</h2>
+
+<ul>
+<li><code>heroku rake db:migrate</code>のエラー
+
+<ul>
+<li><code>(pg is not part of the bundle. Add it to Gemfile.)</code></li>
+<li>対策：Gemfileに下記を追加</li>
+</ul>
+</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>group :production do  
+  gem 'pg'  
+end</code></pre>
+</div>
+
+
+<ul>
+<li><code>git push heroku master</code>後、画面で確認すると、エラー画面になってる
+
+<ul>
+<li><code>heroku logs</code>で確認すると<code>ActionView::Template::Error (application.css isn't precompiled)</code>エラー</li>
+<li>対策：<code>push</code>前に、<code>rake assets:precompile RAILS_ENV=production</code>を実施する</li>
+</ul>
+</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/01/jekyll/">Jekyllにする？</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-01T22:53:00+09:00" pubdate data-updated="true">Apr 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>現在Octopressを使ってますが、ちょっと不満がいくつあります</p>
+
+<p>Octopressの考え方としては、SourceとHTMLはgitのブランチで分けてます。なので、デプロイとソースデータの保存も分けて作業しないといけないわけ。</p>
+
+<ul>
+<li>デプロイ＋保存
+
+<ul>
+<li><code>rake gen_depoly</code></li>
+<li><code>git push</code></li>
+</ul>
+</li>
+<li>ビルドが必要なので、githubで直接編集はできない</li>
+</ul>
+
+
+<p>Jekyllの場合はどうなるかを調べてみました。</p>
+
+<p>ビルドはないため、直接に<code>.md</code>ファイルをgithubにアップロードするので</p>
+
+<ul>
+<li>デプロイは<code>git push</code>一発でOK</li>
+<li>ビルドがないので、githubのオンライン編集を利用できる</li>
+</ul>
+
+
+<p>いいじゃん！！と思って、細かい移行手順を調べてみると、なんか<code>index.md</code>は自分で書かないと行けないらしい。変数とか、テンプレートとか分からないで、瞬殺できないので、移行は後回す</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/6/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/4/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/09/21/back-to-octopress/">back to octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/04/cucumber/">はじめる！Cucumber写経　環境構築</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/31/spork--guardtdd/">Spork + GuardによるTDD</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/27/dispatch/">派遣社員の悲しみ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/19/yokohamarb20/">Yokohamarb20</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/blueplanet">@blueplanet</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'blueplanet',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("blueplanet42", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/blueplanet42" class="twitter-follow-button" data-show-count="false">Follow @blueplanet42</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - blueplanet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'bpgh';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: MacOS | Welcome to my Blog]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/macos/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2012-09-21T22:35:29+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Janetter for Twitter]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/18/janetter-for-twitter/"/>
+    <updated>2012-04-18T00:00:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/18/janetter-for-twitter</id>
+    <content type="html"><![CDATA[<p>今日 @takayama さんのTLで<a href="http://itunes.apple.com/jp/app/janetter-for-twitter/id478844335?mt=12&amp;ign-mpt=uo%3D4">Janetter for Twitter</a>を分かった。</p>
+
+<p>前まではYorufukuroを使っていて、最近Echofonを使ってますが、特に不便とかは感じていませんが。</p>
+
+<p>こちらも試してみる</p>
+
+<p>画像などは割愛。</p>
+]]></content>
+  </entry>
+  
+</feed>

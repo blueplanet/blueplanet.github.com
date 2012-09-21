@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 日本語 | Welcome to my Blog]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/日本語/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2012-09-21T22:35:29+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Amazon EC2 のCentOSでRails開発環境構築]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/20/centos-rails-dev/"/>
+    <updated>2012-03-20T15:43:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/20/centos-rails-dev</id>
+    <content type="html"><![CDATA[<p>　Rails勉強中。やはり手で動かないと、理解できたとしても、それほどの知識を覚えるのは無理なので、いざ何かを試したい時、手元に環境がないと困ることがよくあります。</p>
+
+<p>　ちょうど、AWSは、新規登録だと、<a href="http://aws.amazon.com/jp/free/">無料で１年間利用できるプログラム</a>があります。そこに開発環境をインストールしておけば、SSH接続さえ出来れば、開発環境が使えるので、うれしいかなと思うので、試しに作ります。</p>
+
+<p><strong><em>EC2の作成は普通にAmazonのLinuxでマイクロインスタンスを作成</em></strong></p>
+
+<h2>OS周りの設定</h2>
+
+<ul>
+<li><code>sudo yum install -y zsh git</code></li>
+<li>rootパスワードを設定　<code>sudo passwd</code></li>
+<li>ec2-userのパスワードを設定（初期パスワードがわからないので、Rootユーザに切り替え、設定する）<br/>
+<code>su root</code><br/>
+<code>passwd ec2-user</code></li>
+<li>shをzshに切り替え<br/>
+<code>chsh -s /bin/zsh</code></li>
+</ul>
+
+
+<h2>oh-my-zsh(<strong>個人のバージョン</strong>)導入</h2>
+
+<ul>
+<li><code>git clone git://github.com/blueplanet/oh-my-zsh.git ~/.oh-my-zsh</code></li>
+<li><code>cd ~/.oh-my-zsh</code></li>
+<li><code>git submodule init</code></li>
+<li><code>git submodule update</code></li>
+</ul>
+
+
+<h2>RVM導入</h2>
+
+<ul>
+<li><code>zsh -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</code></li>
+<li><blockquote><p>zsh: command not found: shopt<br/>
+set: no such option: errtrace</p></blockquote>
+
+<p>が出てしまったのですが、影響がなさそうなので、無視</p></li>
+<li><code>source ~/.zshrc</code>を実行し、設定を反映し、<code>rvm</code>で確認できた！</li>
+</ul>
+
+
+<h2>Ruby &amp;&amp; Rails</h2>
+
+<ul>
+<li><code>sudo yum install -y rubygems gcc-c++ make patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel</code></li>
+<li><code>rvm install 1.9.3</code> <strong><em>←　マイクロインスタンスで実行すると、結構時間がかかる</em></strong></li>
+<li><code>rvm use 1.9.3 --default</code></li>
+<li><code>rvm gemset create r3</code></li>
+<li><code>rvm use 1.9.3@r3 --default</code></li>
+<li><code>gem install rails --no-rdoc --no-ri</code></li>
+</ul>
+
+
+<p><code>rails -v</code>を実行したら、<code>Rails 3.2.2</code>ができている！！</p>
+
+<p><strong><em>WindowsからのSSH接続は、後で。</em></strong></p>
+]]></content>
+  </entry>
+  
+</feed>

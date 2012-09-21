@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>rails3.2 on heroku - Welcome to my Blog</title>
+  <meta name="author" content="blueplanet">
+
+  
+  <meta name="description" content="Rails 3.2のアプリをHerokuにデプロイする場合、ハマったことをメモ 環境 Rails 3.2.2
+ローカルDBはsqlite 手順 Railsアプリを作成 rails new myblog
+cd myblog
+git init
+git add .
+git ci -m 'init' &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blueplanet.github.com/blog/2012/04/02/rails3-dot-2-on-heroku/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Welcome to my Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Welcome to my Blog</a></h1>
+  
+    <h2>memo for programs</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blueplanet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">rails3.2 on Heroku</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-02T07:29:00+09:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Rails 3.2のアプリをHerokuにデプロイする場合、ハマったことをメモ</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>Rails 3.2.2</li>
+<li>ローカルDBはsqlite</li>
+</ul>
+
+
+<h2>手順</h2>
+
+<ul>
+<li>Railsアプリを作成
+
+<ul>
+<li><code>rails new myblog</code></li>
+<li><code>cd myblog</code></li>
+<li><code>git init</code></li>
+<li><code>git add .</code></li>
+<li><code>git ci -m 'init'</code></li>
+</ul>
+</li>
+<li>Scaffold
+
+<ul>
+<li><code>rails g scaffold post title:string body:text</code></li>
+<li><code>rake db:migrate</code></li>
+<li><code>rm public/index.html</code></li>
+<li><code>vi config/route.rb</code>
+
+<ul>
+<li><code>root :to =&gt; "pots#index"</code>を追加</li>
+</ul>
+</li>
+<li><code>git rm public/index.html</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'scaffold'</code></li>
+</ul>
+</li>
+<li>Heroku
+
+<ul>
+<li><code>vi Gemfile</code>heroku側は下記を追加</li>
+</ul>
+</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>group :production do  
+     gem 'pg'  
+end</code></pre>
+</div>
+
+
+<ul>
+<li><code>rake assets:precompile RAILS_ENV=production</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'heroku'</code></li>
+<li><code>heroku create</code></li>
+<li><code>git push heroku master</code></li>
+<li><code>heroku rake db:migrate</code></li>
+<li><code>heroku open</code>で確認できるはず</li>
+</ul>
+
+
+<h2>問題</h2>
+
+<ul>
+<li><code>heroku rake db:migrate</code>のエラー
+
+<ul>
+<li><code>(pg is not part of the bundle. Add it to Gemfile.)</code></li>
+<li>対策：Gemfileに下記を追加</li>
+</ul>
+</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>group :production do  
+  gem 'pg'  
+end</code></pre>
+</div>
+
+
+<ul>
+<li><code>git push heroku master</code>後、画面で確認すると、エラー画面になってる
+
+<ul>
+<li><code>heroku logs</code>で確認すると<code>ActionView::Template::Error (application.css isn't precompiled)</code>エラー</li>
+<li>対策：<code>push</code>前に、<code>rake assets:precompile RAILS_ENV=production</code>を実施する</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">blueplanet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-02T07:29:00+09:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/heroku/'>Heroku</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blueplanet.github.com/blog/2012/04/02/rails3-dot-2-on-heroku/" data-via="blueplanet42" data-counturl="http://blueplanet.github.com/blog/2012/04/02/rails3-dot-2-on-heroku/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/04/01/jekyll/" title="Previous Post: jekyllにする？">&laquo; jekyllにする？</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/04/03/rails3dojo/" title="Next Post: 「浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編」の写経(1)">「浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編」の写経(1) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/09/21/back-to-octopress/">back to octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/04/cucumber/">はじめる！Cucumber写経　環境構築</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/31/spork--guardtdd/">Spork + GuardによるTDD</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/27/dispatch/">派遣社員の悲しみ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/19/yokohamarb20/">Yokohamarb20</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/blueplanet">@blueplanet</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'blueplanet',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("blueplanet42", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/blueplanet42" class="twitter-follow-button" data-show-count="false">Follow @blueplanet42</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - blueplanet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'bpgh';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blueplanet.github.com/blog/2012/04/02/rails3-dot-2-on-heroku/';
+        var disqus_url = 'http://blueplanet.github.com/blog/2012/04/02/rails3-dot-2-on-heroku/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby | Welcome to my Blog]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2012-09-21T22:35:29+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rspec 2.9.0 on Rails 3.2.2 + sporkで試す]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/31/rspec-rails/"/>
+    <updated>2012-03-31T23:21:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/31/rspec-rails</id>
+    <content type="html"><![CDATA[<p>バージョンが異なる場合は、いろいろ違いがあるので、最新バージョンで環境を作って、最新のAPIを確認したい</p>
+
+<h3>バージョン</h3>
+
+<ul>
+<li>ruby 1.9.2</li>
+<li>rails 3.2.2</li>
+<li>rspec 2.9.0</li>
+<li>spork 0.9.0</li>
+</ul>
+
+
+<h2>手順</h2>
+
+<ul>
+<li>Gemfileに追加
+
+<ul>
+<li><code>gem 'rspec-rails'</code></li>
+<li><code>gem 'spork'</code></li>
+</ul>
+</li>
+<li><code>bundle install</code>を実行してgemインストール</li>
+<li><code>rails g rspec:install</code>でrspec関連ファイルを生成</li>
+<li><code>spork --bootstrap</code>でspork関連ファイルを生成</li>
+<li><p><code>rails g scaffold post title:string body:text</code>を実行すると、ファイルがいっぱい生成される</p>
+
+<ul>
+<li>この中に<code>spec/view/</code>配下のファイルを参考してViewテストの書き方を勉強したい</li>
+</ul>
+</li>
+<li><p>ハマったこと</p>
+
+<ul>
+<li><code>Gemfile</code>に追加する時、<code>gorup</code>を使いたかったが、<code>:development, :test</code>で限定すると、何か<code>rails g scaffold …</code>で生成する時、spec関連のテストクラスは作ってくれない</li>
+<li>やはり<code>Gemfile</code>の書き方はよくわかってないせい。とりあえずは、直接に<code>group</code>は書かない</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RSpec on Rails (4)]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/28/rspec-rails/"/>
+    <updated>2012-03-28T22:28:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/28/rspec-rails</id>
+    <content type="html"><![CDATA[<p>　<a href="http://jp.rubyist.net/magazine/?0023-Rspec">スはスペックのス 【第 2 回】 RSpec on Rails (コントローラとビュー編)</a>記事の写経</p>
+
+<ul>
+<li>Test::UnitはModelのテストをユニットテストとし、Controllerのテストを機能テストとしていますが、RSpecのほうは、Model・Controller・View・Helperのテストはすべてユニットテストとみなす</li>
+<li><p>ハマったこと</p>
+
+<ul>
+<li><code>render_template("blogs")</code>を書くと、レッドのはずだが、自分の環境では普通にグリーンになってる</li>
+<li>試してみたが、<code>blogs</code>と<code>blogs/show</code>と<code>show</code>と３つが全部OK。原因は分からず</li>
+</ul>
+</li>
+<li><p>調べたい</p>
+
+<ul>
+<li>FactoryGril</li>
+<li>Spoke</li>
+<li>浜松Rails3は資料いろいろ有りそう</li>
+</ul>
+</li>
+</ul>
+
+
+<p>　今日は、Controllerのテストまでに終わった。Viewのテストは次回で</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RSpec on Rails (4)]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/25/rspec-rails/"/>
+    <updated>2012-03-25T09:08:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/25/rspec-rails</id>
+    <content type="html"><![CDATA[<p>　写経の記録</p>
+
+<ul>
+<li><p><code>before_save</code>メソッドを定義しても、呼び出されてないらしい。下記を参考して修正<br/>
+<a href="http://d.hatena.ne.jp/NowTom/20110129/1296271461">RSpec2.4.0をRails3.0.3で学ぶ(その1)</a></p></li>
+<li><p>疑問：テスト実行はちょっと遅い気がする。試しにTimeでトータル時間を測定してみたらこんな感じ
+<img src="https://lh5.googleusercontent.com/-KSxPT5UHQCY/T25luPLyRYI/AAAAAAAAAg0/ZJtVEwaUEvw/s800/120325-0001.png" alt="image" />
+userとsystemはどっちがどっちかはよく分からない。要するに、テストロジック自体は0.219かかったが、テストコマンドの全体は3.96かかったとは、間違いないと思いう。もちろん、Rails環境のロードも時間がかかるのはわかってるけど。</p></li>
+</ul>
+
+
+<p>　Rails環境を事前にロードしておく方法があるようなので、後で調べます</p>
+
+<h2>　</h2>
+
+<p>ブログの画像をPicasawebを使ってますが、毎回Safariでアップロードし、URLを取得して文書に貼り付けとの流れだけど、面倒なので、よりいい方法があるかを調べる</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RSpec on Rails (3)]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/23/rspec-rails/"/>
+    <updated>2012-03-23T22:36:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/23/rspec-rails</id>
+    <content type="html"><![CDATA[<p>　RSpec on Railsｎの写経です。</p>
+
+<p>　<code>lambda</code>と<code>change</code>マッチャは面白い、というか、まだよく理解出来てない</p>
+
+<ul>
+<li>値の変化を評価する場合使う</li>
+<li>メソッドチェインなし：とにかく何かが変わった</li>
+<li>by(value)：１個増えた</li>
+<li>from(old).to(new)</li>
+<li>to(new)</li>
+<li><code>change</code>にブロックを渡す場合、<code>do .. end</code>はサポートされない</li>
+</ul>
+
+
+<p>成果物はこれ。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-j_NuxfNsDZY/T2yML-Z4QAI/AAAAAAAAAgc/z5iYAqnAL90/s800/120323-0001.png" alt="image" /></p>
+
+<hr />
+
+<h3>追記</h3>
+
+<p>Viを使ってるので、Unite.vimの設定をちょっと見なおした。正直に言うと、今までは、Uniteはあんまり使ってなかった、すみません。どんどん写経すると、やはりバッファだけではなく、カレントフォルダのファイル一覧も欲しくなるので、修正しました。</p>
+
+<p><code>noremap &lt;C-P&gt; :Unite buffer file&lt;CR&gt;</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RSpec on Rails (2)]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/21/rspec-rails/"/>
+    <updated>2012-03-21T06:31:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/21/rspec-rails</id>
+    <content type="html"><![CDATA[<p>　引き続き</p>
+
+<ul>
+<li><p>before /after</p>
+
+<ul>
+<li>setup / teardown に相当</li>
+<li>一度だけ実行したい場合、<code>:all</code>を指定する</li>
+<li>各example毎実行したい場合、<code>:each</code>を指定する <strong>デフォルト</strong></li>
+<li>複数指定もできる。実行順番は
+
+<ul>
+<li>before系は定義順</li>
+<li>after系は定義順の逆順</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>should / should_notはRSpecによるObjectに対する拡張するメソッド</p></li>
+<li>マッチャ
+
+<ul>
+<li>演算子マッチャ<code>&lt; &lt;= == === =~ &gt; &gt;=</code> <strong>否定のものはサポートされない、should_notを使うべき</strong></li>
+<li><code>be_close change eql equal have(n).items have_at_least(n).items have_at_most(n).items have_exactly include match raise_error respond_to satisfy throw_symbol</code></li>
+<li><code>be_XXX</code>　→　<code>XXX?</code></li>
+<li><code>be_true / be_false</code>は<code>true? / false?</code>というメソッドがなくても使える</li>
+<li><code>have_XXX</code> →　<code>has_XXX?</code></li>
+<li>カスタムマッチャ定義できる</li>
+</ul>
+</li>
+<li><code>violated</code>は実行を失敗させる</li>
+<li>保留：テストまだ書いてない
+
+<ul>
+<li><code>it</code>にブロックを渡せない</li>
+<li>pendingメソッドを使う</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>ようやく <code>RSpec on Rails</code></h3>
+
+<ul>
+<li>今更気づいたのですが、記事のバージョンは結構古い。よって、コマンドとかいろいろ変わっている
+
+<ul>
+<li>インストール：Gemfileに<code>gem 'rspec'``gem 'rspec-rails'</code>追記してから、<code>bundle install</code>実行すればOK</li>
+<li>初期化は<code>rails g rspec:install</code></li>
+<li><code>rake spec</code>の補完一覧
+<img src="https://lh6.googleusercontent.com/-gpjoO4UhGbE/T2s9WOraeTI/AAAAAAAAAgI/FO8ATshJGwU/s800/120322-0004.png" alt="image" /></li>
+<li><code>TODO:</code>モックとスタブの区別はわからない</li>
+<li>フォルダ構造もシンプルになっているよう。少なくともデフォルトは作ってない</li>
+<li><code>script/generate rspec_model</code>を実行する必要がなくなり、上記の<code>rails g rspec:install</code>を実行しておけば、普通に <code>rails g …</code>を実行する時、<code>test</code>系ではなく、<code>rspec</code>系のテストクラスを作ってくれる</li>
+<li>ruby 1.9以降を使う+日本語がある場合、例の<code>encoding=utf-8</code>追記する必要</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>複数記事に分けるので、とりあえずここまで</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: WP7 | Welcome to my Blog]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/wp7/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2012-09-21T22:35:29+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[C1コンポーネントFor Windows Phone 7]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/17/c14wp7/"/>
+    <updated>2012-03-17T23:24:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/17/c14wp7</id>
+    <content type="html"><![CDATA[<p>金曜日C1の承認メールが来たので、デモアプリを実機にインストールしてみた</p>
+
+<p>一番気になるのは、チャートとガジェットですね</p>
+
+<ul>
+<li><p>縦のチャート
+<img src="https://public.sn2.livefilestore.com/y1p71p_oyVdNcNhnpGOzvl0Hv4SJYFXDAUIP_3iGmPgdFZiCZ_ItwWFn67Jv9Iw68t24aN0Vd2yTmfS23AY66pMmw/CHART1.png?psid=1" alt="image" /></p></li>
+<li><p>横も対応
+<img src="https://public.sn2.livefilestore.com/y1p71p_oyVdNcNnygUPfV13De3p9iLoV2fPxmZndmk5MlpXXh2NLScNfV36vlyWMt7TNlXN5Pbp8NmLbvcAfWubFw/CHART2.png?psid=1" alt="image" /></p></li>
+<li><p>ガジェット１
+<img src="https://public.sn2.livefilestore.com/y1pfC21MLS-_ExsXt8KZWRyHnybuA4kWJq1SEw82bE59n-dy1VWX06AcGVcs_RS_Tau2Etg-BQt4O5llCD-oroqHg/G1.png?psid=1" alt="image" /></p></li>
+<li><p>ガチャっと２
+<img src="https://public.sn2.livefilestore.com/y1pIJM7zmbm9n2FBYgGreW-zbMxZTSDVNYdPY0RT5vx_yCF2xtv7n_zubGAT1yh9u_riiPBJ-AvzGTetIbXLL1qhQ/g2.png?psid=1" alt="image" /></p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[「Windows Phone 全国ハッカソン祭り～東京～春」に参加しました]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/16/wp7hackthon/"/>
+    <updated>2012-03-16T22:03:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/16/wp7hackthon</id>
+    <content type="html"><![CDATA[<h2>今日ははじめて「ハッカソン」の参加ですが、面白かったです。</h2>
+
+<ul>
+<li>形式は、もろもろ開発をやって、最後に公表する方が自分のアプリを２分間で説明してから、参加者全員で自分の好きなアプリを投票する。得点が一番多い方はプレントもらえます</li>
+<li>PomoTaskアプリを作って、チャレンジしました。チャレンジする方は８人で、得票は１票だけだった（本当に僕ではなかったけど）</li>
+<li>自分のアプリを紹介する時、すっごく緊張しちゃいました。人数はそんなにいなかったのに。。。。やっぱり経験が少ないね。このへんも頑張らないと！</li>
+</ul>
+
+
+<h2>最近はWindowsPhone7ブームです。</h2>
+
+<ul>
+<li><p>去年８月AppHubに登録してから、勉強ばっかりで、アプリを１つも出せなかった。今年になっても、あんまり変わってないところ、いきなりGithubのWindowsPhone クライアントを作りたいと思い始まった。</p></li>
+<li><p>MVVMやRxやgithub APIをいじりながら作ってみました。ちょうど２月中旬頃申請を出したところ、<a href="http://blogs.msdn.com/b/shintak/archive/2012/02/22/10270942.aspx">Windows Phone : 個人開発者向け 評価用デバイス配布プログラム</a>が出て、チャレンジしてみました。</p></li>
+</ul>
+
+
+<h2>別件ですが、下記のプログラムの申請も承認されました</h2>
+
+<ul>
+<li><a href="http://www.grapecity.com/tools/info/componentonewp2012/provided_free.htm">ComponentOne Studio for Windows Phone 2012無償利用プログラム</a></li>
+<li>水曜日申請メールを出して、今日承認のメールが来ました。有難うございます！</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

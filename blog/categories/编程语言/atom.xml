@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 编程语言 | Welcome to my Blog]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/编程语言/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2012-09-21T22:35:29+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Lisp是什么？]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/19/lisp/"/>
+    <updated>2012-03-19T22:13:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/19/lisp</id>
+    <content type="html"><![CDATA[<p>  偶尔读到一篇博客文章 <a href="http://www.cnblogs.com/Leap-abead/articles/762180.html">LISP的本质(THE NATURE OF LISP)</a> ，一下子就被LISP吸引了。</p>
+
+<p>  以前也听说过LISP，而且Ruby也受LISP影响很大，所以一直都有耳闻。曾经看了一点点入门级别的文章，确实如上文的作者所说，马上被满屏的括号吓到了，完全体会不到任何好处和美感。</p>
+
+<p>  读了上面的文章之后，马上想自己动手尝试一下。第一次装Common LISP <code>brew install clisp</code>失败了，似乎是系统太忙导致某个网站访问超时导致的，再次安装后成功。搜索了一下，似乎<code>brew install gauche</code>更热门，也顺便装了。</p>
+
+<p>  安装之后会多出个命令<code>ghosh</code>，CommonLISP的话是<code>clisp</code>，执行之后就会启动执行环境。</p>
+
+<p><div>
+  <pre><code class='bash'>(format t &quot;Hello, world!&quot;) 回车
+Hello, world
+NIL</code></pre>
+</div>
+</p>
+
+<p><strong>使用Ctrl＋D或者(exit)退出</strong></p>
+]]></content>
+  </entry>
+  
+</feed>

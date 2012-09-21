@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | Welcome to my Blog]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2012-09-21T22:35:29+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[jekyllにする？]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/01/jekyll/"/>
+    <updated>2012-04-01T22:53:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/01/jekyll</id>
+    <content type="html"><![CDATA[<p>現在Octopressを使ってますが、ちょっと不満がいくつあります</p>
+
+<p>Octopressの考え方としては、SourceとHTMLはgitのブランチで分けてます。なので、デプロイとソースデータの保存も分けて作業しないといけないわけ。</p>
+
+<ul>
+<li>デプロイ＋保存
+
+<ul>
+<li><code>rake gen_depoly</code></li>
+<li><code>git push</code></li>
+</ul>
+</li>
+<li>ビルドが必要なので、githubで直接編集はできない</li>
+</ul>
+
+
+<p>Jekyllの場合はどうなるかを調べてみました。</p>
+
+<p>ビルドはないため、直接に<code>.md</code>ファイルをgithubにアップロードするので</p>
+
+<ul>
+<li>デプロイは<code>git push</code>一発でOK</li>
+<li>ビルドがないので、githubのオンライン編集を利用できる</li>
+</ul>
+
+
+<p>いいじゃん！！と思って、細かい移行手順を調べてみると、なんか<code>index.md</code>は自分で書かないと行けないらしい。変数とか、テンプレートとか分からないで、瞬殺できないので、移行は後回す</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ブログ設定：DISQUSを使う]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/18/octopress-settings/"/>
+    <updated>2012-03-18T22:08:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/18/octopress-settings</id>
+    <content type="html"><![CDATA[<p>Octopressをインストールした時、すぐに、DISQUSが使えるのを気づいたが、設定がうまくできず、使ってなかった。今日改めてショット名称だけを設定してみたら、普通にできた！Orz…　</p>
+
+<p>それでは、DISQUSさん、これからは、宜しく〜〜</p>
+
+<hr />
+
+<p>実は、他もバラバラ試しました。</p>
+
+<ul>
+<li>日付表示を修正したかった：多言語対応に気付き、とりあえずはデフォルトで、後で</li>
+<li>カテゴリを表示した買った：意外に面倒なので、よく調べたら対応</li>
+<li>githubリポジトリを表示するプラグインがありますが、使い方はよく分かってないので、後で</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GithubでOctopressを構築]]></title>
+    <link href="http://blueplanet.github.com/blog/2011/12/19/octopress-on-github/"/>
+    <updated>2011-12-19T23:06:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2011/12/19/octopress-on-github</id>
+    <content type="html"><![CDATA[<h2>きっかけ</h2>
+
+<ul>
+<li>ブログを書きたい</li>
+<li>現在ははてな日記を使ってる
+
+<ul>
+<li>もっとシンプルにしたい</li>
+<li>Markdown記法とはてな記法を両方覚えるのはイヤ</li>
+<li>バージョン管理したい
+
+<h2>はまったこと</h2></li>
+</ul>
+</li>
+<li>bundle installでエラー発生
+
+<ul>
+<li>ruby 1.9.2-p136だった</li>
+<li>ruby 1.9.2-p280へバージョンアップしたら、通った</li>
+</ul>
+</li>
+<li>rake setup_github_pagesでエラー発生
+
+<ul>
+<li>URL指定方が間違った。git@github.com:yourname/yourname.github.com.gitのような形式にすればOK</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>とりあえずは以上</p>
+]]></content>
+  </entry>
+  
+</feed>

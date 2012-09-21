@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | Welcome to my Blog]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2012-09-21T22:35:29+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Git Study]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/19/git-study/"/>
+    <updated>2012-04-19T00:00:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/19/git-study</id>
+    <content type="html"><![CDATA[<h2>読書</h2>
+
+<p>今週から読んでるのは、→　<a href="http://www.amazon.co.jp/%E5%85%A5%E9%96%80Git-%E6%BF%B1%E9%87%8E-%E7%B4%94-Junio-Hamano/dp/4798023809/ref=sr_1_1?ie=UTF8&amp;qid=1334843382&amp;sr=8-1">入門Git</a></p>
+
+<p>買ってから、もちろん一回読み終わったが、やはり理解できたないところがあるので、もう一回読みたいので。</p>
+
+<p>最初の部分に、内部構造の<code>blob</code>、<code>tree</code>、<code>commit</code>などの概念の紹介がある。前回読んだ時は、うむうむ、なるほど的な感じでスルーしちゃったけど、今回は、自分で試して確かめたい。</p>
+
+<p><code>git init</code>
+<code>echo first file &gt; README.md</code>
+<code>git add .</code>
+<code>git commit -m 'init'</code></p>
+
+<p>この時点で<code>find .git/objects</code>を実行すると、こんなものが出来てる</p>
+
+<p><div>
+  <pre><code class='bash'>.git/objects/
+.git/objects//2e
+.git/objects//2e/40cc6a2f461bd63c3dfe6b093e0dec32e225e7
+.git/objects//30
+.git/objects//30/3ff981c488b812b6215f7db7920dedb3b59d9a
+.git/objects//f8
+.git/objects//f8/bdb8db43bcb3ad844f4c63d45c76bb5c7dc6f3
+.git/objects//info
+.git/objects//pack</code></pre>
+</div>
+</p>
+
+<p>うむ。。どういうものかな</p>
+
+<p><code>git cat-file -p f8bdb8db43bcb3ad844f4c63d45c76bb5c7dc6f3</code></p>
+
+<pre><code>tree 2e40cc6a2f461bd63c3dfe6b093e0dec32e225e7
+author blueplanet &lt;erguolinge@gmail.com&gt; 1334844026 +0900
+committer blueplanet &lt;erguolinge@gmail.com&gt; 1334844026 +0900
+
+init
+</code></pre>
+
+<p>コミットオブジェクトなんだ。treeオブジェクトの内容は</p>
+
+<p><code>git cat-file -p 2e40cc6a2f461bd63c3dfe6b093e0dec32e225e7</code></p>
+
+<pre><code>100644 blob 303ff981c488b812b6215f7db7920dedb3b59d9a    README.md
+</code></pre>
+
+<p>なるほどね。最後は、blobの内容</p>
+
+<p><code>git cat-file -p 303ff981c488b812b6215f7db7920dedb3b59d9a</code></p>
+
+<pre><code>first file
+</code></pre>
+
+<p>先の内容ですね。面白いというか、シンプルですね。もっと読みたくなりました。やはり写経しないとだめだよね。</p>
+
+<h2>思考</h2>
+
+<pre><code>「今やってる仕事は面白くない」とか、「あれをやりたい」とか、確かにたまにそう思いますが、よく考えてみると、それは本当に面白くないの、それとも、自分がよくやってないのか? 本当に本気を出して頑張りました?　この問題自体は回答出来ないのであれば、おそらく別の仕事だとか、やりたいあれをやっても、同じ状況になってしまう恐れがありますね。
+
+また、プロジェクトに問題がいろいろありますよ、危ないよ、とか、思う時は、逆に考えると、それはチャンスじゃない？それらの問題を解決出来れば？
+</code></pre>
+
+<p>うむ、確かにそうですね。頑張りましょうか！</p>
+]]></content>
+  </entry>
+  
+</feed>

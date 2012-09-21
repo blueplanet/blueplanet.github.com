@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Travis CI | Welcome to my Blog]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/travis-ci/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2012-09-21T22:35:29+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Travis CI試し]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/25/travis-ci/"/>
+    <updated>2012-03-25T22:16:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/25/travis-ci</id>
+    <content type="html"><![CDATA[<p>　RSpecを勉強中で、ソースもGithubに保持しているので、TravisCIも試してみる</p>
+
+<ul>
+<li>手順は公式のドキュメントを参考すれば</li>
+<li>メインは<code>.travis.yml</code>の設定
+
+<ul>
+<li>言語</li>
+<li>テストしたいバージョン</li>
+<li>ブランチ関連の管理</li>
+</ul>
+</li>
+</ul>
+
+
+<p><div>
+  <pre><code class='yaml'>language: ruby
+script: &quot;bundle exec rake db:drop db:create db:migrate spec&quot;
+rvm:
+  - 1.9.2
+  - 1.9.3
+gemfile:
+  - Gemfile
+branches:
+  only:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- master
+- develop
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li>感想
+
+<ul>
+<li>githubのリポジトリにPushすると、すぐ反映され、ビルドが走る</li>
+<li>ビルドステータスの画像を外部（ブログなど）に表示できる</li>
+<li>実行ログも見えるので、いろいろ確認できる</li>
+</ul>
+</li>
+</ul>
+
+
+<p><a href="http://travis-ci.org/blueplanet/StudyRSpec"><img src="https://secure.travis-ci.org/blueplanet/StudyRSpec.png?branch=master" alt="Build Status" /></a></p>
+]]></content>
+  </entry>
+  
+</feed>

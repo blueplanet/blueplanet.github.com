@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rails | Welcome to my Blog]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2012-09-21T22:35:29+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Spork + GuardによるTDD]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/05/31/spork--guardtdd/"/>
+    <updated>2012-05-31T00:00:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/05/31/spork--guardtdd</id>
+    <content type="html"><![CDATA[<p><a href="http://bukt.org/events/31">Yokohamarb #20</a>に参加して、Railsの開発環境のお話しがありました。その中に、TDDツールについて、SporkとGuardが使われています。</p>
+
+<p>Sporkはテストの事前ロードによりテストを高速化してくれるツールであるのは分かっていますが、Guardはわかっていなかったので、調べてみた</p>
+
+<h2>Guard</h2>
+
+<ul>
+<li><code>Gemfile</code>を編集し、必要なgemを追加
+
+<ul>
+<li><code>gem guard-spork</code></li>
+<li><code>gem guard-rspec</code></li>
+</ul>
+</li>
+<li><code>bundle install</code>でインストール</li>
+<li><code>bundle exec guard init spork</code></li>
+<li><code>bundle exec guard init rspec</code></li>
+<li><code>bundle exec guard</code>でプロセス起動すれば、<code>spork</code>＋<code>guard</code>が起動される</li>
+</ul>
+
+
+<p>これでテストの高速化かつ自動テスト環境が備えた</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Railsのform_tag]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/05/03/rails-form-tag/"/>
+    <updated>2012-05-03T00:00:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/05/03/rails-form-tag</id>
+    <content type="html"><![CDATA[<p>Railsでアプリを作る時、Modelがなく、単純にFormを作りたい場合、<code>form_tag</code>を使うべきという感じ</p>
+
+<p>WEB開発は全くないので、書き方すらよくわかってない。</p>
+
+<p>何かを作りたいとしても、あんまり進められない</p>
+
+<pre><code>&lt;%= form_tag(:action =&gt; "disp") do -%&gt;
+  Birthday&lt;br/&gt;
+        &lt;%= select_date Date.today,
+            :prefix =&gt; "birthday",
+            :use_month_numbers =&gt; true,
+            :start_year =&gt; 1980,
+            :end_year =&gt; 2012,
+            :discard_day =&gt; true %&gt;&lt;br/&gt;
+        &lt;%= submit_tag "display", :class =&gt; "btn btn-primary" %&gt;
+&lt;% end -%&gt;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[「浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編」の写経(1)]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/03/rails3dojo/"/>
+    <updated>2012-04-03T07:30:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/03/rails3dojo</id>
+    <content type="html"><![CDATA[<p><a href="http://www.slideshare.net/mackato/rails3dojo-routing">浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編</a></p>
+
+<ul>
+<li><code>Ruby 1.9.2 @ Rails3.0.7</code>環境作成</li>
+<li><code>pow</code>導入
+
+<ul>
+<li><code>curl get.pow.cx | sh</code>一発でOK</li>
+<li><code>ln -s rails3dojo</code>で追加</li>
+<li><code>open rails3dojo.dev</code>で確認できる！素晴らしい！</li>
+</ul>
+</li>
+<li><code>spork</code>導入
+
+<ul>
+<li><code>config/environments/test.rb</code>の<code>config.cache_classes</code>を<code>false</code>に変更</li>
+</ul>
+</li>
+<li>写経内容は割愛
+
+<ul>
+<li>スライドだけでは、ちょっと何かが足りないなーと感じた。</li>
+<li><code>config/route.rb</code>修正した場合、sporkも再起動する必要があるらしい</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rails3.2 on heroku]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/02/rails3-dot-2-on-heroku/"/>
+    <updated>2012-04-02T07:29:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/02/rails3-dot-2-on-heroku</id>
+    <content type="html"><![CDATA[<p>Rails 3.2のアプリをHerokuにデプロイする場合、ハマったことをメモ</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>Rails 3.2.2</li>
+<li>ローカルDBはsqlite</li>
+</ul>
+
+
+<h2>手順</h2>
+
+<ul>
+<li>Railsアプリを作成
+
+<ul>
+<li><code>rails new myblog</code></li>
+<li><code>cd myblog</code></li>
+<li><code>git init</code></li>
+<li><code>git add .</code></li>
+<li><code>git ci -m 'init'</code></li>
+</ul>
+</li>
+<li>Scaffold
+
+<ul>
+<li><code>rails g scaffold post title:string body:text</code></li>
+<li><code>rake db:migrate</code></li>
+<li><code>rm public/index.html</code></li>
+<li><code>vi config/route.rb</code>
+
+<ul>
+<li><code>root :to =&gt; "pots#index"</code>を追加</li>
+</ul>
+</li>
+<li><code>git rm public/index.html</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'scaffold'</code></li>
+</ul>
+</li>
+<li>Heroku
+
+<ul>
+<li><code>vi Gemfile</code>heroku側は下記を追加</li>
+</ul>
+</li>
+</ul>
+
+
+<p><div>
+  <pre><code class='ruby'>group :production do&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; gem 'pg'  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;end</code></pre>
+</div>
+</p>
+
+<ul>
+<li><code>rake assets:precompile RAILS_ENV=production</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'heroku'</code></li>
+<li><code>heroku create</code></li>
+<li><code>git push heroku master</code></li>
+<li><code>heroku rake db:migrate</code></li>
+<li><code>heroku open</code>で確認できるはず</li>
+</ul>
+
+
+<h2>問題</h2>
+
+<ul>
+<li><code>heroku rake db:migrate</code>のエラー
+
+<ul>
+<li><code>(pg is not part of the bundle. Add it to Gemfile.)</code></li>
+<li>対策：Gemfileに下記を追加</li>
+</ul>
+</li>
+</ul>
+
+
+<p><div>
+  <pre><code class='ruby'>group :production do&lt;br/&gt;
+  gem 'pg'&lt;br/&gt;
+end</code></pre>
+</div>
+</p>
+
+<ul>
+<li><code>git push heroku master</code>後、画面で確認すると、エラー画面になってる
+
+<ul>
+<li><code>heroku logs</code>で確認すると<code>ActionView::Template::Error (application.css isn't precompiled)</code>エラー</li>
+<li>対策：<code>push</code>前に、<code>rake assets:precompile RAILS_ENV=production</code>を実施する</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rspec 2.9.0 on Rails 3.2.2 + sporkで試す]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/03/31/rspec-rails/"/>
+    <updated>2012-03-31T23:21:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/03/31/rspec-rails</id>
+    <content type="html"><![CDATA[<p>バージョンが異なる場合は、いろいろ違いがあるので、最新バージョンで環境を作って、最新のAPIを確認したい</p>
+
+<h3>バージョン</h3>
+
+<ul>
+<li>ruby 1.9.2</li>
+<li>rails 3.2.2</li>
+<li>rspec 2.9.0</li>
+<li>spork 0.9.0</li>
+</ul>
+
+
+<h2>手順</h2>
+
+<ul>
+<li>Gemfileに追加
+
+<ul>
+<li><code>gem 'rspec-rails'</code></li>
+<li><code>gem 'spork'</code></li>
+</ul>
+</li>
+<li><code>bundle install</code>を実行してgemインストール</li>
+<li><code>rails g rspec:install</code>でrspec関連ファイルを生成</li>
+<li><code>spork --bootstrap</code>でspork関連ファイルを生成</li>
+<li><p><code>rails g scaffold post title:string body:text</code>を実行すると、ファイルがいっぱい生成される</p>
+
+<ul>
+<li>この中に<code>spec/view/</code>配下のファイルを参考してViewテストの書き方を勉強したい</li>
+</ul>
+</li>
+<li><p>ハマったこと</p>
+
+<ul>
+<li><code>Gemfile</code>に追加する時、<code>gorup</code>を使いたかったが、<code>:development, :test</code>で限定すると、何か<code>rails g scaffold …</code>で生成する時、spec関連のテストクラスは作ってくれない</li>
+<li>やはり<code>Gemfile</code>の書き方はよくわかってないせい。とりあえずは、直接に<code>group</code>は書かない</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
