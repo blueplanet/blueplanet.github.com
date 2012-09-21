@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RSpec | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/rspec/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:41:14+09:00</updated>
+  <updated>2012-09-21T23:45:28+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -40,22 +40,23 @@
 </ul>
 
 
-<p>{% highlight ruby %}
-describe クラス do
-  describe メソッド do</p>
+<p><div class="highlight"><pre><code class="ruby"><span class="n">describe</span> <span class="err">クラス</span> <span class="k">do</span>
+  <span class="n">describe</span> <span class="err">メソッド</span> <span class="k">do</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-<pre><code>context 正常値 do
-  it {}
-end
+<span class="sr">&lt;pre&gt;&lt;code&gt;context 正常値 do</span>
+<span class="sr">  it {}</span>
+<span class="sr">end</span>
 
-context 異常値 do
-  it {}
-end
+<span class="sr">context 異常値 do</span>
+<span class="sr">  it {}</span>
+<span class="sr">end</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+
+<span class="sr">&lt;p&gt;  end</span>
+<span class="sr">end</span>
 </code></pre>
-
-<p>  end
-end
-{% endhighlight ruby%}</p>
+</div>
+</p>
 
 <p>的なイメージ</p>
 

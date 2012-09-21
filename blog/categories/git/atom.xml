@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:41:14+09:00</updated>
+  <updated>2012-09-21T23:45:28+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -33,8 +33,7 @@
 
 <p>この時点で<code>find .git/objects</code>を実行すると、こんなものが出来てる</p>
 
-<p>{% highlight bash %}
-.git/objects/
+<p><div class="highlight"><pre><code class="bash">.git/objects/
 .git/objects//2e
 .git/objects//2e/40cc6a2f461bd63c3dfe6b093e0dec32e225e7
 .git/objects//30
@@ -43,7 +42,9 @@
 .git/objects//f8/bdb8db43bcb3ad844f4c63d45c76bb5c7dc6f3
 .git/objects//info
 .git/objects//pack
-{% endhighlight %}</p>
+</code></pre>
+</div>
+</p>
 
 <p>うむ。。どういうものかな</p>
 

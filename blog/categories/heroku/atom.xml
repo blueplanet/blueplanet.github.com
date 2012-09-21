@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Heroku | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/heroku/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:41:14+09:00</updated>
+  <updated>2012-09-21T23:45:28+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -134,14 +134,15 @@
 </ul>
 
 
-<p>{% highlight ruby %}
-group :production do</p>
+<p><div class="highlight"><pre><code class="ruby"><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-<pre><code> gem 'pg'  
+<span class="sr">&lt;pre&gt;&lt;code&gt; gem &#39;pg&#39;  </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+
+<span class="sr">&lt;p&gt;end</span>
 </code></pre>
-
-<p>end
-{% endhighlight %}</p>
+</div>
+</p>
 
 <ul>
 <li><code>rake assets:precompile RAILS_ENV=production</code></li>
@@ -167,11 +168,12 @@ group :production do</p>
 </ul>
 
 
-<p>{% highlight ruby %}
-group :production do<br/>
-  gem 'pg'<br/>
-end
-{% endhighlight %}</p>
+<p><div class="highlight"><pre><code class="ruby"><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+  <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+</p>
 
 <ul>
 <li><code>git push heroku master</code>後、画面で確認すると、エラー画面になってる

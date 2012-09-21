@@ -4,7 +4,7 @@
   <title><![CDATA[Category: github | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/github/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:41:14+09:00</updated>
+  <updated>2012-09-21T23:45:28+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -33,22 +33,24 @@
 </ul>
 
 
-<p>{% highlight yaml %}
-language: ruby
-script: "bundle exec rake db:drop db:create db:migrate spec"
-rvm:
-  - 1.9.2
-  - 1.9.3
-gemfile:
-  - Gemfile
-branches:
-  only:</p>
+<p><div class="highlight"><pre><code class="yaml"><span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ruby</span>
+<span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span> <span class="s">&quot;bundle</span><span class="nv"> </span><span class="s">exec</span><span class="nv"> </span><span class="s">rake</span><span class="nv"> </span><span class="s">db:drop</span><span class="nv"> </span><span class="s">db:create</span><span class="nv"> </span><span class="s">db:migrate</span><span class="nv"> </span><span class="s">spec&quot;</span>
+<span class="l-Scalar-Plain">rvm</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.2</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.3</span>
+<span class="l-Scalar-Plain">gemfile</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Gemfile</span>
+<span class="l-Scalar-Plain">branches</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">only:&lt;/p&gt;</span>
 
-<pre><code>- master
-- develop
+<span class="l-Scalar-Plain">&lt;pre&gt;&lt;code&gt;- master</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">develop</span>
+<span class="l-Scalar-Plain">&lt;/code&gt;&lt;/pre&gt;</span>
+
+<span class="l-Scalar-Plain">&lt;p&gt;</span>
 </code></pre>
-
-<p>{% endhighlight %}</p>
+</div>
+</p>
 
 <ul>
 <li>感想

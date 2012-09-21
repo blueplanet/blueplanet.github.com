@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:35:56+09:00</updated>
+  <updated>2012-09-21T23:45:28+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -85,7 +85,7 @@
 </ul>
 
 
-<figure class='code'><figcaption><span>test.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>

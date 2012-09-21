@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Editor | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/editor/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:41:14+09:00</updated>
+  <updated>2012-09-21T23:45:28+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -126,27 +126,28 @@ Error: server did not start correctly
     <content type="html"><![CDATA[<p>Emacsを勉強したいので、簡単な初期設定をメモ<br/>
 * バージョン：Emacs 23.4 by <a href="http://emacsformacosx.com/">Cocoa Emacs</a></p>
 
-<p>{% highlight cl %}
-;; load-path設定
-(setq load-path
-  (append</p>
+<p><div class="highlight"><pre><code class="cl"><span class="c1">;; load-path設定</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">load-path</span>
+  <span class="p">(</span><span class="nv">append&lt;/p&gt;</span>
 
-<pre><code>(list
-  (expand-file-name "~/.emacs.d/site-list/ruby")
-)
+<span class="nv">&lt;pre&gt;&lt;code&gt;</span><span class="p">(</span><span class="nb">list</span>
+  <span class="p">(</span><span class="nv">expand-file-name</span> <span class="s">&quot;~/.emacs.d/site-list/ruby&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="nv">&lt;/code&gt;&lt;/pre&gt;</span>
+
+<span class="nv">&lt;p&gt;</span>   <span class="nv">load-path</span><span class="p">))</span><span class="nv">&lt;/p&gt;</span>
+
+<span class="nv">&lt;p&gt;</span><span class="c1">;; 行番号表示</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">line-number-mode</span> <span class="no">t</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">global-set-key[f9]</span> <span class="ss">&#39;linu-mode</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">global-linum-mode</span> <span class="no">t</span><span class="p">)</span><span class="nv">&lt;/p&gt;</span>
+
+<span class="nv">&lt;p&gt;</span><span class="c1">;; ruby-electric 対応括弧やEndなどの補完</span>
+<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;ruby-electric</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;ruby-mode-hook</span> <span class="o">&#39;</span><span class="p">(</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">ruby-electric-mode</span> <span class="no">t</span><span class="p">)))</span>
 </code></pre>
-
-<p>   load-path))</p>
-
-<p>;; 行番号表示
-(setq line-number-mode t)
-(global-set-key[f9] 'linu-mode)
-(global-linum-mode t)</p>
-
-<p>;; ruby-electric 対応括弧やEndなどの補完
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
-{% endhighlight %}</p>
+</div>
+</p>
 
 <ul>
 <li>疑問
