@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:26:29+09:00</updated>
+  <updated>2012-09-21T23:35:56+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -85,27 +85,45 @@
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>source 'https://rubygems.org'
-
-gem 'rails', '3.2.6'
-gem 'sqlite3'
-
-group :assets do
-  gem 'sass-rails',   '~&gt; 3.2.3'
-  gem 'coffee-rails', '~&gt; 3.2.1'
-  gem 'uglifier', '&gt;= 1.0.3'
-end
-
-gem 'jquery-rails'
-
-group :develpment, :test do
-  gem 'database_cleaner'
-  gem 'cucumber-rails', '1.0.6', :require =&gt; false
-  gem 'guard-cucumber'
-  gem 'guard-spork'
-end</code></pre>
-</div>
+<figure class='code'><figcaption><span>test.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;rails&#39;</span><span class="p">,</span> <span class="s1">&#39;3.2.6&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;sqlite3&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:assets</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;sass-rails&#39;</span><span class="p">,</span>   <span class="s1">&#39;~&gt; 3.2.3&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;coffee-rails&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 3.2.1&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;uglifier&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;= 1.0.3&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;jquery-rails&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:develpment</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;database_cleaner&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;cucumber-rails&#39;</span><span class="p">,</span> <span class="s1">&#39;1.0.6&#39;</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;guard-cucumber&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;guard-spork&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ul>
@@ -563,10 +581,10 @@ end</code></pre>
 
 <p>今日わかったのは、４つのスペースでインデントを付けると、色はないけど、ちゃんとそのまま表現される</p>
 
-<div>
-  <pre><code class='python'>def test
-  aaa = &quot;aaa&quot;
-end</code></pre>
+<div class="highlight"><pre><code class="python"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">test</span>
+<span class="lineno">2</span>   <span class="n">aaa</span> <span class="o">=</span> <span class="s">&quot;aaa&quot;</span>
+<span class="lineno">3</span> <span class="n">end</span>
+</code></pre>
 </div>
 
 
@@ -693,11 +711,11 @@ end
 </ul>
 
 
-<div>
-  <pre><code class='bash'>$ node -v
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>node -v
 v0.6.17
-$ npm -v
-1.1.21</code></pre>
+<span class="nv">$ </span>npm -v
+1.1.21
+</code></pre>
 </div>
 
 
@@ -714,8 +732,7 @@ $ npm -v
 </ul>
 
 
-<div>
-  <pre><code class='bash'>create : nodeexpress
+<div class="highlight"><pre><code class="bash">create : nodeexpress
 create : nodeexpress/package.json
 create : nodeexpress/app.js
 create : nodeexpress/public
@@ -730,7 +747,8 @@ create : nodeexpress/views/layout.jade
 create : nodeexpress/views/index.jade
 
 dont forget to install dependencies:
-$ cd nodeexpress &amp;&amp; npm install</code></pre>
+<span class="nv">$ </span><span class="nb">cd </span>nodeexpress <span class="o">&amp;&amp;</span> npm install
+</code></pre>
 </div>
 
 

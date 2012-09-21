@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cucumber | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/cucumber/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:26:29+09:00</updated>
+  <updated>2012-09-21T23:41:14+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -72,28 +72,27 @@
 </ul>
 
 
-<p><div>
-  <pre><code class='ruby'>source 'https://rubygems.org'&lt;/p&gt;
+<p>```Gemfile lang:ruby
+source 'https://rubygems.org'</p>
 
-&lt;p&gt;gem 'rails', '3.2.6'
-gem 'sqlite3'&lt;/p&gt;
+<p>gem 'rails', '3.2.6'
+gem 'sqlite3'</p>
 
-&lt;p&gt;group :assets do
-  gem 'sass-rails',   '~&gt; 3.2.3'
-  gem 'coffee-rails', '~&gt; 3.2.1'
-  gem 'uglifier', '&gt;= 1.0.3'
-end&lt;/p&gt;
+<p>group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+end</p>
 
-&lt;p&gt;gem 'jquery-rails'&lt;/p&gt;
+<p>gem 'jquery-rails'</p>
 
-&lt;p&gt;group :develpment, :test do
+<p>group :develpment, :test do
   gem 'database_cleaner'
-  gem 'cucumber-rails', '1.0.6', :require =&gt; false
+  gem 'cucumber-rails', '1.0.6', :require => false
   gem 'guard-cucumber'
   gem 'guard-spork'
-end</code></pre>
-</div>
-</p>
+end
+```</p>
 
 <ul>
 <li><code>bundle install --path vendor/bundle</code></li>

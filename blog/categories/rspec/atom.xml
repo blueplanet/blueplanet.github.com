@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RSpec | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/rspec/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:26:29+09:00</updated>
+  <updated>2012-09-21T23:41:14+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -40,23 +40,22 @@
 </ul>
 
 
-<p><div>
-  <pre><code class='ruby'>describe クラス do
-  describe メソッド do&lt;/p&gt;
+<p>{% highlight ruby %}
+describe クラス do
+  describe メソッド do</p>
 
-&lt;pre&gt;&lt;code&gt;context 正常値 do
+<pre><code>context 正常値 do
   it {}
 end
 
 context 異常値 do
   it {}
 end
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;  end
-end</code></pre>
-</div>
-</p>
+<p>  end
+end
+{% endhighlight ruby%}</p>
 
 <p>的なイメージ</p>
 

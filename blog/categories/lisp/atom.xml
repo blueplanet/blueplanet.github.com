@@ -4,7 +4,7 @@
   <title><![CDATA[Category: LISP | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/lisp/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:26:29+09:00</updated>
+  <updated>2012-09-21T23:41:14+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -26,12 +26,11 @@
 
 <p>  安装之后会多出个命令<code>ghosh</code>，CommonLISP的话是<code>clisp</code>，执行之后就会启动执行环境。</p>
 
-<p><div>
-  <pre><code class='bash'>(format t &quot;Hello, world!&quot;) 回车
+<p>{% highlight bash %}
+(format t "Hello, world!") 回车
 Hello, world
-NIL</code></pre>
-</div>
-</p>
+NIL
+{% endhighlight %}</p>
 
 <p><strong>使用Ctrl＋D或者(exit)退出</strong></p>
 ]]></content>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blog | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/blog/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:26:29+09:00</updated>
+  <updated>2012-09-21T23:41:14+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -22,12 +22,11 @@
 
 <p>今日わかったのは、４つのスペースでインデントを付けると、色はないけど、ちゃんとそのまま表現される</p>
 
-<p><div>
-  <pre><code class='python'>def test
-  aaa = &quot;aaa&quot;
-end</code></pre>
-</div>
-</p>
+<p>{% highlight python linenos %}
+def test
+  aaa = "aaa"
+end
+{% endhighlight %}</p>
 
 <p>これは、Markdownで前後とも一行の空白行があるわけ。ないとこの３行が１行になってしまう。前の行末に２つのスペースを入れると、改行はされますが、やはり１行になってしまう。</p>
 
@@ -202,15 +201,14 @@ end
 </ul>
 
 
-<p><div>
-  <pre><code class='ruby'>for nm in *.markdown&lt;/p&gt;
+<p>{% highlight ruby %}
+for nm in *.markdown</p>
 
-&lt;pre&gt;&lt;code&gt;mv $nm ${nm%.markdown}.md
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>mv $nm ${nm%.markdown}.md
+</code></pre>
 
-&lt;p&gt;done</code></pre>
-</div>
-</p>
+<p>done
+{% endhighlight %}</p>
 
 <pre><code>* `{codeblock}`は無いので、"```"に置換する
 </code></pre>

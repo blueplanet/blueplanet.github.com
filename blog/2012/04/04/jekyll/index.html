@@ -103,10 +103,10 @@ done * `{codeblock}`は無いので、"```"に置換する 一覧はいいけど
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>for nm in *.markdown
-    mv $nm ${nm%.markdown}.md
-done</code></pre>
+<div class="highlight"><pre><code class="ruby"><span class="k">for</span> <span class="n">nm</span> <span class="k">in</span> <span class="o">*.</span><span class="n">markdown</span>
+    <span class="n">mv</span> <span class="vg">$nm</span> <span class="err">$</span><span class="p">{</span><span class="n">nm</span><span class="sx">%.markdown}.</span><span class="n">md</span>
+<span class="n">done</span>
+</code></pre>
 </div>
 
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Editor | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/editor/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:26:29+09:00</updated>
+  <updated>2012-09-21T23:41:14+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -126,28 +126,27 @@ Error: server did not start correctly
     <content type="html"><![CDATA[<p>Emacsを勉強したいので、簡単な初期設定をメモ<br/>
 * バージョン：Emacs 23.4 by <a href="http://emacsformacosx.com/">Cocoa Emacs</a></p>
 
-<p><div>
-  <pre><code class='cl'>;; load-path設定
+<p>{% highlight cl %}
+;; load-path設定
 (setq load-path
-  (append&lt;/p&gt;
+  (append</p>
 
-&lt;pre&gt;&lt;code&gt;(list
-  (expand-file-name &quot;~/.emacs.d/site-list/ruby&quot;)
+<pre><code>(list
+  (expand-file-name "~/.emacs.d/site-list/ruby")
 )
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;   load-path))&lt;/p&gt;
+<p>   load-path))</p>
 
-&lt;p&gt;;; 行番号表示
+<p>;; 行番号表示
 (setq line-number-mode t)
 (global-set-key[f9] 'linu-mode)
-(global-linum-mode t)&lt;/p&gt;
+(global-linum-mode t)</p>
 
-&lt;p&gt;;; ruby-electric 対応括弧やEndなどの補完
+<p>;; ruby-electric 対応括弧やEndなどの補完
 (require 'ruby-electric)
-(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))</code></pre>
-</div>
-</p>
+(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+{% endhighlight %}</p>
 
 <ul>
 <li>疑問

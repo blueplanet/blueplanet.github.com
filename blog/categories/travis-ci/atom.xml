@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Travis CI | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/travis-ci/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:26:29+09:00</updated>
+  <updated>2012-09-21T23:41:14+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -33,24 +33,22 @@
 </ul>
 
 
-<p><div>
-  <pre><code class='yaml'>language: ruby
-script: &quot;bundle exec rake db:drop db:create db:migrate spec&quot;
+<p>{% highlight yaml %}
+language: ruby
+script: "bundle exec rake db:drop db:create db:migrate spec"
 rvm:
   - 1.9.2
   - 1.9.3
 gemfile:
   - Gemfile
 branches:
-  only:&lt;/p&gt;
+  only:</p>
 
-&lt;pre&gt;&lt;code&gt;- master
+<pre><code>- master
 - develop
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<p>{% endhighlight %}</p>
 
 <ul>
 <li>感想

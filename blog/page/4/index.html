@@ -166,8 +166,7 @@
 
 <p>この時点で<code>find .git/objects</code>を実行すると、こんなものが出来てる</p>
 
-<div>
-  <pre><code class='bash'>.git/objects/
+<div class="highlight"><pre><code class="bash">.git/objects/
 .git/objects//2e
 .git/objects//2e/40cc6a2f461bd63c3dfe6b093e0dec32e225e7
 .git/objects//30
@@ -175,7 +174,8 @@
 .git/objects//f8
 .git/objects//f8/bdb8db43bcb3ad844f4c63d45c76bb5c7dc6f3
 .git/objects//info
-.git/objects//pack</code></pre>
+.git/objects//pack
+</code></pre>
 </div>
 
 
@@ -347,10 +347,10 @@ init
 
 <p>インストールは<a href="http://cx4a.org/software/auto-complete/index.ja.html">公式サイト</a>からダウンロードしてから、解凍したフォルダの<code>/etc/install.el</code>を<code>M-x RET load-file</code>でロードする。その後、<code>init.el</code>に設定を追加すればOK</p>
 
-<div>
-  <pre><code class='cl'>(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories &quot;~/.emacs.d/elisp//ac-dict&quot;)
-(ac-config-default)</code></pre>
+<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;auto-complete-config</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ac-dictionary-directories</span> <span class="s">&quot;~/.emacs.d/elisp//ac-dict&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">ac-config-default</span><span class="p">)</span>
+</code></pre>
 </div>
 
 
@@ -358,10 +358,10 @@ init
 
 <p>しばらくは、３つのキーの設定を変更してみたい</p>
 
-<div>
-  <pre><code class='cl'>(global-set-key[(control t)] 'switch-to-buffer)
-(global-set-key[(control o)] 'find-file)
-(global-set-key[(control h)] 'backward-delete-char)</code></pre>
+<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">global-set-key[</span><span class="p">(</span><span class="nv">control</span> <span class="no">t</span><span class="p">)</span><span class="nv">]</span> <span class="ss">&#39;switch-to-buffer</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">global-set-key[</span><span class="p">(</span><span class="nv">control</span> <span class="nv">o</span><span class="p">)</span><span class="nv">]</span> <span class="ss">&#39;find-file</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">global-set-key[</span><span class="p">(</span><span class="nv">control</span> <span class="nv">h</span><span class="p">)</span><span class="nv">]</span> <span class="ss">&#39;backward-delete-char</span><span class="p">)</span>
+</code></pre>
 </div>
 
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Node.js | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/node-js/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:26:29+09:00</updated>
+  <updated>2012-09-21T23:41:14+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -68,13 +68,12 @@
 </ul>
 
 
-<p><div>
-  <pre><code class='bash'>$ node -v
+<p>{% highlight bash %}
+$ node -v
 v0.6.17
 $ npm -v
-1.1.21</code></pre>
-</div>
-</p>
+1.1.21
+{% endhighlight %}</p>
 
 <ul>
 <li>express
@@ -89,8 +88,8 @@ $ npm -v
 </ul>
 
 
-<p><div>
-  <pre><code class='bash'>create : nodeexpress
+<p>{% highlight bash %}
+create : nodeexpress
 create : nodeexpress/package.json
 create : nodeexpress/app.js
 create : nodeexpress/public
@@ -102,12 +101,11 @@ create : nodeexpress/routes
 create : nodeexpress/routes/index.js
 create : nodeexpress/views
 create : nodeexpress/views/layout.jade
-create : nodeexpress/views/index.jade&lt;/p&gt;
+create : nodeexpress/views/index.jade</p>
 
-&lt;p&gt;dont forget to install dependencies:
-$ cd nodeexpress &amp;amp;&amp;amp; npm install</code></pre>
-</div>
-</p>
+<p>dont forget to install dependencies:
+$ cd nodeexpress &amp;&amp; npm install
+{% endhighlight %}</p>
 
 <ul>
 <li><code>cd nodeexpress</code></li>
