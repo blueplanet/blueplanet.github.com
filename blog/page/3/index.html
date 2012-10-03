@@ -9,8 +9,8 @@
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="Emacsで矩形選択、複数行の同時編集は、cua-modeが便利そうなので、導入してみる 設定 init.elに(cua-mode t)を追加
-キーの設定を禁止する為、(setq cua-enable-cua-keys nil)も追加 使い方 c-RETで選択開始位置を設定し、c-n / c- &hellip;">
+  <meta name="description" content="Rails勉強中。デザインが出来ないので、話題のtwitter-bootstrapを試してみる 導入 Gemfileにgem 'twitter-bootstrap-railsを追加し、bundle installを実行
+rails g bootstrap:installを実行したら、エラーで落ちた &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/30/rails-323--twitter-bootstrap-rails/">Rails 3.2.3 + Twitter-bootstrap-railsを試して見る</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-30T00:00:00+09:00" pubdate data-updated="true">Apr 30<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Rails勉強中。デザインが出来ないので、話題の<code>twitter-bootstrap</code>を試してみる</p>
+
+<h2>導入</h2>
+
+<ul>
+<li><code>Gemfile</code>に<code>gem 'twitter-bootstrap-rails</code>を追加し、<code>bundle install</code>を実行</li>
+<li><code>rails g bootstrap:install</code>を実行したら、エラーで落ちた
+
+<ul>
+<li><a href="https://github.com/seyhunak/twitter-bootstrap-rails/issues/194">twitter-bootstrap-railsのIssue</a>を参考して、<code>gem 'therubyracer', :platform =&gt; :ruby</code>をコメントを削除すると、正常に実行出来た</li>
+</ul>
+</li>
+<li>上記以外は、普通にReadmeに従ってやればOK</li>
+</ul>
+
+
+<p><img src="https://lh4.googleusercontent.com/-fuLcAMkDJUE/T56eWDMlpVI/AAAAAAAAA94/4suBZAEnSE4/s800/Screen%2520Shot%25202012-04-30%2520at%252023.14.04.png" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -794,76 +846,6 @@ Error: server did not start correctly
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/21/s-is-for-spec/">スはスペックのス　感想</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-21T00:00:00+09:00" pubdate data-updated="true">Apr 21<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>角谷さんの「スはスペックのス」という四年前のビデオを見た感想。</p>
-
-<p>既に何回見たけど、毎回も刺激を受けてしまったんですね。最初は実演だけをみて、すごいなと思って、また前のプレゼン部分を見ました。</p>
-
-<h2>TDD</h2>
-
-<ul>
-<li>TDDは設計方法・開発の進め方である
-
-<ul>
-<li>テスト技法だと思った、誤解だったね。</li>
-</ul>
-</li>
-<li>Red / Green / Refactoring ３つのモードが重要
-
-<ul>
-<li>別のTDD資料を読んだ時は、この３つのモードはしっかり認識してなかった</li>
-<li>三角の図もすごく理解しやすいですね。すぐ覚えました</li>
-<li>今どのモードにいるのはしっかり認識しよう</li>
-<li>その上、当該モードのタスク以外はやらないこと
-
-<ul>
-<li>例え、Redモードの場合は、リファクタリングするのはダメ</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>Emacs</h2>
-
-<p>まあ、本題ではないけど、Emacsはカッコイイですね。このきっかけでEmacsを使い始めたよ！</p>
-
-<p>後でYasnipetを導入してみたい</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -881,6 +863,10 @@ Error: server did not start correctly
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/">OS 10.8 gem install json faild</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/21/back-to-octopress/">back to octopress</a>
       </li>
     
@@ -894,10 +880,6 @@ Error: server did not start correctly
     
       <li class="post">
         <a href="/blog/2012/05/27/dispatch/">派遣社員の悲しみ</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/19/yokohamarb20/">Yokohamarb20</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-09-21T23:45:28+09:00</updated>
+  <updated>2012-10-04T06:41:00+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OS 10.8 gem install json faild]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/"/>
+    <updated>2012-10-04T06:25:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/10/04/os-10-dot-8-gem-install-json-faild</id>
+    <content type="html"><![CDATA[<h2>環境</h2>
+
+<ul>
+<li>Mac OS 10.8.2</li>
+<li>ruby 1.9.2p320</li>
+<li>gem 1.8.24</li>
+<li>xcode 4.5 (4G182)</li>
+</ul>
+
+
+<h2>問題</h2>
+
+<p><code>gem install json</code>を実行する場合、下記のエラーで落ちる</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>gem install json                                                                       *<span class="o">[</span>master<span class="o">][</span>1.9.2-p320<span class="o">]</span>
+</span><span class='line'>Fetching: json-1.7.5.gem <span class="o">(</span>100%<span class="o">)</span>
+</span><span class='line'>Building native extensions.  This could take a <span class="k">while</span>...
+</span><span class='line'>ERROR:  Error installing json:
+</span><span class='line'>  ERROR: Failed to build gem native extension.
+</span><span class='line'>
+</span><span class='line'>        /Users/gyo/.rbenv/versions/1.9.2-p320/bin/ruby extconf.rb
+</span><span class='line'>creating Makefile
+</span><span class='line'>
+</span><span class='line'>make
+</span><span class='line'>/usr/bin/gcc-4.2 -I. -I/Users/gyo/.rbenv/versions/1.9.2-p320/include/ruby-1.9.1/x86_64-darwin11.3.0 -I/Users/gyo/.rbenv/versions/1.9.2-p320/include/ruby-1.9.1/ruby/backward -I/Users/gyo/.rbenv/versions/1.9.2-p320/include/ruby-1.9.1 -I. -DJSON_GENERATOR -I<span class="s1">&#39;/Users/gyo/.rbenv/versions/1.9.2-p320/include&#39;</span>  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wshorten-64-to-32 -Wno-long-long  -pipe -O3 -Wall -O0 -ggdb  -o generator.o -c generator.c
+</span><span class='line'>i686-apple-darwin11-gcc-4.2.1: error trying to <span class="nb">exec</span> <span class="s1">&#39;cc1&#39;</span>: execvp: No such file or directory
+</span><span class='line'>make: *** <span class="o">[</span>generator.o<span class="o">]</span> Error 1
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Gem files will remain installed in /Users/gyo/.rbenv/versions/1.9.2-p320/gemsets/ruby-china/gems/json-1.7.5 <span class="k">for </span>inspection.
+</span><span class='line'>Results logged to /Users/gyo/.rbenv/versions/1.9.2-p320/gemsets/ruby-china/gems/json-1.7.5/ext/json/ext/generator/gem_make.out
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>解決</h2>
+
+<ol>
+<li>xcode で<code>Command Line Tools</code>をインストール</li>
+<li><code>sudo ln -sf /usr/bin/llvm-gcc-4.2 /usr/bin/gcc-4.2</code>を実行</li>
+</ol>
+
+
+<hr />
+
+<p>参考URL</p>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/11710568/os-x-10-8-error-trying-to-exec-usr-bin-i686-apple-darwin11-gcc-4-2-1-inst">OS X 10.8 - error trying to exec &#8216;/usr/bin/i686-apple-darwin11-gcc-4.2.1&#8217; - installing json gem</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[back to octopress]]></title>
@@ -1080,31 +1155,6 @@ dont forget to install dependencies:
 <hr />
 
 <p>これで、ビューファイルを開くと、<code>rhtml-mode</code>になって、<code>rinari</code>も有効になるはず</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails 3.2.3 + Twitter-bootstrap-railsを試して見る]]></title>
-    <link href="http://blueplanet.github.com/blog/2012/04/30/rails-323--twitter-bootstrap-rails/"/>
-    <updated>2012-04-30T00:00:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2012/04/30/rails-323&#8211;twitter-bootstrap-rails</id>
-    <content type="html"><![CDATA[<p>Rails勉強中。デザインが出来ないので、話題の<code>twitter-bootstrap</code>を試してみる</p>
-
-<h2>導入</h2>
-
-<ul>
-<li><code>Gemfile</code>に<code>gem 'twitter-bootstrap-rails</code>を追加し、<code>bundle install</code>を実行</li>
-<li><code>rails g bootstrap:install</code>を実行したら、エラーで落ちた
-
-<ul>
-<li><a href="https://github.com/seyhunak/twitter-bootstrap-rails/issues/194">twitter-bootstrap-railsのIssue</a>を参考して、<code>gem 'therubyracer', :platform =&gt; :ruby</code>をコメントを削除すると、正常に実行出来た</li>
-</ul>
-</li>
-<li>上記以外は、普通にReadmeに従ってやればOK</li>
-</ul>
-
-
-<p><img src="https://lh4.googleusercontent.com/-fuLcAMkDJUE/T56eWDMlpVI/AAAAAAAAA94/4suBZAEnSE4/s800/Screen%2520Shot%25202012-04-30%2520at%252023.14.04.png" alt="" /></p>
 ]]></content>
   </entry>
   

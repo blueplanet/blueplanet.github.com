@@ -9,8 +9,7 @@
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="下記の記事を参考して、写経してみた 【Rails】OmniAuthを使ってtwitter / facebookで認証する rails new rails_oaでアプリを作成
-ログインリンクでtwitterに遷移出来たが、callbackはまだうまく出来てない 漏れたところ &hellip;">
+  <meta name="description" content="RailsでTwitterを使いたいので、まずは、RubyでTwitterを使う手段を調べてみた gem install twitter Rubyの場合は、これがよく使われるらしい パブリックタイムラインの場合、認証なくてもOK require 'twitter' Twitter. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +64,60 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/12/rubytwitter/">RubyでTwitter APIを使う</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-12T00:00:00+09:00" pubdate data-updated="true">May 12<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>RailsでTwitterを使いたいので、まずは、RubyでTwitterを使う手段を調べてみた</p>
+
+<ul>
+<li><code>gem install twitter</code> Rubyの場合は、これがよく使われるらしい</li>
+</ul>
+
+
+<p>パブリックタイムラインの場合、認証なくてもOK</p>
+
+<pre><code>require 'twitter'
+
+Twitter.user_timeline("aoi_wakusei", :count =&gt; 200).map do |tweet|
+  "#{tweet.created_at} : #{tweet.text}"
+end
+</code></pre>
+
+<p>確かにこんなに簡単に使えるのは感動したが、期間を指定したいが、使い方はまだ見つけていない</p>
+
+<p>TODO : Twitter API期間指定してタイムライン検索</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -764,58 +817,6 @@ dont forget to install dependencies:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/30/rails-323--twitter-bootstrap-rails/">Rails 3.2.3 + Twitter-bootstrap-railsを試して見る</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-30T00:00:00+09:00" pubdate data-updated="true">Apr 30<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Rails勉強中。デザインが出来ないので、話題の<code>twitter-bootstrap</code>を試してみる</p>
-
-<h2>導入</h2>
-
-<ul>
-<li><code>Gemfile</code>に<code>gem 'twitter-bootstrap-rails</code>を追加し、<code>bundle install</code>を実行</li>
-<li><code>rails g bootstrap:install</code>を実行したら、エラーで落ちた
-
-<ul>
-<li><a href="https://github.com/seyhunak/twitter-bootstrap-rails/issues/194">twitter-bootstrap-railsのIssue</a>を参考して、<code>gem 'therubyracer', :platform =&gt; :ruby</code>をコメントを削除すると、正常に実行出来た</li>
-</ul>
-</li>
-<li>上記以外は、普通にReadmeに従ってやればOK</li>
-</ul>
-
-
-<p><img src="https://lh4.googleusercontent.com/-fuLcAMkDJUE/T56eWDMlpVI/AAAAAAAAA94/4suBZAEnSE4/s800/Screen%2520Shot%25202012-04-30%2520at%252023.14.04.png" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -833,6 +834,10 @@ dont forget to install dependencies:
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/">OS 10.8 gem install json faild</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/21/back-to-octopress/">back to octopress</a>
       </li>
     
@@ -846,10 +851,6 @@ dont forget to install dependencies:
     
       <li class="post">
         <a href="/blog/2012/05/27/dispatch/">派遣社員の悲しみ</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/19/yokohamarb20/">Yokohamarb20</a>
       </li>
     
   </ul>
