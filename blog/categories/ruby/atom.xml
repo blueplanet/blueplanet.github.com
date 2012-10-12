@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Ruby | Welcome to my Blog]]></title>
+  <title><![CDATA[Category: Ruby | Welcome to the blog of blueplanet]]></title>
   <link href="http://blueplanet.github.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-10-12T22:52:16+09:00</updated>
+  <updated>2012-10-12T23:09:53+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -34,6 +34,9 @@
 <h2><a href="http://twitter.com/knwang">@knwang</a> さんは？</h2>
 
 <p><a href="http://ruby-china.org/">Ruby-China</a> でたまたま目に見え、Rails のオンラインコース <a href="http://www.railstutors.com/#.UHgQy4VsKo8.twitter">Rails Tutors, Ruby on Rails online Courses</a> で起業しているようです。</p>
+
+<!-- more -->
+
 
 <h2>ライブコーディング</h2>
 
