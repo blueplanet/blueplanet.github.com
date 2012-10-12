@@ -5,15 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>RSpec on Rails (3) - Welcome to my Blog</title>
+  <title>Ruby-Chinaのオンラインライブコーディングイベントに参加した - Welcome to my Blog</title>
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="　RSpec on Railsｎの写経です。 　lambdaとchangeマッチャは面白い、というか、まだよく理解出来てない 値の変化を評価する場合使う
-メソッドチェインなし：とにかく何かが変わった
-by(value)：１個増えた
-from(old).to(new)
-to(new) &hellip;">
+  <meta name="description" content="きっかけ Ruby-China は Ruby / Rails を勉強している中で、最近よくアクセスしているサイトの１つ。 5日前に、 @knwang さんが、 Ruby-China に参加してから2ヶ月間経ちましたが、
+やはり コミュニティにはどこから入門出来るかも分からない Rails &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +19,7 @@ to(new) &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blueplanet.github.com/blog/2012/03/23/rspec-rails/">
+  <link rel="canonical" href="http://blueplanet.github.com/blog/2012/10/12/ruby-china-live-coding-by-knwang/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -71,7 +68,7 @@ to(new) &hellip;">
   
   <header>
     
-      <h1 class="entry-title">RSpec on Rails (3)</h1>
+      <h1 class="entry-title">Ruby-Chinaのオンラインライブコーディングイベントに参加した</h1>
     
     
       <p class="meta">
@@ -87,38 +84,62 @@ to(new) &hellip;">
   
 
 
-<time datetime="2012-03-23T22:36:00+09:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2012</time>
+<time datetime="2012-10-12T21:24:00+09:00" pubdate data-updated="true">Oct 12<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>　RSpec on Railsｎの写経です。</p>
+<div class="entry-content"><h2>きっかけ</h2>
 
-<p>　<code>lambda</code>と<code>change</code>マッチャは面白い、というか、まだよく理解出来てない</p>
+<p><a href="http://ruby-china.org/">Ruby-China</a> は Ruby / Rails を勉強している中で、最近よくアクセスしているサイトの１つ。</p>
+
+<p> 5日前に、 @knwang さんが、</p>
+
+<blockquote><p><a href="http://ruby-china.org/">Ruby-China</a> に参加してから2ヶ月間経ちましたが、
+やはり コミュニティにはどこから入門出来るかも分からない Rails の初心者が多いことに気付いました。
+なので、10/11(木) 21:00 ~ 23:00 (北京時間)2時間で、オンラインのライブコーディングで
+ゼロから簡単なアプリを作成するデモをやります。参加したい方はメアドを追記してください。</p></blockquote>
+
+<p>という内容で投稿しました。</p>
+
+<h2><a href="http://twitter.com/knwang">@knwang</a> さんは？</h2>
+
+<p><a href="http://ruby-china.org/">Ruby-China</a> でたまたま目に見え、Rails のオンラインコース <a href="http://www.railstutors.com/#.UHgQy4VsKo8.twitter">Rails Tutors, Ruby on Rails online Courses</a> で起業しているようです。</p>
+
+<h2>ライブコーディング</h2>
+
+<h3>総評</h3>
+
+<p>すごく良かった！！！参加の全員も、「今後もっとやりましょう！！」と盛り上がった</p>
+
+<h3>良かったところ</h3>
 
 <ul>
-<li>値の変化を評価する場合使う</li>
-<li>メソッドチェインなし：とにかく何かが変わった</li>
-<li>by(value)：１個増えた</li>
-<li>from(old).to(new)</li>
-<li>to(new)</li>
-<li><code>change</code>にブロックを渡す場合、<code>do .. end</code>はサポートされない</li>
+<li><a href="http://join.me/">join me</a> を利用して、スクリーンと音声を共有する形でした。このサービスはすごく良くて、100人以上の人を参加しているにもかかわらず、スクリーンと音声はほぼ完璧でした</li>
+<li><a href="http://twitter.com/knwang">@knwang</a> のスキルは高すぎ！！！</li>
+<li>そもそもの目的は、細かいソースの書き方ではなく、あるサービスを作ろうとする時、実際の考え方・実装の順番を示すことでした。実は、BDD の実践でした。要するに、テーブル構造とか、モデル関連とか、コントローラがいくつ必要だとか、全部じっくり考えてから実装するのではなく、<code>ユーザストリー -&gt; ビュー -&gt; コントローラ -&gt; モデル</code> という流れです。</li>
+<li>2時間の制限があるため、実際はUIとテストをやってなかったんですが、全体の流れは見えせてもらって、一層よく理解できたという感じで、すごく刺激でした</li>
 </ul>
 
 
-<p>成果物はこれ。</p>
+<h3>ちょっと残念なところ</h3>
 
-<p><img src="https://lh4.googleusercontent.com/-j_NuxfNsDZY/T2yML-Z4QAI/AAAAAAAAAgc/z5iYAqnAL90/s800/120323-0001.png" alt="image" /></p>
+<ul>
+<li>参加者は200人を超え、300近大勢いましたが、サービスの上限は250人で、40～50人しか利用した実績がなかった為、デモの品質を守りながら、順次に追記順番に従って参加者に案内する形でした。最後までも参加出来なかった方もいました</li>
+<li>参加者はほぼ全員は、<a href="http://join.me">join me</a> を使った事がなかった為、使い方が分からないせいで、声を聞こえなかった方はいました</li>
+<li>Webで参加すると声が聞こえないという事は、事前の案内メールでお知らせしてくれましたが、メール内容をよく読んでなかった方が何人がいて、声を聞こえなかった</li>
+</ul>
 
-<hr />
 
-<h3>追記</h3>
+<h2>後書き</h2>
 
-<p>Viを使ってるので、Unite.vimの設定をちょっと見なおした。正直に言うと、今までは、Uniteはあんまり使ってなかった、すみません。どんどん写経すると、やはりバッファだけではなく、カレントフォルダのファイル一覧も欲しくなるので、修正しました。</p>
+<ul>
+<li><a href="http://twitter.com/knwang">@knwang</a> の凄さをわかった為、すぐ <a href="http://www.railstutors.com/#.UHgQy4VsKo8.twitter">Rails Tutors, Ruby on Rails online Courses</a> のコースを参加しようと思ったら、メインはアメリカ向けなので、授業は英語になっています。英語は全くできないため、諦めました。</li>
+<li>ちょうどつい最近、<a href="http://www.amazon.co.jp/dp/4798121932/">The RSpec Book</a>を読んだばかりで、写経はまだやってないところで、実際に BDD をやって頂いて、すごく勉強になりました</li>
+</ul>
 
-<p><code>noremap &lt;C-P&gt; :Unite buffer file&lt;CR&gt;</code></p>
 </div>
 
 
@@ -141,12 +162,12 @@ to(new) &hellip;">
   
 
 
-<time datetime="2012-03-23T22:36:00+09:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2012</time>
+<time datetime="2012-10-12T21:24:00+09:00" pubdate data-updated="true">Oct 12<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+    <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
   
 </span>
 
@@ -155,7 +176,7 @@ to(new) &hellip;">
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blueplanet.github.com/blog/2012/03/23/rspec-rails/" data-via="blueplanet42" data-counturl="http://blueplanet.github.com/blog/2012/03/23/rspec-rails/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blueplanet.github.com/blog/2012/10/12/ruby-china-live-coding-by-knwang/" data-via="blueplanet42" data-counturl="http://blueplanet.github.com/blog/2012/10/12/ruby-china-live-coding-by-knwang/" >Tweet</a>
   
   
   
@@ -164,10 +185,8 @@ to(new) &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/03/21/rspec-rails/" title="Previous Post: RSpec on Rails (2)">&laquo; RSpec on Rails (2)</a>
+        <a class="basic-alignment left" href="/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/" title="Previous Post: OS 10.8 gem install json faild">&laquo; OS 10.8 gem install json faild</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/03/24/sakura-cloud/" title="Next Post: さくらクラウド">さくらクラウド &raquo;</a>
       
     </p>
   </footer>
@@ -279,8 +298,8 @@ to(new) &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blueplanet.github.com/blog/2012/03/23/rspec-rails/';
-        var disqus_url = 'http://blueplanet.github.com/blog/2012/03/23/rspec-rails/';
+        var disqus_identifier = 'http://blueplanet.github.com/blog/2012/10/12/ruby-china-live-coding-by-knwang/';
+        var disqus_url = 'http://blueplanet.github.com/blog/2012/10/12/ruby-china-live-coding-by-knwang/';
         var disqus_script = 'embed.js';
       
     (function () {

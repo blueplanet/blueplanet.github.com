@@ -9,11 +9,7 @@
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="　RSpec on Railsｎの写経です。 　lambdaとchangeマッチャは面白い、というか、まだよく理解出来てない 値の変化を評価する場合使う
-メソッドチェインなし：とにかく何かが変わった
-by(value)：１個増えた
-from(old).to(new)
-to(new) &hellip;">
+  <meta name="description" content="この間は、「さくらのクラウド」障害多発で無償化、課金できる品質に達していないためというニュースが出て、試してみたので、ハマったことなどをメモ 最初はサーバの作り方はよく分からなかった。理解の問題だった。実際は画面通り選択すればいけるのに、考えが間違って、ISOをいれてなく、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +64,70 @@ to(new) &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/24/sakura-cloud/">さくらクラウド</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-24T22:22:00+09:00" pubdate data-updated="true">Mar 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>この間は、<a href="http://gigazine.net/news/20120322-sakura-cloud/">「さくらのクラウド」障害多発で無償化、課金できる品質に達していないため</a>というニュースが出て、試してみたので、ハマったことなどをメモ</p>
+
+<ul>
+<li>最初はサーバの作り方はよく分からなかった。理解の問題だった。実際は画面通り選択すればいけるのに、考えが間違って、ISOをいれてなく、OSのインストールが出来なかった。</li>
+<li>OSインストールしてから使って始まったが、キーボードの設定うまく出来てない
+
+<ul>
+<li>ローカル：MacBookAir キーボードはUSレイアウト</li>
+<li>仮想サーバ：インストール時、USを設定したが、実際は変なレイアウトになってる</li>
+</ul>
+
+
+<p>  KEYTABLE=&#8221;US&#8221;
+  MODEL=&#8221;us&#8221;
+  KEYBOARDTYPE=&#8221;pc&#8221;</p></li>
+</ul>
+
+
+<p>現状：「= : @ &#8220;」の位置はばらばら、後日解決できたら、更新する</p>
+
+<hr />
+
+<p>また、利用者が殺到してきた為、こういうお知らせも出た</p>
+
+<ul>
+<li><a href="http://gigazine.net/news/20120323-cloud-sakura/">無償化を発表した「さくらのクラウド」、システム安定のために利用制限を開始</a></li>
+<li><a href="http://www.sakura.ad.jp/news/sakurainfo/newsentry.php?id=625">さくらのクラウドの新規申込受付の一時中止について</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -684,48 +744,6 @@ NIL
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/15/restart-blog/">ブログを再開します</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-15T23:12:00+09:00" pubdate data-updated="true">Mar 15<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.ashi-tano.jp/?p=2808">ブログを書く習慣は３つの点であなたの能力を開発する</a>
-記事を読んで、刺激を受けました。</p>
-
-<p>せっかく優れるサービスと製品があるのに、２ヶ月ぐらい放置したままで、すごく無駄でした。</p>
-
-<p>なので、今日からここのブログを積極的に書きましょう！
-まずは、今日から、１ヶ月間を目標にして、毎日記事を書くように！</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -743,6 +761,10 @@ NIL
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/12/ruby-china-live-coding-by-knwang/">Ruby-Chinaのオンラインライブコーディングイベントに参加した</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/">OS 10.8 gem install json faild</a>
       </li>
     
@@ -756,10 +778,6 @@ NIL
     
       <li class="post">
         <a href="/blog/2012/05/31/spork--guardtdd/">Spork + GuardによるTDD</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/27/dispatch/">派遣社員の悲しみ</a>
       </li>
     
   </ul>

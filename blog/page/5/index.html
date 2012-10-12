@@ -9,10 +9,13 @@
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="角谷さんのビデオを見て、すっごく刺激を受けたので、自分もRSpecのAutoTest環境を構築したくなりました 環境 Mac OS 10.7.3
-Ruby 1.9.2
-RSpec 2.9.0
-ZenTest 4.7.0 1.AutoTest基本環境 基本は公式のWikiを参考する mkdir &hellip;">
+  <meta name="description" content="昨日Lionで環境を構築したが、今回はWindows上の構築手順 環境 Windows XP
+RSpec 4.9.0
+ZenTest 4.7.0 基本環境手順 mkdir rspec
+cd rspec
+mkdir spec
+mkdir lib
+RSpecの設定ファイルを作っておく echo -- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +70,95 @@ ZenTest 4.7.0 1.AutoTest基本環境 基本は公式のWikiを参考する mkdir
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/12/rspec-autotest-on-windows/">RSpec AutoTest on Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-12T00:00:00+09:00" pubdate data-updated="true">Apr 12<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>昨日Lionで環境を構築したが、今回はWindows上の構築手順</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>Windows XP</li>
+<li>RSpec 4.9.0</li>
+<li>ZenTest 4.7.0</li>
+</ul>
+
+
+<h2>基本環境手順</h2>
+
+<ul>
+<li><code>mkdir rspec</code></li>
+<li><code>cd rspec</code></li>
+<li><code>mkdir spec</code></li>
+<li><code>mkdir lib</code></li>
+<li><p>RSpecの設定ファイルを作っておく</p>
+
+<ul>
+<li><code>echo --format nested &gt; .rspec</code></li>
+<li><code>echo --color &gt;&gt; .rspec</code></li>
+</ul>
+</li>
+<li><p>この時点で<code>autotest</code>を実行すれば、ファイルが保存される都度、テストが走るはず</p></li>
+</ul>
+
+
+<h2>Growに通知</h2>
+
+<ul>
+<li><code>gem install autotest-growl</code></li>
+<li><a href="http://www.growlforwindows.com">Growl for Window</a> をインストール</li>
+<li><code>echo require 'autotest/growl' &gt; .autotest</code></li>
+<li><code>autotest</code>再起動</li>
+</ul>
+
+
+<h2>WindowsのCMDでの色表示問題を解決</h2>
+
+<p><code>.rspec</code>ファイルに色表示オプションを追加している場合は、Windowsでは色コードがうまく認識できないので、表示がおかしくなる</p>
+
+<ul>
+<li>解決方法は、こちらを参考してできました<br/>
+<a href="http://lajvard.hatenablog.com/entry/2012/03/03/194359">Windows環境でRSpecなどの出力に色を付ける</a></li>
+</ul>
+
+
+<p>以上で構築完了</p>
+
+<hr />
+
+<p>ちなみに、Growl for Windowsは、デュアルディスプレイの場合は、ちゃんと認識してくれるので、表示設定はどのディスプレイのどの部分に表示するのを設定できる。素晴らしいですね。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -697,138 +789,6 @@ ZenTest 4.7.0 1.AutoTest基本環境 基本は公式のWikiを参考する mkdir
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/02/rails3-dot-2-on-heroku/">rails3.2 on Heroku</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-02T07:29:00+09:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Rails 3.2のアプリをHerokuにデプロイする場合、ハマったことをメモ</p>
-
-<h2>環境</h2>
-
-<ul>
-<li>Rails 3.2.2</li>
-<li>ローカルDBはsqlite</li>
-</ul>
-
-
-<h2>手順</h2>
-
-<ul>
-<li>Railsアプリを作成
-
-<ul>
-<li><code>rails new myblog</code></li>
-<li><code>cd myblog</code></li>
-<li><code>git init</code></li>
-<li><code>git add .</code></li>
-<li><code>git ci -m 'init'</code></li>
-</ul>
-</li>
-<li>Scaffold
-
-<ul>
-<li><code>rails g scaffold post title:string body:text</code></li>
-<li><code>rake db:migrate</code></li>
-<li><code>rm public/index.html</code></li>
-<li><code>vi config/route.rb</code>
-
-<ul>
-<li><code>root :to =&gt; "pots#index"</code>を追加</li>
-</ul>
-</li>
-<li><code>git rm public/index.html</code></li>
-<li><code>git add .</code></li>
-<li><code>git commit -m 'scaffold'</code></li>
-</ul>
-</li>
-<li>Heroku
-
-<ul>
-<li><code>vi Gemfile</code>heroku側は下記を追加</li>
-</ul>
-</li>
-</ul>
-
-
-<div class="highlight"><pre><code class="ruby"><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>  
-     <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>  
-<span class="k">end</span>
-</code></pre>
-</div>
-
-
-<ul>
-<li><code>rake assets:precompile RAILS_ENV=production</code></li>
-<li><code>git add .</code></li>
-<li><code>git commit -m 'heroku'</code></li>
-<li><code>heroku create</code></li>
-<li><code>git push heroku master</code></li>
-<li><code>heroku rake db:migrate</code></li>
-<li><code>heroku open</code>で確認できるはず</li>
-</ul>
-
-
-<h2>問題</h2>
-
-<ul>
-<li><code>heroku rake db:migrate</code>のエラー
-
-<ul>
-<li><code>(pg is not part of the bundle. Add it to Gemfile.)</code></li>
-<li>対策：Gemfileに下記を追加</li>
-</ul>
-</li>
-</ul>
-
-
-<div class="highlight"><pre><code class="ruby"><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>  
-  <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>  
-<span class="k">end</span>
-</code></pre>
-</div>
-
-
-<ul>
-<li><code>git push heroku master</code>後、画面で確認すると、エラー画面になってる
-
-<ul>
-<li><code>heroku logs</code>で確認すると<code>ActionView::Template::Error (application.css isn't precompiled)</code>エラー</li>
-<li>対策：<code>push</code>前に、<code>rake assets:precompile RAILS_ENV=production</code>を実施する</li>
-</ul>
-</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -846,6 +806,10 @@ ZenTest 4.7.0 1.AutoTest基本環境 基本は公式のWikiを参考する mkdir
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/12/ruby-china-live-coding-by-knwang/">Ruby-Chinaのオンラインライブコーディングイベントに参加した</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/">OS 10.8 gem install json faild</a>
       </li>
     
@@ -859,10 +823,6 @@ ZenTest 4.7.0 1.AutoTest基本環境 基本は公式のWikiを参考する mkdir
     
       <li class="post">
         <a href="/blog/2012/05/31/spork--guardtdd/">Spork + GuardによるTDD</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/27/dispatch/">派遣社員の悲しみ</a>
       </li>
     
   </ul>

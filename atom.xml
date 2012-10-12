@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-10-04T06:41:00+09:00</updated>
+  <updated>2012-10-12T22:52:16+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby-Chinaのオンラインライブコーディングイベントに参加した]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/10/12/ruby-china-live-coding-by-knwang/"/>
+    <updated>2012-10-12T21:24:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/10/12/ruby-china-live-coding-by-knwang</id>
+    <content type="html"><![CDATA[<h2>きっかけ</h2>
+
+<p><a href="http://ruby-china.org/">Ruby-China</a> は Ruby / Rails を勉強している中で、最近よくアクセスしているサイトの１つ。</p>
+
+<p> 5日前に、 @knwang さんが、</p>
+
+<blockquote><p><a href="http://ruby-china.org/">Ruby-China</a> に参加してから2ヶ月間経ちましたが、
+やはり コミュニティにはどこから入門出来るかも分からない Rails の初心者が多いことに気付いました。
+なので、10/11(木) 21:00 ~ 23:00 (北京時間)2時間で、オンラインのライブコーディングで
+ゼロから簡単なアプリを作成するデモをやります。参加したい方はメアドを追記してください。</p></blockquote>
+
+<p>という内容で投稿しました。</p>
+
+<h2><a href="http://twitter.com/knwang">@knwang</a> さんは？</h2>
+
+<p><a href="http://ruby-china.org/">Ruby-China</a> でたまたま目に見え、Rails のオンラインコース <a href="http://www.railstutors.com/#.UHgQy4VsKo8.twitter">Rails Tutors, Ruby on Rails online Courses</a> で起業しているようです。</p>
+
+<h2>ライブコーディング</h2>
+
+<h3>総評</h3>
+
+<p>すごく良かった！！！参加の全員も、「今後もっとやりましょう！！」と盛り上がった</p>
+
+<h3>良かったところ</h3>
+
+<ul>
+<li><a href="http://join.me/">join me</a> を利用して、スクリーンと音声を共有する形でした。このサービスはすごく良くて、100人以上の人を参加しているにもかかわらず、スクリーンと音声はほぼ完璧でした</li>
+<li><a href="http://twitter.com/knwang">@knwang</a> のスキルは高すぎ！！！</li>
+<li>そもそもの目的は、細かいソースの書き方ではなく、あるサービスを作ろうとする時、実際の考え方・実装の順番を示すことでした。実は、BDD の実践でした。要するに、テーブル構造とか、モデル関連とか、コントローラがいくつ必要だとか、全部じっくり考えてから実装するのではなく、<code>ユーザストリー -&gt; ビュー -&gt; コントローラ -&gt; モデル</code> という流れです。</li>
+<li>2時間の制限があるため、実際はUIとテストをやってなかったんですが、全体の流れは見えせてもらって、一層よく理解できたという感じで、すごく刺激でした</li>
+</ul>
+
+
+<h3>ちょっと残念なところ</h3>
+
+<ul>
+<li>参加者は200人を超え、300近大勢いましたが、サービスの上限は250人で、40～50人しか利用した実績がなかった為、デモの品質を守りながら、順次に追記順番に従って参加者に案内する形でした。最後までも参加出来なかった方もいました</li>
+<li>参加者はほぼ全員は、<a href="http://join.me">join me</a> を使った事がなかった為、使い方が分からないせいで、声を聞こえなかった方はいました</li>
+<li>Webで参加すると声が聞こえないという事は、事前の案内メールでお知らせしてくれましたが、メール内容をよく読んでなかった方が何人がいて、声を聞こえなかった</li>
+</ul>
+
+
+<h2>後書き</h2>
+
+<ul>
+<li><a href="http://twitter.com/knwang">@knwang</a> の凄さをわかった為、すぐ <a href="http://www.railstutors.com/#.UHgQy4VsKo8.twitter">Rails Tutors, Ruby on Rails online Courses</a> のコースを参加しようと思ったら、メインはアメリカ向けなので、授業は英語になっています。英語は全くできないため、諦めました。</li>
+<li>ちょうどつい最近、<a href="http://www.amazon.co.jp/dp/4798121932/">The RSpec Book</a>を読んだばかりで、写経はまだやってないところで、実際に BDD をやって頂いて、すごく勉強になりました</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OS 10.8 gem install json faild]]></title>
@@ -1092,69 +1149,6 @@ dont forget to install dependencies:
 <p>下記の記事を参照して、それを禁止すると、６０Gの空き容量が出来た。</p>
 
 <p><a href="http://builder.japan.zdnet.com/os-admin/os-x-lion11/35010387/">「Time Machine」で急減するLionのHDD&#8211;その理由と解決策</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Emacs Rinariを導入して見る]]></title>
-    <link href="http://blueplanet.github.com/blog/2012/05/01/emacs-rinari/"/>
-    <updated>2012-05-01T00:00:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2012/05/01/emacs-rinari</id>
-    <content type="html"><![CDATA[<p>Railsを勉強中。やはりEmcsで編集したいので、<code>Rinari</code>を導入してみる</p>
-
-<h2>ELPAの試しと失敗</h2>
-
-<ul>
-<li>ELPAからのインストールがおすすめらいいので、まずはELPAを導入</li>
-<li><code>auto-install</code>を使って<code>ELPA</code>をインストール(ややこしいな)</li>
-<li>今までは、起動が遅くなる為、<code>auto-install-update-emacswiki-package-name</code>をコメントアウトしてるので、まずは復活する</li>
-<li><code>auto-install-update-emacswiki-package-name</code>を実行</li>
-<li><code>M-x install-elisep</code>でインストールを起動</li>
-<li>URLが聞かれるが、なんか<code>[http://bit.ly/pkg-el23](http://bit.ly/pkg-el23)</code>は<code>reject</code>されるので、直接に展開後の長いURLを入力して実行した</li>
-<li><p><code>init.el</code>に必要な設定を追加</p>
-
-<p>  ;; package.el
-  (when (require &#8216;package nil t)</p>
-
-<pre><code>(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
-(package-initialize))
-</code></pre></li>
-</ul>
-
-
-<h3>Rinariをインストール</h3>
-
-<ul>
-<li>ELPAは初回実行なので、<code>list-package</code>を実行する</li>
-<li><code>Cannot open load file: ruby-compilatio</code>エラーで落ちた</li>
-<li>原因はよく分からないので、とりあえずはやめた</li>
-</ul>
-
-
-<h2>直接インストール</h2>
-
-<ul>
-<li>基本は、<a href="http://rinari.rubyforge.org/Basic-Setup.html#Basic-Setup">Basic-Setup</a>を参照する</li>
-<li><code>submodule</code>を利用するので、
-
-<ul>
-<li><code>git submodule add git://github.com/eschulte/rinari.git .emacs.d/elisp/rinari</code>を実行</li>
-</ul>
-</li>
-<li><code>rhtml-mode</code>は<code>rinari</code>のものを使う
-
-<ul>
-<li><code>git submodule add https://github.com/eschulte/rhtml.git .emacs.d/elisp/rhtml</code></li>
-</ul>
-</li>
-</ul>
-
-
-<hr />
-
-<p>これで、ビューファイルを開くと、<code>rhtml-mode</code>になって、<code>rinari</code>も有効になるはず</p>
 ]]></content>
   </entry>
   

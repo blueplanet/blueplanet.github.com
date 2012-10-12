@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Welcome to my Blog]]></title>
   <link href="http://blueplanet.github.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-10-04T06:41:00+09:00</updated>
+  <updated>2012-10-12T22:52:16+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby-Chinaのオンラインライブコーディングイベントに参加した]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/10/12/ruby-china-live-coding-by-knwang/"/>
+    <updated>2012-10-12T21:24:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/10/12/ruby-china-live-coding-by-knwang</id>
+    <content type="html"><![CDATA[<h2>きっかけ</h2>
+
+<p><a href="http://ruby-china.org/">Ruby-China</a> は Ruby / Rails を勉強している中で、最近よくアクセスしているサイトの１つ。</p>
+
+<p> 5日前に、 @knwang さんが、</p>
+
+<blockquote><p><a href="http://ruby-china.org/">Ruby-China</a> に参加してから2ヶ月間経ちましたが、
+やはり コミュニティにはどこから入門出来るかも分からない Rails の初心者が多いことに気付いました。
+なので、10/11(木) 21:00 ~ 23:00 (北京時間)2時間で、オンラインのライブコーディングで
+ゼロから簡単なアプリを作成するデモをやります。参加したい方はメアドを追記してください。</p></blockquote>
+
+<p>という内容で投稿しました。</p>
+
+<h2><a href="http://twitter.com/knwang">@knwang</a> さんは？</h2>
+
+<p><a href="http://ruby-china.org/">Ruby-China</a> でたまたま目に見え、Rails のオンラインコース <a href="http://www.railstutors.com/#.UHgQy4VsKo8.twitter">Rails Tutors, Ruby on Rails online Courses</a> で起業しているようです。</p>
+
+<h2>ライブコーディング</h2>
+
+<h3>総評</h3>
+
+<p>すごく良かった！！！参加の全員も、「今後もっとやりましょう！！」と盛り上がった</p>
+
+<h3>良かったところ</h3>
+
+<ul>
+<li><a href="http://join.me/">join me</a> を利用して、スクリーンと音声を共有する形でした。このサービスはすごく良くて、100人以上の人を参加しているにもかかわらず、スクリーンと音声はほぼ完璧でした</li>
+<li><a href="http://twitter.com/knwang">@knwang</a> のスキルは高すぎ！！！</li>
+<li>そもそもの目的は、細かいソースの書き方ではなく、あるサービスを作ろうとする時、実際の考え方・実装の順番を示すことでした。実は、BDD の実践でした。要するに、テーブル構造とか、モデル関連とか、コントローラがいくつ必要だとか、全部じっくり考えてから実装するのではなく、<code>ユーザストリー -&gt; ビュー -&gt; コントローラ -&gt; モデル</code> という流れです。</li>
+<li>2時間の制限があるため、実際はUIとテストをやってなかったんですが、全体の流れは見えせてもらって、一層よく理解できたという感じで、すごく刺激でした</li>
+</ul>
+
+
+<h3>ちょっと残念なところ</h3>
+
+<ul>
+<li>参加者は200人を超え、300近大勢いましたが、サービスの上限は250人で、40～50人しか利用した実績がなかった為、デモの品質を守りながら、順次に追記順番に従って参加者に案内する形でした。最後までも参加出来なかった方もいました</li>
+<li>参加者はほぼ全員は、<a href="http://join.me">join me</a> を使った事がなかった為、使い方が分からないせいで、声を聞こえなかった方はいました</li>
+<li>Webで参加すると声が聞こえないという事は、事前の案内メールでお知らせしてくれましたが、メール内容をよく読んでなかった方が何人がいて、声を聞こえなかった</li>
+</ul>
+
+
+<h2>後書き</h2>
+
+<ul>
+<li><a href="http://twitter.com/knwang">@knwang</a> の凄さをわかった為、すぐ <a href="http://www.railstutors.com/#.UHgQy4VsKo8.twitter">Rails Tutors, Ruby on Rails online Courses</a> のコースを参加しようと思ったら、メインはアメリカ向けなので、授業は英語になっています。英語は全くできないため、諦めました。</li>
+<li>ちょうどつい最近、<a href="http://www.amazon.co.jp/dp/4798121932/">The RSpec Book</a>を読んだばかりで、写経はまだやってないところで、実際に BDD をやって頂いて、すごく勉強になりました</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rspec 2.9.0 on Rails 3.2.2 + sporkで試す]]></title>
@@ -146,77 +203,6 @@ userとsystemはどっちがどっちかはよく分からない。要するに�
 <p>Viを使ってるので、Unite.vimの設定をちょっと見なおした。正直に言うと、今までは、Uniteはあんまり使ってなかった、すみません。どんどん写経すると、やはりバッファだけではなく、カレントフォルダのファイル一覧も欲しくなるので、修正しました。</p>
 
 <p><code>noremap &lt;C-P&gt; :Unite buffer file&lt;CR&gt;</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RSpec on Rails (2)]]></title>
-    <link href="http://blueplanet.github.com/blog/2012/03/21/rspec-rails/"/>
-    <updated>2012-03-21T06:31:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2012/03/21/rspec-rails</id>
-    <content type="html"><![CDATA[<p>　引き続き</p>
-
-<ul>
-<li><p>before /after</p>
-
-<ul>
-<li>setup / teardown に相当</li>
-<li>一度だけ実行したい場合、<code>:all</code>を指定する</li>
-<li>各example毎実行したい場合、<code>:each</code>を指定する <strong>デフォルト</strong></li>
-<li>複数指定もできる。実行順番は
-
-<ul>
-<li>before系は定義順</li>
-<li>after系は定義順の逆順</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>should / should_notはRSpecによるObjectに対する拡張するメソッド</p></li>
-<li>マッチャ
-
-<ul>
-<li>演算子マッチャ<code>&lt; &lt;= == === =~ &gt; &gt;=</code> <strong>否定のものはサポートされない、should_notを使うべき</strong></li>
-<li><code>be_close change eql equal have(n).items have_at_least(n).items have_at_most(n).items have_exactly include match raise_error respond_to satisfy throw_symbol</code></li>
-<li><code>be_XXX</code>　→　<code>XXX?</code></li>
-<li><code>be_true / be_false</code>は<code>true? / false?</code>というメソッドがなくても使える</li>
-<li><code>have_XXX</code> →　<code>has_XXX?</code></li>
-<li>カスタムマッチャ定義できる</li>
-</ul>
-</li>
-<li><code>violated</code>は実行を失敗させる</li>
-<li>保留：テストまだ書いてない
-
-<ul>
-<li><code>it</code>にブロックを渡せない</li>
-<li>pendingメソッドを使う</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>ようやく <code>RSpec on Rails</code></h3>
-
-<ul>
-<li>今更気づいたのですが、記事のバージョンは結構古い。よって、コマンドとかいろいろ変わっている
-
-<ul>
-<li>インストール：Gemfileに<code>gem 'rspec'``gem 'rspec-rails'</code>追記してから、<code>bundle install</code>実行すればOK</li>
-<li>初期化は<code>rails g rspec:install</code></li>
-<li><code>rake spec</code>の補完一覧
-<img src="https://lh6.googleusercontent.com/-gpjoO4UhGbE/T2s9WOraeTI/AAAAAAAAAgI/FO8ATshJGwU/s800/120322-0004.png" alt="image" /></li>
-<li><code>TODO:</code>モックとスタブの区別はわからない</li>
-<li>フォルダ構造もシンプルになっているよう。少なくともデフォルトは作ってない</li>
-<li><code>script/generate rspec_model</code>を実行する必要がなくなり、上記の<code>rails g rspec:install</code>を実行しておけば、普通に <code>rails g …</code>を実行する時、<code>test</code>系ではなく、<code>rspec</code>系のテストクラスを作ってくれる</li>
-<li>ruby 1.9以降を使う+日本語がある場合、例の<code>encoding=utf-8</code>追記する必要</li>
-</ul>
-</li>
-</ul>
-
-
-<hr />
-
-<p>複数記事に分けるので、とりあえずここまで</p>
 ]]></content>
   </entry>
   
