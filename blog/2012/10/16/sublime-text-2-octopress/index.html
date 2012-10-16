@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Jekyll Markdownでのコードブロック - Welcome to the blog of blueplanet</title>
+  <title>sublime text 2 の octopress プラグインを作ってみました - Welcome to the blog of blueplanet</title>
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="">
+  <meta name="description" content="きっかけ Sublime Text 2 購入してから1ヶ月ぐらいですが、ちょうど Octopress も使っているので、探してみたら、まだ専用のプラグインがないため、作ってみました。 実装周り 言語は好きなrubyではなくpythonなんですが、これも勉強したい言語ではなるため、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blueplanet.github.com/blog/2012/05/13/jekyll-markdown/">
+  <link rel="canonical" href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,7 +67,7 @@
   
   <header>
     
-      <h1 class="entry-title">Jekyll Markdownでのコードブロック</h1>
+      <h1 class="entry-title">Sublime Text 2 の Octopress プラグインを作ってみました</h1>
     
     
       <p class="meta">
@@ -83,34 +83,59 @@
   
 
 
-<time datetime="2012-05-13T00:00:00+09:00" pubdate data-updated="true">May 13<span>th</span>, 2012</time>
+<time datetime="2012-10-16T21:36:00+09:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Jekyllでのソースの書き方の問題はずっと解決出来てない状態。</p>
+<div class="entry-content"><h2>きっかけ</h2>
 
-<p>今日わかったのは、４つのスペースでインデントを付けると、色はないけど、ちゃんとそのまま表現される</p>
+<p><a href="http://www.sublimetext.com/">Sublime Text 2</a> 購入してから1ヶ月ぐらいですが、ちょうど <a href="http://octopress.org/">Octopress</a> も使っているので、探してみたら、まだ専用のプラグインがないため、作ってみました。</p>
 
-<div class="highlight"><pre><code class="python"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">test</span>
-<span class="lineno">2</span>   <span class="n">aaa</span> <span class="o">=</span> <span class="s">&quot;aaa&quot;</span>
-<span class="lineno">3</span> <span class="n">end</span>
-</code></pre>
-</div>
+<!-- more -->
 
 
-<p>これは、Markdownで前後とも一行の空白行があるわけ。ないとこの３行が１行になってしまう。前の行末に２つのスペースを入れると、改行はされますが、やはり１行になってしまう。</p>
+<h2>実装周り</h2>
 
-<pre><code>def test
-  aaa = "aaa"
-end
-</code></pre>
+<ul>
+<li>言語は好きな<code>ruby</code>ではなく<code>python</code>なんですが、これも勉強したい言語ではなるため、特に抵抗感がありません</li>
+<li><a href="http://www.sublimetext.com/">Sublime Text 2</a> のプラグインに関するAPIのドキュメントは <a href="http://www.sublimetext.com/docs/2/api_reference.html">公式サイト</a> 以外はほとんどなくて、あっちこっち探して、苦労していました</li>
+<li>逆にデフォルトで入っている機能は、いろいろプラグインとして実装されるものが多い為、結構参考になりました。有難うございます！</li>
+<li>ハマったところ
 
-<p>とりあえずは、これで行きます。</p>
+<ul>
+<li>作ったものは、<a href="http://www.sublimetext.com/">Sublime Text 2</a>で直接に<a href="http://octopress.org/">Octopress</a>のコマンドを実行するので、<a href="http://www.sublimetext.com/">Sublime Text 2</a> 自体の制限により、<a href="http://www.sublimetext.com/">Sublime Text 2</a> をコマンドラインから起動しないと、環境変数はうまく引き継げないようです。これは結構ハマってました</li>
+<li>同期・非同期はいろいろ悩んだりしていました。最初は実行出来ればよくて、同期でいやと思ったが、結局、<code>rake generate</code>を実行すると、2,3秒程度ではない為、カーソルが回ってしまいます。気持ち悪いため、非同期にしました</li>
+</ul>
+</li>
+</ul>
 
-<p>TODO : Markdownのソースブロックの色</p>
+
+<h2>イメージ</h2>
+
+<p><img src="https://lh3.googleusercontent.com/-yFnkYy_h9bo/UHlZwhPHNKI/AAAAAAAACCE/njGTdOMnoD8/s800/Screen%2520Shot%25202012-10-13%2520at%252020.33.03.png" alt="image" /></p>
+
+<h2>サポートコマンド</h2>
+
+<ul>
+<li><code>new_post</code></li>
+<li><code>new_page</code></li>
+<li><code>generate</code></li>
+<li><code>deploy</code></li>
+<li><code>gen_deploy</code></li>
+</ul>
+
+
+<h2>TODO</h2>
+
+<ul>
+<li><code>new_post</code>または<code>new_page</code>を実行した後は、自動でカーソルをタイトルのところを選択した状態にしたい</li>
+<li>カテゴリは全部手入力だと間違いやすいので、リストで選択できたらいいなと思う</li>
+<li><code>preview</code>もしたいが、どこまでするかはまだ悩んでる</li>
+</ul>
+
 </div>
 
 
@@ -133,12 +158,12 @@ end
   
 
 
-<time datetime="2012-05-13T00:00:00+09:00" pubdate data-updated="true">May 13<span>th</span>, 2012</time>
+<time datetime="2012-10-16T21:36:00+09:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/blog/'>Blog</a>
+    <a class='category' href='/blog/categories/octopress/'>Octopress</a>, <a class='category' href='/blog/categories/sublimetext2/'>SublimeText2</a>
   
 </span>
 
@@ -147,7 +172,7 @@ end
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blueplanet.github.com/blog/2012/05/13/jekyll-markdown/" data-via="blueplanet42" data-counturl="http://blueplanet.github.com/blog/2012/05/13/jekyll-markdown/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/" data-via="blueplanet42" data-counturl="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/" >Tweet</a>
   
   
   
@@ -156,14 +181,18 @@ end
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/05/12/rubytwitter/" title="Previous Post: RubyでTwitter APIを使う">&laquo; RubyでTwitter APIを使う</a>
+        <a class="basic-alignment left" href="/blog/2012/10/12/ruby-china-live-coding-by-knwang/" title="Previous Post: Ruby-Chinaのオンラインライブコーディングイベントに参加した">&laquo; Ruby-Chinaのオンラインライブコーディングイベントに参加した</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/05/14/heroku-cron/" title="Next Post: HerokuでのCronについて調べてみた">HerokuでのCronについて調べてみた &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -264,7 +293,10 @@ end
       var disqus_shortname = 'bpgh';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/';
+        var disqus_url = 'http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

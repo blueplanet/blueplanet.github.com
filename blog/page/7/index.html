@@ -9,7 +9,9 @@
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="この間は、「さくらのクラウド」障害多発で無償化、課金できる品質に達していないためというニュースが出て、試してみたので、ハマったことなどをメモ 最初はサーバの作り方はよく分からなかった。理解の問題だった。実際は画面通り選択すればいけるのに、考えが間違って、ISOをいれてなく、 &hellip;">
+  <meta name="description" content="　写経の記録 before_saveメソッドを定義しても、呼び出されてないらしい。下記を参考して修正
+RSpec2.4.0をRails3.0.3で学ぶ(その1)
+疑問：テスト実行はちょっと遅い気がする。試しにTimeでトータル時間を測定してみたらこんな感じ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +66,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/25/rspec-rails/">RSpec on Rails (4)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-25T09:08:00+09:00" pubdate data-updated="true">Mar 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>　写経の記録</p>
+
+<ul>
+<li><p><code>before_save</code>メソッドを定義しても、呼び出されてないらしい。下記を参考して修正<br/>
+<a href="http://d.hatena.ne.jp/NowTom/20110129/1296271461">RSpec2.4.0をRails3.0.3で学ぶ(その1)</a></p></li>
+<li><p>疑問：テスト実行はちょっと遅い気がする。試しにTimeでトータル時間を測定してみたらこんな感じ
+<img src="https://lh5.googleusercontent.com/-KSxPT5UHQCY/T25luPLyRYI/AAAAAAAAAg0/ZJtVEwaUEvw/s800/120325-0001.png" alt="image" />
+userとsystemはどっちがどっちかはよく分からない。要するに、テストロジック自体は0.219かかったが、テストコマンドの全体は3.96かかったとは、間違いないと思いう。もちろん、Rails環境のロードも時間がかかるのはわかってるけど。</p></li>
+</ul>
+
+
+<p>　Rails環境を事前にロードしておく方法があるようなので、後で調べます</p>
+
+<h2>　</h2>
+
+<p>ブログの画像をPicasawebを使ってますが、毎回Safariでアップロードし、URLを取得して文書に貼り付けとの流れだけど、面倒なので、よりいい方法があるかを調べる</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -685,65 +738,6 @@ NIL
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/16/wp7hackthon/">「Windows Phone 全国ハッカソン祭り～東京～春」に参加しました</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-16T22:03:00+09:00" pubdate data-updated="true">Mar 16<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>今日ははじめて「ハッカソン」の参加ですが、面白かったです。</h2>
-
-<ul>
-<li>形式は、もろもろ開発をやって、最後に公表する方が自分のアプリを２分間で説明してから、参加者全員で自分の好きなアプリを投票する。得点が一番多い方はプレントもらえます</li>
-<li>PomoTaskアプリを作って、チャレンジしました。チャレンジする方は８人で、得票は１票だけだった（本当に僕ではなかったけど）</li>
-<li>自分のアプリを紹介する時、すっごく緊張しちゃいました。人数はそんなにいなかったのに。。。。やっぱり経験が少ないね。このへんも頑張らないと！</li>
-</ul>
-
-
-<h2>最近はWindowsPhone7ブームです。</h2>
-
-<ul>
-<li><p>去年８月AppHubに登録してから、勉強ばっかりで、アプリを１つも出せなかった。今年になっても、あんまり変わってないところ、いきなりGithubのWindowsPhone クライアントを作りたいと思い始まった。</p></li>
-<li><p>MVVMやRxやgithub APIをいじりながら作ってみました。ちょうど２月中旬頃申請を出したところ、<a href="http://blogs.msdn.com/b/shintak/archive/2012/02/22/10270942.aspx">Windows Phone : 個人開発者向け 評価用デバイス配布プログラム</a>が出て、チャレンジしてみました。</p></li>
-</ul>
-
-
-<h2>別件ですが、下記のプログラムの申請も承認されました</h2>
-
-<ul>
-<li><a href="http://www.grapecity.com/tools/info/componentonewp2012/provided_free.htm">ComponentOne Studio for Windows Phone 2012無償利用プログラム</a></li>
-<li>水曜日申請メールを出して、今日承認のメールが来ました。有難うございます！</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -761,6 +755,10 @@ NIL
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/12/ruby-china-live-coding-by-knwang/">Ruby-Chinaのオンラインライブコーディングイベントに参加した</a>
       </li>
     
@@ -774,10 +772,6 @@ NIL
     
       <li class="post">
         <a href="/blog/2012/06/04/cucumber/">はじめる！Cucumber写経　環境構築</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/31/spork--guardtdd/">Spork + GuardによるTDD</a>
       </li>
     
   </ul>

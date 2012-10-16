@@ -9,9 +9,8 @@
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="Jekyllでのソースの書き方の問題はずっと解決出来てない状態。 今日わかったのは、４つのスペースでインデントを付けると、色はないけど、ちゃんとそのまま表現される 1 def test
-2 aaa = &quot;aaa&quot;
-3 end これは、 &hellip;">
+  <meta name="description" content="Herokuの場合は、無料のCronは１日１回しか使えないイメージがある。現状はどうなっているかを調べてみた 現状 Cronは既に古い
+Heroku SchedulerはCronの代替案としてのものらしく、時間毎・１０分間隔でタスクを実行できる。 http://blogjp.sforce.com/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +65,100 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/14/heroku-cron/">HerokuでのCronについて調べてみた</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-14T00:00:00+09:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Herokuの場合は、無料のCronは１日１回しか使えないイメージがある。現状はどうなっているかを調べてみた</p>
+
+<h2>現状</h2>
+
+<ul>
+<li>Cronは既に古い</li>
+<li><p>Heroku SchedulerはCronの代替案としてのものらしく、時間毎・１０分間隔でタスクを実行できる。</p>
+
+<ul>
+<li><a href="">http://blogjp.sforce.com/2011/11/heroku-schedule-dc69.html</a></li>
+</ul>
+</li>
+<li><p>clockworkは秒単位まで指定できる</p>
+
+<ul>
+<li><a href="">http://d.hatena.ne.jp/marutanm/20110719/p1</a></li>
+</ul>
+</li>
+</ul>
+
+
+<h2>料金</h2>
+
+<ul>
+<li>Heroku Schedulerは、プロセスが起動され、実行中はDynoの時間が計上される。例え、10:00起動され、10:06まで実行完了の場合は、Dynoの時間は0.1となるイメージ。
+
+<ul>
+<li>最初は料金の計上を理解出来てなくて、<code>one-off admin process</code>で調べてみたら、下記の記事のお陰で、理解出来ました
+
+<ul>
+<li><a href="">http://d.hatena.ne.jp/koshigoeb/20111112/1321070001</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>clockworkは、裏側でプロセスが動いているので、ずっとDynoの時間が計上される</li>
+</ul>
+
+
+<h2>使い分け</h2>
+
+<ul>
+<li><p><a href="">http://d.hatena.ne.jp/ToMmY/20111121/1321802014</a> を参考に</p>
+
+<ul>
+<li>他のアプリケーションの補佐として、軽い処理の場合は、Scheduler</li>
+<li>頻繁の処理（１０分以下）、または、ガッツリしたい処理は、clockwork</li>
+<li>Schedulerは毎回プロセスが再起動される為、オーバーヘッドが大きい</li>
+</ul>
+</li>
+<li><p>自分なりの予想</p>
+
+<ol>
+<li>１つサービスでRailsアプリを運用し、DBは別にする</li>
+<li>もう１つサービスでclockworkを運用し、１のDBにアクセスする</li>
+</ol>
+</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -725,66 +818,6 @@ dont forget to install dependencies:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/02/mba/">MBAダイエット</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-02T00:00:00+09:00" pubdate data-updated="true">May 2<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>MBAちゃんの容量は残り４０Gしかないので、何とかしないとやばい気がする</p>
-
-<p>この記事を参照してやってみる</p>
-
-<p><a href="http://harutomo-ryu.com/archives/2011-08-12/065224.html">MacBookAirをダイエット！SSD使用量を30G減らすために行った7つのこと</a></p>
-
-<h2>iPhotoライブラリを外付けハードディスクに移す</h2>
-
-<p>25Gぐらいなので、NASにコピーする時間は、3dayと表示されている。。。</p>
-
-<h2>iPhoneとiPadのバックアップファイルも外付けHDDへ移動</h2>
-
-<p>これは40G超なので、一回全削除しちゃってから、シンボルリンクを作成した</p>
-
-<p>とりあえずはコピー作業の待ちです。</p>
-
-<hr />
-
-<p>システム情報で確認したところ、「ストレージ」タブの表示は、どう削除しても、空き容量も全く変わってない。細かく確認すると、何かを削除すると、「Backups」のサイズはその分増やして、全体的な空き容量は変わってない。</p>
-
-<p>調べてみたら、Time Machineのローカルキャッシュ見たい。</p>
-
-<p>下記の記事を参照して、それを禁止すると、６０Gの空き容量が出来た。</p>
-
-<p><a href="http://builder.japan.zdnet.com/os-admin/os-x-lion11/35010387/">「Time Machine」で急減するLionのHDD&#8211;その理由と解決策</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -802,6 +835,10 @@ dont forget to install dependencies:
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/12/ruby-china-live-coding-by-knwang/">Ruby-Chinaのオンラインライブコーディングイベントに参加した</a>
       </li>
     
@@ -815,10 +852,6 @@ dont forget to install dependencies:
     
       <li class="post">
         <a href="/blog/2012/06/04/cucumber/">はじめる！Cucumber写経　環境構築</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/31/spork--guardtdd/">Spork + GuardによるTDD</a>
       </li>
     
   </ul>
