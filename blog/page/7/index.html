@@ -9,9 +9,8 @@
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="　写経の記録 before_saveメソッドを定義しても、呼び出されてないらしい。下記を参考して修正
-RSpec2.4.0をRails3.0.3で学ぶ(その1)
-疑問：テスト実行はちょっと遅い気がする。試しにTimeでトータル時間を測定してみたらこんな感じ &hellip;">
+  <meta name="description" content="　今日第２回 渋谷Edge Rails勉強会 @masuidrive氏によるRails3講義 × 株式会社ドリコム事例発表参加に行きました Rails周り @増井さん Rails 歴史 Ver 1の頃 CoCやDRYなどの特徴で注目される
+Ver 2 色々改善されるが、まだ課題が残ってる &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +65,228 @@ RSpec2.4.0をRails3.0.3で学ぶ(その1)
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/26/shibuyarails/">渋谷EdgeRails勉強会</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-26T19:19:00+09:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>　今日<a href="http://atnd.org/events/25274">第２回 渋谷Edge Rails勉強会 @masuidrive氏によるRails3講義 × 株式会社ドリコム事例発表</a>参加に行きました</p>
+
+<h2>Rails周り @増井さん</h2>
+
+<h3>Rails 歴史</h3>
+
+<ul>
+<li>Ver 1の頃 CoCやDRYなどの特徴で注目される</li>
+<li>Ver 2 色々改善されるが、まだ課題が残ってる
+
+<ul>
+<li>Merbはより設計が綺麗なので、合流してRails開発に注力</li>
+<li>Railsに関する周辺サービスが出てきた　Heroku / New relic / Engine yard
+
+<ul>
+<li>new relic：いわゆるサーバ監視サービスが、Railsのどのメソッド、レイアウトの描画か、サーバ通信か、どこが遅いのかを分析できるサービス</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Ver 3以降：モジュール化</li>
+<li>Rails：変化を進んで受け入れる
+
+<ul>
+<li>Merbの吸収も同じ考え</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Build for Rails</h3>
+
+<ul>
+<li>コード書く
+
+<ul>
+<li>Scaffoldは使わない</li>
+<li>プラグインを使うか・使わないか　はじめは使うか</li>
+</ul>
+</li>
+<li>テストを書く
+
+<ul>
+<li>最低でも Test/Codeは３ 実際の実装＋テストは２倍で見積るほうが</li>
+<li>UnitTest vs RSpec ModelはUnitTestで、以外は自作でHTTP経由のツールを使う</li>
+</ul>
+</li>
+<li>非同期処理</li>
+<li>パフォーマンス</li>
+<li>運用
+
+<ul>
+<li>Passenger / Unicorn
+
+<ul>
+<li>Passenger 数分間のシャットダウンの時間がある</li>
+<li>Unicorn Down時間ない</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>レベル別デプロイ
+  ＊ 開発者のみ　部内　社内　αユーザ　βユーザ　全体　というレベル付けて公開できるように</li>
+</ul>
+
+
+<h3>Rails 4.0</h3>
+
+<ul>
+<li>今年らしい</li>
+<li>Ruby 1.9以上</li>
+<li>RESTfulを更に強化</li>
+</ul>
+
+
+<h3>宣伝</h3>
+
+<ul>
+<li>Ruby公式資格教科書</li>
+<li>Taimnuim</li>
+</ul>
+
+
+<h2>Railsのはまりポイント</h2>
+
+<ul>
+<li>クラスのインスタンス変数
+
+<ul>
+<li>@foo ||= bar <strong>bar</strong>はDBから取得した値だったら、最新のデータに反映されない可能性が</li>
+</ul>
+</li>
+<li>JSONが壊れた
+
+<ul>
+<li>MySQLのTextは65536バイトまでなので</li>
+</ul>
+</li>
+<li>index名の長さ制限
+
+<ul>
+<li>MySQLの制限は64バイトまで</li>
+</ul>
+</li>
+<li>tinyintのカラムは、ActiveRecordでBoolとして使ってる、数値ではない</li>
+</ul>
+
+
+<p>ほかのネタもいろいろありましたが、全然分かっていません。。。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/25/travis-ci/">Travis CI試し</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-25T22:16:00+09:00" pubdate data-updated="true">Mar 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>　RSpecを勉強中で、ソースもGithubに保持しているので、TravisCIも試してみる</p>
+
+<ul>
+<li>手順は公式のドキュメントを参考すれば</li>
+<li>メインは<code>.travis.yml</code>の設定
+
+<ul>
+<li>言語</li>
+<li>テストしたいバージョン</li>
+<li>ブランチ関連の管理</li>
+</ul>
+</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="yaml"><span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ruby</span>
+<span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span> <span class="s">&quot;bundle</span><span class="nv"> </span><span class="s">exec</span><span class="nv"> </span><span class="s">rake</span><span class="nv"> </span><span class="s">db:drop</span><span class="nv"> </span><span class="s">db:create</span><span class="nv"> </span><span class="s">db:migrate</span><span class="nv"> </span><span class="s">spec&quot;</span>
+<span class="l-Scalar-Plain">rvm</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.2</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.3</span>
+<span class="l-Scalar-Plain">gemfile</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Gemfile</span>
+<span class="l-Scalar-Plain">branches</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">only</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">master</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">develop</span>
+</code></pre>
+</div>
+
+
+<ul>
+<li>感想
+
+<ul>
+<li>githubのリポジトリにPushすると、すぐ反映され、ビルドが走る</li>
+<li>ビルドステータスの画像を外部（ブログなど）に表示できる</li>
+<li>実行ログも見えるので、いろいろ確認できる</li>
+</ul>
+</li>
+</ul>
+
+
+<p><a href="http://travis-ci.org/blueplanet/StudyRSpec"><img src="https://secure.travis-ci.org/blueplanet/StudyRSpec.png?branch=master" alt="Build Status" /></a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -639,105 +860,6 @@ NIL
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/18/octopress-settings/">ブログ設定：DISQUSを使う</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-18T22:08:00+09:00" pubdate data-updated="true">Mar 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Octopressをインストールした時、すぐに、DISQUSが使えるのを気づいたが、設定がうまくできず、使ってなかった。今日改めてショット名称だけを設定してみたら、普通にできた！Orz…　</p>
-
-<p>それでは、DISQUSさん、これからは、宜しく〜〜</p>
-
-<hr />
-
-<p>実は、他もバラバラ試しました。</p>
-
-<ul>
-<li>日付表示を修正したかった：多言語対応に気付き、とりあえずはデフォルトで、後で</li>
-<li>カテゴリを表示した買った：意外に面倒なので、よく調べたら対応</li>
-<li>githubリポジトリを表示するプラグインがありますが、使い方はよく分かってないので、後で</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/17/c14wp7/">C1コンポーネントFor Windows Phone 7</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-17T23:24:00+09:00" pubdate data-updated="true">Mar 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>金曜日C1の承認メールが来たので、デモアプリを実機にインストールしてみた</p>
-
-<p>一番気になるのは、チャートとガジェットですね</p>
-
-<ul>
-<li><p>縦のチャート
-<img src="https://public.sn2.livefilestore.com/y1p71p_oyVdNcNhnpGOzvl0Hv4SJYFXDAUIP_3iGmPgdFZiCZ_ItwWFn67Jv9Iw68t24aN0Vd2yTmfS23AY66pMmw/CHART1.png?psid=1" alt="image" /></p></li>
-<li><p>横も対応
-<img src="https://public.sn2.livefilestore.com/y1p71p_oyVdNcNnygUPfV13De3p9iLoV2fPxmZndmk5MlpXXh2NLScNfV36vlyWMt7TNlXN5Pbp8NmLbvcAfWubFw/CHART2.png?psid=1" alt="image" /></p></li>
-<li><p>ガジェット１
-<img src="https://public.sn2.livefilestore.com/y1pfC21MLS-_ExsXt8KZWRyHnybuA4kWJq1SEw82bE59n-dy1VWX06AcGVcs_RS_Tau2Etg-BQt4O5llCD-oroqHg/G1.png?psid=1" alt="image" /></p></li>
-<li><p>ガチャっと２
-<img src="https://public.sn2.livefilestore.com/y1pIJM7zmbm9n2FBYgGreW-zbMxZTSDVNYdPY0RT5vx_yCF2xtv7n_zubGAT1yh9u_riiPBJ-AvzGTetIbXLL1qhQ/g2.png?psid=1" alt="image" /></p></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -755,6 +877,14 @@ NIL
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/11/11/sublime-text-study-zero/">sublime text study zero</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/21/guard-rb-fsevent/">guardでrb-fsevent利用する時の Listen warning</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました</a>
       </li>
     
@@ -764,14 +894,6 @@ NIL
     
       <li class="post">
         <a href="/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/">OS 10.8 gem install json faild</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/21/back-to-octopress/">back to octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/04/cucumber/">はじめる！Cucumber写経　環境構築</a>
       </li>
     
   </ul>

@@ -9,9 +9,9 @@
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="読書記録 大まかな感想 作者のほうは、会社でクラウドツールがいっさい使えない為、いろいろ手帳で頑張っていますね。(会社は厳しすぎますね)
-なので、作者のワークフローをマルごとにコピーするじゃなくて、自分の環境に合わせて、自分なりのワークフローを決めるほうが望ましい
-そして、手帳にも限らない。 &hellip;">
+  <meta name="description" content="現状 ポスト数は２０
+元のポストファイルをこっちにコピーしてきて、ファイル名をmarkdownからmdへ変更しても、サイトに表示されない(元の２０ポストだけ)
+rake post title=""で追加しても２０ポストのまま 調べたこと Jekyllのソースを軽く調べたけど、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +66,201 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/25/jekyll/">Jekyllの動きはおかしい</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-25T00:00:00+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>現状</h2>
+
+<ul>
+<li>ポスト数は２０</li>
+<li>元のポストファイルをこっちにコピーしてきて、ファイル名を<code>markdown</code>から<code>md</code>へ変更しても、サイトに表示されない(元の２０ポストだけ)</li>
+<li><code>rake post title=""</code>で追加しても２０ポストのまま</li>
+</ul>
+
+
+<h2>調べたこと</h2>
+
+<ul>
+<li>Jekyllのソースを軽く調べたけど、<code>read_posts</code>のところは、チェックが３つある
+
+<ul>
+<li>ファイル形式チェック <code>日付-○○</code>形式のものであればOKはず</li>
+<li><code>post</code>の<code>published</code>プロパティがTrue</li>
+<li><code>post.date</code>が当該時間より以前であればOK</li>
+</ul>
+</li>
+</ul>
+
+
+<p>このぐらいらしく、関係ないらしいですが</p>
+
+<ul>
+<li><code>jekyll</code>の<code>post</code>の<code>limit</code>が有るかどうかを調べたが、特に設定もしてないので、関係なさそう</li>
+<li>設定ファイルを何回確認したが、あんまり設定してないので、大丈夫らしい</li>
+<li><code>jekyll</code>コマンドのオプションを調べたが、有効なものを見つけてない</li>
+<li>移動してきたファイルのなかに、何かがおかしくて、全体に影響してしまうかを確認したところ、全部別所に移動すると、正常に動いた！
+　なるほど。やはり旧の記事のなかに何かがおかしい。１つずつ書くにしたら、<code>code block</code>の書き方が間違った！！！
+　全部直してみたら、OK</li>
+</ul>
+
+
+<p><code>Jekyll</code>さん、ごめんなさい。僕の悪いだ</p>
+
+<p>これで、とりあえずは、旧記事を移行しました。細かいところは、後で対応する</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/24/rspec-re-study/">「改めて学ぶRSpec by Rubyist Magazine 0037号」を読んだ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-24T00:00:00+09:00" pubdate data-updated="true">Apr 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>RSpecを勉強したいと思って、調べてみたら、素晴らしい記事を見つけた。</p>
+
+<p><a href="http://jp.rubyist.net/magazine/?0035-RSpecInPractice"> 改めて学ぶRSpec </a></p>
+
+<h3>xUnitっぽいRSpecコードの特徴</h3>
+
+<ul>
+<li>テストメソッドはすべてフラットで定義される</li>
+<li><code>it []</code>＝＝test○○メソッド</li>
+<li><code>before</code>==<code>setup</code></li>
+</ul>
+
+
+<h3>RSpecの流儀</h3>
+
+<ul>
+<li><code>describe</code>はネストできるので、テストコードに構造が生まれるぞ！</li>
+<li><code>context</code>は<code>describe</code>のエイリアスなんでが、<code>describe</code>==テスト対象、<code>context</code>＝＝テストする時の状況</li>
+<li>メリット：段階的に仕様をテストコードに落とし込む</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="ruby"><span class="n">describe</span> <span class="err">クラス</span> <span class="k">do</span>
+  <span class="n">describe</span> <span class="err">メソッド</span> <span class="k">do</span>
+    <span class="n">context</span> <span class="err">正常値</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="p">{}</span>
+    <span class="k">end</span>
+    
+    <span class="n">context</span> <span class="err">異常値</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="p">{}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+<p>的なイメージ</p>
+
+<ul>
+<li>subject
+
+<ul>
+<li>subjectを使うことで、<code>should</code>のレシーバを省略できる</li>
+<li>メリット：テスト対象が明確になる、ほぼ強制的に一つのテストケースに一つのアサーション歯科かけなくなる</li>
+<li><code>describe</code>のネストと被ってる場合は、新たに<code>describe</code>をネストさせてもう一度subjectを定義する</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>itに文字列を渡すかどうか</h3>
+
+<ul>
+<li><code>it</code>に文字列を渡すと、コメントとコードの両方があるのは<code>DRY</code>ではないので、渡さないほうがいい</li>
+<li>デメリット：<code>--fs</code>オプションで実行する時の出力は日本語にならなくので、読みづらくなる
+
+<ul>
+<li>解決：<code>context</code>にテスト内容を細かく書く</li>
+<li>まあ、テスト結果が一番重要なので、実際はそこまでもやってない</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>letでデータ以外のぶぶんだけを共通化</h3>
+
+<ul>
+<li>ブロックの評価値</li>
+<li>値をシンボルと同名の変数に格納する</li>
+<li>テストケース毎に結果がキャッシュされる</li>
+</ul>
+
+
+<p>これはまだ理解できてない気がする</p>
+
+<h3>shared_context</h3>
+
+<ul>
+<li>メソッドの間に共通的なcontextがある場合がある</li>
+<li><code>shared_context</code>と<code>include_context</code>で共通化できる</li>
+</ul>
+
+
+<hr />
+
+<p>まだまだRubyもRSpecも初心者なので、分からないところが多いところ</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -615,171 +810,6 @@ init
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/15/bowling-with-rspec/">スはスペックのスの写経</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-15T00:00:00+09:00" pubdate data-updated="true">Apr 15<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>４年前のビデオですが、すごく刺激を受けたので、いろいろ調べて、自分の環境でEmacsとRSpecの環境を揃えた。</p>
-
-<p>そろそろ実演をみながら、写経する</p>
-
-<ul>
-<li>目的・ゴールドを明確に限定する</li>
-<li>最初は、一番簡単に動くのを考えるので、全部ガターケースにする</li>
-<li>２番目はすべて1ピンのケースを追加
-
-<ul>
-<li>通った</li>
-</ul>
-</li>
-<li>３番目のケースはストライクのケースを追加したい
-
-<ul>
-<li>仕様が変わって、何かを追加したいが、設計がおかしいところを発見
-　とりあえず追加する仕様を置いておいて、先に設計を見直す</li>
-</ul>
-</li>
-</ul>
-
-
-<hr />
-
-<p>４０分ぐらいかかったのですが、ビデオを時間は１６：３０までです。</p>
-
-<p>角谷さんのお話しの言葉が分からない時も調べない行けないし、自分のコーディングスピードもそれほど速くないし、確かに時間がかかりますね。</p>
-
-<p>とりあえずは半分で、残りは明日(かな)</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/14/iosmacos-dev/">iOS/MacOS 開発勉強会</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-14T00:00:00+09:00" pubdate data-updated="true">Apr 14<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今日久しぶりにiPhone勉強会に参加しました。 → <a href="http://atnd.org/events/26946">iphone_dev_jp 東京iPhone/Mac勉強会</a></p>
-
-<p>振り替えてみると、昨年年末まではよく参加していた「南東京iPhone開発者勉強会」は、ニフティ様の引越しからは中止になってしまって、yidevも@takayamaさんのご都合によって、半中止になっている状態ですね。
-知っている限りでは、横浜・東京近くは、iOS勉強会も３ヶ月ぐらいの間は、どなたも行ってない状況なので、今回は参加の応募はすっごく大勢だった。</p>
-
-<p>発表のネタがない(まあ、正直に言うと、発表のスキルは持ってない)ので、聞くだけと思ったが、ATNDのイベントページを見ると、「会場でお手伝いしていただけるかた」のリストがありました。おお、これだったら私も何とか出来るじゃないかと、@k_katsumiに連絡しまして、リストに追加して頂きました。</p>
-
-<p>と言っても、実際は、１２時集合して、会場の椅子やテーブルを調整だけをやりましたけど。ごめんなさい。</p>
-
-<h2>@5mingame2さん Ｃ＋＋とOpenGL ES 1.1の話</h2>
-
-<p>マルチOSサポートのゲーム作り方。C++の初心者だよとずっと話してたが、凄そう。</p>
-
-<h2>@kamiyanさん   ibisPaint の OpenGL ES 2.0</h2>
-
-<p>ibisPaintアプリ開発者の発表。C++で低いレベルで実装すると、PFMがすごいぞっていう感じ</p>
-
-<h2>@cocoponさん   キーボードで完結！ハイスピードXcodeコーディング</h2>
-
-<p>私もキーボード好きなタイプなので、すっごく面白かった。Xcodeの自分も分からなかったショットカットキーがあります。勉強になりました。</p>
-
-<h2>@nakamura001さん   Unity恐くないよ!!</h2>
-
-<p>Unityの紹介。無料ライセンスでもいろいろできるよ、どんどん使ってくださいね。</p>
-
-<h2>@yopita_さん   Mac でかんたん Kinect</h2>
-
-<p>MacOSでKinectハックするぞ。知らなかった言語でして、よくわかりませんでしたが、デモが面白かった。触って見たくなりました。</p>
-
-<h2>@akisutesamaさんの</h2>
-
-<ul>
-<li>Core Animation</li>
-<li>Blocks</li>
-<li>NSURLConnection</li>
-</ul>
-
-
-<h2>@novi_さん CoreText のはなし</h2>
-
-<p>は、ほとんど理解出来ていませんでした、ごめなさい。</p>
-
-<h2>@sonson_twitさん   iCloud</h2>
-
-<p>ファイルのダウンロードAPIがおかしい、ファイルのバージョン管理が難しいよ　的なお話し。</p>
-
-<h2>Lightening Talks</h2>
-
-<h3>@monsukeさん  プロモコード配布サービス PromoBook について</h3>
-
-<p>確かに発想がいいですね。プロモコードの配布・追跡的なサービス</p>
-
-<h3>@umekun123さん    App Store内のSEO最適化について調べてみた</h3>
-
-<p>今になると、どんなアプリを作ろうかだけでなく、イイアプリを作ったとしても、SEOをよく考えないと、ユーザがそのアプリを見つけないので、SEOが重要だよ。</p>
-
-<hr />
-
-<p>iOSの開発者は、最初からだと、既に５年目なので、開発スキルがどんどん上がってきて、低いレベルから自分で実装しようという方は多くなってる気がします。全く進歩してない私は、恥ずかしくて恥ずかしくて。。。。穴があれば入りたいぐらい。</p>
-
-<hr />
-
-<p>今日までは、「３０日間毎日ブログを書く」というチャレンジは達成しました！おめでとう！</p>
-
-<p>ですが、次に「１００日間毎日ブログを書く」にチャレンジ</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -797,6 +827,14 @@ init
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/11/11/sublime-text-study-zero/">sublime text study zero</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/21/guard-rb-fsevent/">guardでrb-fsevent利用する時の Listen warning</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました</a>
       </li>
     
@@ -806,14 +844,6 @@ init
     
       <li class="post">
         <a href="/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/">OS 10.8 gem install json faild</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/21/back-to-octopress/">back to octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/04/cucumber/">はじめる！Cucumber写経　環境構築</a>
       </li>
     
   </ul>

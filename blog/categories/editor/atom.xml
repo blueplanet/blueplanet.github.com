@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Editor | Welcome to the blog of blueplanet]]></title>
   <link href="http://blueplanet.github.com/blog/categories/editor/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-10-16T23:01:44+09:00</updated>
+  <updated>2012-11-11T22:46:28+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[sublime text study zero]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/11/11/sublime-text-study-zero/"/>
+    <updated>2012-11-11T22:21:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/11/11/sublime-text-study-zero</id>
+    <content type="html"><![CDATA[<p>記事は遅れましたが、11/7 <a href="http://atnd.org/events/33305">第0回 Sublime Text 2 勉強会</a>に参加しました。</p>
+
+<p>最近 SublimeText2 を使って、プラグインも作ったので、自分のハマったところとか発表して共有しました。</p>
+
+<p>発表前に一回練習しましたが、やはり緊張しちゃいました。</p>
+
+<p>資料はこちらです。</p>
+
+<script async class="speakerdeck-embed" data-id="509a59f71eeb970002042ec7" data-ratio="1.33333333333333" src="http://blueplanet.github.com//speakerdeck.com/assets/embed.js"></script>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RSpec-modeを試してみた]]></title>
