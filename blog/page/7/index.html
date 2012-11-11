@@ -9,8 +9,11 @@
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="　今日第２回 渋谷Edge Rails勉強会 @masuidrive氏によるRails3講義 × 株式会社ドリコム事例発表参加に行きました Rails周り @増井さん Rails 歴史 Ver 1の頃 CoCやDRYなどの特徴で注目される
-Ver 2 色々改善されるが、まだ課題が残ってる &hellip;">
+  <meta name="description" content="　RSpecを勉強中で、ソースもGithubに保持しているので、TravisCIも試してみる 手順は公式のドキュメントを参考すれば
+メインは.travis.ymlの設定 言語
+テストしたいバージョン
+ブランチ関連の管理 language: ruby
+script: &quot;bundle &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,150 +68,6 @@ Ver 2 色々改善されるが、まだ課題が残ってる &hellip;">
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/26/shibuyarails/">渋谷EdgeRails勉強会</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-26T19:19:00+09:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>　今日<a href="http://atnd.org/events/25274">第２回 渋谷Edge Rails勉強会 @masuidrive氏によるRails3講義 × 株式会社ドリコム事例発表</a>参加に行きました</p>
-
-<h2>Rails周り @増井さん</h2>
-
-<h3>Rails 歴史</h3>
-
-<ul>
-<li>Ver 1の頃 CoCやDRYなどの特徴で注目される</li>
-<li>Ver 2 色々改善されるが、まだ課題が残ってる
-
-<ul>
-<li>Merbはより設計が綺麗なので、合流してRails開発に注力</li>
-<li>Railsに関する周辺サービスが出てきた　Heroku / New relic / Engine yard
-
-<ul>
-<li>new relic：いわゆるサーバ監視サービスが、Railsのどのメソッド、レイアウトの描画か、サーバ通信か、どこが遅いのかを分析できるサービス</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Ver 3以降：モジュール化</li>
-<li>Rails：変化を進んで受け入れる
-
-<ul>
-<li>Merbの吸収も同じ考え</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>Build for Rails</h3>
-
-<ul>
-<li>コード書く
-
-<ul>
-<li>Scaffoldは使わない</li>
-<li>プラグインを使うか・使わないか　はじめは使うか</li>
-</ul>
-</li>
-<li>テストを書く
-
-<ul>
-<li>最低でも Test/Codeは３ 実際の実装＋テストは２倍で見積るほうが</li>
-<li>UnitTest vs RSpec ModelはUnitTestで、以外は自作でHTTP経由のツールを使う</li>
-</ul>
-</li>
-<li>非同期処理</li>
-<li>パフォーマンス</li>
-<li>運用
-
-<ul>
-<li>Passenger / Unicorn
-
-<ul>
-<li>Passenger 数分間のシャットダウンの時間がある</li>
-<li>Unicorn Down時間ない</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>レベル別デプロイ
-  ＊ 開発者のみ　部内　社内　αユーザ　βユーザ　全体　というレベル付けて公開できるように</li>
-</ul>
-
-
-<h3>Rails 4.0</h3>
-
-<ul>
-<li>今年らしい</li>
-<li>Ruby 1.9以上</li>
-<li>RESTfulを更に強化</li>
-</ul>
-
-
-<h3>宣伝</h3>
-
-<ul>
-<li>Ruby公式資格教科書</li>
-<li>Taimnuim</li>
-</ul>
-
-
-<h2>Railsのはまりポイント</h2>
-
-<ul>
-<li>クラスのインスタンス変数
-
-<ul>
-<li>@foo ||= bar <strong>bar</strong>はDBから取得した値だったら、最新のデータに反映されない可能性が</li>
-</ul>
-</li>
-<li>JSONが壊れた
-
-<ul>
-<li>MySQLのTextは65536バイトまでなので</li>
-</ul>
-</li>
-<li>index名の長さ制限
-
-<ul>
-<li>MySQLの制限は64バイトまで</li>
-</ul>
-</li>
-<li>tinyintのカラムは、ActiveRecordでBoolとして使ってる、数値ではない</li>
-</ul>
-
-
-<p>ほかのネタもいろいろありましたが、全然分かっていません。。。</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -860,6 +719,55 @@ NIL
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/18/octopress-settings/">ブログ設定：DISQUSを使う</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-18T22:08:00+09:00" pubdate data-updated="true">Mar 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Octopressをインストールした時、すぐに、DISQUSが使えるのを気づいたが、設定がうまくできず、使ってなかった。今日改めてショット名称だけを設定してみたら、普通にできた！Orz…　</p>
+
+<p>それでは、DISQUSさん、これからは、宜しく〜〜</p>
+
+<hr />
+
+<p>実は、他もバラバラ試しました。</p>
+
+<ul>
+<li>日付表示を修正したかった：多言語対応に気付き、とりあえずはデフォルトで、後で</li>
+<li>カテゴリを表示した買った：意外に面倒なので、よく調べたら対応</li>
+<li>githubリポジトリを表示するプラグインがありますが、使い方はよく分かってないので、後で</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -877,11 +785,7 @@ NIL
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/11/11/sublime-text-study-zero/">sublime text study zero</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/21/guard-rb-fsevent/">guardでrb-fsevent利用する時の Listen warning</a>
+        <a href="/blog/2012/11/11/sublime-text-study-zero/">第0回 Sublime Text 2 勉強会</a>
       </li>
     
       <li class="post">
@@ -894,6 +798,10 @@ NIL
     
       <li class="post">
         <a href="/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/">OS 10.8 gem install json faild</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/21/back-to-octopress/">back to octopress</a>
       </li>
     
   </ul>

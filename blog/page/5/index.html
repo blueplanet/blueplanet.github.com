@@ -9,9 +9,7 @@
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="４年前のビデオですが、すごく刺激を受けたので、いろいろ調べて、自分の環境でEmacsとRSpecの環境を揃えた。 そろそろ実演をみながら、写経する 目的・ゴールドを明確に限定する
-最初は、一番簡単に動くのを考えるので、全部ガターケースにする
-２番目はすべて1ピンのケースを追加 通った &hellip;">
+  <meta name="description" content="今日久しぶりにiPhone勉強会に参加しました。 → iphone_dev_jp 東京iPhone/Mac勉強会 振り替えてみると、昨年年末まではよく参加していた「南東京iPhone開発者勉強会」は、ニフティ様の引越しからは中止になってしまって、yidevも@takayamaさんのご都合によって、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,71 +64,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/15/bowling-with-rspec/">スはスペックのスの写経</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-15T00:00:00+09:00" pubdate data-updated="true">Apr 15<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>４年前のビデオですが、すごく刺激を受けたので、いろいろ調べて、自分の環境でEmacsとRSpecの環境を揃えた。</p>
-
-<p>そろそろ実演をみながら、写経する</p>
-
-<ul>
-<li>目的・ゴールドを明確に限定する</li>
-<li>最初は、一番簡単に動くのを考えるので、全部ガターケースにする</li>
-<li>２番目はすべて1ピンのケースを追加
-
-<ul>
-<li>通った</li>
-</ul>
-</li>
-<li>３番目のケースはストライクのケースを追加したい
-
-<ul>
-<li>仕様が変わって、何かを追加したいが、設計がおかしいところを発見
-　とりあえず追加する仕様を置いておいて、先に設計を見直す</li>
-</ul>
-</li>
-</ul>
-
-
-<hr />
-
-<p>４０分ぐらいかかったのですが、ビデオを時間は１６：３０までです。</p>
-
-<p>角谷さんのお話しの言葉が分からない時も調べない行けないし、自分のコーディングスピードもそれほど速くないし、確かに時間がかかりますね。</p>
-
-<p>とりあえずは半分で、残りは明日(かな)</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -814,6 +747,58 @@
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/05/change-to-jekyll/">OctopressからJekyllへ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-05T00:00:00+09:00" pubdate data-updated="true">Apr 5<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>いろいろ考えた結果、やはりJekyllのほうが使い勝手が好きで、移行するメモ</p>
+
+<h2>方針</h2>
+
+<p>今までの記録を保持したいので、githubのリポジトリは、クリアしなくて、できるだけ記録を保持するままで移行</p>
+
+<h2>手順</h2>
+
+<ul>
+<li><code>git pull origin master</code></li>
+<li><code>rm -rf *</code></li>
+<li><code>cp ../jekyll/* .</code></li>
+<li><code>git add .</code></li>
+<li><code>git ci -m 'jekyll init'</code></li>
+<li>以降は、jekyllの手順を従って設定するだけ</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -831,11 +816,7 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/11/11/sublime-text-study-zero/">sublime text study zero</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/21/guard-rb-fsevent/">guardでrb-fsevent利用する時の Listen warning</a>
+        <a href="/blog/2012/11/11/sublime-text-study-zero/">第0回 Sublime Text 2 勉強会</a>
       </li>
     
       <li class="post">
@@ -848,6 +829,10 @@
     
       <li class="post">
         <a href="/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/">OS 10.8 gem install json faild</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/21/back-to-octopress/">back to octopress</a>
       </li>
     
   </ul>

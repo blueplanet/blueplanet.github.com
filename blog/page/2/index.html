@@ -9,10 +9,7 @@
   <meta name="author" content="blueplanet">
 
   
-  <meta name="description" content="やりたいことを管理するのは下手で、最近も忘れてしまったことがいくつあったことに気づいて、改めてGTDアプリを調べてみた ニーズ GTD周り タスク：内容、期限があればOK
-コンテキストが必須
-プロジェクトが必須 マルチプラットフォーム iPhone
-WEB(Mac OS, Win) アプリ調べ &hellip;">
+  <meta name="description" content="Bundlerの使い方について、今までは使っていますが、細かくは分かっていなかった。RVMとrbenvとの比較を調べた時、rbenv+bundlerでgemを管理するのは十分という記事があったので、改めてbundlerを調べてみた。 基本 Gemfileに必要なGemを記入した上で、bundle &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,109 +64,6 @@ WEB(Mac OS, Win) アプリ調べ &hellip;">
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/17/gtd/">GTDアプリ再考</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-17T00:00:00+09:00" pubdate data-updated="true">May 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>やりたいことを管理するのは下手で、最近も忘れてしまったことがいくつあったことに気づいて、改めてGTDアプリを調べてみた</p>
-
-<h2>ニーズ</h2>
-
-<ul>
-<li>GTD周り
-
-<ul>
-<li>タスク：内容、期限があればOK</li>
-<li>コンテキストが必須</li>
-<li>プロジェクトが必須</li>
-</ul>
-</li>
-<li>マルチプラットフォーム
-
-<ul>
-<li>iPhone</li>
-<li>WEB(Mac OS, Win)</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>アプリ調べ</h2>
-
-<ul>
-<li>GoTasks：シンプルで好きですが、コンテキストがないので却下</li>
-<li>Wunderlist：コンテキストがないので却下</li>
-<li>EgretList：Evernoteと同期できるが、Evernoteでのタスク管理は面倒なので却下
-
-<ul>
-<li>１つノートをプロジェクトとして、複数タスクを入れようとすると、タスク毎に期限・コンテキストの設定は出来ない</li>
-<li>１つタスク＝１つノートにすると、多くなる一方、期限などの情報はEvernoteで確認・編集出来ない為、不便</li>
-</ul>
-</li>
-<li>doit.im：ニーズは全部満たすので、しばらく使う
-
-<ul>
-<li>コンテキスト・プロジェクトあり</li>
-<li>iPhoneアプリがあり、無料</li>
-<li>WEBサイトがあり</li>
-<li>不満のところ
-
-<ul>
-<li>アプリの項目がちょっと多い</li>
-<li>コンテキストの切り替えは３ステップが必要、ちょっと面倒</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Appigo TODO：ニーズは全部満たすので、しばらく使う
-
-<ul>
-<li>コンテキスト・プロジェクトあり</li>
-<li>iPhoneアプリがあり、前購入した</li>
-<li>toodledoと同期できる為、toodledoのサイトで編集できる</li>
-<li>不満のところ
-
-<ul>
-<li>アプリの項目がちょっと多い</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<p>以上</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -874,6 +768,96 @@ dont forget to install dependencies:
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/05/rbenv/">Rbenvを使ってみる</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-05T00:00:00+09:00" pubdate data-updated="true">May 5<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>現状はRuby開発環境として、RVMを使っています</p>
+
+<h2>RVM</h2>
+
+<ul>
+<li>メリット
+
+<ul>
+<li>Ruby複数バージョン切り替えできる</li>
+<li><code>gemset</code>でアプリ毎にgemsの切り分け・管理ができる</li>
+</ul>
+</li>
+<li>問題
+
+<ul>
+<li><code>gemset</code>の位置づけは曖昧すぎ。
+実は、アプリ毎ではなく、ある程度、複数のアプリが共有する形で使いたいわけ。例えば、Rails 3.x系のアプリであれば、<code>1.9.2@r3</code>とか、という感じ。ですが、実際使ってみると、アプリ１とアプリ２は、両方もRails 3ですが、別々に他のgemを使ってる。こういうケースだと、別々のgemはどうすればいいかは悩みです。イマイチ<code>1.9.2@r3</code>にしちゃっていますが、何とか違和感を感じてる</li>
+<li><code>Bundler</code>の理解は不足でした
+
+<blockquote><p>Bundler manages an application&#8217;s dependencies through its entire life across many machines systematically and repeatably.
+そもそも<code>Bundler</code>自体は、アプリの依存関係を管理する位置づけを持っていますね。そうであれば、わざわざRVMで管理する必要もそれほどはない気がしますね。</p></blockquote></li>
+</ul>
+</li>
+</ul>
+
+
+<p>こういう経緯で、<code>RVM</code>をやめて、<code>rbenv</code>＋<code>Bundler</code>に移行する</p>
+
+<h2>rbenv導入</h2>
+
+<ul>
+<li><code>rvm seppuku</code> RVMアンインストールしておく</li>
+<li><code>brew update</code></li>
+<li><code>brew install rbenv</code></li>
+<li><code>brew install ruby-build</code></li>
+<li><code>rbenv install 1.9.2-p320</code></li>
+<li><code>rbenv rehash</code>でインストールしたものを反映する</li>
+</ul>
+
+
+<h2>使う</h2>
+
+<ul>
+<li><code>rbenv global 1.9.2-p320</code>で設定</li>
+<li><code>ruby -v</code>確認できる</li>
+<li><code>rbenv local 1.9.2-p320</code>を実行すると、カレントフォルダに<code>.rbenv-version</code>ファイルが作られる。<code>.rvmrc</code>と同じですね。</li>
+</ul>
+
+
+<p>しばらくは、使ってみます。</p>
+
+<p>参考リンク<br/>
+- <a href="http://blog-223soft.heroku.com/50">rbenv + ruby-buildのインストール方法</a><br/>
+- <a href="https://github.com/sstephenson/rbenv">rbenv</a><br/>
+- <a href="https://github.com/sstephenson/ruby-build">ruby-build</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -891,11 +875,7 @@ dont forget to install dependencies:
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/11/11/sublime-text-study-zero/">sublime text study zero</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/21/guard-rb-fsevent/">guardでrb-fsevent利用する時の Listen warning</a>
+        <a href="/blog/2012/11/11/sublime-text-study-zero/">第0回 Sublime Text 2 勉強会</a>
       </li>
     
       <li class="post">
@@ -908,6 +888,10 @@ dont forget to install dependencies:
     
       <li class="post">
         <a href="/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/">OS 10.8 gem install json faild</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/21/back-to-octopress/">back to octopress</a>
       </li>
     
   </ul>

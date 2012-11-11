@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to the blog of blueplanet]]></title>
   <link href="http://blueplanet.github.com/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-11-11T22:46:28+09:00</updated>
+  <updated>2012-11-11T22:55:12+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[sublime text study zero]]></title>
+    <title type="html"><![CDATA[第0回 Sublime Text 2 勉強会]]></title>
     <link href="http://blueplanet.github.com/blog/2012/11/11/sublime-text-study-zero/"/>
     <updated>2012-11-11T22:21:00+09:00</updated>
     <id>http://blueplanet.github.com/blog/2012/11/11/sublime-text-study-zero</id>
@@ -28,15 +28,6 @@
 
 <script async class="speakerdeck-embed" data-id="509a59f71eeb970002042ec7" data-ratio="1.33333333333333" src="http://blueplanet.github.com//speakerdeck.com/assets/embed.js"></script>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[guardでrb-fsevent利用する時の Listen warning]]></title>
-    <link href="http://blueplanet.github.com/blog/2012/10/21/guard-rb-fsevent/"/>
-    <updated>2012-10-21T22:28:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2012/10/21/guard-rb-fsevent</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
@@ -1121,6 +1112,69 @@ dont forget to install dependencies:
 
 
 <p>以上</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rbenvを使ってみる]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/05/05/rbenv/"/>
+    <updated>2012-05-05T00:00:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/05/05/rbenv</id>
+    <content type="html"><![CDATA[<p>現状はRuby開発環境として、RVMを使っています</p>
+
+<h2>RVM</h2>
+
+<ul>
+<li>メリット
+
+<ul>
+<li>Ruby複数バージョン切り替えできる</li>
+<li><code>gemset</code>でアプリ毎にgemsの切り分け・管理ができる</li>
+</ul>
+</li>
+<li>問題
+
+<ul>
+<li><code>gemset</code>の位置づけは曖昧すぎ。
+実は、アプリ毎ではなく、ある程度、複数のアプリが共有する形で使いたいわけ。例えば、Rails 3.x系のアプリであれば、<code>1.9.2@r3</code>とか、という感じ。ですが、実際使ってみると、アプリ１とアプリ２は、両方もRails 3ですが、別々に他のgemを使ってる。こういうケースだと、別々のgemはどうすればいいかは悩みです。イマイチ<code>1.9.2@r3</code>にしちゃっていますが、何とか違和感を感じてる</li>
+<li><code>Bundler</code>の理解は不足でした
+
+<blockquote><p>Bundler manages an application&#8217;s dependencies through its entire life across many machines systematically and repeatably.
+そもそも<code>Bundler</code>自体は、アプリの依存関係を管理する位置づけを持っていますね。そうであれば、わざわざRVMで管理する必要もそれほどはない気がしますね。</p></blockquote></li>
+</ul>
+</li>
+</ul>
+
+
+<p>こういう経緯で、<code>RVM</code>をやめて、<code>rbenv</code>＋<code>Bundler</code>に移行する</p>
+
+<h2>rbenv導入</h2>
+
+<ul>
+<li><code>rvm seppuku</code> RVMアンインストールしておく</li>
+<li><code>brew update</code></li>
+<li><code>brew install rbenv</code></li>
+<li><code>brew install ruby-build</code></li>
+<li><code>rbenv install 1.9.2-p320</code></li>
+<li><code>rbenv rehash</code>でインストールしたものを反映する</li>
+</ul>
+
+
+<h2>使う</h2>
+
+<ul>
+<li><code>rbenv global 1.9.2-p320</code>で設定</li>
+<li><code>ruby -v</code>確認できる</li>
+<li><code>rbenv local 1.9.2-p320</code>を実行すると、カレントフォルダに<code>.rbenv-version</code>ファイルが作られる。<code>.rvmrc</code>と同じですね。</li>
+</ul>
+
+
+<p>しばらくは、使ってみます。</p>
+
+<p>参考リンク<br/>
+- <a href="http://blog-223soft.heroku.com/50">rbenv + ruby-buildのインストール方法</a><br/>
+- <a href="https://github.com/sstephenson/rbenv">rbenv</a><br/>
+- <a href="https://github.com/sstephenson/ruby-build">ruby-build</a></p>
 ]]></content>
   </entry>
   
