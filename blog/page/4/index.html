@@ -3,17 +3,17 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to the blog of blueplanet</title>
+	<title>蒼い惑星の記録</title>
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="RSpecを勉強したいと思って、調べてみたら、素晴らしい記事を見つけた。 改めて学ぶRSpec xUnitっぽいRSpecコードの特徴 テストメソッドはすべてフラットで定義される
-it []＝＝test○○メソッド
-before==setup RSpecの流儀 describeはネストできるので &hellip;">
+	<meta name="description" content="現状 ポスト数は２０
+元のポストファイルをこっちにコピーしてきて、ファイル名をmarkdownからmdへ変更しても、サイトに表示されない(元の２０ポストだけ)
+rake post title=""で追加しても２０ポストのまま 調べたこと Jekyllのソースを軽く調べたけど、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link href="/atom.xml" rel="alternate" title="Welcome to the blog of blueplanet" type="application/atom+xml">
+	<link href="/atom.xml" rel="alternate" title="蒼い惑星の記録" type="application/atom+xml">
 	<link rel="canonical" href="">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -23,7 +23,7 @@ before==setup RSpecの流儀 describeはネストできるので &hellip;">
 </head>
 
 <body>
-	<header id="header" class="inner"><h1><a href="/">Welcome to the blog of blueplanet</a></h1>
+	<header id="header" class="inner"><h1><a href="/">蒼い惑星の記録</a></h1>
 <nav id="main-nav"><ul class="main">
 	<li><a href="/">Blog</a></li>
 	<li><a href="/blog/archives">Archives</a></li>
@@ -92,6 +92,83 @@ before==setup RSpecの流儀 describeはネストできるので &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/25/jekyll/">
+		
+			Jekyllの動きはおかしい</a>
+	</h2>
+	<div class="entry-content">
+		<h2>現状</h2>
+
+<ul>
+<li>ポスト数は２０</li>
+<li>元のポストファイルをこっちにコピーしてきて、ファイル名を<code>markdown</code>から<code>md</code>へ変更しても、サイトに表示されない(元の２０ポストだけ)</li>
+<li><code>rake post title=""</code>で追加しても２０ポストのまま</li>
+</ul>
+
+
+<h2>調べたこと</h2>
+
+<ul>
+<li>Jekyllのソースを軽く調べたけど、<code>read_posts</code>のところは、チェックが３つある
+
+<ul>
+<li>ファイル形式チェック <code>日付-○○</code>形式のものであればOKはず</li>
+<li><code>post</code>の<code>published</code>プロパティがTrue</li>
+<li><code>post.date</code>が当該時間より以前であればOK</li>
+</ul>
+</li>
+</ul>
+
+
+<p>このぐらいらしく、関係ないらしいですが</p>
+
+<ul>
+<li><code>jekyll</code>の<code>post</code>の<code>limit</code>が有るかどうかを調べたが、特に設定もしてないので、関係なさそう</li>
+<li>設定ファイルを何回確認したが、あんまり設定してないので、大丈夫らしい</li>
+<li><code>jekyll</code>コマンドのオプションを調べたが、有効なものを見つけてない</li>
+<li>移動してきたファイルのなかに、何かがおかしくて、全体に影響してしまうかを確認したところ、全部別所に移動すると、正常に動いた！
+　なるほど。やはり旧の記事のなかに何かがおかしい。１つずつ書くにしたら、<code>code block</code>の書き方が間違った！！！
+　全部直してみたら、OK</li>
+</ul>
+
+
+<p><code>Jekyll</code>さん、ごめんなさい。僕の悪いだ</p>
+
+<p>これで、とりあえずは、旧記事を移行しました。細かいところは、後で対応する</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-25T00:00:00+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/blog/'>Blog</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -793,75 +870,6 @@ init
 
 
 	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/15/bowling-with-rspec/">
-		
-			スはスペックのスの写経</a>
-	</h2>
-	<div class="entry-content">
-		<p>４年前のビデオですが、すごく刺激を受けたので、いろいろ調べて、自分の環境でEmacsとRSpecの環境を揃えた。</p>
-
-<p>そろそろ実演をみながら、写経する</p>
-
-<ul>
-<li>目的・ゴールドを明確に限定する</li>
-<li>最初は、一番簡単に動くのを考えるので、全部ガターケースにする</li>
-<li>２番目はすべて1ピンのケースを追加
-
-<ul>
-<li>通った</li>
-</ul>
-</li>
-<li>３番目のケースはストライクのケースを追加したい
-
-<ul>
-<li>仕様が変わって、何かを追加したいが、設計がおかしいところを発見
-　とりあえず追加する仕様を置いておいて、先に設計を見直す</li>
-</ul>
-</li>
-</ul>
-
-
-<hr />
-
-<p>４０分ぐらいかかったのですが、ビデオを時間は１６：３０までです。</p>
-
-<p>角谷さんのお話しの言葉が分からない時も調べない行けないし、自分のコーディングスピードもそれほど速くないし、確かに時間がかかりますね。</p>
-
-<p>とりあえずは半分で、残りは明日(かな)</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-15T00:00:00+09:00" pubdate data-updated="true">Apr 15<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>
 
 
 </div>

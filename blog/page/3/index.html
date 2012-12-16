@@ -3,15 +3,17 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to the blog of blueplanet</title>
+	<title>蒼い惑星の記録</title>
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="Railsでアプリを作る時、Modelがなく、単純にFormを作りたい場合、form_tagを使うべきという感じ WEB開発は全くないので、書き方すらよくわかってない。 何かを作りたいとしても、あんまり進められない &lt;%= form_tag(:action =&gt; "disp") do &hellip;">
+	<meta name="description" content="現状はRuby開発環境として、RVMを使っています RVM メリット Ruby複数バージョン切り替えできる
+gemsetでアプリ毎にgemsの切り分け・管理ができる 問題 gemsetの位置づけは曖昧すぎ。
+実は、アプリ毎ではなく、ある程度、複数のアプリが共有する形で使いたいわけ。例えば、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link href="/atom.xml" rel="alternate" title="Welcome to the blog of blueplanet" type="application/atom+xml">
+	<link href="/atom.xml" rel="alternate" title="蒼い惑星の記録" type="application/atom+xml">
 	<link rel="canonical" href="">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -21,7 +23,7 @@
 </head>
 
 <body>
-	<header id="header" class="inner"><h1><a href="/">Welcome to the blog of blueplanet</a></h1>
+	<header id="header" class="inner"><h1><a href="/">蒼い惑星の記録</a></h1>
 <nav id="main-nav"><ul class="main">
 	<li><a href="/">Blog</a></li>
 	<li><a href="/blog/archives">Archives</a></li>
@@ -90,6 +92,100 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/05/rbenv/">
+		
+			Rbenvを使ってみる</a>
+	</h2>
+	<div class="entry-content">
+		<p>現状はRuby開発環境として、RVMを使っています</p>
+
+<h2>RVM</h2>
+
+<ul>
+<li>メリット
+
+<ul>
+<li>Ruby複数バージョン切り替えできる</li>
+<li><code>gemset</code>でアプリ毎にgemsの切り分け・管理ができる</li>
+</ul>
+</li>
+<li>問題
+
+<ul>
+<li><code>gemset</code>の位置づけは曖昧すぎ。
+実は、アプリ毎ではなく、ある程度、複数のアプリが共有する形で使いたいわけ。例えば、Rails 3.x系のアプリであれば、<code>1.9.2@r3</code>とか、という感じ。ですが、実際使ってみると、アプリ１とアプリ２は、両方もRails 3ですが、別々に他のgemを使ってる。こういうケースだと、別々のgemはどうすればいいかは悩みです。イマイチ<code>1.9.2@r3</code>にしちゃっていますが、何とか違和感を感じてる</li>
+<li><code>Bundler</code>の理解は不足でした
+
+<blockquote><p>Bundler manages an application&#8217;s dependencies through its entire life across many machines systematically and repeatably.
+そもそも<code>Bundler</code>自体は、アプリの依存関係を管理する位置づけを持っていますね。そうであれば、わざわざRVMで管理する必要もそれほどはない気がしますね。</p></blockquote></li>
+</ul>
+</li>
+</ul>
+
+
+<p>こういう経緯で、<code>RVM</code>をやめて、<code>rbenv</code>＋<code>Bundler</code>に移行する</p>
+
+<h2>rbenv導入</h2>
+
+<ul>
+<li><code>rvm seppuku</code> RVMアンインストールしておく</li>
+<li><code>brew update</code></li>
+<li><code>brew install rbenv</code></li>
+<li><code>brew install ruby-build</code></li>
+<li><code>rbenv install 1.9.2-p320</code></li>
+<li><code>rbenv rehash</code>でインストールしたものを反映する</li>
+</ul>
+
+
+<h2>使う</h2>
+
+<ul>
+<li><code>rbenv global 1.9.2-p320</code>で設定</li>
+<li><code>ruby -v</code>確認できる</li>
+<li><code>rbenv local 1.9.2-p320</code>を実行すると、カレントフォルダに<code>.rbenv-version</code>ファイルが作られる。<code>.rvmrc</code>と同じですね。</li>
+</ul>
+
+
+<p>しばらくは、使ってみます。</p>
+
+<p>参考リンク<br/>
+- <a href="http://blog-223soft.heroku.com/50">rbenv + ruby-buildのインストール方法</a><br/>
+- <a href="https://github.com/sstephenson/rbenv">rbenv</a><br/>
+- <a href="https://github.com/sstephenson/ruby-build">ruby-build</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-05T00:00:00+09:00" pubdate data-updated="true">May 5<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rbenv/'>rbenv</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -734,83 +830,6 @@ Error: server did not start correctly
 
 
 	<a class='category' href='/blog/categories/gtd/'>GTD</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/25/jekyll/">
-		
-			Jekyllの動きはおかしい</a>
-	</h2>
-	<div class="entry-content">
-		<h2>現状</h2>
-
-<ul>
-<li>ポスト数は２０</li>
-<li>元のポストファイルをこっちにコピーしてきて、ファイル名を<code>markdown</code>から<code>md</code>へ変更しても、サイトに表示されない(元の２０ポストだけ)</li>
-<li><code>rake post title=""</code>で追加しても２０ポストのまま</li>
-</ul>
-
-
-<h2>調べたこと</h2>
-
-<ul>
-<li>Jekyllのソースを軽く調べたけど、<code>read_posts</code>のところは、チェックが３つある
-
-<ul>
-<li>ファイル形式チェック <code>日付-○○</code>形式のものであればOKはず</li>
-<li><code>post</code>の<code>published</code>プロパティがTrue</li>
-<li><code>post.date</code>が当該時間より以前であればOK</li>
-</ul>
-</li>
-</ul>
-
-
-<p>このぐらいらしく、関係ないらしいですが</p>
-
-<ul>
-<li><code>jekyll</code>の<code>post</code>の<code>limit</code>が有るかどうかを調べたが、特に設定もしてないので、関係なさそう</li>
-<li>設定ファイルを何回確認したが、あんまり設定してないので、大丈夫らしい</li>
-<li><code>jekyll</code>コマンドのオプションを調べたが、有効なものを見つけてない</li>
-<li>移動してきたファイルのなかに、何かがおかしくて、全体に影響してしまうかを確認したところ、全部別所に移動すると、正常に動いた！
-　なるほど。やはり旧の記事のなかに何かがおかしい。１つずつ書くにしたら、<code>code block</code>の書き方が間違った！！！
-　全部直してみたら、OK</li>
-</ul>
-
-
-<p><code>Jekyll</code>さん、ごめんなさい。僕の悪いだ</p>
-
-<p>これで、とりあえずは、旧記事を移行しました。細かいところは、後で対応する</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-25T00:00:00+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/blog/'>Blog</a>
 
 
 </div>

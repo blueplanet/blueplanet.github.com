@@ -3,16 +3,17 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to the blog of blueplanet</title>
+	<title>蒼い惑星の記録</title>
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="とりあえずローカルでいじって見る。 OctoressのpostをJekyllにコピー 拡張子が異なるので、変換する for nm in *.markdown mv $nm ${nm%.markdown}.md
-done * `{codeblock}`は無いので、"```"に置換する &hellip;">
+	<meta name="description" content="いろいろ考えた結果、やはりJekyllのほうが使い勝手が好きで、移行するメモ 方針 今までの記録を保持したいので、githubのリポジトリは、クリアしなくて、できるだけ記録を保持するままで移行 手順 git pull origin master
+rm -rf *
+cp ../jekyll &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link href="/atom.xml" rel="alternate" title="Welcome to the blog of blueplanet" type="application/atom+xml">
+	<link href="/atom.xml" rel="alternate" title="蒼い惑星の記録" type="application/atom+xml">
 	<link rel="canonical" href="">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -22,7 +23,7 @@ done * `{codeblock}`は無いので、"```"に置換する &hellip;">
 </head>
 
 <body>
-	<header id="header" class="inner"><h1><a href="/">Welcome to the blog of blueplanet</a></h1>
+	<header id="header" class="inner"><h1><a href="/">蒼い惑星の記録</a></h1>
 <nav id="main-nav"><ul class="main">
 	<li><a href="/">Blog</a></li>
 	<li><a href="/blog/archives">Archives</a></li>
@@ -91,6 +92,62 @@ done * `{codeblock}`は無いので、"```"に置換する &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/05/change-to-jekyll/">
+		
+			OctopressからJekyllへ</a>
+	</h2>
+	<div class="entry-content">
+		<p>いろいろ考えた結果、やはりJekyllのほうが使い勝手が好きで、移行するメモ</p>
+
+<h2>方針</h2>
+
+<p>今までの記録を保持したいので、githubのリポジトリは、クリアしなくて、できるだけ記録を保持するままで移行</p>
+
+<h2>手順</h2>
+
+<ul>
+<li><code>git pull origin master</code></li>
+<li><code>rm -rf *</code></li>
+<li><code>cp ../jekyll/* .</code></li>
+<li><code>git add .</code></li>
+<li><code>git ci -m 'jekyll init'</code></li>
+<li>以降は、jekyllの手順を従って設定するだけ</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-05T00:00:00+09:00" pubdate data-updated="true">Apr 5<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/blog/'>Blog</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -870,154 +927,6 @@ done * `{codeblock}`は無いので、"```"に置換する &hellip;">
 
 
 	<a class='category' href='/blog/categories/クラウド/'>クラウド</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/26/shibuyarails/">
-		
-			渋谷EdgeRails勉強会</a>
-	</h2>
-	<div class="entry-content">
-		<p>　今日<a href="http://atnd.org/events/25274">第２回 渋谷Edge Rails勉強会 @masuidrive氏によるRails3講義 × 株式会社ドリコム事例発表</a>参加に行きました</p>
-
-<h2>Rails周り @増井さん</h2>
-
-<h3>Rails 歴史</h3>
-
-<ul>
-<li>Ver 1の頃 CoCやDRYなどの特徴で注目される</li>
-<li>Ver 2 色々改善されるが、まだ課題が残ってる
-
-<ul>
-<li>Merbはより設計が綺麗なので、合流してRails開発に注力</li>
-<li>Railsに関する周辺サービスが出てきた　Heroku / New relic / Engine yard
-
-<ul>
-<li>new relic：いわゆるサーバ監視サービスが、Railsのどのメソッド、レイアウトの描画か、サーバ通信か、どこが遅いのかを分析できるサービス</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Ver 3以降：モジュール化</li>
-<li>Rails：変化を進んで受け入れる
-
-<ul>
-<li>Merbの吸収も同じ考え</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>Build for Rails</h3>
-
-<ul>
-<li>コード書く
-
-<ul>
-<li>Scaffoldは使わない</li>
-<li>プラグインを使うか・使わないか　はじめは使うか</li>
-</ul>
-</li>
-<li>テストを書く
-
-<ul>
-<li>最低でも Test/Codeは３ 実際の実装＋テストは２倍で見積るほうが</li>
-<li>UnitTest vs RSpec ModelはUnitTestで、以外は自作でHTTP経由のツールを使う</li>
-</ul>
-</li>
-<li>非同期処理</li>
-<li>パフォーマンス</li>
-<li>運用
-
-<ul>
-<li>Passenger / Unicorn
-
-<ul>
-<li>Passenger 数分間のシャットダウンの時間がある</li>
-<li>Unicorn Down時間ない</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>レベル別デプロイ
-  ＊ 開発者のみ　部内　社内　αユーザ　βユーザ　全体　というレベル付けて公開できるように</li>
-</ul>
-
-
-<h3>Rails 4.0</h3>
-
-<ul>
-<li>今年らしい</li>
-<li>Ruby 1.9以上</li>
-<li>RESTfulを更に強化</li>
-</ul>
-
-
-<h3>宣伝</h3>
-
-<ul>
-<li>Ruby公式資格教科書</li>
-<li>Taimnuim</li>
-</ul>
-
-
-<h2>Railsのはまりポイント</h2>
-
-<ul>
-<li>クラスのインスタンス変数
-
-<ul>
-<li>@foo ||= bar <strong>bar</strong>はDBから取得した値だったら、最新のデータに反映されない可能性が</li>
-</ul>
-</li>
-<li>JSONが壊れた
-
-<ul>
-<li>MySQLのTextは65536バイトまでなので</li>
-</ul>
-</li>
-<li>index名の長さ制限
-
-<ul>
-<li>MySQLの制限は64バイトまで</li>
-</ul>
-</li>
-<li>tinyintのカラムは、ActiveRecordでBoolとして使ってる、数値ではない</li>
-</ul>
-
-
-<p>ほかのネタもいろいろありましたが、全然分かっていません。。。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-26T19:19:00+09:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/勉強会/'>勉強会</a>
 
 
 </div>
