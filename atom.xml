@@ -4,7 +4,7 @@
   <title><![CDATA[蒼い惑星の記録]]></title>
   <link href="http://blueplanet.github.com/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-12-20T23:00:54+09:00</updated>
+  <updated>2012-12-21T06:08:38+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -165,12 +165,37 @@
 
 <p><img src="https://lh4.googleusercontent.com/-iaohwghL2DU/UNMT07j553I/AAAAAAAACDE/PNcOyQVs2hk/s800/github_cup.png" alt="" /></p>
 
+<h2>@a_matsuda 先生から Rails 4 関連のお話し</h2>
+
+<ul>
+<li><code>strong parameters</code>の説明
+
+<ul>
+<li>なるほど。<code>mass assignment</code>の対策ですね。<code>model</code>の責任じゃないよ、<code>controller</code>ちゃんとやれ！的な感じですかね</li>
+</ul>
+</li>
+<li><a href="https://github.com/asakusarb/action_args">github: asakusarb / action_args</a>
+
+<ul>
+<li>@a_matsuda 先生の gem 。細かい機能はまだ理解出来てないので、後で調べる</li>
+</ul>
+</li>
+</ul>
+
+
 <h2>まとめ</h2>
 
 <ul>
 <li>人数ちょっと少なかった気がしますが、気分はすごく良かったです。またチャンスがありましたら、また参加したいですね</li>
 <li>@a_matsuda 先生は意外に優しかった。←　いつか @a_matsuda 先生が厳しいと誤解したんだろうね</li>
 <li>もっと @a_matsuda 先生の技を勉強したいです！</li>
+<li><a href="https://github.com/CodeIQ/forkwell">github: CodeIQ/forkwell</a> 今回チャレンジ用のリポジトリに、特に<code>question_2</code>から出てきた<code>RSpec</code>の<code>requests</code>スペックの書き方は大変勉強になりました。
+
+<ul>
+<li>最近はちょうど<code>request</code>の書き方にハマっているので、すごく嬉しいです！</li>
+<li>最初は<code>requests</code>で<code>rspec</code>実行すると、すべて赤だったが、<code>jnicklas/capybara</code>の <code>Ver2.0</code>以降は、<code>features</code>じゃないとダメという仕様変更でした。</li>
+</ul>
+</li>
 </ul>
 
 ]]></content>
