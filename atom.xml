@@ -4,7 +4,7 @@
   <title><![CDATA[蒼い惑星の記録]]></title>
   <link href="http://blueplanet.github.com/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-12-20T22:39:18+09:00</updated>
+  <updated>2012-12-20T23:00:54+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -12,6 +12,89 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[簡単なプラグインの作る過程]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/12/20/auto-reveal-in-sidebar-plugin/"/>
+    <updated>2012-12-20T22:48:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/12/20/auto-reveal-in-sidebar-plugin</id>
+    <content type="html"><![CDATA[<p>この記事は<a href="http://www.adventar.org/calendars/20">Sublime Text 2 Advent Calendar 2012</a> の21日目の記事です。</p>
+
+<h2>きっかけ</h2>
+
+<ul>
+<li><code>Theme Phoenix</code>を導入してから、SideBarがもっとカッコよくなったので、もともとずっと非表示してたが、最近表示している時間もどんどん増えています。</li>
+<li>そうなると、SideBarに常に編集中のファイルをフォーカス項目にして頂きたい</li>
+<li><code>フォーカス項目</code>という言葉がわかりづらいかもしれませんが、ようは、下記のように、青色になっている項目のことです</li>
+</ul>
+
+
+<p><img src="https://lh6.googleusercontent.com/-NhQOSIsH4fQ/UNMYmJCyyUI/AAAAAAAACDg/IppMrD7BN6w/s800/Screen%2520Shot%25202012-12-20%2520at%252022.53.33.png" alt="" /></p>
+
+<h2>調査過程</h2>
+
+<ul>
+<li>編集中ファイルで、右クリックのコンテキストメニューには「Revel in Side Bar」というアイテムを発見した！これを実行すると、今のファイルがSideBarのフォーカスアイテムになります。</li>
+<li>なるほど！このコマンドをファイルが切り替えられる時点で呼び出せば行けぞう！</li>
+<li><code>SideBarEnhancements</code>の機能かな、と思って、ソースを検索してみたら、ない！</li>
+<li>じゃ、標準機能みたいね。「Reveal in Side Bar」文言で<code>Packages\Default</code>を検索してみたら、あった！</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>9      { "command": "open_dir", "args": {"dir": "$file_path", "file": "$file_name"}, "caption": "Open Containing Folder…" },
+</span><span class='line'>   10      { "command": "copy_path", "caption": "Copy File Path" },
+</span><span class='line'>   11:     { "command": "reveal_in_side_bar", "caption": "Reveal in Side Bar" },
+</span><span class='line'>   12      { "caption": "-", "id": "end" }
+</span><span class='line'>   13  ]</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>なるほど！コマンドは<code>reveal_in_side_bar</code>ですね。実装しよう！</li>
+</ul>
+
+
+<h2>実装過程</h2>
+
+<ul>
+<li>ファイルが切り替えられる度に実行したいので、<code>sublime_plugin.EventListener</code>を継承</li>
+<li>実際のコードはは一行だけ！出来ました！おめでとうございます！</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sublime</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sublime_plugin</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">AutoRevealInSideBar</span><span class="p">(</span><span class="n">sublime_plugin</span><span class="o">.</span><span class="n">EventListener</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">on_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">view</span><span class="o">.</span><span class="n">window</span><span class="p">()</span><span class="o">.</span><span class="n">run_command</span><span class="p">(</span><span class="s">&quot;reveal_in_side_bar&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>これで、ファイルを切り替える時、どんなに深い階層にあるファイルであっても、ちゃんとSideBarにフォーカスアイテムになるはずです。</li>
+</ul>
+
+
+<h2>まとめ</h2>
+
+<ul>
+<li><code>Sublime Text 2</code>自体の機能もいろいろコマンドになったりしますので、既存の機能を呼び出したい場合は、まず<code>Packages\Default</code>の中を調べましょう</li>
+<li>プラグインを作るのはすっごく簡単です。どんどんやってみましょう！</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[実践 Rails コードチャレンジに参加しました]]></title>
@@ -1189,49 +1272,6 @@ dont forget to install dependencies:
 
 
 <p>TODO : Node.js + MongoDBで試す</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Pryを試してみた]]></title>
-    <link href="http://blueplanet.github.com/blog/2012/05/07/pry/"/>
-    <updated>2012-05-07T00:00:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2012/05/07/pry</id>
-    <content type="html"><![CDATA[<p>話題のPryをインストールして、試してみた</p>
-
-<ul>
-<li><code>gem install pry</code></li>
-<li><code>rbenv rehash</code></li>
-</ul>
-
-
-<p><code>pry</code>で起動</p>
-
-<p>下記の記事はすごく詳しいです。有難うございます！</p>
-
-<p><a href="http://labs.timedia.co.jp/2011/12/rubyist-should-use-pry.html">Rubyistよ、irbを捨ててPryを使おう</a></p>
-
-<h2>特徴</h2>
-
-<ul>
-<li>色付け</li>
-<li>メソッド定義する場合は、自動インデント</li>
-<li>shell統合</li>
-<li>オブジェクト調査（実際はこれは結構評価されるみたい）</li>
-</ul>
-
-
-<h2>問題</h2>
-
-<ul>
-<li>shell統合は、標準Shellになって、zshの設定はロードされてないみたい
-
-<ul>
-<li>TODO : zsh統合を調べる</li>
-</ul>
-</li>
-</ul>
-
 ]]></content>
   </entry>
   

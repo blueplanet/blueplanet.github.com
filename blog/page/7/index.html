@@ -7,9 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="　この間、ニフティクラウドとさくらクラウドをちょっと触ってみたので、最初の印象を書く さくらクラウド インストールのステップが多いが、それらの設定がOSに反映される
-コンソールはIE Only(VMWare vnc client)
-ロードバランサがある ニフティクラウド &hellip;">
+	<meta name="description" content="　スはスペックのス 【第 2 回】 RSpec on Rails (コントローラとビュー編)記事の写経 Test::UnitはModelのテストをユニットテストとし、Controllerのテストを機能テストとしていますが、RSpecのほうは、Model・Controller・View・ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +90,68 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/28/rspec-rails/">
+		
+			RSpec on Rails (4)</a>
+	</h2>
+	<div class="entry-content">
+		<p>　<a href="http://jp.rubyist.net/magazine/?0023-Rspec">スはスペックのス 【第 2 回】 RSpec on Rails (コントローラとビュー編)</a>記事の写経</p>
+
+<ul>
+<li>Test::UnitはModelのテストをユニットテストとし、Controllerのテストを機能テストとしていますが、RSpecのほうは、Model・Controller・View・Helperのテストはすべてユニットテストとみなす</li>
+<li><p>ハマったこと</p>
+
+<ul>
+<li><code>render_template("blogs")</code>を書くと、レッドのはずだが、自分の環境では普通にグリーンになってる</li>
+<li>試してみたが、<code>blogs</code>と<code>blogs/show</code>と<code>show</code>と３つが全部OK。原因は分からず</li>
+</ul>
+</li>
+<li><p>調べたい</p>
+
+<ul>
+<li>FactoryGril</li>
+<li>Spoke</li>
+<li>浜松Rails3は資料いろいろ有りそう</li>
+</ul>
+</li>
+</ul>
+
+
+<p>　今日は、Controllerのテストまでに終わった。Viewのテストは次回で</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-28T22:28:00+09:00" pubdate data-updated="true">Mar 28<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -831,61 +891,6 @@ set: no such option: errtrace</p></blockquote>
 
 
 	<a class='category' href='/blog/categories/aws/'>AWS</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/クラウド/'>クラウド</a>, <a class='category' href='/blog/categories/日本語/'>日本語</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/19/lisp/">
-		
-			Lisp是什么？</a>
-	</h2>
-	<div class="entry-content">
-		<p>  偶尔读到一篇博客文章 <a href="http://www.cnblogs.com/Leap-abead/articles/762180.html">LISP的本质(THE NATURE OF LISP)</a> ，一下子就被LISP吸引了。</p>
-
-<p>  以前也听说过LISP，而且Ruby也受LISP影响很大，所以一直都有耳闻。曾经看了一点点入门级别的文章，确实如上文的作者所说，马上被满屏的括号吓到了，完全体会不到任何好处和美感。</p>
-
-<p>  读了上面的文章之后，马上想自己动手尝试一下。第一次装Common LISP <code>brew install clisp</code>失败了，似乎是系统太忙导致某个网站访问超时导致的，再次安装后成功。搜索了一下，似乎<code>brew install gauche</code>更热门，也顺便装了。</p>
-
-<p>  安装之后会多出个命令<code>ghosh</code>，CommonLISP的话是<code>clisp</code>，执行之后就会启动执行环境。</p>
-
-<div class="highlight"><pre><code class="bash"><span class="o">(</span>format t <span class="s2">&quot;Hello, world!&quot;</span><span class="o">)</span> 回车
-Hello, world
-NIL
-</code></pre>
-</div>
-
-
-<p><strong>使用Ctrl＋D或者(exit)退出</strong></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-19T22:13:00+09:00" pubdate data-updated="true">Mar 19<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/lisp/'>LISP</a>, <a class='category' href='/blog/categories/中文/'>中文</a>, <a class='category' href='/blog/categories/编程语言/'>编程语言</a>
 
 
 </div>

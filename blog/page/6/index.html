@@ -7,7 +7,8 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="昨日先行利用ユーザとして登録したkobitoからリリースのお知らせが来ました。早速落としてみました。 公式サイトにアクセスすればイメージできるので、画像とかは割愛 今使ってるMou.appとはちょっと比較してみました。 メインはJekyllのブロク書く前提とするお話し 共通の足りないところ &hellip;">
+	<meta name="description" content="Rails開発を勉強中。Editorについての考え Textmate：No1なんですが、日本語や中国語の入力がおかしいのは痛いので断念
+Vim：最初から今まで使ってるが、さすがに設定をこなさないと 使ってるもの vim-rails,neocomplcache,unite,nerdtree( &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +91,71 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/07/rails-develop--vim-or-emacs/">
+		
+			Rails開発の場合は Vim と Emacsとは、どっち？</a>
+	</h2>
+	<div class="entry-content">
+		<p>Rails開発を勉強中。Editorについての考え</p>
+
+<ul>
+<li>Textmate：No1なんですが、日本語や中国語の入力がおかしいのは痛いので断念</li>
+<li>Vim：最初から今まで使ってるが、さすがに設定をこなさないと
+
+<ul>
+<li>使ってるもの <code>vim-rails</code>,<code>neocomplcache</code>,<code>unite</code>,<code>nerdtree</code>(不要かな？)<br/>
+と言っても、入れているだけで全然こなしてないので、もっと調べないと</li>
+<li>括弧やクォーテーションなどの入力は、対になってるものが自動補完　←　vimrcでキーバインドで解決</li>
+<li><code>def</code>や<code>if</code>などをタイプする場合、<code>end</code>を自動挿入してもらいたいが、今まだ出来てない<br/>
+調べてみたら、<code>vim-endwise</code>があるらしいが、使い方は今だに分かってない</li>
+</ul>
+</li>
+<li>Emacs：角谷さんのRspecの実演を見ると、カッコよくてすごく刺激を受けましたので、勉強したい
+
+<ul>
+<li>これからなので、まだ評価できないレベル</li>
+<li>Matzさんが使ってるので、Rubyの周りは完璧じゃないかなと期待してる</li>
+<li><code>Rinari</code>というプラグインがあるらしい</li>
+</ul>
+</li>
+</ul>
+
+
+<p>しばらくはVimを使って、Emacsも使ってみようと</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-07T00:00:00+09:00" pubdate data-updated="true">Apr 7<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/editor/'>Editor</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -904,68 +970,6 @@
 
 
 	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/spork/'>spork</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/28/rspec-rails/">
-		
-			RSpec on Rails (4)</a>
-	</h2>
-	<div class="entry-content">
-		<p>　<a href="http://jp.rubyist.net/magazine/?0023-Rspec">スはスペックのス 【第 2 回】 RSpec on Rails (コントローラとビュー編)</a>記事の写経</p>
-
-<ul>
-<li>Test::UnitはModelのテストをユニットテストとし、Controllerのテストを機能テストとしていますが、RSpecのほうは、Model・Controller・View・Helperのテストはすべてユニットテストとみなす</li>
-<li><p>ハマったこと</p>
-
-<ul>
-<li><code>render_template("blogs")</code>を書くと、レッドのはずだが、自分の環境では普通にグリーンになってる</li>
-<li>試してみたが、<code>blogs</code>と<code>blogs/show</code>と<code>show</code>と３つが全部OK。原因は分からず</li>
-</ul>
-</li>
-<li><p>調べたい</p>
-
-<ul>
-<li>FactoryGril</li>
-<li>Spoke</li>
-<li>浜松Rails3は資料いろいろ有りそう</li>
-</ul>
-</li>
-</ul>
-
-
-<p>　今日は、Controllerのテストまでに終わった。Viewのテストは次回で</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-28T22:28:00+09:00" pubdate data-updated="true">Mar 28<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
 
 
 </div>

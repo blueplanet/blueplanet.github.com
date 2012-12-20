@@ -7,10 +7,10 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="最初からいろいろなコードを勝手に入れていましたが、よく整理してなくてバラバラだったので、整理してみる 順番も大事らしいので、順番どおり書く load-pathを追加する関数を定義
-表示関連設定 color-theme
-font
-スクロールバー・行列番号表示・ファイルサイズ表示・ &hellip;">
+	<meta name="description" content="話題のPryをインストールして、試してみた gem install pry
+rbenv rehash pryで起動 下記の記事はすごく詳しいです。有難うございます！ Rubyistよ、irbを捨ててPryを使おう 特徴 色付け
+メソッド定義する場合は、自動インデント
+shell統合 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,6 +93,80 @@ font
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/07/pry/">
+		
+			Pryを試してみた</a>
+	</h2>
+	<div class="entry-content">
+		<p>話題のPryをインストールして、試してみた</p>
+
+<ul>
+<li><code>gem install pry</code></li>
+<li><code>rbenv rehash</code></li>
+</ul>
+
+
+<p><code>pry</code>で起動</p>
+
+<p>下記の記事はすごく詳しいです。有難うございます！</p>
+
+<p><a href="http://labs.timedia.co.jp/2011/12/rubyist-should-use-pry.html">Rubyistよ、irbを捨ててPryを使おう</a></p>
+
+<h2>特徴</h2>
+
+<ul>
+<li>色付け</li>
+<li>メソッド定義する場合は、自動インデント</li>
+<li>shell統合</li>
+<li>オブジェクト調査（実際はこれは結構評価されるみたい）</li>
+</ul>
+
+
+<h2>問題</h2>
+
+<ul>
+<li>shell統合は、標準Shellになって、zshの設定はロードされてないみたい
+
+<ul>
+<li>TODO : zsh統合を調べる</li>
+</ul>
+</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-07T00:00:00+09:00" pubdate data-updated="true">May 7<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/pry/'>Pry</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -740,96 +814,6 @@ font
 
 
 <time datetime="2012-04-28T00:00:00+09:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/editor/'>Editor</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/27/subline/">
-		
-			Subline Text 2を試してみた</a>
-	</h2>
-	<div class="entry-content">
-		<p><a href="http://www.sublimetext.com/">http://www.sublimetext.com/</a></p>
-
-<ul>
-<li>マルチOSサポートの軽量エディター</li>
-<li>シェアウェア：$59。
-
-<ul>
-<li>ライセンスがない場合は、一定の時間を經つと、購入の催促ダイアログが出てくるだけ</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>気になる箇所</h3>
-
-<ul>
-<li>マルチOS Windows / MacOS</li>
-<li>優れるデザイン
-
-<ul>
-<li>綺麗なカラースキーム</li>
-<li>ChromeライクなTab</li>
-<li>Minimap：ファイル全体を縮小して表示する機能</li>
-</ul>
-</li>
-<li>多数の言語サポート　Ruby / Html / CSS</li>
-<li>フルカスタマイズできるキーバインド</li>
-<li>Vimキーバインドあり(デフォルトはOFF)</li>
-</ul>
-
-
-<h3>Emacsの課題</h3>
-
-<p>今メインのエディターはCocoa Emacsを使っていますが、コマンドラインからの起動はうまく出来てない</p>
-
-<p>Emacsをdamonモードで起動しておいて、コマンドラインからは<code>emacsclient</code>を使えばよさそうですが、自分の場合は、<code>Emacs --daemon</code>を実行すると、エラーで落ちる</p>
-
-<pre><code>/Applications/Emacs.app/Contents/MacOS/Emacs --daemon
-("/Applications/Emacs.app/Contents/MacOS/Emacs")
-Install-elisp compatibility installed.
-install-elisp                = auto-install-from-url
-install-elisp-from-emacswiki = auto-install-from-emacswiki
-install-elisp-from-gist      = auto-install-from-gist
-Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-example.el (source)...
-Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-example.el (source)...done
-Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-library.el (source)...
-Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-library.el (source)...done
-Error: server did not start correctly
-</code></pre>
-
-<p>しばらくは<code>subline text</code>を触って見るが、メインはEmacsに間違いない</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-27T00:00:00+09:00" pubdate data-updated="true">Apr 27<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 

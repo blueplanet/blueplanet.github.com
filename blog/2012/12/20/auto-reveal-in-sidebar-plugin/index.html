@@ -1,0 +1,248 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>簡単なプラグインの作る過程 - 蒼い惑星の記録</title>
+	<meta name="author" content="blueplanet">
+
+	
+	<meta name="description" content="この記事はSublime Text 2 Advent Calendar 2012 の21日目の記事です。 きっかけ Theme Phoenixを導入してから、SideBarがもっとカッコよくなったので、もともとずっと非表示してたが、最近表示している時間もどんどん増えています。
+そうなると、 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="蒼い惑星の記録" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">蒼い惑星の記録</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:blueplanet.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/blueplanet42" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/blueplanet" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:blueplanet.github.com">
+	</form>
+</nav>
+
+</header>
+	
+		
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/blueplanet42">blueplanet42</a> @ <a href="http://twitter.com">Twitter</a></small>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('blueplanet42', 4, false);
+	})(jQuery);
+</script>
+
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">簡単なプラグインの作る過程</h2>
+	<div class="entry-content"><p>この記事は<a href="http://www.adventar.org/calendars/20">Sublime Text 2 Advent Calendar 2012</a> の21日目の記事です。</p>
+
+<h2>きっかけ</h2>
+
+<ul>
+<li><code>Theme Phoenix</code>を導入してから、SideBarがもっとカッコよくなったので、もともとずっと非表示してたが、最近表示している時間もどんどん増えています。</li>
+<li>そうなると、SideBarに常に編集中のファイルをフォーカス項目にして頂きたい</li>
+<li><code>フォーカス項目</code>という言葉がわかりづらいかもしれませんが、ようは、下記のように、青色になっている項目のことです</li>
+</ul>
+
+
+<p><img src="https://lh6.googleusercontent.com/-NhQOSIsH4fQ/UNMYmJCyyUI/AAAAAAAACDg/IppMrD7BN6w/s800/Screen%2520Shot%25202012-12-20%2520at%252022.53.33.png" alt="" /></p>
+
+<h2>調査過程</h2>
+
+<ul>
+<li>編集中ファイルで、右クリックのコンテキストメニューには「Revel in Side Bar」というアイテムを発見した！これを実行すると、今のファイルがSideBarのフォーカスアイテムになります。</li>
+<li>なるほど！このコマンドをファイルが切り替えられる時点で呼び出せば行けぞう！</li>
+<li><code>SideBarEnhancements</code>の機能かな、と思って、ソースを検索してみたら、ない！</li>
+<li>じゃ、標準機能みたいね。「Reveal in Side Bar」文言で<code>Packages\Default</code>を検索してみたら、あった！</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>9      { "command": "open_dir", "args": {"dir": "$file_path", "file": "$file_name"}, "caption": "Open Containing Folder…" },
+</span><span class='line'>   10      { "command": "copy_path", "caption": "Copy File Path" },
+</span><span class='line'>   11:     { "command": "reveal_in_side_bar", "caption": "Reveal in Side Bar" },
+</span><span class='line'>   12      { "caption": "-", "id": "end" }
+</span><span class='line'>   13  ]</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>なるほど！コマンドは<code>reveal_in_side_bar</code>ですね。実装しよう！</li>
+</ul>
+
+
+<h2>実装過程</h2>
+
+<ul>
+<li>ファイルが切り替えられる度に実行したいので、<code>sublime_plugin.EventListener</code>を継承</li>
+<li>実際のコードはは一行だけ！出来ました！おめでとうございます！</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sublime</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sublime_plugin</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">AutoRevealInSideBar</span><span class="p">(</span><span class="n">sublime_plugin</span><span class="o">.</span><span class="n">EventListener</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">on_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">view</span><span class="o">.</span><span class="n">window</span><span class="p">()</span><span class="o">.</span><span class="n">run_command</span><span class="p">(</span><span class="s">&quot;reveal_in_side_bar&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>これで、ファイルを切り替える時、どんなに深い階層にあるファイルであっても、ちゃんとSideBarにフォーカスアイテムになるはずです。</li>
+</ul>
+
+
+<h2>まとめ</h2>
+
+<ul>
+<li><code>Sublime Text 2</code>自体の機能もいろいろコマンドになったりしますので、既存の機能を呼び出したい場合は、まず<code>Packages\Default</code>の中を調べましょう</li>
+<li>プラグインを作るのはすっごく簡単です。どんどんやってみましょう！</li>
+</ul>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-20T22:48:00+09:00" pubdate data-updated="true">Dec 20<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    blueplanet
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'bpgh';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blueplanet.github.com/blog/2012/12/20/auto-reveal-in-sidebar-plugin/';
+        var disqus_url = 'http://blueplanet.github.com/blog/2012/12/20/auto-reveal-in-sidebar-plugin/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+</body>
+</html>
