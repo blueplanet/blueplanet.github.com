@@ -7,7 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="　スはスペックのス 【第 2 回】 RSpec on Rails (コントローラとビュー編)記事の写経 Test::UnitはModelのテストをユニットテストとし、Controllerのテストを機能テストとしていますが、RSpecのほうは、Model・Controller・View・ &hellip;">
+	<meta name="description" content="　RSpecを勉強中。RSpecのテストを実行する時、何となく遅い気がしちゃいます。高速化する方法がないかと調べると、github sporkが出ました。 まずは導入前後の比較、爆速ですね user system cpu total 導入前 4.32s 0.54s 99% 4.898s | &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +90,99 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/29/spork-rails/">
+		
+			sportでRSpec on Railsのテストを高速化</a>
+	</h2>
+	<div class="entry-content">
+		<p>　RSpecを勉強中。RSpecのテストを実行する時、何となく遅い気がしちゃいます。高速化する方法がないかと調べると、<a href="https://github.com/sporkrb/spork">github spork</a>が出ました。</p>
+
+<h3>まずは導入前後の比較、爆速ですね</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>     </th>
+<th> user  </th>
+<th> system </th>
+<th> cpu </th>
+<th> total  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>導入前</td>
+<td> 4.32s </td>
+<td> 0.54s  </td>
+<td> 99% </td>
+<td> 4.898s |</td>
+</tr>
+<tr>
+<td></td>
+<td>導入後</td>
+<td> 0.19s </td>
+<td> 0.05s  </td>
+<td> 31% </td>
+<td> 0.788s |</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>使い方もシンプル</h3>
+
+<ol>
+<li><code>Gemfile</code>に<code>gem spork</code>を追加</li>
+<li><code>spork --bootstrap</code>を実行して、必要なファイルを生成する</li>
+<li><code>spork</code>を実行して、サーバを起動する</li>
+<li>モデルの修正などを都度反映する為、テストキャッシュを無効化
+
+<ul>
+<li><code>config/environments/test.rb</code>の<code>config.cache_classes = true</code>を<code>false</code>に修正</li>
+</ul>
+</li>
+<li><code>.rspec</code>に<code>--drb</code>実行オプションを追加</li>
+<li>普通に<code>rspec spec/**/*.rb</code>を実行する　　</li>
+</ol>
+
+
+<p>以上</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-29T23:08:00+09:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/spork/'>spork</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -796,101 +889,6 @@ userとsystemはどっちがどっちかはよく分からない。要するに�
 
 
 	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/20/centos-rails-dev/">
-		
-			Amazon EC2 のCentOSでRails開発環境構築</a>
-	</h2>
-	<div class="entry-content">
-		<p>　Rails勉強中。やはり手で動かないと、理解できたとしても、それほどの知識を覚えるのは無理なので、いざ何かを試したい時、手元に環境がないと困ることがよくあります。</p>
-
-<p>　ちょうど、AWSは、新規登録だと、<a href="http://aws.amazon.com/jp/free/">無料で１年間利用できるプログラム</a>があります。そこに開発環境をインストールしておけば、SSH接続さえ出来れば、開発環境が使えるので、うれしいかなと思うので、試しに作ります。</p>
-
-<p><strong><em>EC2の作成は普通にAmazonのLinuxでマイクロインスタンスを作成</em></strong></p>
-
-<h2>OS周りの設定</h2>
-
-<ul>
-<li><code>sudo yum install -y zsh git</code></li>
-<li>rootパスワードを設定　<code>sudo passwd</code></li>
-<li>ec2-userのパスワードを設定（初期パスワードがわからないので、Rootユーザに切り替え、設定する）<br/>
-<code>su root</code><br/>
-<code>passwd ec2-user</code></li>
-<li>shをzshに切り替え<br/>
-<code>chsh -s /bin/zsh</code></li>
-</ul>
-
-
-<h2>oh-my-zsh(<strong>個人のバージョン</strong>)導入</h2>
-
-<ul>
-<li><code>git clone git://github.com/blueplanet/oh-my-zsh.git ~/.oh-my-zsh</code></li>
-<li><code>cd ~/.oh-my-zsh</code></li>
-<li><code>git submodule init</code></li>
-<li><code>git submodule update</code></li>
-</ul>
-
-
-<h2>RVM導入</h2>
-
-<ul>
-<li><code>zsh -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</code></li>
-<li><blockquote><p>zsh: command not found: shopt<br/>
-set: no such option: errtrace</p></blockquote>
-
-<p>が出てしまったのですが、影響がなさそうなので、無視</p></li>
-<li><code>source ~/.zshrc</code>を実行し、設定を反映し、<code>rvm</code>で確認できた！</li>
-</ul>
-
-
-<h2>Ruby &amp;&amp; Rails</h2>
-
-<ul>
-<li><code>sudo yum install -y rubygems gcc-c++ make patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel</code></li>
-<li><code>rvm install 1.9.3</code> <strong><em>←　マイクロインスタンスで実行すると、結構時間がかかる</em></strong></li>
-<li><code>rvm use 1.9.3 --default</code></li>
-<li><code>rvm gemset create r3</code></li>
-<li><code>rvm use 1.9.3@r3 --default</code></li>
-<li><code>gem install rails --no-rdoc --no-ri</code></li>
-</ul>
-
-
-<p><code>rails -v</code>を実行したら、<code>Rails 3.2.2</code>ができている！！</p>
-
-<p><strong><em>WindowsからのSSH接続は、後で。</em></strong></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-20T15:43:00+09:00" pubdate data-updated="true">Mar 20<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/aws/'>AWS</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/クラウド/'>クラウド</a>, <a class='category' href='/blog/categories/日本語/'>日本語</a>
 
 
 </div>

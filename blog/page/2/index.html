@@ -7,9 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="前説 金曜日は月一回の帰社日で、１９時から帰社会議＋勉強会。おいらは勉強会の担当
-今月は先週まで忙しくて、今週はやっと落ち着いてきた為、金曜日現場を休んで、午前中は家族サポート、午後帰社する予定
-前日の夕方に緊急問い合わせが来て、金曜日対応しないと行けない為、出勤するようになった &hellip;">
+	<meta name="description" content="Yokohamarb #20に参加して、Railsの開発環境のお話しがありました。その中に、TDDツールについて、SporkとGuardが使われています。 Sporkはテストの事前ロードによりテストを高速化してくれるツールであるのは分かっていますが、Guardはわかっていなかったので、調べてみた &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +90,67 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/31/spork--guardtdd/">
+		
+			Spork + GuardによるTDD</a>
+	</h2>
+	<div class="entry-content">
+		<p><a href="http://bukt.org/events/31">Yokohamarb #20</a>に参加して、Railsの開発環境のお話しがありました。その中に、TDDツールについて、SporkとGuardが使われています。</p>
+
+<p>Sporkはテストの事前ロードによりテストを高速化してくれるツールであるのは分かっていますが、Guardはわかっていなかったので、調べてみた</p>
+
+<h2>Guard</h2>
+
+<ul>
+<li><code>Gemfile</code>を編集し、必要なgemを追加
+
+<ul>
+<li><code>gem guard-spork</code></li>
+<li><code>gem guard-rspec</code></li>
+</ul>
+</li>
+<li><code>bundle install</code>でインストール</li>
+<li><code>bundle exec guard init spork</code></li>
+<li><code>bundle exec guard init rspec</code></li>
+<li><code>bundle exec guard</code>でプロセス起動すれば、<code>spork</code>＋<code>guard</code>が起動される</li>
+</ul>
+
+
+<p>これでテストの高速化かつ自動テスト環境が備えた</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-31T00:00:00+09:00" pubdate data-updated="true">May 31<span>st</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -884,124 +943,6 @@ end
 
 
 <time datetime="2012-05-09T00:00:00+09:00" pubdate data-updated="true">May 9<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/node-js/'>Node.js</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/05/08/nodejsexpress/">
-		
-			Node.js+expressを試してみた</a>
-	</h2>
-	<div class="entry-content">
-		<p><a href="http://gihyo.jp/magazine/wdpress/archive/2012/vol68">WEB+DB PRESS Vol.68</a>を読んで、Node.jsの実践をやってみた</p>
-
-<h2>インストール</h2>
-
-<ul>
-<li><p>Node.js
-至る簡単で、<a href="http://nodejs.org/">Node.js公式サイト</a>でインストーラをダウンロード・インストールだけ</p>
-
-<p>なるほどねあああああああああ</p></li>
-</ul>
-
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>node -v
-v0.6.17
-<span class="nv">$ </span>npm -v
-1.1.21
-</code></pre>
-</div>
-
-
-<ul>
-<li>express
-  <code>sudo npm install -g express</code> (<code>-g</code>というオプションはよく分かってない。gemでのアプリケーションではなく、システムにgemをインストールっていう感じかな）</li>
-</ul>
-
-
-<h2>アプリケーション作成</h2>
-
-<ul>
-<li><code>express nodeexpress</code></li>
-</ul>
-
-
-<div class="highlight"><pre><code class="bash">create : nodeexpress
-create : nodeexpress/package.json
-create : nodeexpress/app.js
-create : nodeexpress/public
-create : nodeexpress/public/javascripts
-create : nodeexpress/public/images
-create : nodeexpress/public/stylesheets
-create : nodeexpress/public/stylesheets/style.css
-create : nodeexpress/routes
-create : nodeexpress/routes/index.js
-create : nodeexpress/views
-create : nodeexpress/views/layout.jade
-create : nodeexpress/views/index.jade
-
-dont forget to install dependencies:
-<span class="nv">$ </span><span class="nb">cd </span>nodeexpress <span class="o">&amp;&amp;</span> npm install
-</code></pre>
-</div>
-
-
-<ul>
-<li><code>cd nodeexpress</code></li>
-<li><code>sudo npm install</code></li>
-<li><code>node app.js</code>でサーバプロセスを起動して、ブラウザで確認出来た！
-すっごくシンプルの画面ですが、何となく感動しました</li>
-</ul>
-
-
-<h2>コーディングルール</h2>
-
-<ul>
-<li><code>app.js</code>でルーティング条件を書く</li>
-<li><code>indes.js</code>でリクエストへ応答内容を書く</li>
-<li><code>views/*.jade</code>でビューのテンプレートを書く</li>
-</ul>
-
-
-<h2>感想</h2>
-
-<ul>
-<li>２００７年頃、最初Railsを触って、このわずかのステップででWEBアプリを作れたの？という感じと似ている</li>
-<li><code>express</code>は<code>sinatra</code>に、<code>Jade</code>の文法は<code>haml</code>に似てる</li>
-</ul>
-
-
-<p>TODO : Node.js + MongoDBで試す</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-08T00:00:00+09:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 

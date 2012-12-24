@@ -7,10 +7,11 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="話題のPryをインストールして、試してみた gem install pry
-rbenv rehash pryで起動 下記の記事はすごく詳しいです。有難うございます！ Rubyistよ、irbを捨ててPryを使おう 特徴 色付け
-メソッド定義する場合は、自動インデント
-shell統合 &hellip;">
+	<meta name="description" content="WEB+DB PRESS Vol.68を読んで、Node.jsの実践をやってみた インストール Node.js
+至る簡単で、Node.js公式サイトでインストーラをダウンロード・インストールだけ なるほどねあああああああああ $ node -v
+v0.6.17
+$ npm -v
+1.1.21 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,6 +94,124 @@ shell統合 &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/08/nodejsexpress/">
+		
+			Node.js+expressを試してみた</a>
+	</h2>
+	<div class="entry-content">
+		<p><a href="http://gihyo.jp/magazine/wdpress/archive/2012/vol68">WEB+DB PRESS Vol.68</a>を読んで、Node.jsの実践をやってみた</p>
+
+<h2>インストール</h2>
+
+<ul>
+<li><p>Node.js
+至る簡単で、<a href="http://nodejs.org/">Node.js公式サイト</a>でインストーラをダウンロード・インストールだけ</p>
+
+<p>なるほどねあああああああああ</p></li>
+</ul>
+
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>node -v
+v0.6.17
+<span class="nv">$ </span>npm -v
+1.1.21
+</code></pre>
+</div>
+
+
+<ul>
+<li>express
+  <code>sudo npm install -g express</code> (<code>-g</code>というオプションはよく分かってない。gemでのアプリケーションではなく、システムにgemをインストールっていう感じかな）</li>
+</ul>
+
+
+<h2>アプリケーション作成</h2>
+
+<ul>
+<li><code>express nodeexpress</code></li>
+</ul>
+
+
+<div class="highlight"><pre><code class="bash">create : nodeexpress
+create : nodeexpress/package.json
+create : nodeexpress/app.js
+create : nodeexpress/public
+create : nodeexpress/public/javascripts
+create : nodeexpress/public/images
+create : nodeexpress/public/stylesheets
+create : nodeexpress/public/stylesheets/style.css
+create : nodeexpress/routes
+create : nodeexpress/routes/index.js
+create : nodeexpress/views
+create : nodeexpress/views/layout.jade
+create : nodeexpress/views/index.jade
+
+dont forget to install dependencies:
+<span class="nv">$ </span><span class="nb">cd </span>nodeexpress <span class="o">&amp;&amp;</span> npm install
+</code></pre>
+</div>
+
+
+<ul>
+<li><code>cd nodeexpress</code></li>
+<li><code>sudo npm install</code></li>
+<li><code>node app.js</code>でサーバプロセスを起動して、ブラウザで確認出来た！
+すっごくシンプルの画面ですが、何となく感動しました</li>
+</ul>
+
+
+<h2>コーディングルール</h2>
+
+<ul>
+<li><code>app.js</code>でルーティング条件を書く</li>
+<li><code>indes.js</code>でリクエストへ応答内容を書く</li>
+<li><code>views/*.jade</code>でビューのテンプレートを書く</li>
+</ul>
+
+
+<h2>感想</h2>
+
+<ul>
+<li>２００７年頃、最初Railsを触って、このわずかのステップででWEBアプリを作れたの？という感じと似ている</li>
+<li><code>express</code>は<code>sinatra</code>に、<code>Jade</code>の文法は<code>haml</code>に似てる</li>
+</ul>
+
+
+<p>TODO : Node.js + MongoDBで試す</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-08T00:00:00+09:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/node-js/'>Node.js</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -741,83 +860,6 @@ shell統合 &hellip;">
 
 
 	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/28/rspec-mode/">
-		
-			RSpec-modeを試してみた</a>
-	</h2>
-	<div class="entry-content">
-		<p>Emacsの設定をちょっとずつ進めたいと思って、Yasnippetのカスタマイズスニペットを使いたいが、自分のスニペットのパスはどうやって設定できるかはイマイチわかってないため、出来なかった</p>
-
-<p>ちょっと調べたら、<code>RSpec-mode</code>があるのをわかって、導入してみた。</p>
-
-<p><a href="https://github.com/pezra/rspec-mode">rspec-mode</a></p>
-
-<h2>状況</h2>
-
-<ul>
-<li>インストールができて、specファイルを開いたらちゃんとrspec-modeになる</li>
-<li><code>c-c , v</code>でspecを実行するのはうまく出来てない</li>
-</ul>
-
-
-<h2>問題</h2>
-
-<ul>
-<li>この<code>rspec-mode</code>は、rails向けらしく、<code>Rakefile</code>によってプロジェクトのルートパスを確定していく
-
-<ul>
-<li>実際試したのは、<code>spec/game_spec.rb</code>と<code>lib/game.rb</code>のような２つファイルしかない軽いものなので、<code>rails</code>ではないので、困った</li>
-<li><code>touch Rakefile</code>で空のファイルを作成してみると、実行できたっぽいが、内容はおかしい。実際はspecは走ってないらしい</li>
-<li>要するに、実際は失敗のケースを実行しても、「成功したよ」とのメッセージが来るわけ</li>
-<li><a href="http://d.hatena.ne.jp/nbahide/20100721/1279676604">rspec-modeをrake意外で使う方法</a>を参考して、設定してみたら、今回は<code>zsh:rspec command not found</code>になった</li>
-</ul>
-</li>
-<li>調べてみたら、<code>zsh</code>と<code>rvm</code>とを併用する場合は、別の設定が必要らしい
-
-<ul>
-<li><a href="https://github.com/pezra/rspec-mode">rspec-mode</a>のReadmeに書かれていますが、<code>Zsh and RVM</code>だったら、また別の設定が必要</li>
-<li>設定してみたら、<code>bash :rspec command not found</code>になった</li>
-<li><code>rvm</code>の設定がおかしいかと、確認したら、問題なさそう</li>
-</ul>
-</li>
-</ul>
-
-
-<p>明日調べよう</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-28T00:00:00+09:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/editor/'>Editor</a>
 
 
 </div>

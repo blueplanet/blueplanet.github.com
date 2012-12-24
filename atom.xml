@@ -4,7 +4,7 @@
   <title><![CDATA[蒼い惑星の記録]]></title>
   <link href="http://blueplanet.github.com/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2012-12-21T06:08:38+09:00</updated>
+  <updated>2012-12-24T20:55:52+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[gtd todoist]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/12/24/gtd-todoist/"/>
+    <updated>2012-12-24T20:39:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/12/24/gtd-todoist</id>
+    <content type="html"><![CDATA[<p><a href="doit.im">Doit.im</a> を一ヶ月の会員を購入してみたんですが、いつでもどこでも何回でも同期出来て、すごく使いやすいです。</p>
+
+<p>会員の期限が切れてしまうと、24時間一回しか同期出来ないので、すごく不便ですね。</p>
+
+<p>他の代替案が有るかどうかをまた調べて見るところ。</p>
+
+<h2>todoist</h2>
+
+<h3>メリット</h3>
+
+<ul>
+<li>UIがシンプルで見やすい</li>
+<li>無料</li>
+<li>サポートOSをがおおい
+
+<ul>
+<li>MacOS, iOS, Chromeなど</li>
+</ul>
+</li>
+<li>同期制限がなさそう</li>
+</ul>
+
+
+<h3>デメリット</h3>
+
+<ul>
+<li>本格のGTDではない
+
+<ul>
+<li>Inboxがない、新規タスクは必ずどのプロジェクトに追加する</li>
+</ul>
+</li>
+<li>タグとコンテキストがない
+
+<ul>
+<li><code>@</code>でラベルを付けますが、</li>
+</ul>
+</li>
+</ul>
+
+
+<p>簡単にメモ</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[簡単なプラグインの作る過程]]></title>
@@ -1210,93 +1260,6 @@ end
 <li><a href="http://codedehitokoto.blogspot.jp/2012/01/nodemongodb.html">NodeでMongoDBを使って連絡帳アプリを作る</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Node.js+expressを試してみた]]></title>
-    <link href="http://blueplanet.github.com/blog/2012/05/08/nodejsexpress/"/>
-    <updated>2012-05-08T00:00:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2012/05/08/nodejsexpress</id>
-    <content type="html"><![CDATA[<p><a href="http://gihyo.jp/magazine/wdpress/archive/2012/vol68">WEB+DB PRESS Vol.68</a>を読んで、Node.jsの実践をやってみた</p>
-
-<h2>インストール</h2>
-
-<ul>
-<li><p>Node.js
-至る簡単で、<a href="http://nodejs.org/">Node.js公式サイト</a>でインストーラをダウンロード・インストールだけ</p>
-
-<p>なるほどねあああああああああ</p></li>
-</ul>
-
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>node -v
-v0.6.17
-<span class="nv">$ </span>npm -v
-1.1.21
-</code></pre>
-</div>
-
-
-<ul>
-<li>express
-  <code>sudo npm install -g express</code> (<code>-g</code>というオプションはよく分かってない。gemでのアプリケーションではなく、システムにgemをインストールっていう感じかな）</li>
-</ul>
-
-
-<h2>アプリケーション作成</h2>
-
-<ul>
-<li><code>express nodeexpress</code></li>
-</ul>
-
-
-<div class="highlight"><pre><code class="bash">create : nodeexpress
-create : nodeexpress/package.json
-create : nodeexpress/app.js
-create : nodeexpress/public
-create : nodeexpress/public/javascripts
-create : nodeexpress/public/images
-create : nodeexpress/public/stylesheets
-create : nodeexpress/public/stylesheets/style.css
-create : nodeexpress/routes
-create : nodeexpress/routes/index.js
-create : nodeexpress/views
-create : nodeexpress/views/layout.jade
-create : nodeexpress/views/index.jade
-
-dont forget to install dependencies:
-<span class="nv">$ </span><span class="nb">cd </span>nodeexpress <span class="o">&amp;&amp;</span> npm install
-</code></pre>
-</div>
-
-
-<ul>
-<li><code>cd nodeexpress</code></li>
-<li><code>sudo npm install</code></li>
-<li><code>node app.js</code>でサーバプロセスを起動して、ブラウザで確認出来た！
-すっごくシンプルの画面ですが、何となく感動しました</li>
-</ul>
-
-
-<h2>コーディングルール</h2>
-
-<ul>
-<li><code>app.js</code>でルーティング条件を書く</li>
-<li><code>indes.js</code>でリクエストへ応答内容を書く</li>
-<li><code>views/*.jade</code>でビューのテンプレートを書く</li>
-</ul>
-
-
-<h2>感想</h2>
-
-<ul>
-<li>２００７年頃、最初Railsを触って、このわずかのステップででWEBアプリを作れたの？という感じと似ている</li>
-<li><code>express</code>は<code>sinatra</code>に、<code>Jade</code>の文法は<code>haml</code>に似てる</li>
-</ul>
-
-
-<p>TODO : Node.js + MongoDBで試す</p>
 ]]></content>
   </entry>
   
