@@ -7,11 +7,10 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="WEB+DB PRESS Vol.68を読んで、Node.jsの実践をやってみた インストール Node.js
-至る簡単で、Node.js公式サイトでインストーラをダウンロード・インストールだけ なるほどねあああああああああ $ node -v
-v0.6.17
-$ npm -v
-1.1.21 &hellip;">
+	<meta name="description" content="昨日の引き続き、MongoDBの部分も試してみた MongoDBインストール brew install mongodb
+mkdir ~/Library/MongoDB_Data
+mongod --dbpath=/Users/XXX/Library/MongoDB_Data
+mongoで接続出来た &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -94,6 +93,75 @@ $ npm -v
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/09/nodejsexpress/">
+		
+			Node.js+express+MongoDBを試してみた</a>
+	</h2>
+	<div class="entry-content">
+		<p>昨日の引き続き、MongoDBの部分も試してみた</p>
+
+<h2>MongoDBインストール</h2>
+
+<ul>
+<li><code>brew install mongodb</code></li>
+<li><code>mkdir ~/Library/MongoDB_Data</code></li>
+<li><code>mongod --dbpath=/Users/XXX/Library/MongoDB_Data</code></li>
+<li><code>mongo</code>で接続出来た！</li>
+</ul>
+
+
+<h2>コーディング</h2>
+
+<ul>
+<li><code>app.js</code>ルート追加</li>
+<li><code>routes/index.js</code>にルート処理追加</li>
+<li><code>views/mongo.jade</code>ビューを作成</li>
+</ul>
+
+
+<p>出来たもの
+<img src="https://lh4.googleusercontent.com/--5WdPuH5Jtw/T6mTtKV-hRI/AAAAAAAABKw/1_35PV___pA/s800/Screen%2520Shot%25202012-05-09%2520at%25206.43.30.png" alt="" /></p>
+
+<h2>参考URL</h2>
+
+<ul>
+<li><a href="http://codedehitokoto.blogspot.jp/2012/01/nodemongodb.html">NodeでMongoDBを使って連絡帳アプリを作る</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-09T00:00:00+09:00" pubdate data-updated="true">May 9<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/node-js/'>Node.js</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -816,56 +884,6 @@ dont forget to install dependencies:
 	
 </div></article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/29/emacs-daemon/">
-		
-			Emacs Daemonモード試してみる</a>
-	</h2>
-	<div class="entry-content">
-		<p>Lionで<code>Emacs</code>を使って、一番悩んでるのは、コマンドラインからファイルを編集するケース。前から<code>daemon</code>モードが知っていますが、何か<code>emacs --daemon</code>で起動すると、エラーが出て起動出来ない状態だった。</p>
-
-<p>今日冷静に考えてみたら、GUI関連の設定とフォント設定の周りのせいじゃないかと気付きました。</p>
-
-<p>確認したら、やはりフォントの設定は条件なしでやっているのは悪かった。それを<code>window-system</code>の場合のみ設定するように修正すれば、<code>daemon</code>オプションを付けても実行出来た！！</p>
-
-<p>これで、Emacsには文句なしですね。</p>
-
-<p>Daemonの設定方法について、公式のWikiに書かれています。</p>
-
-<p><a href="http://www.emacswiki.org/emacs/EmacsAsDaemon">Emacs As Daemon</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-29T00:00:00+09:00" pubdate data-updated="true">Apr 29<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/blog/page/2/" class="prev">Prev</a>
@@ -875,7 +893,7 @@ dont forget to install dependencies:
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2012
+	<footer id="footer" class="inner">Copyright &copy; 2013
 
     blueplanet
 

@@ -7,9 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="Emacsを勉強したいので、簡単な初期設定をメモ
-* バージョン：Emacs 23.4 by Cocoa Emacs ;; load-path設定
-(setq load-path (append (list (expand-file-name &quot;~/.emacs.d/site-list &hellip;">
+	<meta name="description" content="&#8221;@69&#8221; 　さんのつぶやきで、htopというカッコイイアプリを知りました。早速MacOS 10.7にインストール brew info htopで検索してみたら、homebrew issueの説明を見ると、既に公式リポジトリから削除され、Homebrew- &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +90,57 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/09/install-htop-to-macos-107/">
+		
+			Install Htop to MacOS 10.7</a>
+	</h2>
+	<div class="entry-content">
+		<p>&#8221;@<strong>69</strong>&#8221;</p>
+
+<p>　さんのつぶやきで、<code>htop</code>というカッコイイアプリを知りました。早速MacOS 10.7にインストール</p>
+
+<p><code>brew info htop</code>で検索してみたら、<a href="https://github.com/mxcl/homebrew/issues/10355">homebrew issue</a>の説明を見ると、既に公式リポジトリから削除され、<code>Homebrew-alt</code>でそうぞとのこと。</p>
+
+<p>なるほど。じゃ、やっちゃおう！</p>
+
+<p><code>brew install --HEAD https://raw.github.com/adamv/homebrew-alt/master/unmaintained/htop.rb</code>の一発でOK。</p>
+
+<p>ジャン〜
+<img src="https://lh5.googleusercontent.com/-ZbutrCWxabg/T4LgZ7gX1-I/AAAAAAAAAuA/b8nEZ8brAEs/s800/Screen%2520Shot%25202012-04-09%2520at%252022.11.37.png" alt="image" /></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-09T00:00:00+09:00" pubdate data-updated="true">Apr 9<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/application/'>Application</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -816,156 +865,6 @@
 	
 </div></article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/30/bpstudy-number-55/">
-		
-			BPStudy#55</a>
-	</h2>
-	<div class="entry-content">
-		<p>今日ここの勉強会に行きました。適当なメモ<br/>
-<a href="http://connpass.com/event/354/">BPStudy#55 Herokuに関するお話</a></p>
-
-<h2>Python本の説明</h2>
-
-<ul>
-<li>プログラミングの話ではない</li>
-<li>開発環境構築</li>
-<li>チーム開発
-
-<ul>
-<li>ドキュメント管理Sphinx</li>
-<li>課題管理</li>
-<li>モジュール分散方法</li>
-<li>CIツール</li>
-<li>複数サーバのデプロイツール</li>
-</ul>
-</li>
-<li>本番環境
-
-<ul>
-<li>Google AppEnige</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>Heroku</h2>
-
-<ul>
-<li>ホスティングサーバとの違い
-
-<ul>
-<li>OSなどには全く意識しないで製品に集中する</li>
-<li>生産性が高いプログラマが生産性をもっと高める為のプラットフォーム</li>
-<li>Rubyとはある程度似ってる</li>
-</ul>
-</li>
-<li>Salesforce？
-
-<ul>
-<li>顧客管理システムを売る会社</li>
-<li>では、なんでHerokuを買った？</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>日本のHerokuは？</h3>
-
-<ul>
-<li>Herokuを使いましょう！</li>
-<li>Facebookアプリを作りましょう！</li>
-<li>Herokuのアドオンを作りましょう！</li>
-</ul>
-
-
-<h2>SonicGardenでのherokuの実践活用</h2>
-
-<ul>
-<li>会社
-
-<ul>
-<li>SKIP 社内NSS</li>
-<li>youRoom</li>
-<li>Ruby x Cloud x Ajile</li>
-<li>納品しない　受託開発</li>
-</ul>
-</li>
-<li>自社の運用方法
-
-<ul>
-<li><a href="http://kuranuki.sonicgarden.jp/2012/03/post-70.html">高速で無駄のないソフトウェア開発を実現するための7つのポイント</a>
-
-<ul>
-<li><a href="http://www.pivotaltracker.com/">トラッカツール　pivotaltracker</a>　<strong>特徴：優先度ない、上からやれ！</strong></li>
-<li>ドキュメントはほとんど作らない　<strong>ホワイトボードで十分</strong></li>
-<li>githubのソースコードレビューが素晴らしい</li>
-</ul>
-</li>
-<li>新規サービスのスタートアップはHerokuを使ってる</li>
-<li>ステージング環境としてHerokuを使う</li>
-</ul>
-</li>
-<li>Herokuでの課題と工夫
-
-<ul>
-<li>ログを数年保管したい　<strong>loggly addon</strong></li>
-<li>復旧できないとき
-
-<ul>
-<li>PG Backups addonを利用</li>
-<li>DBをHerokuの外にバックアップ</li>
-<li>heroku_backup_taskを拡張</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>おすすめ資料
-
-<ul>
-<li><a href="http://gihyo.jp/dev/serial/01/heroku">Herokuで作るFacebookアプリ</a></li>
-<li>etc…</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>デモ</h2>
-
-<p>ワンクリックでFacebookアプリ On Heroku のデモでした</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-30T18:50:00+09:00" pubdate data-updated="true">Mar 30<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/heroku/'>Heroku</a>, <a class='category' href='/blog/categories/勉強会/'>勉強会</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/blog/page/5/" class="prev">Prev</a>
@@ -975,7 +874,7 @@
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2012
+	<footer id="footer" class="inner">Copyright &copy; 2013
 
     blueplanet
 
