@@ -7,7 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="&#8221;@69&#8221; 　さんのつぶやきで、htopというカッコイイアプリを知りました。早速MacOS 10.7にインストール brew info htopで検索してみたら、homebrew issueの説明を見ると、既に公式リポジトリから削除され、Homebrew- &hellip;">
+	<meta name="description" content="昨日買った本ですが、一日で読み終わった。すっごく参考になる本です。おすすめです。 Emacs実践入門　~思考を直感的にコード化し、開発を加速する (WEB+DB PRESS plus) 本の写経みたいですが、自分の.emacs.dもいろいろ追加して設定しました。→init.el 行列番号表示 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +90,98 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/10/emacs/">
+		
+			Emacs実践入門　読了</a>
+	</h2>
+	<div class="entry-content">
+		<p>昨日買った本ですが、一日で読み終わった。すっごく参考になる本です。おすすめです。</p>
+
+<p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774150029/hatena-hamazou-22/">Emacs実践入門　~思考を直感的にコード化し、開発を加速する (WEB+DB PRESS plus)</a></p>
+
+<p>本の写経みたいですが、自分の<code>.emacs.d</code>もいろいろ追加して設定しました。→<a href="https://github.com/blueplanet/dotfiles/blob/master/.emacs.d/init.el">init.el</a></p>
+
+<ul>
+<li>行列番号表示</li>
+<li>バックアップ・自動保存ファイル場所を変更</li>
+<li>Rubyモード設定
+
+<ul>
+<li>クォーテーションは対に補完</li>
+<li><code>def</code>、<code>do</code>などは<code>end</code>を補完</li>
+<li><code>Emacs</code>上で<code>irb</code>を利用できるように</li>
+</ul>
+</li>
+<li>Markdownモード設定
+
+<ul>
+<li>いまだに色付け以外は、補完や整形のメリットはまだ感じていません</li>
+</ul>
+</li>
+<li><p>フォント関連の設定</p>
+
+<ul>
+<li>できるだけ等幅フォントを使いたいのですが、英字:日本語が1:2に設定するのは、意外に深そうなので、後でまた調べる</li>
+</ul>
+</li>
+<li><p>残りの課題</p>
+
+<ul>
+<li>デーモンにより起動高速化</li>
+<li><code>git</code>関連を調べたい</li>
+<li><code>shell</code>関連</li>
+</ul>
+</li>
+</ul>
+
+
+<p>これからもどんどん追加してきます！</p>
+
+<hr />
+
+<p><strong>2012/04/11更新</strong></p>
+
+<p>起動してみるとすっごく遅くなったので、原因を調べた。</p>
+
+<ul>
+<li>フォントの設定がおかしかったので、直した</li>
+<li>auto-installを入れていると、更新しに行くため、結構時間がかかるので、とりあえずは更新をやめる</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-10T00:00:00+09:00" pubdate data-updated="true">Apr 10<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -780,85 +872,6 @@
 
 
 	<a class='category' href='/blog/categories/blog/'>Blog</a>, <a class='category' href='/blog/categories/jekyll/'>Jekyll</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/31/rspec-rails/">
-		
-			Rspec 2.9.0 on Rails 3.2.2 + Sporkで試す</a>
-	</h2>
-	<div class="entry-content">
-		<p>バージョンが異なる場合は、いろいろ違いがあるので、最新バージョンで環境を作って、最新のAPIを確認したい</p>
-
-<h3>バージョン</h3>
-
-<ul>
-<li>ruby 1.9.2</li>
-<li>rails 3.2.2</li>
-<li>rspec 2.9.0</li>
-<li>spork 0.9.0</li>
-</ul>
-
-
-<h2>手順</h2>
-
-<ul>
-<li>Gemfileに追加
-
-<ul>
-<li><code>gem 'rspec-rails'</code></li>
-<li><code>gem 'spork'</code></li>
-</ul>
-</li>
-<li><code>bundle install</code>を実行してgemインストール</li>
-<li><code>rails g rspec:install</code>でrspec関連ファイルを生成</li>
-<li><code>spork --bootstrap</code>でspork関連ファイルを生成</li>
-<li><p><code>rails g scaffold post title:string body:text</code>を実行すると、ファイルがいっぱい生成される</p>
-
-<ul>
-<li>この中に<code>spec/view/</code>配下のファイルを参考してViewテストの書き方を勉強したい</li>
-</ul>
-</li>
-<li><p>ハマったこと</p>
-
-<ul>
-<li><code>Gemfile</code>に追加する時、<code>gorup</code>を使いたかったが、<code>:development, :test</code>で限定すると、何か<code>rails g scaffold …</code>で生成する時、spec関連のテストクラスは作ってくれない</li>
-<li>やはり<code>Gemfile</code>の書き方はよくわかってないせい。とりあえずは、直接に<code>group</code>は書かない</li>
-</ul>
-</li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-31T23:21:00+09:00" pubdate data-updated="true">Mar 31<span>st</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
 
 
 </div>
