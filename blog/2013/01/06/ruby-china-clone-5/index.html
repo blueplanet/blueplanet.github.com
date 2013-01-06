@@ -1,0 +1,456 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>使用 RSpec+Capybara 简单BDD入门 -5 - 蒼い惑星の記録</title>
+	<meta name="author" content="blueplanet">
+
+	
+	<meta name="description" content="目录
+上一步：使用 RSpec+Capybara 简单BDD入门 -4 用户故事 访问者希望看到用户的信息 用户名称、创建日期 环境准备 1
+2
+3
+git checkout -b f5
+rails c # console
+rails s # server 步骤 新建文件spec/features &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="蒼い惑星の記録" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">蒼い惑星の記録</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:blueplanet.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/blueplanet42" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/blueplanet" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:blueplanet.github.com">
+	</form>
+</nav>
+
+</header>
+	
+		
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/blueplanet42">blueplanet42</a> @ <a href="http://twitter.com">Twitter</a></small>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('blueplanet42', 4, false);
+	})(jQuery);
+</script>
+
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">使用 RSpec+Capybara 简单BDD入门 -5</h2>
+	<div class="entry-content"><p><a href="/blog/2013/01/06/ruby-china-clone-cover">目录</a>
+上一步：<a href="/blog/2013/01/06/ruby-china-clone-4">使用 RSpec+Capybara 简单BDD入门 -4</a></p>
+
+<h2>用户故事</h2>
+
+<p>访问者希望看到用户的信息</p>
+
+<ul>
+<li>用户名称、创建日期</li>
+</ul>
+
+
+<h2>环境准备</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git checkout -b f5
+</span><span class='line'>rails c <span class="c"># console</span>
+</span><span class='line'>rails s <span class="c"># server</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>步骤</h2>
+
+<h3>新建文件<code>spec/features/guest_can_see_user_info_spec.rb</code></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="c1"># coding: utf-8</span>
+</span><span class='line'><span class="n">feature</span> <span class="s1">&#39;访问者希望看到用户的信息&#39;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">scenario</span> <span class="s1">&#39;访问/users/:id, 应该显示用户信息&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">visit</span> <span class="s2">&quot;/users/1&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span> <span class="s2">&quot;test_user&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：<code>No route matches [GET] "/users/1"</code></li>
+<li>原因：没有<code>/users/1</code>对应的路由信息</li>
+</ul>
+
+
+<h3>编辑<code>config/routes.rb</code>，增加路由信息</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'>  <span class="n">resources</span> <span class="ss">:users</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:show</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：<code>uninitialized constant UsersController</code></li>
+<li>原因：没有<code>UsersController</code></li>
+</ul>
+
+
+<h3>在<code>rails console</code>中执行</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">[</span><span class="mi">7</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">generate</span> <span class="s2">&quot;controller users&quot;</span>
+</span><span class='line'>      <span class="n">create</span>  <span class="n">app</span><span class="o">/</span><span class="n">controllers</span><span class="o">/</span><span class="n">users_controller</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'>      <span class="n">invoke</span>  <span class="n">haml</span>
+</span><span class='line'>      <span class="n">create</span>    <span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">users</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Completed&quot;</span>
+</span><span class='line'><span class="o">[</span><span class="mi">8</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：<code>The action 'show' could not be found for UsersController</code></li>
+<li>原因：没有<code>show</code>方法</li>
+</ul>
+
+
+<h3>编辑<code>controllers/users_controller</code>，增加<code>show</code>方法</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">show</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：<code>Missing template users/show, application/show with {:loc...</code></li>
+<li>原因：没有<code>show</code>模板</li>
+</ul>
+
+
+<h3>新建<code>users/show.html.haml</code></h3>
+
+<p>拷贝<code>ui/user.html</code>内容至当前模板</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">%</span><span class="n">section</span><span class="c1">#user.box</span>
+</span><span class='line'>  <span class="o">%</span><span class="n">h1</span> <span class="err">个人信息</span>
+</span><span class='line'>  <span class="o">%</span><span class="n">img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">gravatar_url</span><span class="p">(</span><span class="s1">&#39;joe@example.com&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="o">%</span><span class="n">dl</span>
+</span><span class='line'>    <span class="o">%</span><span class="n">dt</span><span class="o">.</span><span class="n">span1</span> <span class="no">ID</span><span class="p">:</span>
+</span><span class='line'>    <span class="o">%</span><span class="n">dd</span>
+</span><span class='line'>      <span class="o">%</span><span class="n">strong</span> <span class="n">chucai</span>
+</span><span class='line'>    <span class="o">%</span><span class="n">dt</span><span class="o">.</span><span class="n">span1</span> <span class="no">Since</span><span class="p">:</span>
+</span><span class='line'>    <span class="o">%</span><span class="n">dd</span> <span class="mi">2012</span><span class="err">年</span><span class="mi">2</span><span class="err">月</span><span class="mi">12</span><span class="err">日</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>注意：当前用户故事只考虑基本用户信息，最新帖子和最新回复以后的步骤中会增加</strong></p>
+
+<ul>
+<li>测试失败：<code>expected there to be text "test_user" in "社区 会员 knowa...</code></li>
+<li>原因：页面还是写死的数据</li>
+</ul>
+
+
+<h3>修改模板<code>users/show.html.haml</code></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">%</span><span class="n">section</span><span class="c1">#user.box</span>
+</span><span class='line'>  <span class="o">%</span><span class="n">h1</span> <span class="err">个人信息</span>
+</span><span class='line'>  <span class="o">%</span><span class="n">img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">gravatar_url</span><span class="p">(</span><span class="s1">&#39;joe@example.com&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="o">%</span><span class="n">dl</span>
+</span><span class='line'>    <span class="o">%</span><span class="n">dt</span><span class="o">.</span><span class="n">span1</span> <span class="no">ID</span><span class="p">:</span>
+</span><span class='line'>    <span class="o">%</span><span class="n">dd</span>
+</span><span class='line'>      <span class="o">%</span><span class="n">strong</span><span class="o">=</span> <span class="vi">@user</span><span class="o">.</span><span class="n">name</span>
+</span><span class='line'>    <span class="o">%</span><span class="n">dt</span><span class="o">.</span><span class="n">span1</span> <span class="no">Since</span><span class="p">:</span>
+</span><span class='line'>    <span class="o">%</span><span class="n">dd</span><span class="o">=</span> <span class="vi">@user</span><span class="o">.</span><span class="n">created_at</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：`undefined methodname&#8217; for nil:NilClass&#8220;</li>
+<li>原因：没有对<code>@user</code>变量赋值</li>
+</ul>
+
+
+<h3>编辑<code>controllers/users_controller.rb</code></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">show</span>
+</span><span class='line'>    <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：<code>uninitialized constant UsersController::User</code></li>
+<li>原因：没有<code>user</code>这个<code>model</code></li>
+</ul>
+
+
+<h3>在<code>rails console</code>中执行</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">[</span><span class="mi">8</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">generate</span> <span class="s2">&quot;model user name:string&quot;</span>
+</span><span class='line'>      <span class="n">invoke</span>  <span class="n">active_record</span>
+</span><span class='line'>      <span class="n">create</span>    <span class="n">db</span><span class="o">/</span><span class="n">migrate</span><span class="o">/</span><span class="mi">20130101221838</span><span class="n">_create_users</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'>      <span class="n">create</span>    <span class="n">app</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">user</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Completed&quot;</span>
+</span><span class='line'><span class="o">[</span><span class="mi">9</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>执行数据库升级</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>bundle <span class="nb">exec </span>rake db:migrate
+</span><span class='line'>bundle <span class="nb">exec </span>rake db:test:prepare
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：<code>Couldn't find User with id=1</code></li>
+<li>原因：测试用例中使用的是写死的数据</li>
+</ul>
+
+
+<h3>修改测试用例，增加<code>user</code>部分</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="c1"># coding: utf-8</span>
+</span><span class='line'><span class="n">feature</span> <span class="s1">&#39;访问者希望看到用户的信息&#39;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">background</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">create</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;test_user&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">scenario</span> <span class="s1">&#39;访问/users/:id, 应该显示用户信息&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">visit</span> <span class="s2">&quot;/users/</span><span class="si">#{</span><span class="vi">@user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span> <span class="vi">@user</span><span class="o">.</span><span class="n">name</span>
+</span><span class='line'>    <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span> <span class="vi">@user</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试通过！</li>
+</ul>
+
+
+<h2>完成，提交代码</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git add .
+</span><span class='line'>git commit
+</span><span class='line'>git checkout dev
+</span><span class='line'>git merge f5 --no-ff
+</span><span class='line'>git branch -d f5
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>下一步骤：<a href="/blog/2013/01/06/ruby-china-clone-6">使用 RSpec+Capybara 简单BDD入门 -6</a></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-06T19:58:00+09:00" pubdate data-updated="true">Jan 6<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/bdd/'>BDD</a>, <a class='category' href='/blog/categories/rspec-/'>RSpec,</a>, <a class='category' href='/blog/categories/rails-/'>Rails,</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2013
+
+    blueplanet
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'bpgh';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-5/';
+        var disqus_url = 'http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-5/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+</body>
+</html>

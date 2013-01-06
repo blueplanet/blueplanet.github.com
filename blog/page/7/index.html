@@ -7,11 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="バージョンが異なる場合は、いろいろ違いがあるので、最新バージョンで環境を作って、最新のAPIを確認したい バージョン ruby 1.9.2
-rails 3.2.2
-rspec 2.9.0
-spork 0.9.0 手順 Gemfileに追加 gem 'rspec-rails'
-gem 'spork &hellip;">
+	<meta name="description" content="昨日買った本ですが、一日で読み終わった。すっごく参考になる本です。おすすめです。 Emacs実践入門　~思考を直感的にコード化し、開発を加速する (WEB+DB PRESS plus) 本の写経みたいですが、自分の.emacs.dもいろいろ追加して設定しました。→init.el 行列番号表示 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -99,648 +95,693 @@ gem 'spork &hellip;">
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/03/31/rspec-rails/">
+		<a href="/blog/2012/04/10/emacs/">
 		
-			Rspec 2.9.0 on Rails 3.2.2 + Sporkで試す</a>
+			Emacs実践入門　読了</a>
 	</h2>
 	<div class="entry-content">
-		<p>バージョンが異なる場合は、いろいろ違いがあるので、最新バージョンで環境を作って、最新のAPIを確認したい</p>
+		<p>昨日買った本ですが、一日で読み終わった。すっごく参考になる本です。おすすめです。</p>
 
-<h3>バージョン</h3>
+<p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774150029/hatena-hamazou-22/">Emacs実践入門　~思考を直感的にコード化し、開発を加速する (WEB+DB PRESS plus)</a></p>
+
+<p>本の写経みたいですが、自分の<code>.emacs.d</code>もいろいろ追加して設定しました。→<a href="https://github.com/blueplanet/dotfiles/blob/master/.emacs.d/init.el">init.el</a></p>
 
 <ul>
-<li>ruby 1.9.2</li>
-<li>rails 3.2.2</li>
-<li>rspec 2.9.0</li>
-<li>spork 0.9.0</li>
+<li>行列番号表示</li>
+<li>バックアップ・自動保存ファイル場所を変更</li>
+<li>Rubyモード設定
+
+<ul>
+<li>クォーテーションは対に補完</li>
+<li><code>def</code>、<code>do</code>などは<code>end</code>を補完</li>
+<li><code>Emacs</code>上で<code>irb</code>を利用できるように</li>
+</ul>
+</li>
+<li>Markdownモード設定
+
+<ul>
+<li>いまだに色付け以外は、補完や整形のメリットはまだ感じていません</li>
+</ul>
+</li>
+<li><p>フォント関連の設定</p>
+
+<ul>
+<li>できるだけ等幅フォントを使いたいのですが、英字:日本語が1:2に設定するのは、意外に深そうなので、後でまた調べる</li>
+</ul>
+</li>
+<li><p>残りの課題</p>
+
+<ul>
+<li>デーモンにより起動高速化</li>
+<li><code>git</code>関連を調べたい</li>
+<li><code>shell</code>関連</li>
+</ul>
+</li>
+</ul>
+
+
+<p>これからもどんどん追加してきます！</p>
+
+<hr />
+
+<p><strong>2012/04/11更新</strong></p>
+
+<p>起動してみるとすっごく遅くなったので、原因を調べた。</p>
+
+<ul>
+<li>フォントの設定がおかしかったので、直した</li>
+<li>auto-installを入れていると、更新しに行くため、結構時間がかかるので、とりあえずは更新をやめる</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-10T00:00:00+09:00" pubdate data-updated="true">Apr 10<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/09/install-htop-to-macos-107/">
+		
+			Install Htop to MacOS 10.7</a>
+	</h2>
+	<div class="entry-content">
+		<p>&#8221;@<strong>69</strong>&#8221;</p>
+
+<p>　さんのつぶやきで、<code>htop</code>というカッコイイアプリを知りました。早速MacOS 10.7にインストール</p>
+
+<p><code>brew info htop</code>で検索してみたら、<a href="https://github.com/mxcl/homebrew/issues/10355">homebrew issue</a>の説明を見ると、既に公式リポジトリから削除され、<code>Homebrew-alt</code>でそうぞとのこと。</p>
+
+<p>なるほど。じゃ、やっちゃおう！</p>
+
+<p><code>brew install --HEAD https://raw.github.com/adamv/homebrew-alt/master/unmaintained/htop.rb</code>の一発でOK。</p>
+
+<p>ジャン〜
+<img src="https://lh5.googleusercontent.com/-ZbutrCWxabg/T4LgZ7gX1-I/AAAAAAAAAuA/b8nEZ8brAEs/s800/Screen%2520Shot%25202012-04-09%2520at%252022.11.37.png" alt="image" /></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-09T00:00:00+09:00" pubdate data-updated="true">Apr 9<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/application/'>Application</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/08/emacs-settings/">
+		
+			Emacs初期設定</a>
+	</h2>
+	<div class="entry-content">
+		<p>Emacsを勉強したいので、簡単な初期設定をメモ<br/>
+* バージョン：Emacs 23.4 by <a href="http://emacsformacosx.com/">Cocoa Emacs</a></p>
+
+<div class="highlight"><pre><code class="cl"><span class="c1">;; load-path設定</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">load-path</span>
+  <span class="p">(</span><span class="nb">append</span>
+    <span class="p">(</span><span class="nb">list</span>
+      <span class="p">(</span><span class="nv">expand-file-name</span> <span class="s">&quot;~/.emacs.d/site-list/ruby&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+   <span class="nv">load-path</span><span class="p">))</span>
+
+<span class="c1">;; 行番号表示</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">line-number-mode</span> <span class="no">t</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">global-set-key[f9]</span> <span class="ss">&#39;linu-mode</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">global-linum-mode</span> <span class="no">t</span><span class="p">)</span>
+
+<span class="c1">;; ruby-electric 対応括弧やEndなどの補完</span>
+<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;ruby-electric</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;ruby-mode-hook</span> <span class="o">&#39;</span><span class="p">(</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">ruby-electric-mode</span> <span class="no">t</span><span class="p">)))</span>
+</code></pre>
+</div>
+
+
+<ul>
+<li>疑問
+
+<ul>
+<li>ruby-modeはデフォルトで動いているらしい？？　ので、特に設定してない</li>
+<li>インデントは、Ctrl+J/Ctrl+Oで改行すると、インデントしてくれるが、普通の改行はインデントなし</li>
+</ul>
+</li>
+<li>課題
+
+<ul>
+<li>Railsについては、後で調べて設定する</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>この記事の一部は、githubのオンライン編集機能で書きました、意外に<code>*</code>などでリストを作る時に、インデントしてくれる。いいですね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-08T00:00:00+09:00" pubdate data-updated="true">Apr 8<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/editor/'>Editor</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/07/rails-develop--vim-or-emacs/">
+		
+			Rails開発の場合は Vim と Emacsとは、どっち？</a>
+	</h2>
+	<div class="entry-content">
+		<p>Rails開発を勉強中。Editorについての考え</p>
+
+<ul>
+<li>Textmate：No1なんですが、日本語や中国語の入力がおかしいのは痛いので断念</li>
+<li>Vim：最初から今まで使ってるが、さすがに設定をこなさないと
+
+<ul>
+<li>使ってるもの <code>vim-rails</code>,<code>neocomplcache</code>,<code>unite</code>,<code>nerdtree</code>(不要かな？)<br/>
+と言っても、入れているだけで全然こなしてないので、もっと調べないと</li>
+<li>括弧やクォーテーションなどの入力は、対になってるものが自動補完　←　vimrcでキーバインドで解決</li>
+<li><code>def</code>や<code>if</code>などをタイプする場合、<code>end</code>を自動挿入してもらいたいが、今まだ出来てない<br/>
+調べてみたら、<code>vim-endwise</code>があるらしいが、使い方は今だに分かってない</li>
+</ul>
+</li>
+<li>Emacs：角谷さんのRspecの実演を見ると、カッコよくてすごく刺激を受けましたので、勉強したい
+
+<ul>
+<li>これからなので、まだ評価できないレベル</li>
+<li>Matzさんが使ってるので、Rubyの周りは完璧じゃないかなと期待してる</li>
+<li><code>Rinari</code>というプラグインがあるらしい</li>
+</ul>
+</li>
+</ul>
+
+
+<p>しばらくはVimを使って、Emacsも使ってみようと</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-07T00:00:00+09:00" pubdate data-updated="true">Apr 7<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/editor/'>Editor</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/06/kobita-by-qiita/">
+		
+			Kobita by Qiitaを試す</a>
+	</h2>
+	<div class="entry-content">
+		<p>昨日先行利用ユーザとして登録した<code>kobito</code>からリリースのお知らせが来ました。早速落としてみました。</p>
+
+<p><a href="http://kobitoapp.com/">公式サイト</a>にアクセスすればイメージできるので、画像とかは割愛</p>
+
+<p>今使ってる<code>Mou.app</code>とはちょっと比較してみました。</p>
+
+<p><strong>メインはJekyllのブロク書く前提とするお話し</strong></p>
+
+<ul>
+<li><p>共通の足りないところ</p>
+
+<ul>
+<li>Jekyllの対応はない　まあ、対応しているアプリはなさそうけど</li>
+</ul>
+</li>
+<li><p>Kobita</p>
+
+<ul>
+<li>位置付け：<strong>「メモアプリ」</strong>、かつQiitaに投稿するアプリ.
+
+<ul>
+<li>１行目はメモのタイトルになる</li>
+<li>タグが付けられる</li>
+</ul>
+</li>
+<li>メリット
+
+<ul>
+<li>見た目はもっとMacOSライク的な感じ</li>
+<li>ソースコードの場合は、独自の拡張（？かな）によって、より見やすい感じ</li>
+</ul>
+</li>
+<li>デメリット
+
+<ul>
+<li>任意ファイルを開いて編集するのは不可</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mou
+
+<ul>
+<li>位置付け：<strong>Markdownファイル編集アプリ</strong></li>
+<li>メリット
+
+<ul>
+<li>Jekyllで作ったファイルを開いて編集できる</li>
+</ul>
+</li>
+<li>デメリット
+
+<ul>
+<li>特に気付いたことはない。見た目も人によっていいのもあるし、出来れば、自分でCSSを書いちゃえばいいし</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p>うむ、メリットはそれほど多くはないので、しばらくはMouを使う</p>
+
+<p><strong>自分でJekyll専用のアプリを開発すれば良いじゃん！</strong></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-06T00:00:00+09:00" pubdate data-updated="true">Apr 6<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/blog/'>Blog</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/05/change-to-jekyll/">
+		
+			OctopressからJekyllへ</a>
+	</h2>
+	<div class="entry-content">
+		<p>いろいろ考えた結果、やはりJekyllのほうが使い勝手が好きで、移行するメモ</p>
+
+<h2>方針</h2>
+
+<p>今までの記録を保持したいので、githubのリポジトリは、クリアしなくて、できるだけ記録を保持するままで移行</p>
+
+<h2>手順</h2>
+
+<ul>
+<li><code>git pull origin master</code></li>
+<li><code>rm -rf *</code></li>
+<li><code>cp ../jekyll/* .</code></li>
+<li><code>git add .</code></li>
+<li><code>git ci -m 'jekyll init'</code></li>
+<li>以降は、jekyllの手順を従って設定するだけ</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-05T00:00:00+09:00" pubdate data-updated="true">Apr 5<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/blog/'>Blog</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/04/jekyll/">
+		
+			Jekyllにする？（2）</a>
+	</h2>
+	<div class="entry-content">
+		<p>とりあえずローカルでいじって見る。</p>
+
+<ul>
+<li>OctoressのpostをJekyllにコピー
+
+<ul>
+<li>拡張子が異なるので、変換する</li>
+</ul>
+</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="ruby"><span class="k">for</span> <span class="n">nm</span> <span class="k">in</span> <span class="o">*.</span><span class="n">markdown</span>
+    <span class="n">mv</span> <span class="vg">$nm</span> <span class="err">$</span><span class="p">{</span><span class="n">nm</span><span class="sx">%.markdown}.</span><span class="n">md</span>
+<span class="n">done</span>
+</code></pre>
+</div>
+
+
+<pre><code>* `{codeblock}`は無いので、"```"に置換する
+</code></pre>
+
+<ul>
+<li>一覧はいいけど、詳細の画面は、いろいろレイアウトが崩れてしまう箇所がある</li>
+</ul>
+
+
+<p><img src="https://lh3.googleusercontent.com/-H67Pj0AYzJM/T3xeTmPcFAI/AAAAAAAAAls/dyMOpOEJTo8/s800/Screen%2520Shot%25202012-04-04%2520at%252023.43.08.png" alt="image" />
+<img src="https://lh4.googleusercontent.com/-NljCDo36W3s/T3xeUDlfWpI/AAAAAAAAAlw/a81JP2wOwDI/s800/Screen%2520Shot%25202012-04-04%2520at%252023.43.45.png" alt="image" /></p>
+
+<p>書き方が悪いところもあるけど、修正しないと無理だよね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-04T00:00:00+09:00" pubdate data-updated="true">Apr 4<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/blog/'>Blog</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/03/rails3dojo/">
+		
+			「浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編」の写経(1)</a>
+	</h2>
+	<div class="entry-content">
+		<p><a href="http://www.slideshare.net/mackato/rails3dojo-routing">浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編</a></p>
+
+<ul>
+<li><code>Ruby 1.9.2 @ Rails3.0.7</code>環境作成</li>
+<li><code>pow</code>導入
+
+<ul>
+<li><code>curl get.pow.cx | sh</code>一発でOK</li>
+<li><code>ln -s rails3dojo</code>で追加</li>
+<li><code>open rails3dojo.dev</code>で確認できる！素晴らしい！</li>
+</ul>
+</li>
+<li><code>spork</code>導入
+
+<ul>
+<li><code>config/environments/test.rb</code>の<code>config.cache_classes</code>を<code>false</code>に変更</li>
+</ul>
+</li>
+<li>写経内容は割愛
+
+<ul>
+<li>スライドだけでは、ちょっと何かが足りないなーと感じた。</li>
+<li><code>config/route.rb</code>修正した場合、sporkも再起動する必要があるらしい</li>
+</ul>
+</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-03T07:30:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/pow/'>Pow</a>, <a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/02/rails3-dot-2-on-heroku/">
+		
+			rails3.2 on Heroku</a>
+	</h2>
+	<div class="entry-content">
+		<p>Rails 3.2のアプリをHerokuにデプロイする場合、ハマったことをメモ</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>Rails 3.2.2</li>
+<li>ローカルDBはsqlite</li>
 </ul>
 
 
 <h2>手順</h2>
 
 <ul>
-<li>Gemfileに追加
+<li>Railsアプリを作成
 
 <ul>
-<li><code>gem 'rspec-rails'</code></li>
-<li><code>gem 'spork'</code></li>
+<li><code>rails new myblog</code></li>
+<li><code>cd myblog</code></li>
+<li><code>git init</code></li>
+<li><code>git add .</code></li>
+<li><code>git ci -m 'init'</code></li>
 </ul>
 </li>
-<li><code>bundle install</code>を実行してgemインストール</li>
-<li><code>rails g rspec:install</code>でrspec関連ファイルを生成</li>
-<li><code>spork --bootstrap</code>でspork関連ファイルを生成</li>
-<li><p><code>rails g scaffold post title:string body:text</code>を実行すると、ファイルがいっぱい生成される</p>
+<li>Scaffold
 
 <ul>
-<li>この中に<code>spec/view/</code>配下のファイルを参考してViewテストの書き方を勉強したい</li>
+<li><code>rails g scaffold post title:string body:text</code></li>
+<li><code>rake db:migrate</code></li>
+<li><code>rm public/index.html</code></li>
+<li><code>vi config/route.rb</code>
+
+<ul>
+<li><code>root :to =&gt; "pots#index"</code>を追加</li>
 </ul>
 </li>
-<li><p>ハマったこと</p>
-
-<ul>
-<li><code>Gemfile</code>に追加する時、<code>gorup</code>を使いたかったが、<code>:development, :test</code>で限定すると、何か<code>rails g scaffold …</code>で生成する時、spec関連のテストクラスは作ってくれない</li>
-<li>やはり<code>Gemfile</code>の書き方はよくわかってないせい。とりあえずは、直接に<code>group</code>は書かない</li>
+<li><code>git rm public/index.html</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'scaffold'</code></li>
 </ul>
 </li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-31T23:21:00+09:00" pubdate data-updated="true">Mar 31<span>st</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/30/bpstudy-number-55/">
-		
-			BPStudy#55</a>
-	</h2>
-	<div class="entry-content">
-		<p>今日ここの勉強会に行きました。適当なメモ<br/>
-<a href="http://connpass.com/event/354/">BPStudy#55 Herokuに関するお話</a></p>
-
-<h2>Python本の説明</h2>
+<li>Heroku
 
 <ul>
-<li>プログラミングの話ではない</li>
-<li>開発環境構築</li>
-<li>チーム開発
-
-<ul>
-<li>ドキュメント管理Sphinx</li>
-<li>課題管理</li>
-<li>モジュール分散方法</li>
-<li>CIツール</li>
-<li>複数サーバのデプロイツール</li>
-</ul>
-</li>
-<li>本番環境
-
-<ul>
-<li>Google AppEnige</li>
+<li><code>vi Gemfile</code>heroku側は下記を追加</li>
 </ul>
 </li>
 </ul>
 
 
-<h2>Heroku</h2>
-
-<ul>
-<li>ホスティングサーバとの違い
-
-<ul>
-<li>OSなどには全く意識しないで製品に集中する</li>
-<li>生産性が高いプログラマが生産性をもっと高める為のプラットフォーム</li>
-<li>Rubyとはある程度似ってる</li>
-</ul>
-</li>
-<li>Salesforce？
-
-<ul>
-<li>顧客管理システムを売る会社</li>
-<li>では、なんでHerokuを買った？</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>日本のHerokuは？</h3>
-
-<ul>
-<li>Herokuを使いましょう！</li>
-<li>Facebookアプリを作りましょう！</li>
-<li>Herokuのアドオンを作りましょう！</li>
-</ul>
-
-
-<h2>SonicGardenでのherokuの実践活用</h2>
-
-<ul>
-<li>会社
-
-<ul>
-<li>SKIP 社内NSS</li>
-<li>youRoom</li>
-<li>Ruby x Cloud x Ajile</li>
-<li>納品しない　受託開発</li>
-</ul>
-</li>
-<li>自社の運用方法
-
-<ul>
-<li><a href="http://kuranuki.sonicgarden.jp/2012/03/post-70.html">高速で無駄のないソフトウェア開発を実現するための7つのポイント</a>
-
-<ul>
-<li><a href="http://www.pivotaltracker.com/">トラッカツール　pivotaltracker</a>　<strong>特徴：優先度ない、上からやれ！</strong></li>
-<li>ドキュメントはほとんど作らない　<strong>ホワイトボードで十分</strong></li>
-<li>githubのソースコードレビューが素晴らしい</li>
-</ul>
-</li>
-<li>新規サービスのスタートアップはHerokuを使ってる</li>
-<li>ステージング環境としてHerokuを使う</li>
-</ul>
-</li>
-<li>Herokuでの課題と工夫
-
-<ul>
-<li>ログを数年保管したい　<strong>loggly addon</strong></li>
-<li>復旧できないとき
-
-<ul>
-<li>PG Backups addonを利用</li>
-<li>DBをHerokuの外にバックアップ</li>
-<li>heroku_backup_taskを拡張</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>おすすめ資料
-
-<ul>
-<li><a href="http://gihyo.jp/dev/serial/01/heroku">Herokuで作るFacebookアプリ</a></li>
-<li>etc…</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>デモ</h2>
-
-<p>ワンクリックでFacebookアプリ On Heroku のデモでした</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-30T18:50:00+09:00" pubdate data-updated="true">Mar 30<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/heroku/'>Heroku</a>, <a class='category' href='/blog/categories/勉強会/'>勉強会</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/29/spork-rails/">
-		
-			sportでRSpec on Railsのテストを高速化</a>
-	</h2>
-	<div class="entry-content">
-		<p>　RSpecを勉強中。RSpecのテストを実行する時、何となく遅い気がしちゃいます。高速化する方法がないかと調べると、<a href="https://github.com/sporkrb/spork">github spork</a>が出ました。</p>
-
-<h3>まずは導入前後の比較、爆速ですね</h3>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>     </th>
-<th> user  </th>
-<th> system </th>
-<th> cpu </th>
-<th> total  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>導入前</td>
-<td> 4.32s </td>
-<td> 0.54s  </td>
-<td> 99% </td>
-<td> 4.898s |</td>
-</tr>
-<tr>
-<td></td>
-<td>導入後</td>
-<td> 0.19s </td>
-<td> 0.05s  </td>
-<td> 31% </td>
-<td> 0.788s |</td>
-</tr>
-</tbody>
-</table>
-
-
-<h3>使い方もシンプル</h3>
-
-<ol>
-<li><code>Gemfile</code>に<code>gem spork</code>を追加</li>
-<li><code>spork --bootstrap</code>を実行して、必要なファイルを生成する</li>
-<li><code>spork</code>を実行して、サーバを起動する</li>
-<li>モデルの修正などを都度反映する為、テストキャッシュを無効化
-
-<ul>
-<li><code>config/environments/test.rb</code>の<code>config.cache_classes = true</code>を<code>false</code>に修正</li>
-</ul>
-</li>
-<li><code>.rspec</code>に<code>--drb</code>実行オプションを追加</li>
-<li>普通に<code>rspec spec/**/*.rb</code>を実行する　　</li>
-</ol>
-
-
-<p>以上</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-29T23:08:00+09:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/spork/'>spork</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/28/rspec-rails/">
-		
-			RSpec on Rails (4)</a>
-	</h2>
-	<div class="entry-content">
-		<p>　<a href="http://jp.rubyist.net/magazine/?0023-Rspec">スはスペックのス 【第 2 回】 RSpec on Rails (コントローラとビュー編)</a>記事の写経</p>
-
-<ul>
-<li>Test::UnitはModelのテストをユニットテストとし、Controllerのテストを機能テストとしていますが、RSpecのほうは、Model・Controller・View・Helperのテストはすべてユニットテストとみなす</li>
-<li><p>ハマったこと</p>
-
-<ul>
-<li><code>render_template("blogs")</code>を書くと、レッドのはずだが、自分の環境では普通にグリーンになってる</li>
-<li>試してみたが、<code>blogs</code>と<code>blogs/show</code>と<code>show</code>と３つが全部OK。原因は分からず</li>
-</ul>
-</li>
-<li><p>調べたい</p>
-
-<ul>
-<li>FactoryGril</li>
-<li>Spoke</li>
-<li>浜松Rails3は資料いろいろ有りそう</li>
-</ul>
-</li>
-</ul>
-
-
-<p>　今日は、Controllerのテストまでに終わった。Viewのテストは次回で</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-28T22:28:00+09:00" pubdate data-updated="true">Mar 28<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/27/nifty-vs-sakura/">
-		
-			クラウド：ニフティ　vs　さくら</a>
-	</h2>
-	<div class="entry-content">
-		<p>　この間、ニフティクラウドとさくらクラウドをちょっと触ってみたので、最初の印象を書く</p>
-
-<ul>
-<li>さくらクラウド
-
-<ul>
-<li>インストールのステップが多いが、それらの設定がOSに反映される</li>
-<li>コンソールはIE Only(VMWare vnc client)</li>
-<li>ロードバランサがある</li>
-</ul>
-</li>
-<li>ニフティクラウド
-
-<ul>
-<li>インストールステップが少ないが、仮想サーバが起動してから、ゼロからインストール慰感じ</li>
-<li>コンソールはHTML５とJavaAppletと選択だきる</li>
-<li>サーバとディスク以外はなさそう</li>
-</ul>
-</li>
-</ul>
-
-
-<p>とりあえずは以上で</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-27T00:00:00+09:00" pubdate data-updated="true">Mar 27<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/クラウド/'>クラウド</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/26/shibuyarails/">
-		
-			渋谷EdgeRails勉強会</a>
-	</h2>
-	<div class="entry-content">
-		<p>　今日<a href="http://atnd.org/events/25274">第２回 渋谷Edge Rails勉強会 @masuidrive氏によるRails3講義 × 株式会社ドリコム事例発表</a>参加に行きました</p>
-
-<h2>Rails周り @増井さん</h2>
-
-<h3>Rails 歴史</h3>
-
-<ul>
-<li>Ver 1の頃 CoCやDRYなどの特徴で注目される</li>
-<li>Ver 2 色々改善されるが、まだ課題が残ってる
-
-<ul>
-<li>Merbはより設計が綺麗なので、合流してRails開発に注力</li>
-<li>Railsに関する周辺サービスが出てきた　Heroku / New relic / Engine yard
-
-<ul>
-<li>new relic：いわゆるサーバ監視サービスが、Railsのどのメソッド、レイアウトの描画か、サーバ通信か、どこが遅いのかを分析できるサービス</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Ver 3以降：モジュール化</li>
-<li>Rails：変化を進んで受け入れる
-
-<ul>
-<li>Merbの吸収も同じ考え</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>Build for Rails</h3>
-
-<ul>
-<li>コード書く
-
-<ul>
-<li>Scaffoldは使わない</li>
-<li>プラグインを使うか・使わないか　はじめは使うか</li>
-</ul>
-</li>
-<li>テストを書く
-
-<ul>
-<li>最低でも Test/Codeは３ 実際の実装＋テストは２倍で見積るほうが</li>
-<li>UnitTest vs RSpec ModelはUnitTestで、以外は自作でHTTP経由のツールを使う</li>
-</ul>
-</li>
-<li>非同期処理</li>
-<li>パフォーマンス</li>
-<li>運用
-
-<ul>
-<li>Passenger / Unicorn
-
-<ul>
-<li>Passenger 数分間のシャットダウンの時間がある</li>
-<li>Unicorn Down時間ない</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>レベル別デプロイ
-  ＊ 開発者のみ　部内　社内　αユーザ　βユーザ　全体　というレベル付けて公開できるように</li>
-</ul>
-
-
-<h3>Rails 4.0</h3>
-
-<ul>
-<li>今年らしい</li>
-<li>Ruby 1.9以上</li>
-<li>RESTfulを更に強化</li>
-</ul>
-
-
-<h3>宣伝</h3>
-
-<ul>
-<li>Ruby公式資格教科書</li>
-<li>Taimnuim</li>
-</ul>
-
-
-<h2>Railsのはまりポイント</h2>
-
-<ul>
-<li>クラスのインスタンス変数
-
-<ul>
-<li>@foo ||= bar <strong>bar</strong>はDBから取得した値だったら、最新のデータに反映されない可能性が</li>
-</ul>
-</li>
-<li>JSONが壊れた
-
-<ul>
-<li>MySQLのTextは65536バイトまでなので</li>
-</ul>
-</li>
-<li>index名の長さ制限
-
-<ul>
-<li>MySQLの制限は64バイトまで</li>
-</ul>
-</li>
-<li>tinyintのカラムは、ActiveRecordでBoolとして使ってる、数値ではない</li>
-</ul>
-
-
-<p>ほかのネタもいろいろありましたが、全然分かっていません。。。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-26T19:19:00+09:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/勉強会/'>勉強会</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/25/travis-ci/">
-		
-			Travis CI試し</a>
-	</h2>
-	<div class="entry-content">
-		<p>　RSpecを勉強中で、ソースもGithubに保持しているので、TravisCIも試してみる</p>
-
-<ul>
-<li>手順は公式のドキュメントを参考すれば</li>
-<li>メインは<code>.travis.yml</code>の設定
-
-<ul>
-<li>言語</li>
-<li>テストしたいバージョン</li>
-<li>ブランチ関連の管理</li>
-</ul>
-</li>
-</ul>
-
-
-<div class="highlight"><pre><code class="yaml"><span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ruby</span>
-<span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span> <span class="s">&quot;bundle</span><span class="nv"> </span><span class="s">exec</span><span class="nv"> </span><span class="s">rake</span><span class="nv"> </span><span class="s">db:drop</span><span class="nv"> </span><span class="s">db:create</span><span class="nv"> </span><span class="s">db:migrate</span><span class="nv"> </span><span class="s">spec&quot;</span>
-<span class="l-Scalar-Plain">rvm</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.2</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.3</span>
-<span class="l-Scalar-Plain">gemfile</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Gemfile</span>
-<span class="l-Scalar-Plain">branches</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">only</span><span class="p-Indicator">:</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">master</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">develop</span>
+<div class="highlight"><pre><code class="ruby"><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>  
+     <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>  
+<span class="k">end</span>
 </code></pre>
 </div>
 
 
 <ul>
-<li>感想
+<li><code>rake assets:precompile RAILS_ENV=production</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'heroku'</code></li>
+<li><code>heroku create</code></li>
+<li><code>git push heroku master</code></li>
+<li><code>heroku rake db:migrate</code></li>
+<li><code>heroku open</code>で確認できるはず</li>
+</ul>
+
+
+<h2>問題</h2>
 
 <ul>
-<li>githubのリポジトリにPushすると、すぐ反映され、ビルドが走る</li>
-<li>ビルドステータスの画像を外部（ブログなど）に表示できる</li>
-<li>実行ログも見えるので、いろいろ確認できる</li>
+<li><code>heroku rake db:migrate</code>のエラー
+
+<ul>
+<li><code>(pg is not part of the bundle. Add it to Gemfile.)</code></li>
+<li>対策：Gemfileに下記を追加</li>
 </ul>
 </li>
 </ul>
 
 
-<p><a href="http://travis-ci.org/blueplanet/StudyRSpec"><img src="https://secure.travis-ci.org/blueplanet/StudyRSpec.png?branch=master" alt="Build Status" /></a></p>
+<div class="highlight"><pre><code class="ruby"><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>  
+  <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>  
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+<ul>
+<li><code>git push heroku master</code>後、画面で確認すると、エラー画面になってる
+
+<ul>
+<li><code>heroku logs</code>で確認すると<code>ActionView::Template::Error (application.css isn't precompiled)</code>エラー</li>
+<li>対策：<code>push</code>前に、<code>rake assets:precompile RAILS_ENV=production</code>を実施する</li>
+</ul>
+</li>
+</ul>
+
 
 		
 		
@@ -760,11 +801,11 @@ gem 'spork &hellip;">
   
 
 
-<time datetime="2012-03-25T22:16:00+09:00" pubdate data-updated="true">Mar 25<span>th</span>, 2012</time></div>
+<time datetime="2012-04-02T07:29:00+09:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/travis-ci/'>Travis CI</a>, <a class='category' href='/blog/categories/github/'>github</a>
+	<a class='category' href='/blog/categories/heroku/'>Heroku</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>
@@ -775,27 +816,38 @@ gem 'spork &hellip;">
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/03/25/rspec-rails/">
+		<a href="/blog/2012/04/01/jekyll/">
 		
-			RSpec on Rails (4)</a>
+			Jekyllにする？</a>
 	</h2>
 	<div class="entry-content">
-		<p>　写経の記録</p>
+		<p>現在Octopressを使ってますが、ちょっと不満がいくつあります</p>
+
+<p>Octopressの考え方としては、SourceとHTMLはgitのブランチで分けてます。なので、デプロイとソースデータの保存も分けて作業しないといけないわけ。</p>
 
 <ul>
-<li><p><code>before_save</code>メソッドを定義しても、呼び出されてないらしい。下記を参考して修正<br/>
-<a href="http://d.hatena.ne.jp/NowTom/20110129/1296271461">RSpec2.4.0をRails3.0.3で学ぶ(その1)</a></p></li>
-<li><p>疑問：テスト実行はちょっと遅い気がする。試しにTimeでトータル時間を測定してみたらこんな感じ
-<img src="https://lh5.googleusercontent.com/-KSxPT5UHQCY/T25luPLyRYI/AAAAAAAAAg0/ZJtVEwaUEvw/s800/120325-0001.png" alt="image" />
-userとsystemはどっちがどっちかはよく分からない。要するに、テストロジック自体は0.219かかったが、テストコマンドの全体は3.96かかったとは、間違いないと思いう。もちろん、Rails環境のロードも時間がかかるのはわかってるけど。</p></li>
+<li>デプロイ＋保存
+
+<ul>
+<li><code>rake gen_depoly</code></li>
+<li><code>git push</code></li>
+</ul>
+</li>
+<li>ビルドが必要なので、githubで直接編集はできない</li>
 </ul>
 
 
-<p>　Rails環境を事前にロードしておく方法があるようなので、後で調べます</p>
+<p>Jekyllの場合はどうなるかを調べてみました。</p>
 
-<h2>　</h2>
+<p>ビルドはないため、直接に<code>.md</code>ファイルをgithubにアップロードするので</p>
 
-<p>ブログの画像をPicasawebを使ってますが、毎回Safariでアップロードし、URLを取得して文書に貼り付けとの流れだけど、面倒なので、よりいい方法があるかを調べる</p>
+<ul>
+<li>デプロイは<code>git push</code>一発でOK</li>
+<li>ビルドがないので、githubのオンライン編集を利用できる</li>
+</ul>
+
+
+<p>いいじゃん！！と思って、細かい移行手順を調べてみると、なんか<code>index.md</code>は自分で書かないと行けないらしい。変数とか、テンプレートとか分からないで、瞬殺できないので、移行は後回す</p>
 
 		
 		
@@ -815,143 +867,11 @@ userとsystemはどっちがどっちかはよく分からない。要するに�
   
 
 
-<time datetime="2012-03-25T09:08:00+09:00" pubdate data-updated="true">Mar 25<span>th</span>, 2012</time></div>
+<time datetime="2012-04-01T22:53:00+09:00" pubdate data-updated="true">Apr 1<span>st</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/24/sakura-cloud/">
-		
-			さくらクラウド</a>
-	</h2>
-	<div class="entry-content">
-		<p>この間は、<a href="http://gigazine.net/news/20120322-sakura-cloud/">「さくらのクラウド」障害多発で無償化、課金できる品質に達していないため</a>というニュースが出て、試してみたので、ハマったことなどをメモ</p>
-
-<ul>
-<li>最初はサーバの作り方はよく分からなかった。理解の問題だった。実際は画面通り選択すればいけるのに、考えが間違って、ISOをいれてなく、OSのインストールが出来なかった。</li>
-<li>OSインストールしてから使って始まったが、キーボードの設定うまく出来てない
-
-<ul>
-<li>ローカル：MacBookAir キーボードはUSレイアウト</li>
-<li>仮想サーバ：インストール時、USを設定したが、実際は変なレイアウトになってる</li>
-</ul>
-
-
-<p>  KEYTABLE=&#8221;US&#8221;
-  MODEL=&#8221;us&#8221;
-  KEYBOARDTYPE=&#8221;pc&#8221;</p></li>
-</ul>
-
-
-<p>現状：「= : @ &#8220;」の位置はばらばら、後日解決できたら、更新する</p>
-
-<hr />
-
-<p>また、利用者が殺到してきた為、こういうお知らせも出た</p>
-
-<ul>
-<li><a href="http://gigazine.net/news/20120323-cloud-sakura/">無償化を発表した「さくらのクラウド」、システム安定のために利用制限を開始</a></li>
-<li><a href="http://www.sakura.ad.jp/news/sakurainfo/newsentry.php?id=625">さくらのクラウドの新規申込受付の一時中止について</a></li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-24T22:22:00+09:00" pubdate data-updated="true">Mar 24<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/クラウド/'>クラウド</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/23/rspec-rails/">
-		
-			RSpec on Rails (3)</a>
-	</h2>
-	<div class="entry-content">
-		<p>　RSpec on Railsｎの写経です。</p>
-
-<p>　<code>lambda</code>と<code>change</code>マッチャは面白い、というか、まだよく理解出来てない</p>
-
-<ul>
-<li>値の変化を評価する場合使う</li>
-<li>メソッドチェインなし：とにかく何かが変わった</li>
-<li>by(value)：１個増えた</li>
-<li>from(old).to(new)</li>
-<li>to(new)</li>
-<li><code>change</code>にブロックを渡す場合、<code>do .. end</code>はサポートされない</li>
-</ul>
-
-
-<p>成果物はこれ。</p>
-
-<p><img src="https://lh4.googleusercontent.com/-j_NuxfNsDZY/T2yML-Z4QAI/AAAAAAAAAgc/z5iYAqnAL90/s800/120323-0001.png" alt="image" /></p>
-
-<hr />
-
-<h3>追記</h3>
-
-<p>Viを使ってるので、Unite.vimの設定をちょっと見なおした。正直に言うと、今までは、Uniteはあんまり使ってなかった、すみません。どんどん写経すると、やはりバッファだけではなく、カレントフォルダのファイル一覧も欲しくなるので、修正しました。</p>
-
-<p><code>noremap &lt;C-P&gt; :Unite buffer file&lt;CR&gt;</code></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-23T22:36:00+09:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+	<a class='category' href='/blog/categories/blog/'>Blog</a>, <a class='category' href='/blog/categories/jekyll/'>Jekyll</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>
 
 
 </div>

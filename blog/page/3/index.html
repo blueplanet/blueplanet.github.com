@@ -7,8 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="下記の記事を参考して、写経してみた 【Rails】OmniAuthを使ってtwitter / facebookで認証する rails new rails_oaでアプリを作成
-ログインリンクでtwitterに遷移出来たが、callbackはまだうまく出来てない 漏れたところ &hellip;">
+	<meta name="description" content="結構放置しちゃっていたBlogですが、Octopressを試して見たら、意外に、ソースコードもちゃんとできています。 原因はまだ良くわかってないのですが、それほどの手間をかかりたくないので、しばらくはOctopressに戻すようにします。 もともとJekyllにする理由は、「 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,31 +95,16 @@
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/05/10/rails-omniauthtwitter/">
+		<a href="/blog/2012/09/21/back-to-octopress/">
 		
-			Rails OmniAuthでTwitter認証 写経</a>
+			Back to Octopress</a>
 	</h2>
 	<div class="entry-content">
-		<p>下記の記事を参考して、写経してみた</p>
+		<p>結構放置しちゃっていたBlogですが、Octopressを試して見たら、意外に、ソースコードもちゃんとできています。</p>
 
-<p><a href="http://npb.somewhatgood.com/blog/archives/715">【Rails】OmniAuthを使ってtwitter / facebookで認証する</a></p>
+<p>原因はまだ良くわかってないのですが、それほどの手間をかかりたくないので、しばらくはOctopressに戻すようにします。</p>
 
-<ul>
-<li><code>rails new rails_oa</code>でアプリを作成</li>
-<li>ログインリンクでtwitterに遷移出来たが、callbackはまだうまく出来てない</li>
-</ul>
-
-
-<h2>漏れたところ</h2>
-
-<ul>
-<li>Gemfileに追加した時、&#8217;gem pg&#8217;ではなく、pgだけ書いた</li>
-<li>route.rbのログアウトを定義してなかった</li>
-<li><code>heroku rake db:migrate</code>を忘れた</li>
-</ul>
-
-
-<p>一応ログイン・ログアウトは出来た</p>
+<p>もともと<code>Jekyll</code>にする理由は、「いつでもどこでも気軽にブログを書きたい」と思ったのですが、まあ、実際には、そのレベルに至っていないし。</p>
 
 		
 		
@@ -140,11 +124,150 @@
   
 
 
-<time datetime="2012-05-10T00:00:00+09:00" pubdate data-updated="true">May 10<span>th</span>, 2012</time></div>
+<time datetime="2012-09-21T22:04:00+09:00" pubdate data-updated="true">Sep 21<span>st</span>, 2012</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/06/04/cucumber/">
+		
+			はじめる！Cucumber写経　環境構築</a>
+	</h2>
+	<div class="entry-content">
+		<p><a href="http://tatsu-zine.com/books/cuke">はじめる！Cucumber</a>は、分かった時点ですぐ購入しちゃったんですが、ずっと放置したままだった。最近<a href="http://bukt.org/events/31">Yokohamarb #20</a>に参加して、またテスト周りのお話しが出たので、Cucumberを勉強したくなった。</p>
+
+<p>写経しないといけない為、環境構築しようと思ったが、ハマったことをメモ</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>cucumber 1.2.0</li>
+<li>cucumber-rails 1.0.6</li>
+<li>capybara 1.1.2</li>
+<li>rails 3.2.3</li>
+<li>guard 1.0.3</li>
+<li>guard-cucumber 0.8.0</li>
+<li>guard-spork 0.8.0</li>
+<li>spork 0.9.2</li>
+</ul>
+
+
+<h3>web_steps.rbが生成されない</h3>
+
+<ul>
+<li><code>rails g cucumber:install ja --webrat --rspec</code>を実行しても、<code>features/step_definitions/web_steps.rb</code>と<code>features/support/paths.rb</code>は生成されてない</li>
+<li>調べてみたら、<code>cucumber 1.1.0</code>から生成されないようになっている
+
+<ul>
+<li><a href="https://github.com/cucumber/cucumber-rails/blob/v1.1.0/History.md">cucumber-rails v1.1.0</a></li>
+</ul>
+</li>
+<li>まあ、ちゃんと勉強してねという意味はわかって、頑張ろうと思ったが、やはりRailsも初心者だし、RSpecもよくわかってなくて、書こうと思っても全く進められない為、やめました。</li>
+<li>結局は、<code>cucumber-rails 1.0.6</code>で写経するようにしました</li>
+</ul>
+
+
+<h3>本のバージョンとの違いによる箇所</h3>
+
+<ul>
+<li><code>Rails 3</code>からの変更なんですが、<code>rails g cucumber:**install**</code>のようになった</li>
+<li><code>bundle</code>を使ってるので、<code>Gemfile</code>に記入する
+
+<ul>
+<li><code>gem 'cucumber-rails', '1.0.6', :require =&gt; false</code>のように書いている</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>手順</h3>
+
+<ul>
+<li><code>rails new cucu -T --skip-bundle</code></li>
+<li>Gemfileファイル編集</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;rails&#39;</span><span class="p">,</span> <span class="s1">&#39;3.2.6&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;sqlite3&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:assets</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;sass-rails&#39;</span><span class="p">,</span>   <span class="s1">&#39;~&gt; 3.2.3&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;coffee-rails&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 3.2.1&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;uglifier&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;= 1.0.3&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;jquery-rails&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:develpment</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;database_cleaner&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;cucumber-rails&#39;</span><span class="p">,</span> <span class="s1">&#39;1.0.6&#39;</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;guard-cucumber&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;guard-spork&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><code>bundle install --path vendor/bundle</code></li>
+<li><code>bundle exec guard init cucumber</code></li>
+<li><code>bundle exec guard init spork</code></li>
+<li><code>bundle exec spork --bootstrap</code></li>
+</ul>
+
+
+<p>これで環境が出来た</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-04T00:00:00+09:00" pubdate data-updated="true">Jun 4<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/omniauth/'>OmniAuth</a>
+	<a class='category' href='/blog/categories/cucumber/'>Cucumber</a>
 
 
 </div>
@@ -155,39 +278,133 @@
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/05/09/nodejsexpress/">
+		<a href="/blog/2012/05/31/spork--guardtdd/">
 		
-			Node.js+express+MongoDBを試してみた</a>
+			Spork + GuardによるTDD</a>
 	</h2>
 	<div class="entry-content">
-		<p>昨日の引き続き、MongoDBの部分も試してみた</p>
+		<p><a href="http://bukt.org/events/31">Yokohamarb #20</a>に参加して、Railsの開発環境のお話しがありました。その中に、TDDツールについて、SporkとGuardが使われています。</p>
 
-<h2>MongoDBインストール</h2>
+<p>Sporkはテストの事前ロードによりテストを高速化してくれるツールであるのは分かっていますが、Guardはわかっていなかったので、調べてみた</p>
+
+<h2>Guard</h2>
 
 <ul>
-<li><code>brew install mongodb</code></li>
-<li><code>mkdir ~/Library/MongoDB_Data</code></li>
-<li><code>mongod --dbpath=/Users/XXX/Library/MongoDB_Data</code></li>
-<li><code>mongo</code>で接続出来た！</li>
+<li><code>Gemfile</code>を編集し、必要なgemを追加
+
+<ul>
+<li><code>gem guard-spork</code></li>
+<li><code>gem guard-rspec</code></li>
+</ul>
+</li>
+<li><code>bundle install</code>でインストール</li>
+<li><code>bundle exec guard init spork</code></li>
+<li><code>bundle exec guard init rspec</code></li>
+<li><code>bundle exec guard</code>でプロセス起動すれば、<code>spork</code>＋<code>guard</code>が起動される</li>
 </ul>
 
 
-<h2>コーディング</h2>
+<p>これでテストの高速化かつ自動テスト環境が備えた</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-31T00:00:00+09:00" pubdate data-updated="true">May 31<span>st</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/27/dispatch/">
+		
+			派遣社員の悲しみ</a>
+	</h2>
+	<div class="entry-content">
+		<h2>前説</h2>
 
 <ul>
-<li><code>app.js</code>ルート追加</li>
-<li><code>routes/index.js</code>にルート処理追加</li>
-<li><code>views/mongo.jade</code>ビューを作成</li>
+<li>金曜日は月一回の帰社日で、１９時から帰社会議＋勉強会。おいらは勉強会の担当</li>
+<li>今月は先週まで忙しくて、今週はやっと落ち着いてきた為、金曜日現場を休んで、午前中は家族サポート、午後帰社する予定</li>
+<li>前日の夕方に緊急問い合わせが来て、金曜日対応しないと行けない為、出勤するようになった</li>
+<li>１９時になっても解決策は見つかってないところ
+
+<ul>
+<li>現場から自社までは１時間ぐらいかかる為、１９時までに現場を出ないと、自社に着くのは２０時以降になり、行っても勉強会を行う余裕がなくなる</li>
+</ul>
+</li>
 </ul>
 
 
-<p>出来たもの
-<img src="https://lh4.googleusercontent.com/--5WdPuH5Jtw/T6mTtKV-hRI/AAAAAAAABKw/1_35PV___pA/s800/Screen%2520Shot%25202012-05-09%2520at%25206.43.30.png" alt="" /></p>
-
-<h2>参考URL</h2>
+<h2>本題</h2>
 
 <ul>
-<li><a href="http://codedehitokoto.blogspot.jp/2012/01/nodemongodb.html">NodeでMongoDBを使って連絡帳アプリを作る</a></li>
+<li>ペアでやってる方に、「帰社したいよ」と文句を言っちゃったところ、「そう言ったら怒られるよ」と言われた</li>
+<li><strong>「優先順位として、現場＞家族（私用）＞帰社」じゃない？</strong> と</li>
+<li>なるほど、みんなそう思ってるのか。というか、みんなかどうかは分からないけど</li>
+<li>そもそも、<strong>私はそう思わない</strong></li>
+</ul>
+
+
+<h2>考え</h2>
+
+<ul>
+<li>「現場のお客さんは神様で、いつも現場を優先にしてください」のは☓
+
+<ul>
+<li>派遣社員の悲しみの１つは、帰社会議などの自社事務は、全部業務時間外（＝残業時間）になってること</li>
+<li>なので、帰社会議・勉強会と現場の残業とは、僕にとっては、同じの残業だ
+
+<ul>
+<li>現場の残業：そもそも、不具合の調査・対応は、開発のコストじゃん、それらのなくなる日はないわけじゃん。期限があっても、期限までに、全ての不具合をなくせることは出来ないじゃん。なので、現場の残業は意味がないと思う</li>
+<li>自社の残業：帰社会議や勉強会など、自社事業を進める為に頑張ってるわけですよね。</li>
+<li>上記の言葉は、自社人材を育つよりは、現場の作業を優先にしてくださいとは同じ意味ですよね。それは本当にいいの？</li>
+<li>自社のことを考えると、そうではない気がする。現場の作業は完了する日もないし、その為に自社の未来の為の努力をなくすのはダメだと思う</li>
+</ul>
+</li>
+<li>なので、少なくとも、自社として、そう考えると、進歩がなく、未来がなくなり、ずっと今のままで行くようになってしまう</li>
+</ul>
+</li>
+<li>最も基本的には、残業するのは☓
+
+<ul>
+<li>派遣社員であっても、１日２４時間全部現場に使うわけではないですよね？８時間の意味ですよね？</li>
+<li>８時間を超えると、効率が低下してしまうことはあるよね？</li>
+<li>残業時間をアピール人はいるらしいが、本人が残業しても効率が低下にならないと確信していればOKなんですが、僕の場合は、特に最近は、作業時間が８時間に超えると、効率・気持ちはすごく悪くなる為、８時間に限定したい</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>現状</h2>
+
+<ul>
+<li>現場を調整する必要がある。</li>
+<li>派遣をやめ、受注や自社サービスをやりたい</li>
+<li>独立したい</li>
 </ul>
 
 
@@ -209,11 +426,11 @@
   
 
 
-<time datetime="2012-05-09T00:00:00+09:00" pubdate data-updated="true">May 9<span>th</span>, 2012</time></div>
+<time datetime="2012-05-27T00:00:00+09:00" pubdate data-updated="true">May 27<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/node-js/'>Node.js</a>
+	<a class='category' href='/blog/categories/job/'>Job</a>
 
 
 </div>
@@ -224,160 +441,123 @@
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/05/08/nodejsexpress/">
+		<a href="/blog/2012/05/19/yokohamarb20/">
 		
-			Node.js+expressを試してみた</a>
+			Yokohamarb20</a>
 	</h2>
 	<div class="entry-content">
-		<p><a href="http://gihyo.jp/magazine/wdpress/archive/2012/vol68">WEB+DB PRESS Vol.68</a>を読んで、Node.jsの実践をやってみた</p>
+		<p>久しぶりにYokohamarbの勉強会に参加しました。</p>
 
-<h2>インストール</h2>
+<p>いつものどおり、自己紹介→Rubyレシピブック読書会→LTの流れ。</p>
+
+<h2>自己紹介</h2>
 
 <ul>
-<li><p>Node.js
-至る簡単で、<a href="http://nodejs.org/">Node.js公式サイト</a>でインストーラをダウンロード・インストールだけ</p>
-
-<p>なるほどねあああああああああ</p></li>
+<li>希望として、話せるネタや「お寿司のネタ」　←これは盛り上がった！</li>
 </ul>
 
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>node -v
-v0.6.17
-<span class="nv">$ </span>npm -v
-1.1.21
-</code></pre>
-</div>
-
+<h2>Rubyレシピブック</h2>
 
 <ul>
-<li>express
-  <code>sudo npm install -g express</code> (<code>-g</code>というオプションはよく分かってない。gemでのアプリケーションではなく、システムにgemをインストールっていう感じかな）</li>
+<li>本を持ってない＋目が弱くて、あんまり見えなかった</li>
+<li>時間がちょっと経ってから、@1syo さんのすぐそばに移ってから、若干見えるようになった</li>
 </ul>
 
 
-<h2>アプリケーション作成</h2>
+<h2>LT1 Rails Conf2012</h2>
 
 <ul>
-<li><code>express nodeexpress</code></li>
+<li>github:newhavenrb</li>
+<li>トレンド
+
+<ul>
+<li>分散処理：MBQ</li>
+<li>JavaScriptのお話し</li>
+<li>テストなどは既に当たり前になってるので、意外にトレンドに乗れなかった</li>
+</ul>
+</li>
+<li>Chanko ?
+
+<ul>
+<li>初めて聞いたので、後で調べる</li>
+</ul>
+</li>
+<li>後半は写真を見ながら説明していただいた
+
+<ul>
+<li>料理はまずかったそうです。</li>
+</ul>
+</li>
 </ul>
 
 
-<div class="highlight"><pre><code class="bash">create : nodeexpress
-create : nodeexpress/package.json
-create : nodeexpress/app.js
-create : nodeexpress/public
-create : nodeexpress/public/javascripts
-create : nodeexpress/public/images
-create : nodeexpress/public/stylesheets
-create : nodeexpress/public/stylesheets/style.css
-create : nodeexpress/routes
-create : nodeexpress/routes/index.js
-create : nodeexpress/views
-create : nodeexpress/views/layout.jade
-create : nodeexpress/views/index.jade
-
-dont forget to install dependencies:
-<span class="nv">$ </span><span class="nb">cd </span>nodeexpress <span class="o">&amp;&amp;</span> npm install
-</code></pre>
-</div>
-
+<h2>LT2 Rails開発環境</h2>
 
 <ul>
-<li><code>cd nodeexpress</code></li>
-<li><code>sudo npm install</code></li>
-<li><code>node app.js</code>でサーバプロセスを起動して、ブラウザで確認出来た！
-すっごくシンプルの画面ですが、何となく感動しました</li>
+<li>MacOS Vim Screen Git</li>
+<li>Test 「これらのgemがないと、開発は進められない」
+
+<ul>
+<li>RSpec</li>
+<li>Cucumber</li>
+<li>Pry</li>
+<li>guard</li>
+</ul>
+</li>
+<li>gitの便利設定</li>
+<li>Demo</li>
 </ul>
 
 
-<h2>コーディングルール</h2>
+<h2>LT3 Ruby Motion</h2>
 
 <ul>
-<li><code>app.js</code>でルーティング条件を書く</li>
-<li><code>indes.js</code>でリクエストへ応答内容を書く</li>
-<li><code>views/*.jade</code>でビューのテンプレートを書く</li>
+<li>Docはまだ最低限だけ</li>
+<li>Motionコマンドで作業</li>
+<li>specサブコマンドがある。
+
+<ul>
+<li>ただし、どのインスタンスがあるかどうか・メソッドが呼ば出されるかどうかなどで確認できるが、UIの自動テストはできないので、UIAutoMationを使わないと無理っぽい</li>
+</ul>
+</li>
+<li>名前付きパラメータが使えるように拡張される
+
+<ul>
+<li>ただ、拡張の部分はアプリに配布されないそうです</li>
+</ul>
+</li>
+<li>変数の型は無視していい。</li>
+<li>Viewのデバッグ操作が出来て、より使いやすくなる</li>
 </ul>
 
 
-<h2>感想</h2>
+<h2>LT4 Haskell言語</h2>
 
 <ul>
-<li>２００７年頃、最初Railsを触って、このわずかのステップででWEBアプリを作れたの？という感じと似ている</li>
-<li><code>express</code>は<code>sinatra</code>に、<code>Jade</code>の文法は<code>haml</code>に似てる</li>
+<li>Web Framework
+
+<ul>
+<li><a href="http://www.yesodweb.com/"></a></li>
+<li>PFM</li>
+<li>セキュリティ</li>
+<li>Routeを定義して保存すると、コンパイルされる</li>
 </ul>
-
-
-<p>TODO : Node.js + MongoDBで試す</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-08T00:00:00+09:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/node-js/'>Node.js</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/05/07/pry/">
-		
-			Pryを試してみた</a>
-	</h2>
-	<div class="entry-content">
-		<p>話題のPryをインストールして、試してみた</p>
+</li>
+<li>Haskell
 
 <ul>
-<li><code>gem install pry</code></li>
-<li><code>rbenv rehash</code></li>
+<li>コンパイル時メソッドなどを生成するので、実行PFMがいい</li>
 </ul>
-
-
-<p><code>pry</code>で起動</p>
-
-<p>下記の記事はすごく詳しいです。有難うございます！</p>
-
-<p><a href="http://labs.timedia.co.jp/2011/12/rubyist-should-use-pry.html">Rubyistよ、irbを捨ててPryを使おう</a></p>
-
-<h2>特徴</h2>
+</li>
+<li><p>この辺は全く分からないので、後で調べる</p></li>
+<li><p>TODO : Emacs で階層を色付けするのは？</p></li>
+<li>TODO : Emacs で折り畳み・展開</li>
+<li>TODO : cdの後自動的にlsを実行数するのは？</li>
+<li>TODO : Parse.com ??
 
 <ul>
-<li>色付け</li>
-<li>メソッド定義する場合は、自動インデント</li>
-<li>shell統合</li>
-<li>オブジェクト調査（実際はこれは結構評価されるみたい）</li>
-</ul>
-
-
-<h2>問題</h2>
-
-<ul>
-<li>shell統合は、標準Shellになって、zshの設定はロードされてないみたい
-
-<ul>
-<li>TODO : zsh統合を調べる</li>
+<li>プロトタイプ作成の補助？</li>
 </ul>
 </li>
 </ul>
@@ -401,12 +581,8 @@ dont forget to install dependencies:
   
 
 
-<time datetime="2012-05-07T00:00:00+09:00" pubdate data-updated="true">May 7<span>th</span>, 2012</time></div>
+<time datetime="2012-05-19T00:00:00+09:00" pubdate data-updated="true">May 19<span>th</span>, 2012</time></div>
 	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/pry/'>Pry</a>
-
 
 </div>
 	
@@ -416,75 +592,76 @@ dont forget to install dependencies:
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/05/06/emacs-initel/">
+		<a href="/blog/2012/05/17/gtd/">
 		
-			Emacs init.elを整理</a>
+			GTDアプリ再考</a>
 	</h2>
 	<div class="entry-content">
-		<p>最初からいろいろなコードを勝手に入れていましたが、よく整理してなくてバラバラだったので、整理してみる</p>
+		<p>やりたいことを管理するのは下手で、最近も忘れてしまったことがいくつあったことに気づいて、改めてGTDアプリを調べてみた</p>
 
-<p>順番も大事らしいので、順番どおり書く</p>
-
-<ol>
-<li>load-pathを追加する関数を定義</li>
-<li>表示関連設定
+<h2>ニーズ</h2>
 
 <ul>
-<li>color-theme</li>
-<li>font</li>
-<li>スクロールバー・行列番号表示・ファイルサイズ表示・タイトルバーにファイル名表示</li>
+<li>GTD周り
+
+<ul>
+<li>タスク：内容、期限があればOK</li>
+<li>コンテキストが必須</li>
+<li>プロジェクトが必須</li>
 </ul>
 </li>
-<li>デフォルト動き変更
+<li>マルチプラットフォーム
 
 <ul>
-<li>iswatch</li>
-<li>OSのコピベとyarkを共通化</li>
-<li>インデントにタブを使わない</li>
-<li>バックアップ・自動保存ファイル場所を一時フォルダに</li>
-<li>キー定義
-
-<ul>
-<li><code>C-t</code>で<code>switch-to-buffer</code></li>
-<li><code>C-o</code>で<code>find-file</code></li>
-<li><code>C-h</code>で<code>backward-delete-char</code></li>
+<li>iPhone</li>
+<li>WEB(Mac OS, Win)</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>各モード設定
+
+
+<h2>アプリ調べ</h2>
 
 <ul>
-<li>Markdown-mode</li>
-<li>cua-mode</li>
-<li>TODO : rinari (整理してから動かないので、後でやり直す)</li>
-<li>Ruby-mode</li>
-<li>RSpec-mode</li>
-</ul>
-</li>
-<li>自動補完
+<li>GoTasks：シンプルで好きですが、コンテキストがないので却下</li>
+<li>Wunderlist：コンテキストがないので却下</li>
+<li>EgretList：Evernoteと同期できるが、Evernoteでのタスク管理は面倒なので却下
 
 <ul>
-<li>auto-complete</li>
-<li>yasnippet</li>
+<li>１つノートをプロジェクトとして、複数タスクを入れようとすると、タスク毎に期限・コンテキストの設定は出来ない</li>
+<li>１つタスク＝１つノートにすると、多くなる一方、期限などの情報はEvernoteで確認・編集出来ない為、不便</li>
 </ul>
 </li>
-<li>文字コード関連
+<li>doit.im：ニーズは全部満たすので、しばらく使う
 
 <ul>
-<li>デフォルト環境を日本語に</li>
-<li>設定ファイルをutf-8に</li>
-<li>OSによるファイル名称・エンコーディング設定</li>
-</ul>
-</li>
-<li>パッケージ管理
+<li>コンテキスト・プロジェクトあり</li>
+<li>iPhoneアプリがあり、無料</li>
+<li>WEBサイトがあり</li>
+<li>不満のところ
 
 <ul>
-<li>ELPA</li>
-<li>auto-install</li>
+<li>アプリの項目がちょっと多い</li>
+<li>コンテキストの切り替えは３ステップが必要、ちょっと面倒</li>
 </ul>
 </li>
-</ol>
+</ul>
+</li>
+<li>Appigo TODO：ニーズは全部満たすので、しばらく使う
+
+<ul>
+<li>コンテキスト・プロジェクトあり</li>
+<li>iPhoneアプリがあり、前購入した</li>
+<li>toodledoと同期できる為、toodledoのサイトで編集できる</li>
+<li>不満のところ
+
+<ul>
+<li>アプリの項目がちょっと多い</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
 
 <p>以上</p>
@@ -507,11 +684,11 @@ dont forget to install dependencies:
   
 
 
-<time datetime="2012-05-06T00:00:00+09:00" pubdate data-updated="true">May 6<span>th</span>, 2012</time></div>
+<time datetime="2012-05-17T00:00:00+09:00" pubdate data-updated="true">May 17<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
+	<a class='category' href='/blog/categories/gtd/'>GTD</a>
 
 
 </div>
@@ -522,66 +699,69 @@ dont forget to install dependencies:
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/05/05/rbenv/">
+		<a href="/blog/2012/05/16/bundler/">
 		
-			Rbenvを使ってみる</a>
+			Bundler改めて調べてみた</a>
 	</h2>
 	<div class="entry-content">
-		<p>現状はRuby開発環境として、RVMを使っています</p>
+		<p><code>Bundler</code>の使い方について、今までは使っていますが、細かくは分かっていなかった。<code>RVM</code>と<code>rbenv</code>との比較を調べた時、<code>rbenv</code>+<code>bundler</code>でgemを管理するのは十分という記事があったので、改めて<code>bundler</code>を調べてみた。</p>
 
-<h2>RVM</h2>
-
-<ul>
-<li>メリット
+<h2>基本</h2>
 
 <ul>
-<li>Ruby複数バージョン切り替えできる</li>
-<li><code>gemset</code>でアプリ毎にgemsの切り分け・管理ができる</li>
+<li>Gemfileに必要なGemを記入した上で、<code>bundle install</code>でインストール
+
+<ul>
+<li>デフォルトはシステムの<code>ruby/gems</code>にインストール</li>
+<li><code>bundle install --path vendor/bundle</code>でインストールパス指定できる</li>
+<li>一度指定すれば、その後<code>bundle install</code>でも前回のパスにインストール</li>
 </ul>
 </li>
-<li>問題
+<li><code>bundle update</code>で更新</li>
+<li><code>bundle exec</code>で<code>bundle</code>よりインストールした<code>gem</code>コマンドを実行する</li>
+</ul>
+
+
+<h2>gem管理のルールの考え</h2>
 
 <ul>
-<li><code>gemset</code>の位置づけは曖昧すぎ。
-実は、アプリ毎ではなく、ある程度、複数のアプリが共有する形で使いたいわけ。例えば、Rails 3.x系のアプリであれば、<code>1.9.2@r3</code>とか、という感じ。ですが、実際使ってみると、アプリ１とアプリ２は、両方もRails 3ですが、別々に他のgemを使ってる。こういうケースだと、別々のgemはどうすればいいかは悩みです。イマイチ<code>1.9.2@r3</code>にしちゃっていますが、何とか違和感を感じてる</li>
-<li><code>Bundler</code>の理解は不足でした
+<li>共通で使うgemは、普通に<code>gem install ...</code>でシステムにインストール
 
-<blockquote><p>Bundler manages an application&#8217;s dependencies through its entire life across many machines systematically and repeatably.
-そもそも<code>Bundler</code>自体は、アプリの依存関係を管理する位置づけを持っていますね。そうであれば、わざわざRVMで管理する必要もそれほどはない気がしますね。</p></blockquote></li>
+<ul>
+<li>bundle自体</li>
+<li>その他</li>
+</ul>
+</li>
+<li>プロジェクト毎に、<code>bundle install --path ...</code>でプロジェクト配下にインストール
+
+<ul>
+<li><code>bundle exec ...</code>でプロジェクトのコマンドを実行する</li>
 </ul>
 </li>
 </ul>
 
 
-<p>こういう経緯で、<code>RVM</code>をやめて、<code>rbenv</code>＋<code>Bundler</code>に移行する</p>
-
-<h2>rbenv導入</h2>
+<h2>問題点</h2>
 
 <ul>
-<li><code>rvm seppuku</code> RVMアンインストールしておく</li>
-<li><code>brew update</code></li>
-<li><code>brew install rbenv</code></li>
-<li><code>brew install ruby-build</code></li>
-<li><code>rbenv install 1.9.2-p320</code></li>
-<li><code>rbenv rehash</code>でインストールしたものを反映する</li>
+<li><code>zsh</code>を使ってるので、コマンドの補完はいろいろお世話になってます。例え、<code>rake</code>を入力すると、実行できるタスクが補完してくれる。<code>bundle exec rake</code>だと、当たり前だけど、補完がしてくれなくなってしまう
+
+<ul>
+<li><code>bundle exec</code>を省略してコマンドを実行できるという記事はいろいろありますが、自動補完に関する解決方法はなさそう</li>
+</ul>
+</li>
 </ul>
 
 
-<h2>使う</h2>
+<p>TODO : zshで<code>bundle exec</code>より実行するコマンドの自動補完</p>
+
+<h2>Link</h2>
 
 <ul>
-<li><code>rbenv global 1.9.2-p320</code>で設定</li>
-<li><code>ruby -v</code>確認できる</li>
-<li><code>rbenv local 1.9.2-p320</code>を実行すると、カレントフォルダに<code>.rbenv-version</code>ファイルが作られる。<code>.rvmrc</code>と同じですね。</li>
+<li><a href="">http://ttcloud.net/rails/20110710/1439</a></li>
+<li><a href="">http://rails3try.blogspot.jp/2011/06/rails3-bundlergem.html</a></li>
 </ul>
 
-
-<p>しばらくは、使ってみます。</p>
-
-<p>参考リンク<br/>
-- <a href="http://blog-223soft.heroku.com/50">rbenv + ruby-buildのインストール方法</a><br/>
-- <a href="https://github.com/sstephenson/rbenv">rbenv</a><br/>
-- <a href="https://github.com/sstephenson/ruby-build">ruby-build</a></p>
 
 		
 		
@@ -601,11 +781,11 @@ dont forget to install dependencies:
   
 
 
-<time datetime="2012-05-05T00:00:00+09:00" pubdate data-updated="true">May 5<span>th</span>, 2012</time></div>
+<time datetime="2012-05-16T00:00:00+09:00" pubdate data-updated="true">May 16<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/rbenv/'>rbenv</a>
+	<a class='category' href='/blog/categories/bundler/'>Bundler</a>
 
 
 </div>
@@ -616,29 +796,131 @@ dont forget to install dependencies:
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/05/03/rails-form-tag/">
+		<a href="/blog/2012/05/14/heroku-cron/">
 		
-			Railsのform_tag</a>
+			HerokuでのCronについて調べてみた</a>
 	</h2>
 	<div class="entry-content">
-		<p>Railsでアプリを作る時、Modelがなく、単純にFormを作りたい場合、<code>form_tag</code>を使うべきという感じ</p>
+		<p>Herokuの場合は、無料のCronは１日１回しか使えないイメージがある。現状はどうなっているかを調べてみた</p>
 
-<p>WEB開発は全くないので、書き方すらよくわかってない。</p>
+<h2>現状</h2>
 
-<p>何かを作りたいとしても、あんまり進められない</p>
+<ul>
+<li>Cronは既に古い</li>
+<li><p>Heroku SchedulerはCronの代替案としてのものらしく、時間毎・１０分間隔でタスクを実行できる。</p>
 
-<pre><code>&lt;%= form_tag(:action =&gt; "disp") do -%&gt;
-  Birthday&lt;br/&gt;
-        &lt;%= select_date Date.today,
-            :prefix =&gt; "birthday",
-            :use_month_numbers =&gt; true,
-            :start_year =&gt; 1980,
-            :end_year =&gt; 2012,
-            :discard_day =&gt; true %&gt;&lt;br/&gt;
-        &lt;%= submit_tag "display", :class =&gt; "btn btn-primary" %&gt;
-&lt;% end -%&gt;
+<ul>
+<li><a href="">http://blogjp.sforce.com/2011/11/heroku-schedule-dc69.html</a></li>
+</ul>
+</li>
+<li><p>clockworkは秒単位まで指定できる</p>
+
+<ul>
+<li><a href="">http://d.hatena.ne.jp/marutanm/20110719/p1</a></li>
+</ul>
+</li>
+</ul>
+
+
+<h2>料金</h2>
+
+<ul>
+<li>Heroku Schedulerは、プロセスが起動され、実行中はDynoの時間が計上される。例え、10:00起動され、10:06まで実行完了の場合は、Dynoの時間は0.1となるイメージ。
+
+<ul>
+<li>最初は料金の計上を理解出来てなくて、<code>one-off admin process</code>で調べてみたら、下記の記事のお陰で、理解出来ました
+
+<ul>
+<li><a href="">http://d.hatena.ne.jp/koshigoeb/20111112/1321070001</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>clockworkは、裏側でプロセスが動いているので、ずっとDynoの時間が計上される</li>
+</ul>
+
+
+<h2>使い分け</h2>
+
+<ul>
+<li><p><a href="">http://d.hatena.ne.jp/ToMmY/20111121/1321802014</a> を参考に</p>
+
+<ul>
+<li>他のアプリケーションの補佐として、軽い処理の場合は、Scheduler</li>
+<li>頻繁の処理（１０分以下）、または、ガッツリしたい処理は、clockwork</li>
+<li>Schedulerは毎回プロセスが再起動される為、オーバーヘッドが大きい</li>
+</ul>
+</li>
+<li><p>自分なりの予想</p>
+
+<ol>
+<li>１つサービスでRailsアプリを運用し、DBは別にする</li>
+<li>もう１つサービスでclockworkを運用し、１のDBにアクセスする</li>
+</ol>
+</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-14T00:00:00+09:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/heroku/'>Heroku</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/13/jekyll-markdown/">
+		
+			Jekyll Markdownでのコードブロック</a>
+	</h2>
+	<div class="entry-content">
+		<p>Jekyllでのソースの書き方の問題はずっと解決出来てない状態。</p>
+
+<p>今日わかったのは、４つのスペースでインデントを付けると、色はないけど、ちゃんとそのまま表現される</p>
+
+<div class="highlight"><pre><code class="python"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">test</span>
+<span class="lineno">2</span>   <span class="n">aaa</span> <span class="o">=</span> <span class="s">&quot;aaa&quot;</span>
+<span class="lineno">3</span> <span class="n">end</span>
+</code></pre>
+</div>
+
+
+<p>これは、Markdownで前後とも一行の空白行があるわけ。ないとこの３行が１行になってしまう。前の行末に２つのスペースを入れると、改行はされますが、やはり１行になってしまう。</p>
+
+<pre><code>def test
+  aaa = "aaa"
+end
 </code></pre>
 
+<p>とりあえずは、これで行きます。</p>
+
+<p>TODO : Markdownのソースブロックの色</p>
+
 		
 		
 	</div>
@@ -657,11 +939,11 @@ dont forget to install dependencies:
   
 
 
-<time datetime="2012-05-03T00:00:00+09:00" pubdate data-updated="true">May 3<span>rd</span>, 2012</time></div>
+<time datetime="2012-05-13T00:00:00+09:00" pubdate data-updated="true">May 13<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/rails/'>Rails</a>
+	<a class='category' href='/blog/categories/blog/'>Blog</a>
 
 
 </div>
@@ -672,36 +954,30 @@ dont forget to install dependencies:
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/05/02/mba/">
+		<a href="/blog/2012/05/12/rubytwitter/">
 		
-			MBAダイエット</a>
+			RubyでTwitter APIを使う</a>
 	</h2>
 	<div class="entry-content">
-		<p>MBAちゃんの容量は残り４０Gしかないので、何とかしないとやばい気がする</p>
+		<p>RailsでTwitterを使いたいので、まずは、RubyでTwitterを使う手段を調べてみた</p>
 
-<p>この記事を参照してやってみる</p>
+<ul>
+<li><code>gem install twitter</code> Rubyの場合は、これがよく使われるらしい</li>
+</ul>
 
-<p><a href="http://harutomo-ryu.com/archives/2011-08-12/065224.html">MacBookAirをダイエット！SSD使用量を30G減らすために行った7つのこと</a></p>
 
-<h2>iPhotoライブラリを外付けハードディスクに移す</h2>
+<p>パブリックタイムラインの場合、認証なくてもOK</p>
 
-<p>25Gぐらいなので、NASにコピーする時間は、3dayと表示されている。。。</p>
+<pre><code>require 'twitter'
 
-<h2>iPhoneとiPadのバックアップファイルも外付けHDDへ移動</h2>
+Twitter.user_timeline("aoi_wakusei", :count =&gt; 200).map do |tweet|
+  "#{tweet.created_at} : #{tweet.text}"
+end
+</code></pre>
 
-<p>これは40G超なので、一回全削除しちゃってから、シンボルリンクを作成した</p>
+<p>確かにこんなに簡単に使えるのは感動したが、期間を指定したいが、使い方はまだ見つけていない</p>
 
-<p>とりあえずはコピー作業の待ちです。</p>
-
-<hr />
-
-<p>システム情報で確認したところ、「ストレージ」タブの表示は、どう削除しても、空き容量も全く変わってない。細かく確認すると、何かを削除すると、「Backups」のサイズはその分増やして、全体的な空き容量は変わってない。</p>
-
-<p>調べてみたら、Time Machineのローカルキャッシュ見たい。</p>
-
-<p>下記の記事を参照して、それを禁止すると、６０Gの空き容量が出来た。</p>
-
-<p><a href="http://builder.japan.zdnet.com/os-admin/os-x-lion11/35010387/">「Time Machine」で急減するLionのHDD&#8211;その理由と解決策</a></p>
+<p>TODO : Twitter API期間指定してタイムライン検索</p>
 
 		
 		
@@ -721,158 +997,12 @@ dont forget to install dependencies:
   
 
 
-<time datetime="2012-05-02T00:00:00+09:00" pubdate data-updated="true">May 2<span>nd</span>, 2012</time></div>
+<time datetime="2012-05-12T00:00:00+09:00" pubdate data-updated="true">May 12<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/lion/'>Lion</a>
+	<a class='category' href='/blog/categories/twitter/'>Twitter</a>
 
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/05/01/emacs-rinari/">
-		
-			Emacs Rinariを導入して見る</a>
-	</h2>
-	<div class="entry-content">
-		<p>Railsを勉強中。やはりEmcsで編集したいので、<code>Rinari</code>を導入してみる</p>
-
-<h2>ELPAの試しと失敗</h2>
-
-<ul>
-<li>ELPAからのインストールがおすすめらいいので、まずはELPAを導入</li>
-<li><code>auto-install</code>を使って<code>ELPA</code>をインストール(ややこしいな)</li>
-<li>今までは、起動が遅くなる為、<code>auto-install-update-emacswiki-package-name</code>をコメントアウトしてるので、まずは復活する</li>
-<li><code>auto-install-update-emacswiki-package-name</code>を実行</li>
-<li><code>M-x install-elisep</code>でインストールを起動</li>
-<li>URLが聞かれるが、なんか<code>[http://bit.ly/pkg-el23](http://bit.ly/pkg-el23)</code>は<code>reject</code>されるので、直接に展開後の長いURLを入力して実行した</li>
-<li><p><code>init.el</code>に必要な設定を追加</p>
-
-<p>  ;; package.el
-  (when (require &#8216;package nil t)</p>
-
-<pre><code>(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
-(package-initialize))
-</code></pre></li>
-</ul>
-
-
-<h3>Rinariをインストール</h3>
-
-<ul>
-<li>ELPAは初回実行なので、<code>list-package</code>を実行する</li>
-<li><code>Cannot open load file: ruby-compilatio</code>エラーで落ちた</li>
-<li>原因はよく分からないので、とりあえずはやめた</li>
-</ul>
-
-
-<h2>直接インストール</h2>
-
-<ul>
-<li>基本は、<a href="http://rinari.rubyforge.org/Basic-Setup.html#Basic-Setup">Basic-Setup</a>を参照する</li>
-<li><code>submodule</code>を利用するので、
-
-<ul>
-<li><code>git submodule add git://github.com/eschulte/rinari.git .emacs.d/elisp/rinari</code>を実行</li>
-</ul>
-</li>
-<li><code>rhtml-mode</code>は<code>rinari</code>のものを使う
-
-<ul>
-<li><code>git submodule add https://github.com/eschulte/rhtml.git .emacs.d/elisp/rhtml</code></li>
-</ul>
-</li>
-</ul>
-
-
-<hr />
-
-<p>これで、ビューファイルを開くと、<code>rhtml-mode</code>になって、<code>rinari</code>も有効になるはず</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-01T00:00:00+09:00" pubdate data-updated="true">May 1<span>st</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/30/rails-323--twitter-bootstrap-rails/">
-		
-			Rails 3.2.3 + Twitter-bootstrap-railsを試して見る</a>
-	</h2>
-	<div class="entry-content">
-		<p>Rails勉強中。デザインが出来ないので、話題の<code>twitter-bootstrap</code>を試してみる</p>
-
-<h2>導入</h2>
-
-<ul>
-<li><code>Gemfile</code>に<code>gem 'twitter-bootstrap-rails</code>を追加し、<code>bundle install</code>を実行</li>
-<li><code>rails g bootstrap:install</code>を実行したら、エラーで落ちた
-
-<ul>
-<li><a href="https://github.com/seyhunak/twitter-bootstrap-rails/issues/194">twitter-bootstrap-railsのIssue</a>を参考して、<code>gem 'therubyracer', :platform =&gt; :ruby</code>をコメントを削除すると、正常に実行出来た</li>
-</ul>
-</li>
-<li>上記以外は、普通にReadmeに従ってやればOK</li>
-</ul>
-
-
-<p><img src="https://lh4.googleusercontent.com/-fuLcAMkDJUE/T56eWDMlpVI/AAAAAAAAA94/4suBZAEnSE4/s800/Screen%2520Shot%25202012-04-30%2520at%252023.14.04.png" alt="" /></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-30T00:00:00+09:00" pubdate data-updated="true">Apr 30<span>th</span>, 2012</time></div>
-	<div class="tags">
 
 </div>
 	

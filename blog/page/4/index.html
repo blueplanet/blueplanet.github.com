@@ -7,8 +7,8 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="Emacsで矩形選択、複数行の同時編集は、cua-modeが便利そうなので、導入してみる 設定 init.elに(cua-mode t)を追加
-キーの設定を禁止する為、(setq cua-enable-cua-keys nil)も追加 使い方 c-RETで選択開始位置を設定し、c-n / c- &hellip;">
+	<meta name="description" content="下記の記事を参考して、写経してみた 【Rails】OmniAuthを使ってtwitter / facebookで認証する rails new rails_oaでアプリを作成
+ログインリンクでtwitterに遷移出来たが、callbackはまだうまく出来てない 漏れたところ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,35 +96,31 @@
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/04/30/cua-mode/">
+		<a href="/blog/2012/05/10/rails-omniauthtwitter/">
 		
-			Cua-modeを導入してみる</a>
+			Rails OmniAuthでTwitter認証 写経</a>
 	</h2>
 	<div class="entry-content">
-		<p>Emacsで矩形選択、複数行の同時編集は、<code>cua-mode</code>が便利そうなので、導入してみる</p>
+		<p>下記の記事を参考して、写経してみた</p>
 
-<h2>設定</h2>
+<p><a href="http://npb.somewhatgood.com/blog/archives/715">【Rails】OmniAuthを使ってtwitter / facebookで認証する</a></p>
 
 <ul>
-<li><code>init.el</code>に<code>(cua-mode t)</code>を追加</li>
-<li>キーの設定を禁止する為、<code>(setq cua-enable-cua-keys nil)</code>も追加</li>
+<li><code>rails new rails_oa</code>でアプリを作成</li>
+<li>ログインリンクでtwitterに遷移出来たが、callbackはまだうまく出来てない</li>
 </ul>
 
 
-<h2>使い方</h2>
+<h2>漏れたところ</h2>
 
 <ul>
-<li><code>c-RET</code>で選択開始位置を設定し、<code>c-n / c-p</code>で選択したい行に移動して選択する
-
-<ul>
-<li>この状態のまま入力すると、選択されている行に対して編集が適用される</li>
-</ul>
-</li>
-<li>他にも、連番の追加などがあるらしいですが、下記のリンクで紹介されている</li>
+<li>Gemfileに追加した時、&#8217;gem pg&#8217;ではなく、pgだけ書いた</li>
+<li>route.rbのログアウトを定義してなかった</li>
+<li><code>heroku rake db:migrate</code>を忘れた</li>
 </ul>
 
 
-<p><a href="http://d.hatena.ne.jp/peccu/20100202/1265088619">cua-mode</a></p>
+<p>一応ログイン・ログアウトは出来た</p>
 
 		
 		
@@ -144,11 +140,11 @@
   
 
 
-<time datetime="2012-04-30T00:00:00+09:00" pubdate data-updated="true">Apr 30<span>th</span>, 2012</time></div>
+<time datetime="2012-05-10T00:00:00+09:00" pubdate data-updated="true">May 10<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
+	<a class='category' href='/blog/categories/omniauth/'>OmniAuth</a>
 
 
 </div>
@@ -159,22 +155,41 @@
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/04/29/emacs-daemon/">
+		<a href="/blog/2012/05/09/nodejsexpress/">
 		
-			Emacs Daemonモード試してみる</a>
+			Node.js+express+MongoDBを試してみた</a>
 	</h2>
 	<div class="entry-content">
-		<p>Lionで<code>Emacs</code>を使って、一番悩んでるのは、コマンドラインからファイルを編集するケース。前から<code>daemon</code>モードが知っていますが、何か<code>emacs --daemon</code>で起動すると、エラーが出て起動出来ない状態だった。</p>
+		<p>昨日の引き続き、MongoDBの部分も試してみた</p>
 
-<p>今日冷静に考えてみたら、GUI関連の設定とフォント設定の周りのせいじゃないかと気付きました。</p>
+<h2>MongoDBインストール</h2>
 
-<p>確認したら、やはりフォントの設定は条件なしでやっているのは悪かった。それを<code>window-system</code>の場合のみ設定するように修正すれば、<code>daemon</code>オプションを付けても実行出来た！！</p>
+<ul>
+<li><code>brew install mongodb</code></li>
+<li><code>mkdir ~/Library/MongoDB_Data</code></li>
+<li><code>mongod --dbpath=/Users/XXX/Library/MongoDB_Data</code></li>
+<li><code>mongo</code>で接続出来た！</li>
+</ul>
 
-<p>これで、Emacsには文句なしですね。</p>
 
-<p>Daemonの設定方法について、公式のWikiに書かれています。</p>
+<h2>コーディング</h2>
 
-<p><a href="http://www.emacswiki.org/emacs/EmacsAsDaemon">Emacs As Daemon</a></p>
+<ul>
+<li><code>app.js</code>ルート追加</li>
+<li><code>routes/index.js</code>にルート処理追加</li>
+<li><code>views/mongo.jade</code>ビューを作成</li>
+</ul>
+
+
+<p>出来たもの
+<img src="https://lh4.googleusercontent.com/--5WdPuH5Jtw/T6mTtKV-hRI/AAAAAAAABKw/1_35PV___pA/s800/Screen%2520Shot%25202012-05-09%2520at%25206.43.30.png" alt="" /></p>
+
+<h2>参考URL</h2>
+
+<ul>
+<li><a href="http://codedehitokoto.blogspot.jp/2012/01/nodemongodb.html">NodeでMongoDBを使って連絡帳アプリを作る</a></li>
+</ul>
+
 
 		
 		
@@ -194,11 +209,11 @@
   
 
 
-<time datetime="2012-04-29T00:00:00+09:00" pubdate data-updated="true">Apr 29<span>th</span>, 2012</time></div>
+<time datetime="2012-05-09T00:00:00+09:00" pubdate data-updated="true">May 9<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
+	<a class='category' href='/blog/categories/node-js/'>Node.js</a>
 
 
 </div>
@@ -209,240 +224,162 @@
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/04/28/rspec-mode/">
+		<a href="/blog/2012/05/08/nodejsexpress/">
 		
-			RSpec-modeを試してみた</a>
+			Node.js+expressを試してみた</a>
 	</h2>
 	<div class="entry-content">
-		<p>Emacsの設定をちょっとずつ進めたいと思って、Yasnippetのカスタマイズスニペットを使いたいが、自分のスニペットのパスはどうやって設定できるかはイマイチわかってないため、出来なかった</p>
+		<p><a href="http://gihyo.jp/magazine/wdpress/archive/2012/vol68">WEB+DB PRESS Vol.68</a>を読んで、Node.jsの実践をやってみた</p>
 
-<p>ちょっと調べたら、<code>RSpec-mode</code>があるのをわかって、導入してみた。</p>
-
-<p><a href="https://github.com/pezra/rspec-mode">rspec-mode</a></p>
-
-<h2>状況</h2>
+<h2>インストール</h2>
 
 <ul>
-<li>インストールができて、specファイルを開いたらちゃんとrspec-modeになる</li>
-<li><code>c-c , v</code>でspecを実行するのはうまく出来てない</li>
+<li><p>Node.js
+至る簡単で、<a href="http://nodejs.org/">Node.js公式サイト</a>でインストーラをダウンロード・インストールだけ</p>
+
+<p>なるほどねあああああああああ</p></li>
+</ul>
+
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>node -v
+v0.6.17
+<span class="nv">$ </span>npm -v
+1.1.21
+</code></pre>
+</div>
+
+
+<ul>
+<li>express
+  <code>sudo npm install -g express</code> (<code>-g</code>というオプションはよく分かってない。gemでのアプリケーションではなく、システムにgemをインストールっていう感じかな）</li>
+</ul>
+
+
+<h2>アプリケーション作成</h2>
+
+<ul>
+<li><code>express nodeexpress</code></li>
+</ul>
+
+
+<div class="highlight"><pre><code class="bash">create : nodeexpress
+create : nodeexpress/package.json
+create : nodeexpress/app.js
+create : nodeexpress/public
+create : nodeexpress/public/javascripts
+create : nodeexpress/public/images
+create : nodeexpress/public/stylesheets
+create : nodeexpress/public/stylesheets/style.css
+create : nodeexpress/routes
+create : nodeexpress/routes/index.js
+create : nodeexpress/views
+create : nodeexpress/views/layout.jade
+create : nodeexpress/views/index.jade
+
+dont forget to install dependencies:
+<span class="nv">$ </span><span class="nb">cd </span>nodeexpress <span class="o">&amp;&amp;</span> npm install
+</code></pre>
+</div>
+
+
+<ul>
+<li><code>cd nodeexpress</code></li>
+<li><code>sudo npm install</code></li>
+<li><code>node app.js</code>でサーバプロセスを起動して、ブラウザで確認出来た！
+すっごくシンプルの画面ですが、何となく感動しました</li>
+</ul>
+
+
+<h2>コーディングルール</h2>
+
+<ul>
+<li><code>app.js</code>でルーティング条件を書く</li>
+<li><code>indes.js</code>でリクエストへ応答内容を書く</li>
+<li><code>views/*.jade</code>でビューのテンプレートを書く</li>
+</ul>
+
+
+<h2>感想</h2>
+
+<ul>
+<li>２００７年頃、最初Railsを触って、このわずかのステップででWEBアプリを作れたの？という感じと似ている</li>
+<li><code>express</code>は<code>sinatra</code>に、<code>Jade</code>の文法は<code>haml</code>に似てる</li>
+</ul>
+
+
+<p>TODO : Node.js + MongoDBで試す</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-08T00:00:00+09:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/node-js/'>Node.js</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/07/pry/">
+		
+			Pryを試してみた</a>
+	</h2>
+	<div class="entry-content">
+		<p>話題のPryをインストールして、試してみた</p>
+
+<ul>
+<li><code>gem install pry</code></li>
+<li><code>rbenv rehash</code></li>
+</ul>
+
+
+<p><code>pry</code>で起動</p>
+
+<p>下記の記事はすごく詳しいです。有難うございます！</p>
+
+<p><a href="http://labs.timedia.co.jp/2011/12/rubyist-should-use-pry.html">Rubyistよ、irbを捨ててPryを使おう</a></p>
+
+<h2>特徴</h2>
+
+<ul>
+<li>色付け</li>
+<li>メソッド定義する場合は、自動インデント</li>
+<li>shell統合</li>
+<li>オブジェクト調査（実際はこれは結構評価されるみたい）</li>
 </ul>
 
 
 <h2>問題</h2>
 
 <ul>
-<li>この<code>rspec-mode</code>は、rails向けらしく、<code>Rakefile</code>によってプロジェクトのルートパスを確定していく
+<li>shell統合は、標準Shellになって、zshの設定はロードされてないみたい
 
 <ul>
-<li>実際試したのは、<code>spec/game_spec.rb</code>と<code>lib/game.rb</code>のような２つファイルしかない軽いものなので、<code>rails</code>ではないので、困った</li>
-<li><code>touch Rakefile</code>で空のファイルを作成してみると、実行できたっぽいが、内容はおかしい。実際はspecは走ってないらしい</li>
-<li>要するに、実際は失敗のケースを実行しても、「成功したよ」とのメッセージが来るわけ</li>
-<li><a href="http://d.hatena.ne.jp/nbahide/20100721/1279676604">rspec-modeをrake意外で使う方法</a>を参考して、設定してみたら、今回は<code>zsh:rspec command not found</code>になった</li>
+<li>TODO : zsh統合を調べる</li>
 </ul>
 </li>
-<li>調べてみたら、<code>zsh</code>と<code>rvm</code>とを併用する場合は、別の設定が必要らしい
-
-<ul>
-<li><a href="https://github.com/pezra/rspec-mode">rspec-mode</a>のReadmeに書かれていますが、<code>Zsh and RVM</code>だったら、また別の設定が必要</li>
-<li>設定してみたら、<code>bash :rspec command not found</code>になった</li>
-<li><code>rvm</code>の設定がおかしいかと、確認したら、問題なさそう</li>
-</ul>
-</li>
-</ul>
-
-
-<p>明日調べよう</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-28T00:00:00+09:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/editor/'>Editor</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/27/subline/">
-		
-			Subline Text 2を試してみた</a>
-	</h2>
-	<div class="entry-content">
-		<p><a href="http://www.sublimetext.com/">http://www.sublimetext.com/</a></p>
-
-<ul>
-<li>マルチOSサポートの軽量エディター</li>
-<li>シェアウェア：$59。
-
-<ul>
-<li>ライセンスがない場合は、一定の時間を經つと、購入の催促ダイアログが出てくるだけ</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>気になる箇所</h3>
-
-<ul>
-<li>マルチOS Windows / MacOS</li>
-<li>優れるデザイン
-
-<ul>
-<li>綺麗なカラースキーム</li>
-<li>ChromeライクなTab</li>
-<li>Minimap：ファイル全体を縮小して表示する機能</li>
-</ul>
-</li>
-<li>多数の言語サポート　Ruby / Html / CSS</li>
-<li>フルカスタマイズできるキーバインド</li>
-<li>Vimキーバインドあり(デフォルトはOFF)</li>
-</ul>
-
-
-<h3>Emacsの課題</h3>
-
-<p>今メインのエディターはCocoa Emacsを使っていますが、コマンドラインからの起動はうまく出来てない</p>
-
-<p>Emacsをdamonモードで起動しておいて、コマンドラインからは<code>emacsclient</code>を使えばよさそうですが、自分の場合は、<code>Emacs --daemon</code>を実行すると、エラーで落ちる</p>
-
-<pre><code>/Applications/Emacs.app/Contents/MacOS/Emacs --daemon
-("/Applications/Emacs.app/Contents/MacOS/Emacs")
-Install-elisp compatibility installed.
-install-elisp                = auto-install-from-url
-install-elisp-from-emacswiki = auto-install-from-emacswiki
-install-elisp-from-gist      = auto-install-from-gist
-Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-example.el (source)...
-Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-example.el (source)...done
-Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-library.el (source)...
-Loading /Users/xxx/.emacs.d/elisp/color-theme-6.6.0/themes/color-theme-library.el (source)...done
-Error: server did not start correctly
-</code></pre>
-
-<p>しばらくは<code>subline text</code>を触って見るが、メインはEmacsに間違いない</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-27T00:00:00+09:00" pubdate data-updated="true">Apr 27<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/editor/'>Editor</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/26/gtd/">
-		
-			GTDに関する思考</a>
-	</h2>
-	<div class="entry-content">
-		<p>最近<a href="http://www.amazon.co.jp/%E3%82%B7%E3%82%B4%E3%82%BF%E3%83%8E-%E6%89%8B%E5%B8%B3%E8%A1%93-%E5%80%89%E4%B8%8B-%E5%BF%A0%E6%86%B2/dp/4492044574">シゴタノ手帳術</a>を読んでる。もちろんGTD周りを再検討している</p>
-
-<h2>ツール</h2>
-
-<ul>
-<li><a href="http://itunes.apple.com/jp/app/egretlist/id363951705?mt=8">Egretlist</a> を試す
-
-<ul>
-<li>実は、結構前からこのアプリを知ってましたが、購入してなかった。それほどの必要性がないと判断してたわけ。</li>
-<li>自分ありのツールを再検討してるので、やはりEvernoteに集約したいので、タスクもこっちで管理したい為、購入して、試してみたい</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>前までGTDを遂行出来なかった反省</h2>
-
-<ul>
-<li>タスクは収集だけだった</li>
-<li>タスクは曖昧すぎて、次の行動になれなかった</li>
-<li>日次・週次の計画・レビューは全くやってなかった</li>
-</ul>
-
-
-<h2>思考</h2>
-
-<ul>
-<li>何らかのタスクを遂行する時、時間制限を設けておくこと
-
-<ul>
-<li>分からないことを調査するとか、意外に時間がかかる傾向があるので、時間制限を設けないと、ずっと調べて、終わりがない。そうなってしまうと、タスクは終わらなくなってしまう</li>
-<li>確かにどういう制限がいいのかは、難しいですが、まあ、制限を設ける考え自体は重要ですね。</li>
-</ul>
-</li>
-<li>タスク管理システム・GTDシステムは、信頼できるかどうかは重要
-
-<ul>
-<li>GTDの考えは、考えていることをすべて書き出して、頭をクリアするのは重要。そうならないと、またストレスが貯まるので、GTDにはならない</li>
-<li>なので、Inboxは素早くたとえ３秒以内使えるようになるのは重要。いつでもどこでも思い出したことをすぐ収集できるようにしないと</li>
-</ul>
-</li>
-<li>タスクを書く時、行動できるように明確的に書くのは重要
-
-<ul>
-<li>要するに、曖昧がなく、いつ・何をするかは、明確的に書かないと、見てもやる気が出さないので、遂行にはなりにくい</li>
-</ul>
-</li>
-<li>２分ルールは重要
-
-<ul>
-<li>タスクを整理する時は、絶対２分ルールを念頭にしないといけない</li>
-<li>あたり前かもしれませんが、このルールをすっかり忘れちゃった</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>次の行動</h2>
-
-<ul>
-<li>日次計画・レビューをはじめる</li>
-<li>GTD本の再読</li>
 </ul>
 
 
@@ -464,11 +401,11 @@ Error: server did not start correctly
   
 
 
-<time datetime="2012-04-26T00:00:00+09:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time></div>
+<time datetime="2012-05-07T00:00:00+09:00" pubdate data-updated="true">May 7<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/gtd/'>GTD</a>
+	<a class='category' href='/blog/categories/pry/'>Pry</a>
 
 
 </div>
@@ -479,283 +416,75 @@ Error: server did not start correctly
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/04/25/jekyll/">
+		<a href="/blog/2012/05/06/emacs-initel/">
 		
-			Jekyllの動きはおかしい</a>
+			Emacs init.elを整理</a>
 	</h2>
 	<div class="entry-content">
-		<h2>現状</h2>
+		<p>最初からいろいろなコードを勝手に入れていましたが、よく整理してなくてバラバラだったので、整理してみる</p>
+
+<p>順番も大事らしいので、順番どおり書く</p>
+
+<ol>
+<li>load-pathを追加する関数を定義</li>
+<li>表示関連設定
 
 <ul>
-<li>ポスト数は２０</li>
-<li>元のポストファイルをこっちにコピーしてきて、ファイル名を<code>markdown</code>から<code>md</code>へ変更しても、サイトに表示されない(元の２０ポストだけ)</li>
-<li><code>rake post title=""</code>で追加しても２０ポストのまま</li>
+<li>color-theme</li>
+<li>font</li>
+<li>スクロールバー・行列番号表示・ファイルサイズ表示・タイトルバーにファイル名表示</li>
 </ul>
-
-
-<h2>調べたこと</h2>
-
-<ul>
-<li>Jekyllのソースを軽く調べたけど、<code>read_posts</code>のところは、チェックが３つある
+</li>
+<li>デフォルト動き変更
 
 <ul>
-<li>ファイル形式チェック <code>日付-○○</code>形式のものであればOKはず</li>
-<li><code>post</code>の<code>published</code>プロパティがTrue</li>
-<li><code>post.date</code>が当該時間より以前であればOK</li>
+<li>iswatch</li>
+<li>OSのコピベとyarkを共通化</li>
+<li>インデントにタブを使わない</li>
+<li>バックアップ・自動保存ファイル場所を一時フォルダに</li>
+<li>キー定義
+
+<ul>
+<li><code>C-t</code>で<code>switch-to-buffer</code></li>
+<li><code>C-o</code>で<code>find-file</code></li>
+<li><code>C-h</code>で<code>backward-delete-char</code></li>
 </ul>
 </li>
 </ul>
-
-
-<p>このぐらいらしく、関係ないらしいですが</p>
-
-<ul>
-<li><code>jekyll</code>の<code>post</code>の<code>limit</code>が有るかどうかを調べたが、特に設定もしてないので、関係なさそう</li>
-<li>設定ファイルを何回確認したが、あんまり設定してないので、大丈夫らしい</li>
-<li><code>jekyll</code>コマンドのオプションを調べたが、有効なものを見つけてない</li>
-<li>移動してきたファイルのなかに、何かがおかしくて、全体に影響してしまうかを確認したところ、全部別所に移動すると、正常に動いた！
-　なるほど。やはり旧の記事のなかに何かがおかしい。１つずつ書くにしたら、<code>code block</code>の書き方が間違った！！！
-　全部直してみたら、OK</li>
-</ul>
-
-
-<p><code>Jekyll</code>さん、ごめんなさい。僕の悪いだ</p>
-
-<p>これで、とりあえずは、旧記事を移行しました。細かいところは、後で対応する</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-25T00:00:00+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/blog/'>Blog</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/24/rspec-re-study/">
-		
-			「改めて学ぶRSpec by Rubyist Magazine 0037号」を読んだ</a>
-	</h2>
-	<div class="entry-content">
-		<p>RSpecを勉強したいと思って、調べてみたら、素晴らしい記事を見つけた。</p>
-
-<p><a href="http://jp.rubyist.net/magazine/?0035-RSpecInPractice"> 改めて学ぶRSpec </a></p>
-
-<h3>xUnitっぽいRSpecコードの特徴</h3>
+</li>
+<li>各モード設定
 
 <ul>
-<li>テストメソッドはすべてフラットで定義される</li>
-<li><code>it []</code>＝＝test○○メソッド</li>
-<li><code>before</code>==<code>setup</code></li>
-</ul>
-
-
-<h3>RSpecの流儀</h3>
-
-<ul>
-<li><code>describe</code>はネストできるので、テストコードに構造が生まれるぞ！</li>
-<li><code>context</code>は<code>describe</code>のエイリアスなんでが、<code>describe</code>==テスト対象、<code>context</code>＝＝テストする時の状況</li>
-<li>メリット：段階的に仕様をテストコードに落とし込む</li>
-</ul>
-
-
-<div class="highlight"><pre><code class="ruby"><span class="n">describe</span> <span class="err">クラス</span> <span class="k">do</span>
-  <span class="n">describe</span> <span class="err">メソッド</span> <span class="k">do</span>
-    <span class="n">context</span> <span class="err">正常値</span> <span class="k">do</span>
-      <span class="n">it</span> <span class="p">{}</span>
-    <span class="k">end</span>
-    
-    <span class="n">context</span> <span class="err">異常値</span> <span class="k">do</span>
-      <span class="n">it</span> <span class="p">{}</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div>
-
-
-<p>的なイメージ</p>
-
-<ul>
-<li>subject
-
-<ul>
-<li>subjectを使うことで、<code>should</code>のレシーバを省略できる</li>
-<li>メリット：テスト対象が明確になる、ほぼ強制的に一つのテストケースに一つのアサーション歯科かけなくなる</li>
-<li><code>describe</code>のネストと被ってる場合は、新たに<code>describe</code>をネストさせてもう一度subjectを定義する</li>
+<li>Markdown-mode</li>
+<li>cua-mode</li>
+<li>TODO : rinari (整理してから動かないので、後でやり直す)</li>
+<li>Ruby-mode</li>
+<li>RSpec-mode</li>
 </ul>
 </li>
-</ul>
-
-
-<h3>itに文字列を渡すかどうか</h3>
+<li>自動補完
 
 <ul>
-<li><code>it</code>に文字列を渡すと、コメントとコードの両方があるのは<code>DRY</code>ではないので、渡さないほうがいい</li>
-<li>デメリット：<code>--fs</code>オプションで実行する時の出力は日本語にならなくので、読みづらくなる
-
-<ul>
-<li>解決：<code>context</code>にテスト内容を細かく書く</li>
-<li>まあ、テスト結果が一番重要なので、実際はそこまでもやってない</li>
+<li>auto-complete</li>
+<li>yasnippet</li>
 </ul>
 </li>
-</ul>
-
-
-<h3>letでデータ以外のぶぶんだけを共通化</h3>
+<li>文字コード関連
 
 <ul>
-<li>ブロックの評価値</li>
-<li>値をシンボルと同名の変数に格納する</li>
-<li>テストケース毎に結果がキャッシュされる</li>
-</ul>
-
-
-<p>これはまだ理解できてない気がする</p>
-
-<h3>shared_context</h3>
-
-<ul>
-<li>メソッドの間に共通的なcontextがある場合がある</li>
-<li><code>shared_context</code>と<code>include_context</code>で共通化できる</li>
-</ul>
-
-
-<hr />
-
-<p>まだまだRubyもRSpecも初心者なので、分からないところが多いところ</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-24T00:00:00+09:00" pubdate data-updated="true">Apr 24<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/23/gtd-workflow/">
-		
-			シゴタノ手帳術読書記録と自分なりのGTDワークフロー整理</a>
-	</h2>
-	<div class="entry-content">
-		<h2>読書記録</h2>
-
-<h3>大まかな感想</h3>
-
-<ul>
-<li>作者のほうは、会社でクラウドツールがいっさい使えない為、いろいろ手帳で頑張っていますね。(会社は厳しすぎますね)</li>
-<li>なので、作者のワークフローをマルごとにコピーするじゃなくて、自分の環境に合わせて、自分なりのワークフローを決めるほうが望ましい</li>
-<li>そして、手帳にも限らない。手帳術とは言っても、情報の収集・保持・活用のやり方なので、絶対手帳じゃないとダメのお話しではない</li>
-</ul>
-
-
-<h3>自分なりのメモ</h3>
-
-<ul>
-<li>進捗や時間などを目に見えるようにするのは大事。手帳は、1年間の時間、残りの分などを見えるようにする</li>
-<li>すべては情報である</li>
-<li>情報を受け取ってからのワークフローを事前に決めておくこと</li>
-<li>Inboxはなるべく少なくようにする</li>
-<li>その上、Inboxをチェックするタイミングも決めておくこと</li>
-<li>週間計画 日次計画 日次レビュー 週間レビューをちゃんとやること</li>
-</ul>
-
-
-<h2>自分なりのワークフロー整理</h2>
-
-<h3>今使っているツール</h3>
-
-<ul>
-<li>Google Task (Web) + GoTasks (iOS App)</li>
-<li>Clear</li>
-<li>Google Calender</li>
-<li>Evernote</li>
-<li>Pocket</li>
-<li>Kindle</li>
-</ul>
-
-
-<h3>今までの問題</h3>
-
-<ul>
-<li>Inboxが多すぎる</li>
-<li>上記のせいで、情報収集はいろいろやってますが、全く整理していない</li>
-<li>ワークフローがない
-
-<ul>
-<li>Inbox整理のタイミングはまったくない</li>
-<li>Inbox以外のフォルダ・カテゴリはバラバラ</li>
+<li>デフォルト環境を日本語に</li>
+<li>設定ファイルをutf-8に</li>
+<li>OSによるファイル名称・エンコーディング設定</li>
 </ul>
 </li>
-</ul>
-
-
-<h3>ワークフロー整理</h3>
+<li>パッケージ管理
 
 <ul>
-<li>収集道具　PC・MBA・iPhone</li>
-<li>Inbox　Evernote・Pocket ( Read it leater )</li>
-<li>遂行・レビュー　Google Calender・Google Task・Evernote</li>
+<li>ELPA</li>
+<li>auto-install</li>
 </ul>
-
-
-<p><img src="https://lh4.googleusercontent.com/-c3t3pb_iMy8/T5VaGPPmYXI/AAAAAAAAAuU/8Yu2b45ydD4/s800/MyGTD.png" alt="MyGTD" /></p>
-
-<h3>次のアクション</h3>
-
-<ul>
-<li>EvernoteのノートブックをGTDの考えに合わせて整理する</li>
-<li>日次・週次の計画・レビューの時間を設ける</li>
-</ul>
+</li>
+</ol>
 
 
 <p>以上</p>
@@ -778,74 +507,7 @@ Error: server did not start correctly
   
 
 
-<time datetime="2012-04-23T00:00:00+09:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/gtd/'>GTD</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/22/emacs-yasnippet/">
-		
-			EmacsにYasnippet導入</a>
-	</h2>
-	<div class="entry-content">
-		<p>角谷さんのビデオでもYasnippetを使っていたらしいし、スニペットの展開が結構使われいるので、導入してみた</p>
-
-<p>もともとGoogle codeで管理していたのですが、今の時点では、既にgithubに移行したので、インストールは基本 <a href="https://github.com/capitaomorte/yasnippet">README</a>を参照すればOK。</p>
-
-<h2>インストール</h2>
-
-<ul>
-<li><code>mkdir ~/.emacs.d/plugins</code></li>
-<li><code>cd ~/.emacs.d/plugins</code></li>
-<li><code>.emacs.d</code>は既にgitで管理しているので、submoduleとして追加する
-<code>git submodule add https://github.com/capitaomorte/yasnippet .emacs.d/plugins/yasnippet</code></li>
-<li>設定ファイルに追加
-<code>require 'yasnippet)</code>
-<code>(yas/global-mode t)</code></li>
-</ul>
-
-
-<p>これでOK。</p>
-
-<p>試しに、<code>Ruby-mode</code>で<code>mm</code>入力し<code>TAB</code>キーを入力すると、<code>method_missing</code>メソッドが展開された！！！</p>
-
-<h2>RSpec スニペット</h2>
-
-<p>有志によりYASnippetの日本語ドキュメントがあるので、それ参照して、自分のスニペットを作れます</p>
-
-<p><a href="http://yasnippet-doc-jp.googlecode.com/svn/trunk/doc-jp/index.html">Yet Another Snippet extension 日本語訳</a></p>
-
-<p>らしいですが、ファイルを作って、<code>yas</code>ロードパスに追加しても、まだ展開出来ていません。後でまた調べる</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-22T00:00:00+09:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2012</time></div>
+<time datetime="2012-05-06T00:00:00+09:00" pubdate data-updated="true">May 6<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
@@ -860,46 +522,66 @@ Error: server did not start correctly
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2012/04/21/s-is-for-spec/">
+		<a href="/blog/2012/05/05/rbenv/">
 		
-			スはスペックのス　感想</a>
+			Rbenvを使ってみる</a>
 	</h2>
 	<div class="entry-content">
-		<p>角谷さんの「スはスペックのス」という四年前のビデオを見た感想。</p>
+		<p>現状はRuby開発環境として、RVMを使っています</p>
 
-<p>既に何回見たけど、毎回も刺激を受けてしまったんですね。最初は実演だけをみて、すごいなと思って、また前のプレゼン部分を見ました。</p>
-
-<h2>TDD</h2>
+<h2>RVM</h2>
 
 <ul>
-<li>TDDは設計方法・開発の進め方である
+<li>メリット
 
 <ul>
-<li>テスト技法だと思った、誤解だったね。</li>
+<li>Ruby複数バージョン切り替えできる</li>
+<li><code>gemset</code>でアプリ毎にgemsの切り分け・管理ができる</li>
 </ul>
 </li>
-<li>Red / Green / Refactoring ３つのモードが重要
+<li>問題
 
 <ul>
-<li>別のTDD資料を読んだ時は、この３つのモードはしっかり認識してなかった</li>
-<li>三角の図もすごく理解しやすいですね。すぐ覚えました</li>
-<li>今どのモードにいるのはしっかり認識しよう</li>
-<li>その上、当該モードのタスク以外はやらないこと
+<li><code>gemset</code>の位置づけは曖昧すぎ。
+実は、アプリ毎ではなく、ある程度、複数のアプリが共有する形で使いたいわけ。例えば、Rails 3.x系のアプリであれば、<code>1.9.2@r3</code>とか、という感じ。ですが、実際使ってみると、アプリ１とアプリ２は、両方もRails 3ですが、別々に他のgemを使ってる。こういうケースだと、別々のgemはどうすればいいかは悩みです。イマイチ<code>1.9.2@r3</code>にしちゃっていますが、何とか違和感を感じてる</li>
+<li><code>Bundler</code>の理解は不足でした
 
-<ul>
-<li>例え、Redモードの場合は、リファクタリングするのはダメ</li>
-</ul>
-</li>
+<blockquote><p>Bundler manages an application&#8217;s dependencies through its entire life across many machines systematically and repeatably.
+そもそも<code>Bundler</code>自体は、アプリの依存関係を管理する位置づけを持っていますね。そうであれば、わざわざRVMで管理する必要もそれほどはない気がしますね。</p></blockquote></li>
 </ul>
 </li>
 </ul>
 
 
-<h2>Emacs</h2>
+<p>こういう経緯で、<code>RVM</code>をやめて、<code>rbenv</code>＋<code>Bundler</code>に移行する</p>
 
-<p>まあ、本題ではないけど、Emacsはカッコイイですね。このきっかけでEmacsを使い始めたよ！</p>
+<h2>rbenv導入</h2>
 
-<p>後でYasnipetを導入してみたい</p>
+<ul>
+<li><code>rvm seppuku</code> RVMアンインストールしておく</li>
+<li><code>brew update</code></li>
+<li><code>brew install rbenv</code></li>
+<li><code>brew install ruby-build</code></li>
+<li><code>rbenv install 1.9.2-p320</code></li>
+<li><code>rbenv rehash</code>でインストールしたものを反映する</li>
+</ul>
+
+
+<h2>使う</h2>
+
+<ul>
+<li><code>rbenv global 1.9.2-p320</code>で設定</li>
+<li><code>ruby -v</code>確認できる</li>
+<li><code>rbenv local 1.9.2-p320</code>を実行すると、カレントフォルダに<code>.rbenv-version</code>ファイルが作られる。<code>.rvmrc</code>と同じですね。</li>
+</ul>
+
+
+<p>しばらくは、使ってみます。</p>
+
+<p>参考リンク<br/>
+- <a href="http://blog-223soft.heroku.com/50">rbenv + ruby-buildのインストール方法</a><br/>
+- <a href="https://github.com/sstephenson/rbenv">rbenv</a><br/>
+- <a href="https://github.com/sstephenson/ruby-build">ruby-build</a></p>
 
 		
 		
@@ -919,12 +601,278 @@ Error: server did not start correctly
   
 
 
-<time datetime="2012-04-21T00:00:00+09:00" pubdate data-updated="true">Apr 21<span>st</span>, 2012</time></div>
+<time datetime="2012-05-05T00:00:00+09:00" pubdate data-updated="true">May 5<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>
+	<a class='category' href='/blog/categories/rbenv/'>rbenv</a>
 
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/03/rails-form-tag/">
+		
+			Railsのform_tag</a>
+	</h2>
+	<div class="entry-content">
+		<p>Railsでアプリを作る時、Modelがなく、単純にFormを作りたい場合、<code>form_tag</code>を使うべきという感じ</p>
+
+<p>WEB開発は全くないので、書き方すらよくわかってない。</p>
+
+<p>何かを作りたいとしても、あんまり進められない</p>
+
+<pre><code>&lt;%= form_tag(:action =&gt; "disp") do -%&gt;
+  Birthday&lt;br/&gt;
+        &lt;%= select_date Date.today,
+            :prefix =&gt; "birthday",
+            :use_month_numbers =&gt; true,
+            :start_year =&gt; 1980,
+            :end_year =&gt; 2012,
+            :discard_day =&gt; true %&gt;&lt;br/&gt;
+        &lt;%= submit_tag "display", :class =&gt; "btn btn-primary" %&gt;
+&lt;% end -%&gt;
+</code></pre>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-03T00:00:00+09:00" pubdate data-updated="true">May 3<span>rd</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/02/mba/">
+		
+			MBAダイエット</a>
+	</h2>
+	<div class="entry-content">
+		<p>MBAちゃんの容量は残り４０Gしかないので、何とかしないとやばい気がする</p>
+
+<p>この記事を参照してやってみる</p>
+
+<p><a href="http://harutomo-ryu.com/archives/2011-08-12/065224.html">MacBookAirをダイエット！SSD使用量を30G減らすために行った7つのこと</a></p>
+
+<h2>iPhotoライブラリを外付けハードディスクに移す</h2>
+
+<p>25Gぐらいなので、NASにコピーする時間は、3dayと表示されている。。。</p>
+
+<h2>iPhoneとiPadのバックアップファイルも外付けHDDへ移動</h2>
+
+<p>これは40G超なので、一回全削除しちゃってから、シンボルリンクを作成した</p>
+
+<p>とりあえずはコピー作業の待ちです。</p>
+
+<hr />
+
+<p>システム情報で確認したところ、「ストレージ」タブの表示は、どう削除しても、空き容量も全く変わってない。細かく確認すると、何かを削除すると、「Backups」のサイズはその分増やして、全体的な空き容量は変わってない。</p>
+
+<p>調べてみたら、Time Machineのローカルキャッシュ見たい。</p>
+
+<p>下記の記事を参照して、それを禁止すると、６０Gの空き容量が出来た。</p>
+
+<p><a href="http://builder.japan.zdnet.com/os-admin/os-x-lion11/35010387/">「Time Machine」で急減するLionのHDD&#8211;その理由と解決策</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-02T00:00:00+09:00" pubdate data-updated="true">May 2<span>nd</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/lion/'>Lion</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/01/emacs-rinari/">
+		
+			Emacs Rinariを導入して見る</a>
+	</h2>
+	<div class="entry-content">
+		<p>Railsを勉強中。やはりEmcsで編集したいので、<code>Rinari</code>を導入してみる</p>
+
+<h2>ELPAの試しと失敗</h2>
+
+<ul>
+<li>ELPAからのインストールがおすすめらいいので、まずはELPAを導入</li>
+<li><code>auto-install</code>を使って<code>ELPA</code>をインストール(ややこしいな)</li>
+<li>今までは、起動が遅くなる為、<code>auto-install-update-emacswiki-package-name</code>をコメントアウトしてるので、まずは復活する</li>
+<li><code>auto-install-update-emacswiki-package-name</code>を実行</li>
+<li><code>M-x install-elisep</code>でインストールを起動</li>
+<li>URLが聞かれるが、なんか<code>[http://bit.ly/pkg-el23](http://bit.ly/pkg-el23)</code>は<code>reject</code>されるので、直接に展開後の長いURLを入力して実行した</li>
+<li><p><code>init.el</code>に必要な設定を追加</p>
+
+<p>  ;; package.el
+  (when (require &#8216;package nil t)</p>
+
+<pre><code>(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
+(package-initialize))
+</code></pre></li>
+</ul>
+
+
+<h3>Rinariをインストール</h3>
+
+<ul>
+<li>ELPAは初回実行なので、<code>list-package</code>を実行する</li>
+<li><code>Cannot open load file: ruby-compilatio</code>エラーで落ちた</li>
+<li>原因はよく分からないので、とりあえずはやめた</li>
+</ul>
+
+
+<h2>直接インストール</h2>
+
+<ul>
+<li>基本は、<a href="http://rinari.rubyforge.org/Basic-Setup.html#Basic-Setup">Basic-Setup</a>を参照する</li>
+<li><code>submodule</code>を利用するので、
+
+<ul>
+<li><code>git submodule add git://github.com/eschulte/rinari.git .emacs.d/elisp/rinari</code>を実行</li>
+</ul>
+</li>
+<li><code>rhtml-mode</code>は<code>rinari</code>のものを使う
+
+<ul>
+<li><code>git submodule add https://github.com/eschulte/rhtml.git .emacs.d/elisp/rhtml</code></li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>これで、ビューファイルを開くと、<code>rhtml-mode</code>になって、<code>rinari</code>も有効になるはず</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-01T00:00:00+09:00" pubdate data-updated="true">May 1<span>st</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/30/rails-323--twitter-bootstrap-rails/">
+		
+			Rails 3.2.3 + Twitter-bootstrap-railsを試して見る</a>
+	</h2>
+	<div class="entry-content">
+		<p>Rails勉強中。デザインが出来ないので、話題の<code>twitter-bootstrap</code>を試してみる</p>
+
+<h2>導入</h2>
+
+<ul>
+<li><code>Gemfile</code>に<code>gem 'twitter-bootstrap-rails</code>を追加し、<code>bundle install</code>を実行</li>
+<li><code>rails g bootstrap:install</code>を実行したら、エラーで落ちた
+
+<ul>
+<li><a href="https://github.com/seyhunak/twitter-bootstrap-rails/issues/194">twitter-bootstrap-railsのIssue</a>を参考して、<code>gem 'therubyracer', :platform =&gt; :ruby</code>をコメントを削除すると、正常に実行出来た</li>
+</ul>
+</li>
+<li>上記以外は、普通にReadmeに従ってやればOK</li>
+</ul>
+
+
+<p><img src="https://lh4.googleusercontent.com/-fuLcAMkDJUE/T56eWDMlpVI/AAAAAAAAA94/4suBZAEnSE4/s800/Screen%2520Shot%25202012-04-30%2520at%252023.14.04.png" alt="" /></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-30T00:00:00+09:00" pubdate data-updated="true">Apr 30<span>th</span>, 2012</time></div>
+	<div class="tags">
 
 </div>
 	

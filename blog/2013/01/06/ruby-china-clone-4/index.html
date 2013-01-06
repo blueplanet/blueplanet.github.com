@@ -1,0 +1,525 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>使用 RSpec+Capybara 简单BDD入门 -4 - 蒼い惑星の記録</title>
+	<meta name="author" content="blueplanet">
+
+	
+	<meta name="description" content="目录
+上一步：使用 RSpec+Capybara 简单BDD入门 -3 用户故事 访问者希望看到帖子的详细信息 显示标题、内容、节点、创建日期
+顶部的导航链接 环境准备 1
+2
+3
+git checkout -b f4
+rails c # console
+rails s # server 步骤 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="蒼い惑星の記録" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">蒼い惑星の記録</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:blueplanet.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/blueplanet42" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/blueplanet" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:blueplanet.github.com">
+	</form>
+</nav>
+
+</header>
+	
+		
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/blueplanet42">blueplanet42</a> @ <a href="http://twitter.com">Twitter</a></small>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('blueplanet42', 4, false);
+	})(jQuery);
+</script>
+
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">使用 RSpec+Capybara 简单BDD入门 -4</h2>
+	<div class="entry-content"><p><a href="/blog/2013/01/06/ruby-china-clone-cover">目录</a>
+上一步：<a href="/blog/2013/01/06/ruby-china-clone-3">使用 RSpec+Capybara 简单BDD入门 -3</a></p>
+
+<h2>用户故事</h2>
+
+<p>访问者希望看到帖子的详细信息</p>
+
+<ul>
+<li>显示标题、内容、节点、创建日期</li>
+<li>顶部的导航链接</li>
+</ul>
+
+
+<h2>环境准备</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git checkout -b f4
+</span><span class='line'>rails c <span class="c"># console</span>
+</span><span class='line'>rails s <span class="c"># server</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>步骤</h2>
+
+<h3>新建文件<code>spec/features/guest_can_see_topic_info_spec.rb</code></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="c1"># coding: utf-8</span>
+</span><span class='line'><span class="n">feature</span> <span class="s1">&#39;访问者希望看到帖子的详细信息&#39;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">background</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@node</span> <span class="o">=</span> <span class="no">Node</span><span class="o">.</span><span class="n">create</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Ruby&quot;</span>
+</span><span class='line'>    <span class="vi">@topic</span> <span class="o">=</span> <span class="no">Topic</span><span class="o">.</span><span class="n">create</span> <span class="n">title</span><span class="p">:</span> <span class="s2">&quot;topic 1 test&quot;</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="vi">@node</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">scenario</span> <span class="s1">&#39;访问/topics/1, 应该显示帖子的详细信息&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">visit</span> <span class="s2">&quot;/topics/</span><span class="si">#{</span><span class="vi">@topic</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span> <span class="vi">@topic</span><span class="o">.</span><span class="n">title</span>
+</span><span class='line'>    <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span> <span class="vi">@topic</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">name</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：<code>No route matches [GET] "/topics/1"</code></li>
+<li>原因：没有<code>topics/1</code>对应的路由信息</li>
+</ul>
+
+
+<h3>编辑<code>config/routes.rb</code>，增加<code>topics show</code>的路由设置</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'>  <span class="n">resources</span> <span class="ss">:topics</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:index</span><span class="p">,</span> <span class="ss">:show</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：<code>The action 'show' could not be found for TopicsController</code></li>
+<li>原因：<code>TopicsController</code>没有定义<code>show</code>方法</li>
+</ul>
+
+
+<h3>编辑<code>controllers/topics_controller.rb</code>，增加<code>show</code>方法定义</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'>  <span class="k">def</span> <span class="nf">show</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：<code>Missing template topics/show, application/show with {:lo...</code></li>
+<li>原因：没有<code>show</code>模板</li>
+</ul>
+
+
+<h3>增加<code>topics/show.html.haml</code>，拷贝<code>ui/topic.html.haml</code>的内容至当前模板</h3>
+
+<ul>
+<li>测试失败：<code>expected there to be text "topic 1 test" in "社区 会...</code></li>
+<li>原因：模板中是写死的假数据</li>
+</ul>
+
+
+<h3>修改<code>topics/show.html.haml</code>内容</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">=</span> <span class="n">render</span> <span class="s1">&#39;shared/breadcrumb&#39;</span><span class="p">,</span> <span class="n">links</span><span class="p">:</span> <span class="o">[[</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s2">&quot;社区&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s2">&quot;新手问题&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s2">&quot;浏览帖子&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">]]</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">%</span><span class="n">section</span><span class="c1">#show_topic</span>
+</span><span class='line'>  <span class="o">%</span><span class="n">section</span><span class="c1">#topic_banner.box.info-box</span>
+</span><span class='line'>    <span class="o">%</span><span class="n">h1</span><span class="o">=</span> <span class="vi">@topic</span><span class="o">.</span><span class="n">title</span>
+</span><span class='line'>    <span class="o">%</span><span class="nb">p</span><span class="o">.</span><span class="n">topic_info</span>
+</span><span class='line'>      <span class="o">=</span> <span class="n">link_to</span> <span class="vi">@topic</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="vi">@topic</span><span class="o">.</span><span class="n">node</span><span class="p">,</span> <span class="n">class</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span>
+</span><span class='line'>      <span class="o">%</span><span class="n">span</span><span class="o">=</span> <span class="s2">&quot;  •  &quot;</span>
+</span><span class='line'>      <span class="o">=</span> <span class="n">link_to</span> <span class="s2">&quot;knwang&quot;</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="n">class</span><span class="p">:</span> <span class="s2">&quot;user_link&quot;</span>
+</span><span class='line'>      <span class="o">%</span><span class="n">span</span><span class="o">=</span> <span class="s2">&quot;  •  &quot;</span>
+</span><span class='line'>      <span class="o">=</span> <span class="s2">&quot;published </span><span class="si">#{</span><span class="vi">@topic</span><span class="o">.</span><span class="n">created_at</span><span class="si">}</span><span class="s2"> ago&quot;</span>
+</span><span class='line'>  <span class="o">%</span><span class="n">section</span><span class="c1">#topic_content.box</span>
+</span><span class='line'>    <span class="o">%</span><span class="nb">p</span><span class="o">=</span> <span class="vi">@topic</span><span class="o">.</span><span class="n">content</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">%</span><span class="n">section</span><span class="c1">#sidebar</span>
+</span><span class='line'>  <span class="o">%</span><span class="n">section</span><span class="c1">#new_topic.box</span>
+</span><span class='line'>    <span class="o">=</span> <span class="n">link_to</span> <span class="s2">&quot;发布新帖&quot;</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="n">class</span><span class="p">:</span> <span class="s2">&quot;btn btn-success&quot;</span>
+</span><span class='line'>  <span class="o">%</span><span class="n">section</span><span class="c1">#stats.box</span>
+</span><span class='line'>    <span class="o">%</span><span class="n">ul</span>
+</span><span class='line'>      <span class="o">%</span><span class="n">li</span> <span class="err">社区会员</span><span class="p">:</span> <span class="mi">4029</span> <span class="err">人</span>
+</span><span class='line'>      <span class="o">%</span><span class="n">li</span> <span class="err">帖子数</span><span class="p">:</span> <span class="mi">312</span> <span class="err">篇</span>
+</span><span class='line'>      <span class="o">%</span><span class="n">li</span> <span class="err">回帖数</span><span class="p">:</span> <span class="mi">3123</span> <span class="err">条</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>注意：回复的部分在后面的步骤中做，暂时删掉即可</strong></p>
+
+<ul>
+<li>测试失败：`undefined methodtitle&#8217; for nil:NilClass&#8220;</li>
+<li>原因：没有对<code>@topic</code>变量赋值</li>
+</ul>
+
+
+<h3>编辑<code>controllers/topics_controller.rb</code></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'>  <span class="k">def</span> <span class="nf">show</span>
+</span><span class='line'>    <span class="vi">@topic</span> <span class="o">=</span> <span class="no">Topic</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：`undefined methodcontent&#8217; for #&lt;Topic:0x0&#8230;&#8220;</li>
+<li>原因：最开始生成<code>topic</code>的时候忘了<code>content</code>属性了 :)</li>
+</ul>
+
+
+<h3>在<code>rails console</code>中执行</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">generate</span> <span class="s2">&quot;migration AddContentToTopics content:text&quot;</span>
+</span><span class='line'>      <span class="n">invoke</span>  <span class="n">active_record</span>
+</span><span class='line'>      <span class="n">create</span>    <span class="n">db</span><span class="o">/</span><span class="n">migrate</span><span class="o">/</span><span class="mi">20130101134732</span><span class="n">_add_content_to_topics</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Completed&quot;</span>
+</span><span class='line'><span class="o">[</span><span class="mi">6</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>执行数据库升级</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>bundle <span class="nb">exec </span>rake db:migrate
+</span><span class='line'>bundle <span class="nb">exec </span>rake db:test:prepare
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试通过！</li>
+</ul>
+
+
+<h3>修改测试用例，增加内容和创建时间的验证</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="c1"># coding: utf-8</span>
+</span><span class='line'><span class="n">feature</span> <span class="s1">&#39;访问者希望看到帖子的详细信息&#39;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">background</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@node</span> <span class="o">=</span> <span class="no">Node</span><span class="o">.</span><span class="n">create</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Ruby&quot;</span>
+</span><span class='line'>    <span class="vi">@topic</span> <span class="o">=</span> <span class="no">Topic</span><span class="o">.</span><span class="n">create</span> <span class="n">title</span><span class="p">:</span> <span class="s2">&quot;topic 1 test&quot;</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="s2">&quot;topic 1 content&quot;</span><span class="p">,</span>  <span class="n">node</span><span class="p">:</span> <span class="vi">@node</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">scenario</span> <span class="s1">&#39;访问/topics/1, 应该显示帖子的详细信息&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">visit</span> <span class="s2">&quot;/topics/</span><span class="si">#{</span><span class="vi">@topic</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span> <span class="vi">@topic</span><span class="o">.</span><span class="n">title</span>
+</span><span class='line'>    <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span> <span class="vi">@topic</span><span class="o">.</span><span class="n">content</span>
+</span><span class='line'>    <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span> <span class="vi">@topic</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">name</span>
+</span><span class='line'>    <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span> <span class="s2">&quot;published </span><span class="si">#{</span><span class="vi">@topic</span><span class="o">.</span><span class="n">created_at</span><span class="si">}</span><span class="s2"> ago&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：<code>Can't mass-assign protected attributes: content</code></li>
+<li>原因：没有设置<code>content</code>的访问属性</li>
+</ul>
+
+
+<h3>编辑<code>model/topic.rb</code></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'>  <span class="n">attr_accessible</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:node</span><span class="p">,</span> <span class="ss">:content</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试通过！</li>
+</ul>
+
+
+<h2>再次确认用户故事</h2>
+
+<h3>增加导航栏的验证</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_link</span> <span class="s2">&quot;Home&quot;</span><span class="p">,</span> <span class="n">href</span><span class="p">:</span> <span class="n">root_path</span>
+</span><span class='line'><span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_link</span> <span class="vi">@topic</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">href</span><span class="p">:</span> <span class="n">node_path</span><span class="p">(</span><span class="vi">@topic</span><span class="o">.</span><span class="n">node</span><span class="p">)</span>
+</span><span class='line'><span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_link</span> <span class="s2">&quot;浏览帖子&quot;</span><span class="p">,</span> <span class="n">href</span><span class="p">:</span> <span class="n">topic_path</span><span class="p">(</span><span class="vi">@topic</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：`undefined local variable or methodroot_path&#8217; for&#8230;&#8220;n</li>
+<li>原因：没有<code>root_path</code>的定义</li>
+</ul>
+
+
+<h3>编辑<code>config/routes.rb</code>，增加<code>root_path</code>的定义</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="no">MyRubyChina</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">resources</span> <span class="ss">:topics</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:index</span><span class="p">,</span> <span class="ss">:show</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">resources</span> <span class="ss">:nodes</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:show</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">root</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;topics#index&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">match</span> <span class="s1">&#39;ui/:action&#39;</span><span class="p">,</span> <span class="n">controller</span><span class="p">:</span> <span class="s1">&#39;ui&#39;</span>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>删除默认的主页文件</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm public/index.html
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试失败：<code>expected to find link "Home" but there were no matches. Als...</code></li>
+<li>原因：没有定义对应的链接</li>
+</ul>
+
+
+<h3>编辑<code>topics/show.html.haml</code>，修改顶部导航栏链接</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">=</span> <span class="n">render</span> <span class="s1">&#39;shared/breadcrumb&#39;</span><span class="p">,</span> <span class="n">links</span><span class="p">:</span> <span class="o">[[</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span> <span class="n">root_path</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="vi">@topic</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="vi">@topic</span><span class="o">.</span><span class="n">node</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s2">&quot;浏览帖子&quot;</span><span class="p">,</span> <span class="vi">@topic</span><span class="o">]]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测试通过！</li>
+</ul>
+
+
+<h2>完成，提交代码</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git add .
+</span><span class='line'>git rm public/index.html
+</span><span class='line'>git commit
+</span><span class='line'>git checkout dev
+</span><span class='line'>git merge f4 --no-ff
+</span><span class='line'>git branch -d f4
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>下一步骤：<a href="/blog/2013/01/06/ruby-china-clone-5">使用 RSpec+Capybara 简单BDD入门 -5</a></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-06T19:55:00+09:00" pubdate data-updated="true">Jan 6<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/bdd/'>BDD</a>, <a class='category' href='/blog/categories/rspec-/'>RSpec,</a>, <a class='category' href='/blog/categories/rails-/'>Rails,</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2013
+
+    blueplanet
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'bpgh';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-4/';
+        var disqus_url = 'http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-4/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+</body>
+</html>

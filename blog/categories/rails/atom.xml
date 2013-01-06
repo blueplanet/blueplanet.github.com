@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | 蒼い惑星の記録]]></title>
   <link href="http://blueplanet.github.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2013-01-06T17:29:36+09:00</updated>
+  <updated>2013-01-06T21:26:14+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -12,440 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[使用 RSpec+Capybara 简单BDD入门 -1]]></title>
-    <link href="http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-1/"/>
-    <updated>2013-01-06T17:17:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-1</id>
-    <content type="html"><![CDATA[<p><a href="http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-cover">目录</a></p>
-
-<h2>用户故事</h2>
-
-<p>访问者希望看到所有帖子的列表</p>
-
-<ul>
-<li>显示帖子的标题和创建时间</li>
-</ul>
-
-
-<h2>环境准备</h2>
-
-<p><code>bash
-git checkout -b f1
-rails c # console
-rails s # server
-</code></p>
-
-<h2>步骤</h2>
-
-<h3>新建文件<code>spec/features/guest_can_see_all_topics_spec.rb</code></h3>
-
-<p>```rb</p>
-
-<h1>coding: utf-8</h1>
-
-<p>feature '访问者希望看到所有帖子的列表' do
-  scenario '访问/topics, 应该显示所有帖子' do</p>
-
-<pre><code>visit '/topics'
-
-page.should have_content "DHH 的公开课"
-page.should have_content "Rails3 中 compass 的 IE 使用问题"
-page.should have_content "这周二上海搞Ruby Tuesday么？"
-</code></pre>
-
-<p>  end
-end
-```</p>
-
-<ul>
-<li>测试失败：No route matches [GET] "/topics"</li>
-<li>原因：没有正确的路由设置信息</li>
-</ul>
-
-
-<h3>编辑<code>config/route.rb</code>, 增加<code>topics</code>的定义</h3>
-
-<p><code>rb
-  resources :topics, only: [:index]
-</code></p>
-
-<ul>
-<li>测试失败：<code>uninitialized constant TopicsController</code></li>
-<li>原因：没有定义<code>TopicsController</code></li>
-</ul>
-
-
-<h3>在<code>rails console</code>中执行</h3>
-
-<p>```rb
-[1] pry(main)> generate "controller topics"</p>
-
-<pre><code>  create  app/controllers/topics_controller.rb
-  invoke  haml
-  create    app/views/topics
-</code></pre>
-
-<p>=> "Completed"
-```</p>
-
-<ul>
-<li>测试失败：<code>The action 'index' could not be found for TopicsController</code></li>
-<li>原因：<code>TopicsController</code>中没有定义<code>index</code>方法</li>
-</ul>
-
-
-<h3>编辑 <code>topics_controller.rb</code></h3>
-
-<p><code>rb
-class TopicsController &lt; ApplicationController
-  def index
-  end
-end
-</code></p>
-
-<ul>
-<li>测试失败：<code>Missing template topics/index, application/index ...</code></li>
-<li>原因：没有<code>topics/index</code>模板</li>
-</ul>
-
-
-<h3>新建文件：<code>app/views/topics/index.html.haml</code></h3>
-
-<ul>
-<li>测试失败：<code>Failure/Error: page.should have_content "DHH 的公开课"</code></li>
-<li>原因：模板中没有显示内容</li>
-</ul>
-
-
-<p>拷贝<code>ui/topics.html.haml</code>的内容至当前模板</p>
-
-<ul>
-<li>测试成功了，但是不要高兴！成功是因为页面上所有的数据都是写死的假数据。必须更改为正确的代码</li>
-</ul>
-
-
-<h3>编辑<code>app/views/topics/index.html.haml</code></h3>
-
-<p>```rb
-= render 'shared/breadcrumb', links: [["Home", ""], ["社区", ""]]</p>
-
-<p>%section#topics
-  %section#topics_info.box.box-gray.info-box</p>
-
-<pre><code>%span 查看： 默认
-</code></pre>
-
-<p>  %ul.topics.box</p>
-
-<pre><code>- @topics.each do |topic|
-  %li
-    %a.span1(href="")
-      %img(src="#{gravatar_url('joe@example.com')}")
-    %article.span7
-      %p.topic_title
-        = link_to topic.title
-      %p.topic_info
-        = link_to "分享", nil, class: "node"
-        %span= "  •  "
-        = link_to "knwang", nil, class: "user_link"
-        %span= "  •  "
-        = "published #{time_ago_in_words(topic.created_at)} ago"
-    %p.replies.span1
-      %span 12
-</code></pre>
-
-<p>%section#sidebar
-  %section#new_topic.box</p>
-
-<pre><code>= link_to "发布新帖", nil, class: "btn btn-success"
-</code></pre>
-
-<p>  %section#stats.box</p>
-
-<pre><code>%ul
-  %li 社区会员: 4029 人
-  %li 帖子数: 312 篇
-  %li 回帖数: 3123 条
-</code></pre>
-
-<p>```</p>
-
-<ul>
-<li>测试失败：`undefined methodeach' for nil:NilClass``</li>
-<li>原因：<code>TopicsController</code>的<code>index</code>方法中没有对<code>@topics</code>赋值</li>
-</ul>
-
-
-<h3>编辑<code>topics_controller.rb</code>，增加赋值部分</h3>
-
-<p>```rb
-class TopicsController &lt; ApplicationController
-  def index</p>
-
-<pre><code>@topics = Topic.all
-</code></pre>
-
-<p>  end
-end
-```</p>
-
-<p><strong>注意：由于是示范项目所以直接使用了 Topic.all ， 实际项目中绝对不能这样做</strong></p>
-
-<ul>
-<li>测试失败：<code>uninitialized constant TopicsController::Topic</code></li>
-<li>原因：没有 <code>Topic</code> 这个 <code>model</code></li>
-</ul>
-
-
-<h3>在<code>rails conssole</code>中执行</h3>
-
-<p>```rb
-[2] pry(main)> generate "model topic title"</p>
-
-<pre><code>  invoke  active_record
-  create    db/migrate/20121229122838_create_topics.rb
-  create    app/models/topic.rb
-</code></pre>
-
-<p>=> "Completed"
-[3] pry(main)>
-```</p>
-
-<ul>
-<li>测试失败：<code>expected there to be text "DHH 的公开课" in "社区...</code></li>
-<li>原因：测试数据库中没有对应的数据</li>
-</ul>
-
-
-<h3>编辑 <code>spec/features/guest_can_see_all_topics_spec.rb</code>，增加<code>background</code>部分</h3>
-
-<p>```rb</p>
-
-<h1>coding: utf-8</h1>
-
-<p>feature '访问者希望看到所有帖子的列表' do
-  background do</p>
-
-<pre><code>Topic.delete_all
-
-Topic.create title: "DHH 的公开课"
-Topic.create title: "Rails3 中 compass 的 IE 使用问题"
-Topic.create title: "这周二上海搞Ruby Tuesday么？"
-</code></pre>
-
-<p>  end</p>
-
-<p>  scenario '访问/topics, 应该显示所有帖子' do</p>
-
-<pre><code>visit '/topics'
-
-Topic.all.each do |topic|
-  page.should have_content topic.title
-end
-</code></pre>
-
-<p>  end
-end
-```</p>
-
-<ul>
-<li>测试成功！！完成！！</li>
-</ul>
-
-
-<h2>提交代码</h2>
-
-<p>git add .
-git commit
-git checkout dev
-git merge f1 --no-ff
-git push origin dev</p>
-
-<h2>总结</h2>
-
-<ul>
-<li>执行测试之后，按照提示的错误进行修改即可</li>
-<li>问题
-
-<ul>
-<li>目前自动测试基本不起作用，每次都需要手动执行测试</li>
-</ul>
-</li>
-</ul>
-
-
-<p>下一步骤：<a href="/blog/2013/01/06/ruby-china-clone-2">使用 RSpec+Capybara 简单BDD入门 -2</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用 RSpec+Capybara 简单BDD入门 -目录]]></title>
-    <link href="http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-cover/"/>
-    <updated>2013-01-06T17:14:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-cover</id>
-    <content type="html"><![CDATA[<h2>前提</h2>
-
-<ul>
-<li>我也是个Rails初学者，文中可能会有考虑不周或者错误的地方，希望大家多指正，共同进步</li>
-<li>计划是使用RSpec+Capybara写 features 测试＋简单的单元测试，并不是完全的BDD，是一个简略版本</li>
-</ul>
-
-
-<h2>缘起</h2>
-
-<ul>
-<li>前段时间刚看完了 The RSpec Book之后对BDD特别感兴趣，尝试了一下 cucumber 但不是很顺利就暂时放下了</li>
-<li>之后有幸参加了的社区最高楼 @knwang 周四晚现场编程网上演示 面向新手的现场演示，被从外至内的理念震撼了</li>
-<li>@knwang 在交流时间里说过，实际项目开发的时候，会使用TDD/BDD进行开发，但基本的从外至内的理念是不变的，于是参加活动之后，先是按照 @knwang 的演示步骤自己动手做了几遍，觉得收获非常大，如果能够把RSpec加进去的话应该更完美。</li>
-<li>最近又学到了RSpec写features的方法，于是决定使用 RSpec+Capybara来把 @knwang 的步骤重新做一遍，顺便把这个过程记录下来，希望能够对其他人有所帮助</li>
-</ul>
-
-
-<h2>计划</h2>
-
-<ul>
-<li>完全按照 @knwang 的步骤，重写一遍 Ruby China Clone</li>
-<li>使用RSpec+Capybara 编写测试</li>
-<li>每个步骤新开一个帖子，这个帖子作为目录。步骤完成后把新帖子链接加到这个帖子里</li>
-<li>把 @knwang 的步骤翻译成了中文。由于英文水平很低，并且用户故事的写法也不是很熟练，可能看起来比较生硬，请见谅</li>
-</ul>
-
-
-<h2>步骤</h2>
-
-<ol>
-<li><a href="/blog/2013/01/06/ruby-china-clone-1">访问者希望看到所有帖子的列表</a></li>
-<li><a href="http://ruby-china.org/topics/7773">访问者希望看到帖子的节点</a></li>
-<li><a href="http://ruby-china.org/topics/7774">访问者希望看到一个节点的帖子列表</a></li>
-<li><a href="http://ruby-china.org/topics/7775">访问者希望看到帖子的详细信息</a></li>
-<li><a href="http://ruby-china.org/topics/7776">访问者希望看到用户的信息</a></li>
-<li><a href="http://ruby-china.org/topics/7779">访问者希望注册用户</a></li>
-<li><a href="http://ruby-china.org/topics/7780">访问者希望登录</a></li>
-<li><a href="http://ruby-china.org/topics/7781">用户希望公开帖子</a></li>
-<li><a href="http://ruby-china.org/topics/7782">用户希望看到帖子的回复列表</a></li>
-<li><a href="http://ruby-china.org/topics/7785">用户希望看到最新回复的信息</a></li>
-<li><a href="http://ruby-china.org/topics/7787">用户希望对帖子进行回复</a></li>
-</ol>
-
-
-<h2>可能出现的问题</h2>
-
-<h3>无法退出。按照下面的步骤实现即可</h3>
-
-<h4>编辑<code>controllers/sessions_controller.rb</code>，增加<code>destroy</code>方法</h4>
-
-<p>```rb
-  def destroy</p>
-
-<pre><code>session[:user_name] = nil
-redirect_to root_path
-</code></pre>
-
-<p>  end
-```</p>
-
-<h4>编辑<code>layouts/application.html.haml</code>，修改第26行的链接</h4>
-
-<p>```rb</p>
-
-<pre><code>          = link_to "退出", sign_out_path
-</code></pre>
-
-<p>```</p>
-
-<h4>编辑<code>conf/routes.rb</code>，增加路由信息</h4>
-
-<p><code>rb
-  match 'sign_out', to: "sessions#destroy"
-</code></p>
-
-<h3>在使用<code>rails server</code>后启动浏览器进行测试的时候没有<code>Node</code></h3>
-
-<ul>
-<li>由于是示范项目，所以并没有把所有功能做完</li>
-<li>可以在<code>rails console</code>里面加上几个就可以了</li>
-</ul>
-
-
-<h2>起步</h2>
-
-<ul>
-<li>参考我的git 库
-
-<ul>
-<li>gitcafe : https://gitcafe.com/blueplanet/ruby_china_clone</li>
-<li>github : https://github.com/blueplanet/ruby_china_clone</li>
-</ul>
-</li>
-<li>主要有两个分支：
-
-<ul>
-<li>master 分支：从 @knwang 的库拷贝过来的。除了基本的框架之外还有 ui 这个 controller。相当于美工做好的设计，纯HTML加上假的数据。这个分支不打算更新</li>
-<li>dev 分支：今后的开发分支。修改会提交到这个分支</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>本地开发步骤</h2>
-
-<p><code>bash
-git clone https://gitcafe.com/blueplanet/ruby_china_clone
-cd ruby_china_clone
-git checkout master
-git checkout -b dev # 创建dev分支
-</code></p>
-
-<ul>
-<li>启动自动测试环境</li>
-</ul>
-
-
-<p><code>bash
-bundle install --without production # 只安装开发环境和测试环境需要的gem
-bundle exec guard
-</code></p>
-
-<p>执行之后如果出现下面的提示，说明环境没问题了</p>
-
-<p><code>bash
-Finished in 0.00856 seconds
-0 examples, 0 failures           
-Randomized with seed 26104    
-Done.  
-17:00:57 - INFO - Guard is now watching at ....
-[1] guard(main)&gt;
-</code></p>
-
-<p>以后的步骤中，新建或者保存 spec 文件之后，会自动执行对应的测试</p>
-
-<p>先把坑挖好，慢慢填上！</p>
-
-<h2>感想</h2>
-
-<ul>
-<li>真正动手很重要
-
-<ul>
-<li>实际花费时间：写帖子20小时左右，之前的练习和调查也至少是这个数字</li>
-<li>这40个小时，感觉是进步最大最快的40个小时。所以，不能只顾看书，动手才是真的！</li>
-</ul>
-</li>
-<li>实际开发很复杂
-
-<ul>
-<li>由于示范的侧重点不同，实际上回避了两个比较大的问题。一是UI设计，二是用户故事的写法。</li>
-<li>实际上如果自己做项目，最先遇到的就是这两个问题。至少我是撞得够呛，呵呵。计划下个阶段摸索一下这两个方面。</li>
-</ul>
-</li>
-</ul>
-
-
-<p>最后，再次感谢 @knwang 的演示！</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby-Chinaのオンラインライブコーディングイベントに参加した]]></title>
@@ -559,6 +125,149 @@ Done.
         &lt;%= submit_tag "display", :class =&gt; "btn btn-primary" %&gt;
 &lt;% end -%&gt;
 </code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[「浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編」の写経(1)]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/03/rails3dojo/"/>
+    <updated>2012-04-03T07:30:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/03/rails3dojo</id>
+    <content type="html"><![CDATA[<p><a href="http://www.slideshare.net/mackato/rails3dojo-routing">浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編</a></p>
+
+<ul>
+<li><code>Ruby 1.9.2 @ Rails3.0.7</code>環境作成</li>
+<li><code>pow</code>導入
+
+<ul>
+<li><code>curl get.pow.cx | sh</code>一発でOK</li>
+<li><code>ln -s rails3dojo</code>で追加</li>
+<li><code>open rails3dojo.dev</code>で確認できる！素晴らしい！</li>
+</ul>
+</li>
+<li><code>spork</code>導入
+
+<ul>
+<li><code>config/environments/test.rb</code>の<code>config.cache_classes</code>を<code>false</code>に変更</li>
+</ul>
+</li>
+<li>写経内容は割愛
+
+<ul>
+<li>スライドだけでは、ちょっと何かが足りないなーと感じた。</li>
+<li><code>config/route.rb</code>修正した場合、sporkも再起動する必要があるらしい</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rails3.2 on heroku]]></title>
+    <link href="http://blueplanet.github.com/blog/2012/04/02/rails3-dot-2-on-heroku/"/>
+    <updated>2012-04-02T07:29:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2012/04/02/rails3-dot-2-on-heroku</id>
+    <content type="html"><![CDATA[<p>Rails 3.2のアプリをHerokuにデプロイする場合、ハマったことをメモ</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>Rails 3.2.2</li>
+<li>ローカルDBはsqlite</li>
+</ul>
+
+
+<h2>手順</h2>
+
+<ul>
+<li>Railsアプリを作成
+
+<ul>
+<li><code>rails new myblog</code></li>
+<li><code>cd myblog</code></li>
+<li><code>git init</code></li>
+<li><code>git add .</code></li>
+<li><code>git ci -m 'init'</code></li>
+</ul>
+</li>
+<li>Scaffold
+
+<ul>
+<li><code>rails g scaffold post title:string body:text</code></li>
+<li><code>rake db:migrate</code></li>
+<li><code>rm public/index.html</code></li>
+<li><code>vi config/route.rb</code>
+
+<ul>
+<li><code>root :to =&gt; "pots#index"</code>を追加</li>
+</ul>
+</li>
+<li><code>git rm public/index.html</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'scaffold'</code></li>
+</ul>
+</li>
+<li>Heroku
+
+<ul>
+<li><code>vi Gemfile</code>heroku側は下記を追加</li>
+</ul>
+</li>
+</ul>
+
+
+<p><div class="highlight"><pre><code class="ruby"><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+
+<span class="sr">&lt;pre&gt;&lt;code&gt; gem &#39;pg&#39;  </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+
+<span class="sr">&lt;p&gt;end</span>
+</code></pre>
+</div>
+</p>
+
+<ul>
+<li><code>rake assets:precompile RAILS_ENV=production</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'heroku'</code></li>
+<li><code>heroku create</code></li>
+<li><code>git push heroku master</code></li>
+<li><code>heroku rake db:migrate</code></li>
+<li><code>heroku open</code>で確認できるはず</li>
+</ul>
+
+
+<h2>問題</h2>
+
+<ul>
+<li><code>heroku rake db:migrate</code>のエラー
+
+<ul>
+<li><code>(pg is not part of the bundle. Add it to Gemfile.)</code></li>
+<li>対策：Gemfileに下記を追加</li>
+</ul>
+</li>
+</ul>
+
+
+<p><div class="highlight"><pre><code class="ruby"><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+  <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+</p>
+
+<ul>
+<li><code>git push heroku master</code>後、画面で確認すると、エラー画面になってる
+
+<ul>
+<li><code>heroku logs</code>で確認すると<code>ActionView::Template::Error (application.css isn't precompiled)</code>エラー</li>
+<li>対策：<code>push</code>前に、<code>rake assets:precompile RAILS_ENV=production</code>を実施する</li>
+</ul>
+</li>
+</ul>
+
 ]]></content>
   </entry>
   

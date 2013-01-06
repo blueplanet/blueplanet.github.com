@@ -1,0 +1,842 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蒼い惑星の記録</title>
+	<meta name="author" content="blueplanet">
+
+	
+	<meta name="description" content="　引き続き before /after setup / teardown に相当
+一度だけ実行したい場合、:allを指定する
+各example毎実行したい場合、:eachを指定する デフォルト
+複数指定もできる。実行順番は before系は定義順
+after系は定義順の逆順 should / &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="蒼い惑星の記録" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">蒼い惑星の記録</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:blueplanet.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/blueplanet42" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/blueplanet" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:blueplanet.github.com">
+	</form>
+</nav>
+
+</header>
+	
+		
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/blueplanet42">blueplanet42</a> @ <a href="http://twitter.com">Twitter</a></small>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('blueplanet42', 4, false);
+	})(jQuery);
+</script>
+
+	
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/21/rspec-rails/">
+		
+			RSpec on Rails (2)</a>
+	</h2>
+	<div class="entry-content">
+		<p>　引き続き</p>
+
+<ul>
+<li><p>before /after</p>
+
+<ul>
+<li>setup / teardown に相当</li>
+<li>一度だけ実行したい場合、<code>:all</code>を指定する</li>
+<li>各example毎実行したい場合、<code>:each</code>を指定する <strong>デフォルト</strong></li>
+<li>複数指定もできる。実行順番は
+
+<ul>
+<li>before系は定義順</li>
+<li>after系は定義順の逆順</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>should / should_notはRSpecによるObjectに対する拡張するメソッド</p></li>
+<li>マッチャ
+
+<ul>
+<li>演算子マッチャ<code>&lt; &lt;= == === =~ &gt; &gt;=</code> <strong>否定のものはサポートされない、should_notを使うべき</strong></li>
+<li><code>be_close change eql equal have(n).items have_at_least(n).items have_at_most(n).items have_exactly include match raise_error respond_to satisfy throw_symbol</code></li>
+<li><code>be_XXX</code>　→　<code>XXX?</code></li>
+<li><code>be_true / be_false</code>は<code>true? / false?</code>というメソッドがなくても使える</li>
+<li><code>have_XXX</code> →　<code>has_XXX?</code></li>
+<li>カスタムマッチャ定義できる</li>
+</ul>
+</li>
+<li><code>violated</code>は実行を失敗させる</li>
+<li>保留：テストまだ書いてない
+
+<ul>
+<li><code>it</code>にブロックを渡せない</li>
+<li>pendingメソッドを使う</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>ようやく <code>RSpec on Rails</code></h3>
+
+<ul>
+<li>今更気づいたのですが、記事のバージョンは結構古い。よって、コマンドとかいろいろ変わっている
+
+<ul>
+<li>インストール：Gemfileに<code>gem 'rspec'``gem 'rspec-rails'</code>追記してから、<code>bundle install</code>実行すればOK</li>
+<li>初期化は<code>rails g rspec:install</code></li>
+<li><code>rake spec</code>の補完一覧
+<img src="https://lh6.googleusercontent.com/-gpjoO4UhGbE/T2s9WOraeTI/AAAAAAAAAgI/FO8ATshJGwU/s800/120322-0004.png" alt="image" /></li>
+<li><code>TODO:</code>モックとスタブの区別はわからない</li>
+<li>フォルダ構造もシンプルになっているよう。少なくともデフォルトは作ってない</li>
+<li><code>script/generate rspec_model</code>を実行する必要がなくなり、上記の<code>rails g rspec:install</code>を実行しておけば、普通に <code>rails g …</code>を実行する時、<code>test</code>系ではなく、<code>rspec</code>系のテストクラスを作ってくれる</li>
+<li>ruby 1.9以降を使う+日本語がある場合、例の<code>encoding=utf-8</code>追記する必要</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>複数記事に分けるので、とりあえずここまで</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-21T06:31:00+09:00" pubdate data-updated="true">Mar 21<span>st</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/20/rspec/">
+		
+			RSpec on Rails</a>
+	</h2>
+	<div class="entry-content">
+		<p>　るびまの記事<a href="http://jp.rubyist.net/magazine/?cmd=view&amp;p=0021-Rspec&amp;key=rspec">スはスペックのス 【第 1 回】 RSpec の概要と、RSpec on Rails (モデル編)</a>を読み始めたので、適当にメモ</p>
+
+<ul>
+<li>「RSpecって、Test::Unitでやっていることを別の書き方にしただけでは？」イエス！
+
+<ul>
+<li>短い答えは、イエスですが、その書き方は人の考え方をく変えてしまう！！</li>
+</ul>
+</li>
+<li>DSL
+
+<ul>
+<li>DSLを定義する言語とDSLを実行する言語とが同じ：<strong>言語内DSL</strong></li>
+<li>異なる場合は、<strong>言語外DSL</strong></li>
+</ul>
+</li>
+<li>TDD
+
+<ul>
+<li>TDDはテスト技法ではないこと</li>
+<li>TDDは分析手法および設計技法である</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>今日は仕事が遅かったので、後で</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-20T23:15:00+09:00" pubdate data-updated="true">Mar 20<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/20/centos-rails-dev/">
+		
+			Amazon EC2 のCentOSでRails開発環境構築</a>
+	</h2>
+	<div class="entry-content">
+		<p>　Rails勉強中。やはり手で動かないと、理解できたとしても、それほどの知識を覚えるのは無理なので、いざ何かを試したい時、手元に環境がないと困ることがよくあります。</p>
+
+<p>　ちょうど、AWSは、新規登録だと、<a href="http://aws.amazon.com/jp/free/">無料で１年間利用できるプログラム</a>があります。そこに開発環境をインストールしておけば、SSH接続さえ出来れば、開発環境が使えるので、うれしいかなと思うので、試しに作ります。</p>
+
+<p><strong><em>EC2の作成は普通にAmazonのLinuxでマイクロインスタンスを作成</em></strong></p>
+
+<h2>OS周りの設定</h2>
+
+<ul>
+<li><code>sudo yum install -y zsh git</code></li>
+<li>rootパスワードを設定　<code>sudo passwd</code></li>
+<li>ec2-userのパスワードを設定（初期パスワードがわからないので、Rootユーザに切り替え、設定する）<br/>
+<code>su root</code><br/>
+<code>passwd ec2-user</code></li>
+<li>shをzshに切り替え<br/>
+<code>chsh -s /bin/zsh</code></li>
+</ul>
+
+
+<h2>oh-my-zsh(<strong>個人のバージョン</strong>)導入</h2>
+
+<ul>
+<li><code>git clone git://github.com/blueplanet/oh-my-zsh.git ~/.oh-my-zsh</code></li>
+<li><code>cd ~/.oh-my-zsh</code></li>
+<li><code>git submodule init</code></li>
+<li><code>git submodule update</code></li>
+</ul>
+
+
+<h2>RVM導入</h2>
+
+<ul>
+<li><code>zsh -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</code></li>
+<li><blockquote><p>zsh: command not found: shopt<br/>
+set: no such option: errtrace</p></blockquote>
+
+<p>が出てしまったのですが、影響がなさそうなので、無視</p></li>
+<li><code>source ~/.zshrc</code>を実行し、設定を反映し、<code>rvm</code>で確認できた！</li>
+</ul>
+
+
+<h2>Ruby &amp;&amp; Rails</h2>
+
+<ul>
+<li><code>sudo yum install -y rubygems gcc-c++ make patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel</code></li>
+<li><code>rvm install 1.9.3</code> <strong><em>←　マイクロインスタンスで実行すると、結構時間がかかる</em></strong></li>
+<li><code>rvm use 1.9.3 --default</code></li>
+<li><code>rvm gemset create r3</code></li>
+<li><code>rvm use 1.9.3@r3 --default</code></li>
+<li><code>gem install rails --no-rdoc --no-ri</code></li>
+</ul>
+
+
+<p><code>rails -v</code>を実行したら、<code>Rails 3.2.2</code>ができている！！</p>
+
+<p><strong><em>WindowsからのSSH接続は、後で。</em></strong></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-20T15:43:00+09:00" pubdate data-updated="true">Mar 20<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/aws/'>AWS</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/クラウド/'>クラウド</a>, <a class='category' href='/blog/categories/日本語/'>日本語</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/19/lisp/">
+		
+			Lisp是什么？</a>
+	</h2>
+	<div class="entry-content">
+		<p>  偶尔读到一篇博客文章 <a href="http://www.cnblogs.com/Leap-abead/articles/762180.html">LISP的本质(THE NATURE OF LISP)</a> ，一下子就被LISP吸引了。</p>
+
+<p>  以前也听说过LISP，而且Ruby也受LISP影响很大，所以一直都有耳闻。曾经看了一点点入门级别的文章，确实如上文的作者所说，马上被满屏的括号吓到了，完全体会不到任何好处和美感。</p>
+
+<p>  读了上面的文章之后，马上想自己动手尝试一下。第一次装Common LISP <code>brew install clisp</code>失败了，似乎是系统太忙导致某个网站访问超时导致的，再次安装后成功。搜索了一下，似乎<code>brew install gauche</code>更热门，也顺便装了。</p>
+
+<p>  安装之后会多出个命令<code>ghosh</code>，CommonLISP的话是<code>clisp</code>，执行之后就会启动执行环境。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="o">(</span>format t <span class="s2">&quot;Hello, world!&quot;</span><span class="o">)</span> 回车
+Hello, world
+NIL
+</code></pre>
+</div>
+
+
+<p><strong>使用Ctrl＋D或者(exit)退出</strong></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-19T22:13:00+09:00" pubdate data-updated="true">Mar 19<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/lisp/'>LISP</a>, <a class='category' href='/blog/categories/中文/'>中文</a>, <a class='category' href='/blog/categories/编程语言/'>编程语言</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/19/what-human/">
+		
+			どんな人間になりたい？</a>
+	</h2>
+	<div class="entry-content">
+		<p>　子供の頃よく聞かれた問題だけど、正直に言うと、大人になってから、あんまり聞かれてないし、たまに自分に聞かれたとしても、それほど深く考えてない問題ですね。</p>
+
+<p>　よく考えてみたら、この問題を回答するのは、難しい気がし始めた。自分がどんな人間になりたいを考えると、そもそも周りの人はどんな人間であるかという問題すらを表せない私は、観察力と表現力との低さに驚きました。</p>
+
+<p>　それでは、まず周りの人の特徴を整理しましょう！</p>
+
+<ul>
+<li>Hちゃん
+
+<ul>
+<li>楽観的</li>
+<li>やるべきことをやる</li>
+<li>短気</li>
+<li>ロジック</li>
+</ul>
+</li>
+<li>IMOTOちゃん
+
+<ul>
+<li>楽観的</li>
+<li>ちょっとわがまま</li>
+</ul>
+</li>
+<li>YO君
+
+<ul>
+<li>すごく大人的、社会人的</li>
+<li>ゲーム好き</li>
+<li>人間関係周りがすごい</li>
+</ul>
+</li>
+<li>RYU君
+
+<ul>
+<li>頭いい</li>
+<li>性格が優しい</li>
+<li>真面目</li>
+<li>ゲーム好き</li>
+</ul>
+</li>
+<li>Sさん
+
+<ul>
+<li>職場では真面目</li>
+</ul>
+</li>
+<li>SZKさん
+
+<ul>
+<li>健康的</li>
+<li>頭いい</li>
+<li>性格が明確</li>
+</ul>
+</li>
+</ul>
+
+
+<p>　うむ、こういうように書くだけでも、思考に役に立てましたね。自分自身は、またよく考えましょう。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-19T06:58:00+09:00" pubdate data-updated="true">Mar 19<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/lifehack/'>LifeHack</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/18/octopress-settings/">
+		
+			ブログ設定：DISQUSを使う</a>
+	</h2>
+	<div class="entry-content">
+		<p>Octopressをインストールした時、すぐに、DISQUSが使えるのを気づいたが、設定がうまくできず、使ってなかった。今日改めてショット名称だけを設定してみたら、普通にできた！Orz…　</p>
+
+<p>それでは、DISQUSさん、これからは、宜しく〜〜</p>
+
+<hr />
+
+<p>実は、他もバラバラ試しました。</p>
+
+<ul>
+<li>日付表示を修正したかった：多言語対応に気付き、とりあえずはデフォルトで、後で</li>
+<li>カテゴリを表示した買った：意外に面倒なので、よく調べたら対応</li>
+<li>githubリポジトリを表示するプラグインがありますが、使い方はよく分かってないので、後で</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-18T22:08:00+09:00" pubdate data-updated="true">Mar 18<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/octopress/'>Octopress</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/17/c14wp7/">
+		
+			C1コンポーネントFor Windows Phone 7</a>
+	</h2>
+	<div class="entry-content">
+		<p>金曜日C1の承認メールが来たので、デモアプリを実機にインストールしてみた</p>
+
+<p>一番気になるのは、チャートとガジェットですね</p>
+
+<ul>
+<li><p>縦のチャート
+<img src="https://public.sn2.livefilestore.com/y1p71p_oyVdNcNhnpGOzvl0Hv4SJYFXDAUIP_3iGmPgdFZiCZ_ItwWFn67Jv9Iw68t24aN0Vd2yTmfS23AY66pMmw/CHART1.png?psid=1" alt="image" /></p></li>
+<li><p>横も対応
+<img src="https://public.sn2.livefilestore.com/y1p71p_oyVdNcNnygUPfV13De3p9iLoV2fPxmZndmk5MlpXXh2NLScNfV36vlyWMt7TNlXN5Pbp8NmLbvcAfWubFw/CHART2.png?psid=1" alt="image" /></p></li>
+<li><p>ガジェット１
+<img src="https://public.sn2.livefilestore.com/y1pfC21MLS-_ExsXt8KZWRyHnybuA4kWJq1SEw82bE59n-dy1VWX06AcGVcs_RS_Tau2Etg-BQt4O5llCD-oroqHg/G1.png?psid=1" alt="image" /></p></li>
+<li><p>ガチャっと２
+<img src="https://public.sn2.livefilestore.com/y1pIJM7zmbm9n2FBYgGreW-zbMxZTSDVNYdPY0RT5vx_yCF2xtv7n_zubGAT1yh9u_riiPBJ-AvzGTetIbXLL1qhQ/g2.png?psid=1" alt="image" /></p></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-17T23:24:00+09:00" pubdate data-updated="true">Mar 17<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wp7/'>WP7</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/16/wp7hackthon/">
+		
+			「Windows Phone 全国ハッカソン祭り～東京～春」に参加しました</a>
+	</h2>
+	<div class="entry-content">
+		<h2>今日ははじめて「ハッカソン」の参加ですが、面白かったです。</h2>
+
+<ul>
+<li>形式は、もろもろ開発をやって、最後に公表する方が自分のアプリを２分間で説明してから、参加者全員で自分の好きなアプリを投票する。得点が一番多い方はプレントもらえます</li>
+<li>PomoTaskアプリを作って、チャレンジしました。チャレンジする方は８人で、得票は１票だけだった（本当に僕ではなかったけど）</li>
+<li>自分のアプリを紹介する時、すっごく緊張しちゃいました。人数はそんなにいなかったのに。。。。やっぱり経験が少ないね。このへんも頑張らないと！</li>
+</ul>
+
+
+<h2>最近はWindowsPhone7ブームです。</h2>
+
+<ul>
+<li><p>去年８月AppHubに登録してから、勉強ばっかりで、アプリを１つも出せなかった。今年になっても、あんまり変わってないところ、いきなりGithubのWindowsPhone クライアントを作りたいと思い始まった。</p></li>
+<li><p>MVVMやRxやgithub APIをいじりながら作ってみました。ちょうど２月中旬頃申請を出したところ、<a href="http://blogs.msdn.com/b/shintak/archive/2012/02/22/10270942.aspx">Windows Phone : 個人開発者向け 評価用デバイス配布プログラム</a>が出て、チャレンジしてみました。</p></li>
+</ul>
+
+
+<h2>別件ですが、下記のプログラムの申請も承認されました</h2>
+
+<ul>
+<li><a href="http://www.grapecity.com/tools/info/componentonewp2012/provided_free.htm">ComponentOne Studio for Windows Phone 2012無償利用プログラム</a></li>
+<li>水曜日申請メールを出して、今日承認のメールが来ました。有難うございます！</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-16T22:03:00+09:00" pubdate data-updated="true">Mar 16<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wp7/'>WP7</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/15/restart-blog/">
+		
+			ブログを再開します</a>
+	</h2>
+	<div class="entry-content">
+		<p><a href="http://www.ashi-tano.jp/?p=2808">ブログを書く習慣は３つの点であなたの能力を開発する</a>
+記事を読んで、刺激を受けました。</p>
+
+<p>せっかく優れるサービスと製品があるのに、２ヶ月ぐらい放置したままで、すごく無駄でした。</p>
+
+<p>なので、今日からここのブログを積極的に書きましょう！
+まずは、今日から、１ヶ月間を目標にして、毎日記事を書くように！</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-15T23:12:00+09:00" pubdate data-updated="true">Mar 15<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ブログ/'>ブログ</a>, <a class='category' href='/blog/categories/ライフハック/'>ライフハック</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2011/12/19/octopress-on-github/">
+		
+			GithubでOctopressを構築</a>
+	</h2>
+	<div class="entry-content">
+		<h2>きっかけ</h2>
+
+<ul>
+<li>ブログを書きたい</li>
+<li>現在ははてな日記を使ってる
+
+<ul>
+<li>もっとシンプルにしたい</li>
+<li>Markdown記法とはてな記法を両方覚えるのはイヤ</li>
+<li>バージョン管理したい
+
+<h2>はまったこと</h2></li>
+</ul>
+</li>
+<li>bundle installでエラー発生
+
+<ul>
+<li>ruby 1.9.2-p136だった</li>
+<li>ruby 1.9.2-p280へバージョンアップしたら、通った</li>
+</ul>
+</li>
+<li>rake setup_github_pagesでエラー発生
+
+<ul>
+<li>URL指定方が間違った。git@github.com:yourname/yourname.github.com.gitのような形式にすればOK</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>とりあえずは以上</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-19T23:06:00+09:00" pubdate data-updated="true">Dec 19<span>th</span>, 2011</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/blog/'>Blog</a>, <a class='category' href='/blog/categories/github/'>Github</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/8/" class="prev">Prev</a>
+    
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2013
+
+    blueplanet
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'bpgh';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+</body>
+</html>
