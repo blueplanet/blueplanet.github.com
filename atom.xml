@@ -4,7 +4,7 @@
   <title><![CDATA[蒼い惑星の記録]]></title>
   <link href="http://blueplanet.github.com/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2013-01-06T17:25:45+09:00</updated>
+  <updated>2013-01-06T17:29:36+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -325,7 +325,7 @@ git push origin dev</p>
 </ul>
 
 
-<p>下一步骤：<a href="">使用 RSpec+Capybara 简单BDD入门 -2</a></p>
+<p>下一步骤：<a href="http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-2">使用 RSpec+Capybara 简单BDD入门 -2</a></p>
 ]]></content>
   </entry>
   
@@ -365,7 +365,7 @@ git push origin dev</p>
 <h2>步骤</h2>
 
 <ol>
-<li><a href="http://ruby-china.org/topics/7771">访问者希望看到所有帖子的列表</a></li>
+<li><a href="http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-1">访问者希望看到所有帖子的列表</a></li>
 <li><a href="http://ruby-china.org/topics/7773">访问者希望看到帖子的节点</a></li>
 <li><a href="http://ruby-china.org/topics/7774">访问者希望看到一个节点的帖子列表</a></li>
 <li><a href="http://ruby-china.org/topics/7775">访问者希望看到帖子的详细信息</a></li>
