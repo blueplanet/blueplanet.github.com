@@ -44,7 +44,17 @@ categories:
 
 ![](https://lh4.googleusercontent.com/-iaohwghL2DU/UNMT07j553I/AAAAAAAACDE/PNcOyQVs2hk/s800/github_cup.png)
 
+## @a_matsuda 先生から Rails 4 関連のお話し
+- `strong parameters`の説明
+    - なるほど。`mass assignment`の対策ですね。`model`の責任じゃないよ、`controller`ちゃんとやれ！的な感じですかね
+- [github: asakusarb / action_args](https://github.com/asakusarb/action_args)
+    - @a_matsuda 先生の gem 。細かい機能はまだ理解出来てないので、後で調べる
+
 ## まとめ
 - 人数ちょっと少なかった気がしますが、気分はすごく良かったです。またチャンスがありましたら、また参加したいですね
 - @a_matsuda 先生は意外に優しかった。←　いつか @a_matsuda 先生が厳しいと誤解したんだろうね
 - もっと @a_matsuda 先生の技を勉強したいです！
+- [github: CodeIQ/forkwell](https://github.com/CodeIQ/forkwell) 今回チャレンジ用のリポジトリに、特に`question_2`から出てきた`RSpec`の`requests`スペックの書き方は大変勉強になりました。
+    - 最近はちょうど`request`の書き方にハマっているので、すごく嬉しいです！
+    - 最初は`requests`で`rspec`実行すると、すべて赤だったが、`jnicklas/capybara`の `Ver2.0`以降は、`features`じゃないとダメという仕様変更でした。
+
