@@ -7,7 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="今朝買ったばかりのシゴタノ！手帳術。まだ「はじめに」の部分しか読んでなかったが、気になった言葉は既にいくつがあります 仕事を楽しくしたい 「転職や独立は、仕事を楽しくする為の１つの方法かもしれませんが、それだけですべてがうまくいくわけではなさそうです」 それ以降の内容は別なんですが、 &hellip;">
+	<meta name="description" content="角谷さんの「スはスペックのス」という四年前のビデオを見た感想。 既に何回見たけど、毎回も刺激を受けてしまったんですね。最初は実演だけをみて、すごいなと思って、また前のプレゼン部分を見ました。 TDD TDDは設計方法・開発の進め方である テスト技法だと思った、誤解だったね。 Red / &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +90,80 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/21/s-is-for-spec/">
+		
+			スはスペックのス　感想</a>
+	</h2>
+	<div class="entry-content">
+		<p>角谷さんの「スはスペックのス」という四年前のビデオを見た感想。</p>
+
+<p>既に何回見たけど、毎回も刺激を受けてしまったんですね。最初は実演だけをみて、すごいなと思って、また前のプレゼン部分を見ました。</p>
+
+<h2>TDD</h2>
+
+<ul>
+<li>TDDは設計方法・開発の進め方である
+
+<ul>
+<li>テスト技法だと思った、誤解だったね。</li>
+</ul>
+</li>
+<li>Red / Green / Refactoring ３つのモードが重要
+
+<ul>
+<li>別のTDD資料を読んだ時は、この３つのモードはしっかり認識してなかった</li>
+<li>三角の図もすごく理解しやすいですね。すぐ覚えました</li>
+<li>今どのモードにいるのはしっかり認識しよう</li>
+<li>その上、当該モードのタスク以外はやらないこと
+
+<ul>
+<li>例え、Redモードの場合は、リファクタリングするのはダメ</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Emacs</h2>
+
+<p>まあ、本題ではないけど、Emacsはカッコイイですね。このきっかけでEmacsを使い始めたよ！</p>
+
+<p>後でYasnipetを導入してみたい</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-21T00:00:00+09:00" pubdate data-updated="true">Apr 21<span>st</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rspec/'>RSpec</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -719,82 +793,6 @@ init
 
 
 <time datetime="2012-04-12T00:00:00+09:00" pubdate data-updated="true">Apr 12<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/11/rspec-autotest/">
-		
-			RSpec AutoTest</a>
-	</h2>
-	<div class="entry-content">
-		<p>角谷さんのビデオを見て、すっごく刺激を受けたので、自分もRSpecのAutoTest環境を構築したくなりました</p>
-
-<h2>環境</h2>
-
-<ul>
-<li>Mac OS 10.7.3</li>
-<li>Ruby 1.9.2</li>
-<li>RSpec 2.9.0</li>
-<li>ZenTest 4.7.0</li>
-</ul>
-
-
-<h2>1.AutoTest基本環境</h2>
-
-<p>基本は公式のWikiを参考する</p>
-
-<ul>
-<li><code>mkdir rspec2</code></li>
-<li><code>mkdir spec lib</code></li>
-<li><code>echo --format nested &gt; .rspec</code></li>
-<li><code>echo --color &gt;&gt; .rspec</code></li>
-<li><code>autotest</code>を実行し、自動テストを起動する</li>
-</ul>
-
-
-<p>以降は、普通に<code>spec</code>にspecファイルを書き、<code>lib</code>にロジックファイルを書いて、保存する都度テストが再実行される</p>
-
-<p>すごく使いやすくなりましたね。前までは、<code>spec_helper</code>ファイルを作成とか、いろいろやらないといけなかったけど、もう<code>gem</code>さえインストールすれば、全部やってくれましたね!素晴らしい！</p>
-
-<h2>2.Growlに通知</h2>
-
-<ul>
-<li><code>gem install autotest-growl</code></li>
-<li><code>~/.autotest</code>ファイルに<code>require 'autotest/growl</code>を追加</li>
-<li><code>autotest</code>を再起動</li>
-</ul>
-
-
-<p>これでファイル保存する都度、Growlでテスト実行結果のアイコンが表示される</p>
-
-<p>よし!角谷さんのビデオを見ながら、写経しましょう！</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-11T00:00:00+09:00" pubdate data-updated="true">Apr 11<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 </div>

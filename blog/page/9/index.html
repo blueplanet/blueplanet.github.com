@@ -7,11 +7,11 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="　引き続き before /after setup / teardown に相当
-一度だけ実行したい場合、:allを指定する
-各example毎実行したい場合、:eachを指定する デフォルト
-複数指定もできる。実行順番は before系は定義順
-after系は定義順の逆順 should / &hellip;">
+	<meta name="description" content="　RSpec on Railsｎの写経です。 　lambdaとchangeマッチャは面白い、というか、まだよく理解出来てない 値の変化を評価する場合使う
+メソッドチェインなし：とにかく何かが変わった
+by(value)：１個増えた
+from(old).to(new)
+to(new) &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -94,6 +94,70 @@ after系は定義順の逆順 should / &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/23/rspec-rails/">
+		
+			RSpec on Rails (3)</a>
+	</h2>
+	<div class="entry-content">
+		<p>　RSpec on Railsｎの写経です。</p>
+
+<p>　<code>lambda</code>と<code>change</code>マッチャは面白い、というか、まだよく理解出来てない</p>
+
+<ul>
+<li>値の変化を評価する場合使う</li>
+<li>メソッドチェインなし：とにかく何かが変わった</li>
+<li>by(value)：１個増えた</li>
+<li>from(old).to(new)</li>
+<li>to(new)</li>
+<li><code>change</code>にブロックを渡す場合、<code>do .. end</code>はサポートされない</li>
+</ul>
+
+
+<p>成果物はこれ。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-j_NuxfNsDZY/T2yML-Z4QAI/AAAAAAAAAgc/z5iYAqnAL90/s800/120323-0001.png" alt="image" /></p>
+
+<hr />
+
+<h3>追記</h3>
+
+<p>Viを使ってるので、Unite.vimの設定をちょっと見なおした。正直に言うと、今までは、Uniteはあんまり使ってなかった、すみません。どんどん写経すると、やはりバッファだけではなく、カレントフォルダのファイル一覧も欲しくなるので、修正しました。</p>
+
+<p><code>noremap &lt;C-P&gt; :Unite buffer file&lt;CR&gt;</code></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-23T22:36:00+09:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -728,82 +792,12 @@ NIL
 	
 </div></article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2011/12/19/octopress-on-github/">
-		
-			GithubでOctopressを構築</a>
-	</h2>
-	<div class="entry-content">
-		<h2>きっかけ</h2>
-
-<ul>
-<li>ブログを書きたい</li>
-<li>現在ははてな日記を使ってる
-
-<ul>
-<li>もっとシンプルにしたい</li>
-<li>Markdown記法とはてな記法を両方覚えるのはイヤ</li>
-<li>バージョン管理したい
-
-<h2>はまったこと</h2></li>
-</ul>
-</li>
-<li>bundle installでエラー発生
-
-<ul>
-<li>ruby 1.9.2-p136だった</li>
-<li>ruby 1.9.2-p280へバージョンアップしたら、通った</li>
-</ul>
-</li>
-<li>rake setup_github_pagesでエラー発生
-
-<ul>
-<li>URL指定方が間違った。git@github.com:yourname/yourname.github.com.gitのような形式にすればOK</li>
-</ul>
-</li>
-</ul>
-
-
-<hr />
-
-<p>とりあえずは以上</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-19T23:06:00+09:00" pubdate data-updated="true">Dec 19<span>th</span>, 2011</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/blog/'>Blog</a>, <a class='category' href='/blog/categories/github/'>Github</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/blog/page/8/" class="prev">Prev</a>
     
+    
+        <a href="/blog/page/10/" class="next">Next</a>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>

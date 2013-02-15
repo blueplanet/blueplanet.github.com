@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | 蒼い惑星の記録]]></title>
   <link href="http://blueplanet.github.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2013-01-06T21:27:56+09:00</updated>
+  <updated>2013-02-15T22:42:29+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Association Certified Ruby Programmer Silverに合格しました]]></title>
+    <link href="http://blueplanet.github.com/blog/2013/02/15/ruby-silver/"/>
+    <updated>2013-02-15T22:15:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2013/02/15/ruby-silver</id>
+    <content type="html"><![CDATA[<p>Ruby on Railsを始め、Ruby言語もいじっていますが、資格を取るのは、もともと考えてなかった。</p>
+
+<p>ですが、最近いろいろあって、やはり取ろうと決めました。</p>
+
+<h2>使った本は、下記の2冊</h2>
+
+<ul>
+<li><a href="http://www.amazon.co.jp/dp/4822234304">Ruby技術者認定試験 公式ガイド</a>
+
+<ul>
+<li>試験の内容と要点だけ</li>
+<li>細かい内容はリファレンスを参照しないと</li>
+<li>模擬試験は、２回分ある</li>
+</ul>
+</li>
+<li><a href="http://www.amazon.co.jp/dp/4774150010">Ruby公式資格教科書 Ruby技術者認定試験 Silver/Gold対応 </a>
+
+<ul>
+<li>各要点の説明もあるので、これだけ読んでおけば行ける感じ</li>
+<li>Goldの内容もあるので、Silverの部分だけ読みました。</li>
+<li>模擬試験は、Silverの１回分とGoldの１回分</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>勉強過程</h2>
+
+<ul>
+<li>１冊目のバット見。大体わかってる気がしたので、模擬試験にチャレンジ -> 33/50
+
+<ul>
+<li>ちゃんと読んでから、模擬試験の二回分にチャレンジ -> 44/50</li>
+</ul>
+</li>
+<li>これで行けそうだけど、ちょっと不安なので、二冊目を入手
+
+<ul>
+<li>早速模擬試験にチャレンジ -> 34/50</li>
+<li>一回ちゃんと読んでから、再チャレンジ -> 49/50</li>
+</ul>
+</li>
+<li>試験予約
+
+<ul>
+<li>二冊目をもう一回ちゃんと読んだ</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>試験感想</h2>
+
+<ul>
+<li>全体的には、やはり入門レベル、初心者向け。業務でRubyいじっている方なら全然問題ないと思う</li>
+<li><code>Ruby on Rails</code>をメインでいじってるので、File・IO系は不得意。試験で最初の10問目までこの辺だったので、ちょっと心配した</li>
+<li>試験の時間は1時間30分ですが、全然余裕
+
+<ul>
+<li>30分ぐらいで全部やった。</li>
+<li>確定出来てないのを再確認で、10分程</li>
+<li>全部もういっかい目を通しても、実際は10分もかかってなかった</li>
+<li>17:30~18:15ぐらいだった</li>
+</ul>
+</li>
+<li>得点は 94 点でした。3問が間違った</li>
+<li>Goldにもチャレンジしたいと思う</li>
+</ul>
+
+
+<hr />
+
+<p>とりあえずは、1週間ちょっと休憩</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby-Chinaのオンラインライブコーディングイベントに参加した]]></title>
@@ -173,39 +254,6 @@ userとsystemはどっちがどっちかはよく分からない。要するに�
 <h2>　</h2>
 
 <p>ブログの画像をPicasawebを使ってますが、毎回Safariでアップロードし、URLを取得して文書に貼り付けとの流れだけど、面倒なので、よりいい方法があるかを調べる</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RSpec on Rails (3)]]></title>
-    <link href="http://blueplanet.github.com/blog/2012/03/23/rspec-rails/"/>
-    <updated>2012-03-23T22:36:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2012/03/23/rspec-rails</id>
-    <content type="html"><![CDATA[<p>　RSpec on Railsｎの写経です。</p>
-
-<p>　<code>lambda</code>と<code>change</code>マッチャは面白い、というか、まだよく理解出来てない</p>
-
-<ul>
-<li>値の変化を評価する場合使う</li>
-<li>メソッドチェインなし：とにかく何かが変わった</li>
-<li>by(value)：１個増えた</li>
-<li>from(old).to(new)</li>
-<li>to(new)</li>
-<li><code>change</code>にブロックを渡す場合、<code>do .. end</code>はサポートされない</li>
-</ul>
-
-
-<p>成果物はこれ。</p>
-
-<p><img src="https://lh4.googleusercontent.com/-j_NuxfNsDZY/T2yML-Z4QAI/AAAAAAAAAgc/z5iYAqnAL90/s800/120323-0001.png" alt="image" /></p>
-
-<hr />
-
-<h3>追記</h3>
-
-<p>Viを使ってるので、Unite.vimの設定をちょっと見なおした。正直に言うと、今までは、Uniteはあんまり使ってなかった、すみません。どんどん写経すると、やはりバッファだけではなく、カレントフォルダのファイル一覧も欲しくなるので、修正しました。</p>
-
-<p><code>noremap &lt;C-P&gt; :Unite buffer file&lt;CR&gt;</code></p>
 ]]></content>
   </entry>
   

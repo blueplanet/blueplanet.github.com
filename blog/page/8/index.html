@@ -7,11 +7,8 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="バージョンが異なる場合は、いろいろ違いがあるので、最新バージョンで環境を作って、最新のAPIを確認したい バージョン ruby 1.9.2
-rails 3.2.2
-rspec 2.9.0
-spork 0.9.0 手順 Gemfileに追加 gem 'rspec-rails'
-gem 'spork &hellip;">
+	<meta name="description" content="現在Octopressを使ってますが、ちょっと不満がいくつあります Octopressの考え方としては、SourceとHTMLはgitのブランチで分けてます。なので、デプロイとソースデータの保存も分けて作業しないといけないわけ。 デプロイ＋保存 rake gen_depoly
+git push &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -94,6 +91,72 @@ gem 'spork &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/01/jekyll/">
+		
+			Jekyllにする？</a>
+	</h2>
+	<div class="entry-content">
+		<p>現在Octopressを使ってますが、ちょっと不満がいくつあります</p>
+
+<p>Octopressの考え方としては、SourceとHTMLはgitのブランチで分けてます。なので、デプロイとソースデータの保存も分けて作業しないといけないわけ。</p>
+
+<ul>
+<li>デプロイ＋保存
+
+<ul>
+<li><code>rake gen_depoly</code></li>
+<li><code>git push</code></li>
+</ul>
+</li>
+<li>ビルドが必要なので、githubで直接編集はできない</li>
+</ul>
+
+
+<p>Jekyllの場合はどうなるかを調べてみました。</p>
+
+<p>ビルドはないため、直接に<code>.md</code>ファイルをgithubにアップロードするので</p>
+
+<ul>
+<li>デプロイは<code>git push</code>一発でOK</li>
+<li>ビルドがないので、githubのオンライン編集を利用できる</li>
+</ul>
+
+
+<p>いいじゃん！！と思って、細かい移行手順を調べてみると、なんか<code>index.md</code>は自分で書かないと行けないらしい。変数とか、テンプレートとか分からないで、瞬殺できないので、移行は後回す</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-01T22:53:00+09:00" pubdate data-updated="true">Apr 1<span>st</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/blog/'>Blog</a>, <a class='category' href='/blog/categories/jekyll/'>Jekyll</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -888,70 +951,6 @@ userとsystemはどっちがどっちかはよく分からない。要するに�
 
 
 	<a class='category' href='/blog/categories/クラウド/'>クラウド</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/23/rspec-rails/">
-		
-			RSpec on Rails (3)</a>
-	</h2>
-	<div class="entry-content">
-		<p>　RSpec on Railsｎの写経です。</p>
-
-<p>　<code>lambda</code>と<code>change</code>マッチャは面白い、というか、まだよく理解出来てない</p>
-
-<ul>
-<li>値の変化を評価する場合使う</li>
-<li>メソッドチェインなし：とにかく何かが変わった</li>
-<li>by(value)：１個増えた</li>
-<li>from(old).to(new)</li>
-<li>to(new)</li>
-<li><code>change</code>にブロックを渡す場合、<code>do .. end</code>はサポートされない</li>
-</ul>
-
-
-<p>成果物はこれ。</p>
-
-<p><img src="https://lh4.googleusercontent.com/-j_NuxfNsDZY/T2yML-Z4QAI/AAAAAAAAAgc/z5iYAqnAL90/s800/120323-0001.png" alt="image" /></p>
-
-<hr />
-
-<h3>追記</h3>
-
-<p>Viを使ってるので、Unite.vimの設定をちょっと見なおした。正直に言うと、今までは、Uniteはあんまり使ってなかった、すみません。どんどん写経すると、やはりバッファだけではなく、カレントフォルダのファイル一覧も欲しくなるので、修正しました。</p>
-
-<p><code>noremap &lt;C-P&gt; :Unite buffer file&lt;CR&gt;</code></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-23T22:36:00+09:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
 
 
 </div>

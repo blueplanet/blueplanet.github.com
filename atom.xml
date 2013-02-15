@@ -4,7 +4,7 @@
   <title><![CDATA[蒼い惑星の記録]]></title>
   <link href="http://blueplanet.github.com/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2013-01-06T21:27:56+09:00</updated>
+  <updated>2013-02-15T22:42:29+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Association Certified Ruby Programmer Silverに合格しました]]></title>
+    <link href="http://blueplanet.github.com/blog/2013/02/15/ruby-silver/"/>
+    <updated>2013-02-15T22:15:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2013/02/15/ruby-silver</id>
+    <content type="html"><![CDATA[<p>Ruby on Railsを始め、Ruby言語もいじっていますが、資格を取るのは、もともと考えてなかった。</p>
+
+<p>ですが、最近いろいろあって、やはり取ろうと決めました。</p>
+
+<h2>使った本は、下記の2冊</h2>
+
+<ul>
+<li><a href="http://www.amazon.co.jp/dp/4822234304">Ruby技術者認定試験 公式ガイド</a>
+
+<ul>
+<li>試験の内容と要点だけ</li>
+<li>細かい内容はリファレンスを参照しないと</li>
+<li>模擬試験は、２回分ある</li>
+</ul>
+</li>
+<li><a href="http://www.amazon.co.jp/dp/4774150010">Ruby公式資格教科書 Ruby技術者認定試験 Silver/Gold対応 </a>
+
+<ul>
+<li>各要点の説明もあるので、これだけ読んでおけば行ける感じ</li>
+<li>Goldの内容もあるので、Silverの部分だけ読みました。</li>
+<li>模擬試験は、Silverの１回分とGoldの１回分</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>勉強過程</h2>
+
+<ul>
+<li>１冊目のバット見。大体わかってる気がしたので、模擬試験にチャレンジ -> 33/50
+
+<ul>
+<li>ちゃんと読んでから、模擬試験の二回分にチャレンジ -> 44/50</li>
+</ul>
+</li>
+<li>これで行けそうだけど、ちょっと不安なので、二冊目を入手
+
+<ul>
+<li>早速模擬試験にチャレンジ -> 34/50</li>
+<li>一回ちゃんと読んでから、再チャレンジ -> 49/50</li>
+</ul>
+</li>
+<li>試験予約
+
+<ul>
+<li>二冊目をもう一回ちゃんと読んだ</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>試験感想</h2>
+
+<ul>
+<li>全体的には、やはり入門レベル、初心者向け。業務でRubyいじっている方なら全然問題ないと思う</li>
+<li><code>Ruby on Rails</code>をメインでいじってるので、File・IO系は不得意。試験で最初の10問目までこの辺だったので、ちょっと心配した</li>
+<li>試験の時間は1時間30分ですが、全然余裕
+
+<ul>
+<li>30分ぐらいで全部やった。</li>
+<li>確定出来てないのを再確認で、10分程</li>
+<li>全部もういっかい目を通しても、実際は10分もかかってなかった</li>
+<li>17:30~18:15ぐらいだった</li>
+</ul>
+</li>
+<li>得点は 94 点でした。3問が間違った</li>
+<li>Goldにもチャレンジしたいと思う</li>
+</ul>
+
+
+<hr />
+
+<p>とりあえずは、1週間ちょっと休憩</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用 RSpec+Capybara 简单BDD入门 -11]]></title>
@@ -5138,81 +5219,6 @@ Default: 1</p></li>
 <ul>
 <li><a href="http://twitter.com/knwang">@knwang</a> の凄さをわかった為、すぐ <a href="http://www.railstutors.com/#.UHgQy4VsKo8.twitter">Rails Tutors, Ruby on Rails online Courses</a> のコースを参加しようと思ったら、メインはアメリカ向けなので、授業は英語になっています。英語は全くできないため、諦めました。</li>
 <li>ちょうどつい最近、<a href="http://www.amazon.co.jp/dp/4798121932/">The RSpec Book</a>を読んだばかりで、写経はまだやってないところで、実際に BDD をやって頂いて、すごく勉強になりました</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[OS 10.8 gem install json faild]]></title>
-    <link href="http://blueplanet.github.com/blog/2012/10/04/os-10-dot-8-gem-install-json-faild/"/>
-    <updated>2012-10-04T06:25:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2012/10/04/os-10-dot-8-gem-install-json-faild</id>
-    <content type="html"><![CDATA[<h2>環境</h2>
-
-<ul>
-<li>Mac OS 10.8.2</li>
-<li>ruby 1.9.2p320</li>
-<li>gem 1.8.24</li>
-<li>xcode 4.5 (4G182)</li>
-</ul>
-
-
-<h2>問題</h2>
-
-<p><code>gem install json</code>を実行する場合、下記のエラーで落ちる</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>gem install json                                                                       *<span class="o">[</span>master<span class="o">][</span>1.9.2-p320<span class="o">]</span>
-</span><span class='line'>Fetching: json-1.7.5.gem <span class="o">(</span>100%<span class="o">)</span>
-</span><span class='line'>Building native extensions.  This could take a <span class="k">while</span>...
-</span><span class='line'>ERROR:  Error installing json:
-</span><span class='line'>  ERROR: Failed to build gem native extension.
-</span><span class='line'>
-</span><span class='line'>        /Users/gyo/.rbenv/versions/1.9.2-p320/bin/ruby extconf.rb
-</span><span class='line'>creating Makefile
-</span><span class='line'>
-</span><span class='line'>make
-</span><span class='line'>/usr/bin/gcc-4.2 -I. -I/Users/gyo/.rbenv/versions/1.9.2-p320/include/ruby-1.9.1/x86_64-darwin11.3.0 -I/Users/gyo/.rbenv/versions/1.9.2-p320/include/ruby-1.9.1/ruby/backward -I/Users/gyo/.rbenv/versions/1.9.2-p320/include/ruby-1.9.1 -I. -DJSON_GENERATOR -I<span class="s1">&#39;/Users/gyo/.rbenv/versions/1.9.2-p320/include&#39;</span>  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wshorten-64-to-32 -Wno-long-long  -pipe -O3 -Wall -O0 -ggdb  -o generator.o -c generator.c
-</span><span class='line'>i686-apple-darwin11-gcc-4.2.1: error trying to <span class="nb">exec</span> <span class="s1">&#39;cc1&#39;</span>: execvp: No such file or directory
-</span><span class='line'>make: *** <span class="o">[</span>generator.o<span class="o">]</span> Error 1
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>Gem files will remain installed in /Users/gyo/.rbenv/versions/1.9.2-p320/gemsets/ruby-china/gems/json-1.7.5 <span class="k">for </span>inspection.
-</span><span class='line'>Results logged to /Users/gyo/.rbenv/versions/1.9.2-p320/gemsets/ruby-china/gems/json-1.7.5/ext/json/ext/generator/gem_make.out
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>解決</h2>
-
-<ol>
-<li>xcode で<code>Command Line Tools</code>をインストール</li>
-<li><code>sudo ln -sf /usr/bin/llvm-gcc-4.2 /usr/bin/gcc-4.2</code>を実行</li>
-</ol>
-
-
-<hr />
-
-<p>参考URL</p>
-
-<ul>
-<li><a href="http://stackoverflow.com/questions/11710568/os-x-10-8-error-trying-to-exec-usr-bin-i686-apple-darwin11-gcc-4-2-1-inst">OS X 10.8 - error trying to exec &#8216;/usr/bin/i686-apple-darwin11-gcc-4.2.1&#8217; - installing json gem</a></li>
 </ul>
 
 ]]></content>
