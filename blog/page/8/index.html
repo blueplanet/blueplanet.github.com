@@ -7,8 +7,12 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="現在Octopressを使ってますが、ちょっと不満がいくつあります Octopressの考え方としては、SourceとHTMLはgitのブランチで分けてます。なので、デプロイとソースデータの保存も分けて作業しないといけないわけ。 デプロイ＋保存 rake gen_depoly
-git push &hellip;">
+	<meta name="description" content="Rails 3.2のアプリをHerokuにデプロイする場合、ハマったことをメモ 環境 Rails 3.2.2
+ローカルDBはsqlite 手順 Railsアプリを作成 rails new myblog
+cd myblog
+git init
+git add .
+git ci -m 'init' &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +95,142 @@ git push &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/02/rails3-dot-2-on-heroku/">
+		
+			rails3.2 on Heroku</a>
+	</h2>
+	<div class="entry-content">
+		<p>Rails 3.2のアプリをHerokuにデプロイする場合、ハマったことをメモ</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>Rails 3.2.2</li>
+<li>ローカルDBはsqlite</li>
+</ul>
+
+
+<h2>手順</h2>
+
+<ul>
+<li>Railsアプリを作成
+
+<ul>
+<li><code>rails new myblog</code></li>
+<li><code>cd myblog</code></li>
+<li><code>git init</code></li>
+<li><code>git add .</code></li>
+<li><code>git ci -m 'init'</code></li>
+</ul>
+</li>
+<li>Scaffold
+
+<ul>
+<li><code>rails g scaffold post title:string body:text</code></li>
+<li><code>rake db:migrate</code></li>
+<li><code>rm public/index.html</code></li>
+<li><code>vi config/route.rb</code>
+
+<ul>
+<li><code>root :to =&gt; "pots#index"</code>を追加</li>
+</ul>
+</li>
+<li><code>git rm public/index.html</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'scaffold'</code></li>
+</ul>
+</li>
+<li>Heroku
+
+<ul>
+<li><code>vi Gemfile</code>heroku側は下記を追加</li>
+</ul>
+</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="ruby"><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>  
+     <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>  
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+<ul>
+<li><code>rake assets:precompile RAILS_ENV=production</code></li>
+<li><code>git add .</code></li>
+<li><code>git commit -m 'heroku'</code></li>
+<li><code>heroku create</code></li>
+<li><code>git push heroku master</code></li>
+<li><code>heroku rake db:migrate</code></li>
+<li><code>heroku open</code>で確認できるはず</li>
+</ul>
+
+
+<h2>問題</h2>
+
+<ul>
+<li><code>heroku rake db:migrate</code>のエラー
+
+<ul>
+<li><code>(pg is not part of the bundle. Add it to Gemfile.)</code></li>
+<li>対策：Gemfileに下記を追加</li>
+</ul>
+</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="ruby"><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>  
+  <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>  
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+<ul>
+<li><code>git push heroku master</code>後、画面で確認すると、エラー画面になってる
+
+<ul>
+<li><code>heroku logs</code>で確認すると<code>ActionView::Template::Error (application.css isn't precompiled)</code>エラー</li>
+<li>対策：<code>push</code>前に、<code>rake assets:precompile RAILS_ENV=production</code>を実施する</li>
+</ul>
+</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-02T07:29:00+09:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/heroku/'>Heroku</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -883,74 +1023,6 @@ userとsystemはどっちがどっちかはよく分からない。要するに�
 
 
 	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/24/sakura-cloud/">
-		
-			さくらクラウド</a>
-	</h2>
-	<div class="entry-content">
-		<p>この間は、<a href="http://gigazine.net/news/20120322-sakura-cloud/">「さくらのクラウド」障害多発で無償化、課金できる品質に達していないため</a>というニュースが出て、試してみたので、ハマったことなどをメモ</p>
-
-<ul>
-<li>最初はサーバの作り方はよく分からなかった。理解の問題だった。実際は画面通り選択すればいけるのに、考えが間違って、ISOをいれてなく、OSのインストールが出来なかった。</li>
-<li>OSインストールしてから使って始まったが、キーボードの設定うまく出来てない
-
-<ul>
-<li>ローカル：MacBookAir キーボードはUSレイアウト</li>
-<li>仮想サーバ：インストール時、USを設定したが、実際は変なレイアウトになってる</li>
-</ul>
-
-
-<p>  KEYTABLE=&#8221;US&#8221;
-  MODEL=&#8221;us&#8221;
-  KEYBOARDTYPE=&#8221;pc&#8221;</p></li>
-</ul>
-
-
-<p>現状：「= : @ &#8220;」の位置はばらばら、後日解決できたら、更新する</p>
-
-<hr />
-
-<p>また、利用者が殺到してきた為、こういうお知らせも出た</p>
-
-<ul>
-<li><a href="http://gigazine.net/news/20120323-cloud-sakura/">無償化を発表した「さくらのクラウド」、システム安定のために利用制限を開始</a></li>
-<li><a href="http://www.sakura.ad.jp/news/sakurainfo/newsentry.php?id=625">さくらのクラウドの新規申込受付の一時中止について</a></li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-24T22:22:00+09:00" pubdate data-updated="true">Mar 24<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/クラウド/'>クラウド</a>
 
 
 </div>

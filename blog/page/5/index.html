@@ -7,8 +7,9 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="Rails勉強中。デザインが出来ないので、話題のtwitter-bootstrapを試してみる 導入 Gemfileにgem 'twitter-bootstrap-railsを追加し、bundle installを実行
-rails g bootstrap:installを実行したら、 &hellip;">
+	<meta name="description" content="Railsを勉強中。やはりEmcsで編集したいので、Rinariを導入してみる ELPAの試しと失敗 ELPAからのインストールがおすすめらいいので、まずはELPAを導入
+auto-installを使ってELPAをインストール(ややこしいな)
+今までは、起動が遅くなる為、auto-install &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +92,100 @@ rails g bootstrap:installを実行したら、 &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/01/emacs-rinari/">
+		
+			Emacs Rinariを導入して見る</a>
+	</h2>
+	<div class="entry-content">
+		<p>Railsを勉強中。やはりEmcsで編集したいので、<code>Rinari</code>を導入してみる</p>
+
+<h2>ELPAの試しと失敗</h2>
+
+<ul>
+<li>ELPAからのインストールがおすすめらいいので、まずはELPAを導入</li>
+<li><code>auto-install</code>を使って<code>ELPA</code>をインストール(ややこしいな)</li>
+<li>今までは、起動が遅くなる為、<code>auto-install-update-emacswiki-package-name</code>をコメントアウトしてるので、まずは復活する</li>
+<li><code>auto-install-update-emacswiki-package-name</code>を実行</li>
+<li><code>M-x install-elisep</code>でインストールを起動</li>
+<li>URLが聞かれるが、なんか<code>[http://bit.ly/pkg-el23](http://bit.ly/pkg-el23)</code>は<code>reject</code>されるので、直接に展開後の長いURLを入力して実行した</li>
+<li><p><code>init.el</code>に必要な設定を追加</p>
+
+<p>  ;; package.el
+  (when (require &#8216;package nil t)</p>
+
+<pre><code>(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
+(package-initialize))
+</code></pre></li>
+</ul>
+
+
+<h3>Rinariをインストール</h3>
+
+<ul>
+<li>ELPAは初回実行なので、<code>list-package</code>を実行する</li>
+<li><code>Cannot open load file: ruby-compilatio</code>エラーで落ちた</li>
+<li>原因はよく分からないので、とりあえずはやめた</li>
+</ul>
+
+
+<h2>直接インストール</h2>
+
+<ul>
+<li>基本は、<a href="http://rinari.rubyforge.org/Basic-Setup.html#Basic-Setup">Basic-Setup</a>を参照する</li>
+<li><code>submodule</code>を利用するので、
+
+<ul>
+<li><code>git submodule add git://github.com/eschulte/rinari.git .emacs.d/elisp/rinari</code>を実行</li>
+</ul>
+</li>
+<li><code>rhtml-mode</code>は<code>rinari</code>のものを使う
+
+<ul>
+<li><code>git submodule add https://github.com/eschulte/rhtml.git .emacs.d/elisp/rhtml</code></li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>これで、ビューファイルを開くと、<code>rhtml-mode</code>になって、<code>rinari</code>も有効になるはず</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-01T00:00:00+09:00" pubdate data-updated="true">May 1<span>st</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -835,73 +930,6 @@ Error: server did not start correctly
 
 
 	<a class='category' href='/blog/categories/gtd/'>GTD</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/22/emacs-yasnippet/">
-		
-			EmacsにYasnippet導入</a>
-	</h2>
-	<div class="entry-content">
-		<p>角谷さんのビデオでもYasnippetを使っていたらしいし、スニペットの展開が結構使われいるので、導入してみた</p>
-
-<p>もともとGoogle codeで管理していたのですが、今の時点では、既にgithubに移行したので、インストールは基本 <a href="https://github.com/capitaomorte/yasnippet">README</a>を参照すればOK。</p>
-
-<h2>インストール</h2>
-
-<ul>
-<li><code>mkdir ~/.emacs.d/plugins</code></li>
-<li><code>cd ~/.emacs.d/plugins</code></li>
-<li><code>.emacs.d</code>は既にgitで管理しているので、submoduleとして追加する
-<code>git submodule add https://github.com/capitaomorte/yasnippet .emacs.d/plugins/yasnippet</code></li>
-<li>設定ファイルに追加
-<code>require 'yasnippet)</code>
-<code>(yas/global-mode t)</code></li>
-</ul>
-
-
-<p>これでOK。</p>
-
-<p>試しに、<code>Ruby-mode</code>で<code>mm</code>入力し<code>TAB</code>キーを入力すると、<code>method_missing</code>メソッドが展開された！！！</p>
-
-<h2>RSpec スニペット</h2>
-
-<p>有志によりYASnippetの日本語ドキュメントがあるので、それ参照して、自分のスニペットを作れます</p>
-
-<p><a href="http://yasnippet-doc-jp.googlecode.com/svn/trunk/doc-jp/index.html">Yet Another Snippet extension 日本語訳</a></p>
-
-<p>らしいですが、ファイルを作って、<code>yas</code>ロードパスに追加しても、まだ展開出来ていません。後でまた調べる</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-22T00:00:00+09:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
 
 
 </div>
