@@ -7,8 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="Herokuの場合は、無料のCronは１日１回しか使えないイメージがある。現状はどうなっているかを調べてみた 現状 Cronは既に古い
-Heroku SchedulerはCronの代替案としてのものらしく、時間毎・１０分間隔でタスクを実行できる。 http://blogjp.sforce.com &hellip;">
+	<meta name="description" content="Bundlerの使い方について、今までは使っていますが、細かくは分かっていなかった。RVMとrbenvとの比較を調べた時、rbenv+bundlerでgemを管理するのは十分という記事があったので、改めてbundlerを調べてみた。 基本 Gemfileに必要なGemを記入した上で、bundle &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +90,103 @@ Heroku SchedulerはCronの代替案としてのものらしく、時間毎・１
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/16/bundler/">
+		
+			Bundler改めて調べてみた</a>
+	</h2>
+	<div class="entry-content">
+		<p><code>Bundler</code>の使い方について、今までは使っていますが、細かくは分かっていなかった。<code>RVM</code>と<code>rbenv</code>との比較を調べた時、<code>rbenv</code>+<code>bundler</code>でgemを管理するのは十分という記事があったので、改めて<code>bundler</code>を調べてみた。</p>
+
+<h2>基本</h2>
+
+<ul>
+<li>Gemfileに必要なGemを記入した上で、<code>bundle install</code>でインストール
+
+<ul>
+<li>デフォルトはシステムの<code>ruby/gems</code>にインストール</li>
+<li><code>bundle install --path vendor/bundle</code>でインストールパス指定できる</li>
+<li>一度指定すれば、その後<code>bundle install</code>でも前回のパスにインストール</li>
+</ul>
+</li>
+<li><code>bundle update</code>で更新</li>
+<li><code>bundle exec</code>で<code>bundle</code>よりインストールした<code>gem</code>コマンドを実行する</li>
+</ul>
+
+
+<h2>gem管理のルールの考え</h2>
+
+<ul>
+<li>共通で使うgemは、普通に<code>gem install ...</code>でシステムにインストール
+
+<ul>
+<li>bundle自体</li>
+<li>その他</li>
+</ul>
+</li>
+<li>プロジェクト毎に、<code>bundle install --path ...</code>でプロジェクト配下にインストール
+
+<ul>
+<li><code>bundle exec ...</code>でプロジェクトのコマンドを実行する</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>問題点</h2>
+
+<ul>
+<li><code>zsh</code>を使ってるので、コマンドの補完はいろいろお世話になってます。例え、<code>rake</code>を入力すると、実行できるタスクが補完してくれる。<code>bundle exec rake</code>だと、当たり前だけど、補完がしてくれなくなってしまう
+
+<ul>
+<li><code>bundle exec</code>を省略してコマンドを実行できるという記事はいろいろありますが、自動補完に関する解決方法はなさそう</li>
+</ul>
+</li>
+</ul>
+
+
+<p>TODO : zshで<code>bundle exec</code>より実行するコマンドの自動補完</p>
+
+<h2>Link</h2>
+
+<ul>
+<li><a href="">http://ttcloud.net/rails/20110710/1439</a></li>
+<li><a href="">http://rails3try.blogspot.jp/2011/06/rails3-bundlergem.html</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-16T00:00:00+09:00" pubdate data-updated="true">May 16<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/bundler/'>Bundler</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -822,62 +918,6 @@ dont forget to install dependencies:
 
 
 	<a class='category' href='/blog/categories/rbenv/'>rbenv</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/05/03/rails-form-tag/">
-		
-			Railsのform_tag</a>
-	</h2>
-	<div class="entry-content">
-		<p>Railsでアプリを作る時、Modelがなく、単純にFormを作りたい場合、<code>form_tag</code>を使うべきという感じ</p>
-
-<p>WEB開発は全くないので、書き方すらよくわかってない。</p>
-
-<p>何かを作りたいとしても、あんまり進められない</p>
-
-<pre><code>&lt;%= form_tag(:action =&gt; "disp") do -%&gt;
-  Birthday&lt;br/&gt;
-        &lt;%= select_date Date.today,
-            :prefix =&gt; "birthday",
-            :use_month_numbers =&gt; true,
-            :start_year =&gt; 1980,
-            :end_year =&gt; 2012,
-            :discard_day =&gt; true %&gt;&lt;br/&gt;
-        &lt;%= submit_tag "display", :class =&gt; "btn btn-primary" %&gt;
-&lt;% end -%&gt;
-</code></pre>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-03T00:00:00+09:00" pubdate data-updated="true">May 3<span>rd</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>

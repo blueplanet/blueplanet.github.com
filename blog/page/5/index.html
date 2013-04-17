@@ -7,7 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="MBAちゃんの容量は残り４０Gしかないので、何とかしないとやばい気がする この記事を参照してやってみる MacBookAirをダイエット！SSD使用量を30G減らすために行った7つのこと iPhotoライブラリを外付けハードディスクに移す 25Gぐらいなので、NASにコピーする時間は、 &hellip;">
+	<meta name="description" content="Railsでアプリを作る時、Modelがなく、単純にFormを作りたい場合、form_tagを使うべきという感じ WEB開発は全くないので、書き方すらよくわかってない。 何かを作りたいとしても、あんまり進められない &lt;%= form_tag(:action =&gt; "disp") do &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +90,62 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/05/03/rails-form-tag/">
+		
+			Railsのform_tag</a>
+	</h2>
+	<div class="entry-content">
+		<p>Railsでアプリを作る時、Modelがなく、単純にFormを作りたい場合、<code>form_tag</code>を使うべきという感じ</p>
+
+<p>WEB開発は全くないので、書き方すらよくわかってない。</p>
+
+<p>何かを作りたいとしても、あんまり進められない</p>
+
+<pre><code>&lt;%= form_tag(:action =&gt; "disp") do -%&gt;
+  Birthday&lt;br/&gt;
+        &lt;%= select_date Date.today,
+            :prefix =&gt; "birthday",
+            :use_month_numbers =&gt; true,
+            :start_year =&gt; 1980,
+            :end_year =&gt; 2012,
+            :discard_day =&gt; true %&gt;&lt;br/&gt;
+        &lt;%= submit_tag "display", :class =&gt; "btn btn-primary" %&gt;
+&lt;% end -%&gt;
+</code></pre>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-03T00:00:00+09:00" pubdate data-updated="true">May 3<span>rd</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -755,132 +811,6 @@ Error: server did not start correctly
 
 
 	<a class='category' href='/blog/categories/blog/'>Blog</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/24/rspec-re-study/">
-		
-			「改めて学ぶRSpec by Rubyist Magazine 0037号」を読んだ</a>
-	</h2>
-	<div class="entry-content">
-		<p>RSpecを勉強したいと思って、調べてみたら、素晴らしい記事を見つけた。</p>
-
-<p><a href="http://jp.rubyist.net/magazine/?0035-RSpecInPractice"> 改めて学ぶRSpec </a></p>
-
-<h3>xUnitっぽいRSpecコードの特徴</h3>
-
-<ul>
-<li>テストメソッドはすべてフラットで定義される</li>
-<li><code>it []</code>＝＝test○○メソッド</li>
-<li><code>before</code>==<code>setup</code></li>
-</ul>
-
-
-<h3>RSpecの流儀</h3>
-
-<ul>
-<li><code>describe</code>はネストできるので、テストコードに構造が生まれるぞ！</li>
-<li><code>context</code>は<code>describe</code>のエイリアスなんでが、<code>describe</code>==テスト対象、<code>context</code>＝＝テストする時の状況</li>
-<li>メリット：段階的に仕様をテストコードに落とし込む</li>
-</ul>
-
-
-<div class="highlight"><pre><code class="ruby"><span class="n">describe</span> <span class="err">クラス</span> <span class="k">do</span>
-  <span class="n">describe</span> <span class="err">メソッド</span> <span class="k">do</span>
-    <span class="n">context</span> <span class="err">正常値</span> <span class="k">do</span>
-      <span class="n">it</span> <span class="p">{}</span>
-    <span class="k">end</span>
-    
-    <span class="n">context</span> <span class="err">異常値</span> <span class="k">do</span>
-      <span class="n">it</span> <span class="p">{}</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-</div>
-
-
-<p>的なイメージ</p>
-
-<ul>
-<li>subject
-
-<ul>
-<li>subjectを使うことで、<code>should</code>のレシーバを省略できる</li>
-<li>メリット：テスト対象が明確になる、ほぼ強制的に一つのテストケースに一つのアサーション歯科かけなくなる</li>
-<li><code>describe</code>のネストと被ってる場合は、新たに<code>describe</code>をネストさせてもう一度subjectを定義する</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>itに文字列を渡すかどうか</h3>
-
-<ul>
-<li><code>it</code>に文字列を渡すと、コメントとコードの両方があるのは<code>DRY</code>ではないので、渡さないほうがいい</li>
-<li>デメリット：<code>--fs</code>オプションで実行する時の出力は日本語にならなくので、読みづらくなる
-
-<ul>
-<li>解決：<code>context</code>にテスト内容を細かく書く</li>
-<li>まあ、テスト結果が一番重要なので、実際はそこまでもやってない</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>letでデータ以外のぶぶんだけを共通化</h3>
-
-<ul>
-<li>ブロックの評価値</li>
-<li>値をシンボルと同名の変数に格納する</li>
-<li>テストケース毎に結果がキャッシュされる</li>
-</ul>
-
-
-<p>これはまだ理解できてない気がする</p>
-
-<h3>shared_context</h3>
-
-<ul>
-<li>メソッドの間に共通的なcontextがある場合がある</li>
-<li><code>shared_context</code>と<code>include_context</code>で共通化できる</li>
-</ul>
-
-
-<hr />
-
-<p>まだまだRubyもRSpecも初心者なので、分からないところが多いところ</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-24T00:00:00+09:00" pubdate data-updated="true">Apr 24<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>
 
 
 </div>

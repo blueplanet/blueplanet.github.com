@@ -7,9 +7,11 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="　写経の記録 before_saveメソッドを定義しても、呼び出されてないらしい。下記を参考して修正
-RSpec2.4.0をRails3.0.3で学ぶ(その1)
-疑問：テスト実行はちょっと遅い気がする。試しにTimeでトータル時間を測定してみたらこんな感じ &hellip;">
+	<meta name="description" content="　RSpecを勉強中で、ソースもGithubに保持しているので、TravisCIも試してみる 手順は公式のドキュメントを参考すれば
+メインは.travis.ymlの設定 言語
+テストしたいバージョン
+ブランチ関連の管理 language: ruby
+script: &quot;bundle &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +94,88 @@ RSpec2.4.0をRails3.0.3で学ぶ(その1)
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/03/25/travis-ci/">
+		
+			Travis CI試し</a>
+	</h2>
+	<div class="entry-content">
+		<p>　RSpecを勉強中で、ソースもGithubに保持しているので、TravisCIも試してみる</p>
+
+<ul>
+<li>手順は公式のドキュメントを参考すれば</li>
+<li>メインは<code>.travis.yml</code>の設定
+
+<ul>
+<li>言語</li>
+<li>テストしたいバージョン</li>
+<li>ブランチ関連の管理</li>
+</ul>
+</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="yaml"><span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ruby</span>
+<span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span> <span class="s">&quot;bundle</span><span class="nv"> </span><span class="s">exec</span><span class="nv"> </span><span class="s">rake</span><span class="nv"> </span><span class="s">db:drop</span><span class="nv"> </span><span class="s">db:create</span><span class="nv"> </span><span class="s">db:migrate</span><span class="nv"> </span><span class="s">spec&quot;</span>
+<span class="l-Scalar-Plain">rvm</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.2</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.3</span>
+<span class="l-Scalar-Plain">gemfile</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Gemfile</span>
+<span class="l-Scalar-Plain">branches</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">only</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">master</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">develop</span>
+</code></pre>
+</div>
+
+
+<ul>
+<li>感想
+
+<ul>
+<li>githubのリポジトリにPushすると、すぐ反映され、ビルドが走る</li>
+<li>ビルドステータスの画像を外部（ブログなど）に表示できる</li>
+<li>実行ログも見えるので、いろいろ確認できる</li>
+</ul>
+</li>
+</ul>
+
+
+<p><a href="http://travis-ci.org/blueplanet/StudyRSpec"><img src="https://secure.travis-ci.org/blueplanet/StudyRSpec.png?branch=master" alt="Build Status" /></a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-25T22:16:00+09:00" pubdate data-updated="true">Mar 25<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/travis-ci/'>Travis CI</a>, <a class='category' href='/blog/categories/github/'>github</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -744,60 +828,6 @@ NIL
 
 
 	<a class='category' href='/blog/categories/octopress/'>Octopress</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/17/c14wp7/">
-		
-			C1コンポーネントFor Windows Phone 7</a>
-	</h2>
-	<div class="entry-content">
-		<p>金曜日C1の承認メールが来たので、デモアプリを実機にインストールしてみた</p>
-
-<p>一番気になるのは、チャートとガジェットですね</p>
-
-<ul>
-<li><p>縦のチャート
-<img src="https://public.sn2.livefilestore.com/y1p71p_oyVdNcNhnpGOzvl0Hv4SJYFXDAUIP_3iGmPgdFZiCZ_ItwWFn67Jv9Iw68t24aN0Vd2yTmfS23AY66pMmw/CHART1.png?psid=1" alt="image" /></p></li>
-<li><p>横も対応
-<img src="https://public.sn2.livefilestore.com/y1p71p_oyVdNcNnygUPfV13De3p9iLoV2fPxmZndmk5MlpXXh2NLScNfV36vlyWMt7TNlXN5Pbp8NmLbvcAfWubFw/CHART2.png?psid=1" alt="image" /></p></li>
-<li><p>ガジェット１
-<img src="https://public.sn2.livefilestore.com/y1pfC21MLS-_ExsXt8KZWRyHnybuA4kWJq1SEw82bE59n-dy1VWX06AcGVcs_RS_Tau2Etg-BQt4O5llCD-oroqHg/G1.png?psid=1" alt="image" /></p></li>
-<li><p>ガチャっと２
-<img src="https://public.sn2.livefilestore.com/y1pIJM7zmbm9n2FBYgGreW-zbMxZTSDVNYdPY0RT5vx_yCF2xtv7n_zubGAT1yh9u_riiPBJ-AvzGTetIbXLL1qhQ/g2.png?psid=1" alt="image" /></p></li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-17T23:24:00+09:00" pubdate data-updated="true">Mar 17<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/wp7/'>WP7</a>
 
 
 </div>

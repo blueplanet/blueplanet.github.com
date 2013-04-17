@@ -7,9 +7,9 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="読書記録 大まかな感想 作者のほうは、会社でクラウドツールがいっさい使えない為、いろいろ手帳で頑張っていますね。(会社は厳しすぎますね)
-なので、作者のワークフローをマルごとにコピーするじゃなくて、自分の環境に合わせて、自分なりのワークフローを決めるほうが望ましい
-そして、手帳にも限らない。 &hellip;">
+	<meta name="description" content="RSpecを勉強したいと思って、調べてみたら、素晴らしい記事を見つけた。 改めて学ぶRSpec xUnitっぽいRSpecコードの特徴 テストメソッドはすべてフラットで定義される
+it []＝＝test○○メソッド
+before==setup RSpecの流儀 describeはネストできるので &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +92,132 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/24/rspec-re-study/">
+		
+			「改めて学ぶRSpec by Rubyist Magazine 0037号」を読んだ</a>
+	</h2>
+	<div class="entry-content">
+		<p>RSpecを勉強したいと思って、調べてみたら、素晴らしい記事を見つけた。</p>
+
+<p><a href="http://jp.rubyist.net/magazine/?0035-RSpecInPractice"> 改めて学ぶRSpec </a></p>
+
+<h3>xUnitっぽいRSpecコードの特徴</h3>
+
+<ul>
+<li>テストメソッドはすべてフラットで定義される</li>
+<li><code>it []</code>＝＝test○○メソッド</li>
+<li><code>before</code>==<code>setup</code></li>
+</ul>
+
+
+<h3>RSpecの流儀</h3>
+
+<ul>
+<li><code>describe</code>はネストできるので、テストコードに構造が生まれるぞ！</li>
+<li><code>context</code>は<code>describe</code>のエイリアスなんでが、<code>describe</code>==テスト対象、<code>context</code>＝＝テストする時の状況</li>
+<li>メリット：段階的に仕様をテストコードに落とし込む</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="ruby"><span class="n">describe</span> <span class="err">クラス</span> <span class="k">do</span>
+  <span class="n">describe</span> <span class="err">メソッド</span> <span class="k">do</span>
+    <span class="n">context</span> <span class="err">正常値</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="p">{}</span>
+    <span class="k">end</span>
+    
+    <span class="n">context</span> <span class="err">異常値</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="p">{}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+<p>的なイメージ</p>
+
+<ul>
+<li>subject
+
+<ul>
+<li>subjectを使うことで、<code>should</code>のレシーバを省略できる</li>
+<li>メリット：テスト対象が明確になる、ほぼ強制的に一つのテストケースに一つのアサーション歯科かけなくなる</li>
+<li><code>describe</code>のネストと被ってる場合は、新たに<code>describe</code>をネストさせてもう一度subjectを定義する</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>itに文字列を渡すかどうか</h3>
+
+<ul>
+<li><code>it</code>に文字列を渡すと、コメントとコードの両方があるのは<code>DRY</code>ではないので、渡さないほうがいい</li>
+<li>デメリット：<code>--fs</code>オプションで実行する時の出力は日本語にならなくので、読みづらくなる
+
+<ul>
+<li>解決：<code>context</code>にテスト内容を細かく書く</li>
+<li>まあ、テスト結果が一番重要なので、実際はそこまでもやってない</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>letでデータ以外のぶぶんだけを共通化</h3>
+
+<ul>
+<li>ブロックの評価値</li>
+<li>値をシンボルと同名の変数に格納する</li>
+<li>テストケース毎に結果がキャッシュされる</li>
+</ul>
+
+
+<p>これはまだ理解できてない気がする</p>
+
+<h3>shared_context</h3>
+
+<ul>
+<li>メソッドの間に共通的なcontextがある場合がある</li>
+<li><code>shared_context</code>と<code>include_context</code>で共通化できる</li>
+</ul>
+
+
+<hr />
+
+<p>まだまだRubyもRSpecも初心者なので、分からないところが多いところ</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-24T00:00:00+09:00" pubdate data-updated="true">Apr 24<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rspec/'>RSpec</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -737,106 +863,6 @@ init
 
 	<a class='category' href='/blog/categories/rspec/'>RSpec</a>
 
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/14/iosmacos-dev/">
-		
-			iOS/MacOS 開発勉強会</a>
-	</h2>
-	<div class="entry-content">
-		<p>今日久しぶりにiPhone勉強会に参加しました。 → <a href="http://atnd.org/events/26946">iphone_dev_jp 東京iPhone/Mac勉強会</a></p>
-
-<p>振り替えてみると、昨年年末まではよく参加していた「南東京iPhone開発者勉強会」は、ニフティ様の引越しからは中止になってしまって、yidevも@takayamaさんのご都合によって、半中止になっている状態ですね。
-知っている限りでは、横浜・東京近くは、iOS勉強会も３ヶ月ぐらいの間は、どなたも行ってない状況なので、今回は参加の応募はすっごく大勢だった。</p>
-
-<p>発表のネタがない(まあ、正直に言うと、発表のスキルは持ってない)ので、聞くだけと思ったが、ATNDのイベントページを見ると、「会場でお手伝いしていただけるかた」のリストがありました。おお、これだったら私も何とか出来るじゃないかと、@k_katsumiに連絡しまして、リストに追加して頂きました。</p>
-
-<p>と言っても、実際は、１２時集合して、会場の椅子やテーブルを調整だけをやりましたけど。ごめんなさい。</p>
-
-<h2>@5mingame2さん Ｃ＋＋とOpenGL ES 1.1の話</h2>
-
-<p>マルチOSサポートのゲーム作り方。C++の初心者だよとずっと話してたが、凄そう。</p>
-
-<h2>@kamiyanさん   ibisPaint の OpenGL ES 2.0</h2>
-
-<p>ibisPaintアプリ開発者の発表。C++で低いレベルで実装すると、PFMがすごいぞっていう感じ</p>
-
-<h2>@cocoponさん   キーボードで完結！ハイスピードXcodeコーディング</h2>
-
-<p>私もキーボード好きなタイプなので、すっごく面白かった。Xcodeの自分も分からなかったショットカットキーがあります。勉強になりました。</p>
-
-<h2>@nakamura001さん   Unity恐くないよ!!</h2>
-
-<p>Unityの紹介。無料ライセンスでもいろいろできるよ、どんどん使ってくださいね。</p>
-
-<h2>@yopita_さん   Mac でかんたん Kinect</h2>
-
-<p>MacOSでKinectハックするぞ。知らなかった言語でして、よくわかりませんでしたが、デモが面白かった。触って見たくなりました。</p>
-
-<h2>@akisutesamaさんの</h2>
-
-<ul>
-<li>Core Animation</li>
-<li>Blocks</li>
-<li>NSURLConnection</li>
-</ul>
-
-
-<h2>@novi_さん CoreText のはなし</h2>
-
-<p>は、ほとんど理解出来ていませんでした、ごめなさい。</p>
-
-<h2>@sonson_twitさん   iCloud</h2>
-
-<p>ファイルのダウンロードAPIがおかしい、ファイルのバージョン管理が難しいよ　的なお話し。</p>
-
-<h2>Lightening Talks</h2>
-
-<h3>@monsukeさん  プロモコード配布サービス PromoBook について</h3>
-
-<p>確かに発想がいいですね。プロモコードの配布・追跡的なサービス</p>
-
-<h3>@umekun123さん    App Store内のSEO最適化について調べてみた</h3>
-
-<p>今になると、どんなアプリを作ろうかだけでなく、イイアプリを作ったとしても、SEOをよく考えないと、ユーザがそのアプリを見つけないので、SEOが重要だよ。</p>
-
-<hr />
-
-<p>iOSの開発者は、最初からだと、既に５年目なので、開発スキルがどんどん上がってきて、低いレベルから自分で実装しようという方は多くなってる気がします。全く進歩してない私は、恥ずかしくて恥ずかしくて。。。。穴があれば入りたいぐらい。</p>
-
-<hr />
-
-<p>今日までは、「３０日間毎日ブログを書く」というチャレンジは達成しました！おめでとう！</p>
-
-<p>ですが、次に「１００日間毎日ブログを書く」にチャレンジ</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-14T00:00:00+09:00" pubdate data-updated="true">Apr 14<span>th</span>, 2012</time></div>
-	<div class="tags">
 
 </div>
 	

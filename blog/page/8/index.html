@@ -7,10 +7,8 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編 Ruby 1.9.2 @ Rails3.0.7環境作成
-pow導入 curl get.pow.cx | sh一発でOK
-ln -s rails3dojoで追加
-open rails3dojo.devで確認できる！素晴らしい！ &hellip;">
+	<meta name="description" content="とりあえずローカルでいじって見る。 OctoressのpostをJekyllにコピー 拡張子が異なるので、変換する for nm in *.markdown mv $nm ${nm%.markdown}.md
+done * `{codeblock}`は無いので、"```"に置換する &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,6 +91,76 @@ open rails3dojo.devで確認できる！素晴らしい！ &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/04/jekyll/">
+		
+			Jekyllにする？（2）</a>
+	</h2>
+	<div class="entry-content">
+		<p>とりあえずローカルでいじって見る。</p>
+
+<ul>
+<li>OctoressのpostをJekyllにコピー
+
+<ul>
+<li>拡張子が異なるので、変換する</li>
+</ul>
+</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="ruby"><span class="k">for</span> <span class="n">nm</span> <span class="k">in</span> <span class="o">*.</span><span class="n">markdown</span>
+    <span class="n">mv</span> <span class="vg">$nm</span> <span class="err">$</span><span class="p">{</span><span class="n">nm</span><span class="sx">%.markdown}.</span><span class="n">md</span>
+<span class="n">done</span>
+</code></pre>
+</div>
+
+
+<pre><code>* `{codeblock}`は無いので、"```"に置換する
+</code></pre>
+
+<ul>
+<li>一覧はいいけど、詳細の画面は、いろいろレイアウトが崩れてしまう箇所がある</li>
+</ul>
+
+
+<p><img src="https://lh3.googleusercontent.com/-H67Pj0AYzJM/T3xeTmPcFAI/AAAAAAAAAls/dyMOpOEJTo8/s800/Screen%2520Shot%25202012-04-04%2520at%252023.43.08.png" alt="image" />
+<img src="https://lh4.googleusercontent.com/-NljCDo36W3s/T3xeUDlfWpI/AAAAAAAAAlw/a81JP2wOwDI/s800/Screen%2520Shot%25202012-04-04%2520at%252023.43.45.png" alt="image" /></p>
+
+<p>書き方が悪いところもあるけど、修正しないと無理だよね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-04T00:00:00+09:00" pubdate data-updated="true">Apr 4<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/blog/'>Blog</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -950,88 +1018,6 @@ open rails3dojo.devで確認できる！素晴らしい！ &hellip;">
 
 
 	<a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/勉強会/'>勉強会</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/25/travis-ci/">
-		
-			Travis CI試し</a>
-	</h2>
-	<div class="entry-content">
-		<p>　RSpecを勉強中で、ソースもGithubに保持しているので、TravisCIも試してみる</p>
-
-<ul>
-<li>手順は公式のドキュメントを参考すれば</li>
-<li>メインは<code>.travis.yml</code>の設定
-
-<ul>
-<li>言語</li>
-<li>テストしたいバージョン</li>
-<li>ブランチ関連の管理</li>
-</ul>
-</li>
-</ul>
-
-
-<div class="highlight"><pre><code class="yaml"><span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ruby</span>
-<span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span> <span class="s">&quot;bundle</span><span class="nv"> </span><span class="s">exec</span><span class="nv"> </span><span class="s">rake</span><span class="nv"> </span><span class="s">db:drop</span><span class="nv"> </span><span class="s">db:create</span><span class="nv"> </span><span class="s">db:migrate</span><span class="nv"> </span><span class="s">spec&quot;</span>
-<span class="l-Scalar-Plain">rvm</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.2</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.3</span>
-<span class="l-Scalar-Plain">gemfile</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Gemfile</span>
-<span class="l-Scalar-Plain">branches</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">only</span><span class="p-Indicator">:</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">master</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">develop</span>
-</code></pre>
-</div>
-
-
-<ul>
-<li>感想
-
-<ul>
-<li>githubのリポジトリにPushすると、すぐ反映され、ビルドが走る</li>
-<li>ビルドステータスの画像を外部（ブログなど）に表示できる</li>
-<li>実行ログも見えるので、いろいろ確認できる</li>
-</ul>
-</li>
-</ul>
-
-
-<p><a href="http://travis-ci.org/blueplanet/StudyRSpec"><img src="https://secure.travis-ci.org/blueplanet/StudyRSpec.png?branch=master" alt="Build Status" /></a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-25T22:16:00+09:00" pubdate data-updated="true">Mar 25<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/travis-ci/'>Travis CI</a>, <a class='category' href='/blog/categories/github/'>github</a>
 
 
 </div>
