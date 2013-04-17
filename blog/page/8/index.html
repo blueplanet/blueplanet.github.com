@@ -7,12 +7,10 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="Rails 3.2のアプリをHerokuにデプロイする場合、ハマったことをメモ 環境 Rails 3.2.2
-ローカルDBはsqlite 手順 Railsアプリを作成 rails new myblog
-cd myblog
-git init
-git add .
-git ci -m 'init' &hellip;">
+	<meta name="description" content="浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編 Ruby 1.9.2 @ Rails3.0.7環境作成
+pow導入 curl get.pow.cx | sh一発でOK
+ln -s rails3dojoで追加
+open rails3dojo.devで確認できる！素晴らしい！ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +93,72 @@ git ci -m 'init' &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/03/rails3dojo/">
+		
+			「浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編」の写経(1)</a>
+	</h2>
+	<div class="entry-content">
+		<p><a href="http://www.slideshare.net/mackato/rails3dojo-routing">浜松Rails3道場　其の壱　プロジェクト作成〜Rouging編</a></p>
+
+<ul>
+<li><code>Ruby 1.9.2 @ Rails3.0.7</code>環境作成</li>
+<li><code>pow</code>導入
+
+<ul>
+<li><code>curl get.pow.cx | sh</code>一発でOK</li>
+<li><code>ln -s rails3dojo</code>で追加</li>
+<li><code>open rails3dojo.dev</code>で確認できる！素晴らしい！</li>
+</ul>
+</li>
+<li><code>spork</code>導入
+
+<ul>
+<li><code>config/environments/test.rb</code>の<code>config.cache_classes</code>を<code>false</code>に変更</li>
+</ul>
+</li>
+<li>写経内容は割愛
+
+<ul>
+<li>スライドだけでは、ちょっと何かが足りないなーと感じた。</li>
+<li><code>config/route.rb</code>修正した場合、sporkも再起動する必要があるらしい</li>
+</ul>
+</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-03T07:30:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/pow/'>Pow</a>, <a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -968,61 +1032,6 @@ git ci -m 'init' &hellip;">
 
 
 	<a class='category' href='/blog/categories/travis-ci/'>Travis CI</a>, <a class='category' href='/blog/categories/github/'>github</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/25/rspec-rails/">
-		
-			RSpec on Rails (4)</a>
-	</h2>
-	<div class="entry-content">
-		<p>　写経の記録</p>
-
-<ul>
-<li><p><code>before_save</code>メソッドを定義しても、呼び出されてないらしい。下記を参考して修正<br/>
-<a href="http://d.hatena.ne.jp/NowTom/20110129/1296271461">RSpec2.4.0をRails3.0.3で学ぶ(その1)</a></p></li>
-<li><p>疑問：テスト実行はちょっと遅い気がする。試しにTimeでトータル時間を測定してみたらこんな感じ
-<img src="https://lh5.googleusercontent.com/-KSxPT5UHQCY/T25luPLyRYI/AAAAAAAAAg0/ZJtVEwaUEvw/s800/120325-0001.png" alt="image" />
-userとsystemはどっちがどっちかはよく分からない。要するに、テストロジック自体は0.219かかったが、テストコマンドの全体は3.96かかったとは、間違いないと思いう。もちろん、Rails環境のロードも時間がかかるのはわかってるけど。</p></li>
-</ul>
-
-
-<p>　Rails環境を事前にロードしておく方法があるようなので、後で調べます</p>
-
-<h2>　</h2>
-
-<p>ブログの画像をPicasawebを使ってますが、毎回Safariでアップロードし、URLを取得して文書に貼り付けとの流れだけど、面倒なので、よりいい方法があるかを調べる</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-25T09:08:00+09:00" pubdate data-updated="true">Mar 25<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rspec/'>RSpec</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
 
 
 </div>

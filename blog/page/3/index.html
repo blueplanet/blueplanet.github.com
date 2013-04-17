@@ -7,8 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="きっかけ Ruby-China は Ruby / Rails を勉強している中で、最近よくアクセスしているサイトの１つ。 5日前に、 @knwang さんが、 Ruby-China に参加してから2ヶ月間経ちましたが、
-やはり コミュニティにはどこから入門出来るかも分からない Rails &hellip;">
+	<meta name="description" content=" きっかけ Sublime Text 2 購入してから1ヶ月ぐらいですが、ちょうど Octopress も使っているので、探してみたら、まだ専用のプラグインがないため、作ってみました。 Read on &rarr; Oct 16th, 2012 Octopress, SublimeText2 ">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +90,49 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/10/16/sublime-text-2-octopress/">
+		
+			Sublime Text 2 の Octopress プラグインを作ってみました</a>
+	</h2>
+	<div class="entry-content">
+		<h2>きっかけ</h2>
+
+<p><a href="http://www.sublimetext.com/">Sublime Text 2</a> 購入してから1ヶ月ぐらいですが、ちょうど <a href="http://octopress.org/">Octopress</a> も使っているので、探してみたら、まだ専用のプラグインがないため、作ってみました。</p>
+
+
+		
+		<a href="/blog/2012/10/16/sublime-text-2-octopress/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-16T21:36:00+09:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/octopress/'>Octopress</a>, <a class='category' href='/blog/categories/sublimetext2/'>SublimeText2</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -945,104 +987,6 @@
 
 
 	<a class='category' href='/blog/categories/bundler/'>Bundler</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/05/14/heroku-cron/">
-		
-			HerokuでのCronについて調べてみた</a>
-	</h2>
-	<div class="entry-content">
-		<p>Herokuの場合は、無料のCronは１日１回しか使えないイメージがある。現状はどうなっているかを調べてみた</p>
-
-<h2>現状</h2>
-
-<ul>
-<li>Cronは既に古い</li>
-<li><p>Heroku SchedulerはCronの代替案としてのものらしく、時間毎・１０分間隔でタスクを実行できる。</p>
-
-<ul>
-<li><a href="">http://blogjp.sforce.com/2011/11/heroku-schedule-dc69.html</a></li>
-</ul>
-</li>
-<li><p>clockworkは秒単位まで指定できる</p>
-
-<ul>
-<li><a href="">http://d.hatena.ne.jp/marutanm/20110719/p1</a></li>
-</ul>
-</li>
-</ul>
-
-
-<h2>料金</h2>
-
-<ul>
-<li>Heroku Schedulerは、プロセスが起動され、実行中はDynoの時間が計上される。例え、10:00起動され、10:06まで実行完了の場合は、Dynoの時間は0.1となるイメージ。
-
-<ul>
-<li>最初は料金の計上を理解出来てなくて、<code>one-off admin process</code>で調べてみたら、下記の記事のお陰で、理解出来ました
-
-<ul>
-<li><a href="">http://d.hatena.ne.jp/koshigoeb/20111112/1321070001</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>clockworkは、裏側でプロセスが動いているので、ずっとDynoの時間が計上される</li>
-</ul>
-
-
-<h2>使い分け</h2>
-
-<ul>
-<li><p><a href="">http://d.hatena.ne.jp/ToMmY/20111121/1321802014</a> を参考に</p>
-
-<ul>
-<li>他のアプリケーションの補佐として、軽い処理の場合は、Scheduler</li>
-<li>頻繁の処理（１０分以下）、または、ガッツリしたい処理は、clockwork</li>
-<li>Schedulerは毎回プロセスが再起動される為、オーバーヘッドが大きい</li>
-</ul>
-</li>
-<li><p>自分なりの予想</p>
-
-<ol>
-<li>１つサービスでRailsアプリを運用し、DBは別にする</li>
-<li>もう１つサービスでclockworkを運用し、１のDBにアクセスする</li>
-</ol>
-</li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-14T00:00:00+09:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/heroku/'>Heroku</a>
 
 
 </div>

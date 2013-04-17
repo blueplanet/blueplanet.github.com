@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Kpt | 蒼い惑星の記録]]></title>
+  <link href="http://blueplanet.github.com/blog/categories/kpt/atom.xml" rel="self"/>
+  <link href="http://blueplanet.github.com/"/>
+  <updated>2013-04-17T13:37:09+09:00</updated>
+  <id>http://blueplanet.github.com/</id>
+  <author>
+    <name><![CDATA[blueplanet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[最近２年間の反省]]></title>
+    <link href="http://blueplanet.github.com/blog/2013/04/17/2-year-ago-kpt/"/>
+    <updated>2013-04-17T13:27:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2013/04/17/2-year-ago-kpt</id>
+    <content type="html"><![CDATA[<h2>Problem</h2>
+
+<ul>
+<li>勉強方法が間違った
+
+<ul>
+<li>勉強・読書だけでは、何もならない。何かを作らないと、いろいろ分からない</li>
+<li>というのを分かった気がしてたが、実際わかってなかった</li>
+<li>今年から、本当に小さいものでもよくて、手を動かして作り始めて、だんだん本当に分かってきた</li>
+<li>これからは、いいアイデアを待つ・探すではなく、既存のいいサイトを真似て、作ってみよう</li>
+</ul>
+</li>
+<li>GTDは、InboxとTodayしか使ってない
+
+<ul>
+<li>やりたいものを直接にTodayに入れてしまう</li>
+</ul>
+</li>
+<li>後で読む系のサービスを使っているのに、実際読んでない
+
+<ul>
+<li>最近Pocketになってるが、数がどんどん増えてしまって、全然減ってない</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Try</h2>
+
+<ul>
+<li>オンラインでRuby・Railsの定期的な勉強会をやりたい</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
