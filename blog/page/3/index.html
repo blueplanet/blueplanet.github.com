@@ -7,7 +7,8 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="この記事は、Sublime Text 2 Advent Calendar 2012の17日目の記事です。 SublimeText2でシンプルでTodoListを管理するプラグインPlainTasksを紹介します。 ほとんどReadmeの内容になってしまいますが、プラスアルファの部分もあります。 &hellip;">
+	<meta name="description" content="昨日、【Forkwell＆CodeIQ共催】実践 Rails コードチャレンジ (松田明さん監修) に参加しました きっかけ イベントを分かってから、参加するかどうかを悩んでました。Rails素人なので、多分回答出来ないかと思いました
+でも、やはり @a_matsuda &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +91,138 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/12/20/codeiq-jissen-rails/">
+		
+			実践 Rails コードチャレンジに参加しました</a>
+	</h2>
+	<div class="entry-content">
+		<p>昨日、<a href="http://atnd.org/event/ForkwellCodeIQ">【Forkwell＆CodeIQ共催】実践 Rails コードチャレンジ (松田明さん監修)</a> に参加しました</p>
+
+<h2>きっかけ</h2>
+
+<ul>
+<li>イベントを分かってから、参加するかどうかを悩んでました。Rails素人なので、多分回答出来ないかと思いました</li>
+<li>でも、やはり @a_matsuda さんのお話しを聞きたいですね。特に Rails 4</li>
+<li>ので、応募しちゃいました</li>
+</ul>
+
+
+<h2>過程</h2>
+
+<p>イベンとの前問題が公開されたので、17日夜からチャレンジしてみました</p>
+
+<h3>第一問</h3>
+
+<ul>
+<li>最初は1問だけだと思いました。。。。。</li>
+<li>SQLチューニングのお話しで、例のN+1の問題なので、これなら回答できそうと。</li>
+<li><code>counter cache</code>機能は分かってたが、細かい使い方は調べて回答しました。<code>migration</code>ファイルの書き方も後ほど気づいて、既存のカウント数を設定したり、<code>reset_column</code>したり追加しました</li>
+<li>回答は <a href="https://gist.github.com/4322792/revisions"> gist reversions </a> で</li>
+<li>ギリギリ前日までに回答をアップロードしたら、第二問が！！！</li>
+<li>マジ！しかも、細かい指示がなく、「コードの負債をソースレビュー視点から直してください」という</li>
+<li>まあ、素人ですし、1問できてるし、残りは他の方の回答を勉強すればという気持ちになった</li>
+</ul>
+
+
+<h3>第二問</h3>
+
+<ul>
+<li>いろいろ見ても分からなかったので、<code>PublicationController</code>だけを読んで、ある重複コードを抽出だけでした</li>
+<li>コードはここ <a href="https://github.com/blueplanet/forkwell/commit/252a67b133e6e1fc1205968ba3653be14627734c">github commit </a></li>
+</ul>
+
+
+<h3>第三問</h3>
+
+<ul>
+<li>何となくのぞってみたいので、第二問のとんでもないものをアップしてみました</li>
+<li><code>Rails 4 のstrong parametersで。。。。</code>とかなんとか、<code>strong parameters</code>ってなんでしょうか？</li>
+<li>全く分からないので、諦めて、同じテーブルの同士とちょっとワイワイ話してみました。楽しかった</li>
+</ul>
+
+
+<h3>発表</h3>
+
+<ul>
+<li>最後は、参加者が自分の回答を発表して、 @a_matsuda 先生にレビューしてもらえました</li>
+<li>1問目の回答は、やはりドキドキしちゃったので、応募出来なかった
+
+<ul>
+<li>回答した方は<code>counter cache</code>を使った方もいて、 @a_matsuda 先生に「これは満点」と褒められて、そして！なんと、github のTシャツがもらった！応募しなかった僕はすごく悔しかった！</li>
+</ul>
+</li>
+<li>2問目は、1問目のプレゼントを見てすごく欲しいので、何とかしたいが、自分のものがとんでもない修正なので、あんまり勇気がなかった</li>
+<li>が、二人の方がいろいろ発表したのですが、二人共僕の箇所に気づいてなかった、そして、うちのテーブルには、発表は１つもなかったので、やはり勇気を出して発表して見ました。</li>
+<li>なんと、@a_matsuda　先生に「おお、このやり方は DHH らしいですね！」と褒められた！すごく嬉しかった！</li>
+<li>あと、一番重要なのは、github のカップを貰いました！ありがとうございました！</li>
+</ul>
+
+
+<p><img src="https://lh4.googleusercontent.com/-iaohwghL2DU/UNMT07j553I/AAAAAAAACDE/PNcOyQVs2hk/s800/github_cup.png" alt="" /></p>
+
+<h2>@a_matsuda 先生から Rails 4 関連のお話し</h2>
+
+<ul>
+<li><code>strong parameters</code>の説明
+
+<ul>
+<li>なるほど。<code>mass assignment</code>の対策ですね。<code>model</code>の責任じゃないよ、<code>controller</code>ちゃんとやれ！的な感じですかね</li>
+</ul>
+</li>
+<li><a href="https://github.com/asakusarb/action_args">github: asakusarb / action_args</a>
+
+<ul>
+<li>@a_matsuda 先生の gem 。細かい機能はまだ理解出来てないので、後で調べる</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>まとめ</h2>
+
+<ul>
+<li>人数ちょっと少なかった気がしますが、気分はすごく良かったです。またチャンスがありましたら、また参加したいですね</li>
+<li>@a_matsuda 先生は意外に優しかった。←　いつか @a_matsuda 先生が厳しいと誤解したんだろうね</li>
+<li>もっと @a_matsuda 先生の技を勉強したいです！</li>
+<li><a href="https://github.com/CodeIQ/forkwell">github: CodeIQ/forkwell</a> 今回チャレンジ用のリポジトリに、特に<code>question_2</code>から出てきた<code>RSpec</code>の<code>requests</code>スペックの書き方は大変勉強になりました。
+
+<ul>
+<li>最近はちょうど<code>request</code>の書き方にハマっているので、すごく嬉しいです！</li>
+<li>最初は<code>requests</code>で<code>rspec</code>実行すると、すべて赤だったが、<code>jnicklas/capybara</code>の <code>Ver2.0</code>以降は、<code>features</code>じゃないとダメという仕様変更でした。</li>
+</ul>
+</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-20T21:27:00+09:00" pubdate data-updated="true">Dec 20<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -828,157 +961,6 @@ Default: 1</p></li>
 
 	<a class='category' href='/blog/categories/job/'>Job</a>
 
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/05/19/yokohamarb20/">
-		
-			Yokohamarb20</a>
-	</h2>
-	<div class="entry-content">
-		<p>久しぶりにYokohamarbの勉強会に参加しました。</p>
-
-<p>いつものどおり、自己紹介→Rubyレシピブック読書会→LTの流れ。</p>
-
-<h2>自己紹介</h2>
-
-<ul>
-<li>希望として、話せるネタや「お寿司のネタ」　←これは盛り上がった！</li>
-</ul>
-
-
-<h2>Rubyレシピブック</h2>
-
-<ul>
-<li>本を持ってない＋目が弱くて、あんまり見えなかった</li>
-<li>時間がちょっと経ってから、@1syo さんのすぐそばに移ってから、若干見えるようになった</li>
-</ul>
-
-
-<h2>LT1 Rails Conf2012</h2>
-
-<ul>
-<li>github:newhavenrb</li>
-<li>トレンド
-
-<ul>
-<li>分散処理：MBQ</li>
-<li>JavaScriptのお話し</li>
-<li>テストなどは既に当たり前になってるので、意外にトレンドに乗れなかった</li>
-</ul>
-</li>
-<li>Chanko ?
-
-<ul>
-<li>初めて聞いたので、後で調べる</li>
-</ul>
-</li>
-<li>後半は写真を見ながら説明していただいた
-
-<ul>
-<li>料理はまずかったそうです。</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>LT2 Rails開発環境</h2>
-
-<ul>
-<li>MacOS Vim Screen Git</li>
-<li>Test 「これらのgemがないと、開発は進められない」
-
-<ul>
-<li>RSpec</li>
-<li>Cucumber</li>
-<li>Pry</li>
-<li>guard</li>
-</ul>
-</li>
-<li>gitの便利設定</li>
-<li>Demo</li>
-</ul>
-
-
-<h2>LT3 Ruby Motion</h2>
-
-<ul>
-<li>Docはまだ最低限だけ</li>
-<li>Motionコマンドで作業</li>
-<li>specサブコマンドがある。
-
-<ul>
-<li>ただし、どのインスタンスがあるかどうか・メソッドが呼ば出されるかどうかなどで確認できるが、UIの自動テストはできないので、UIAutoMationを使わないと無理っぽい</li>
-</ul>
-</li>
-<li>名前付きパラメータが使えるように拡張される
-
-<ul>
-<li>ただ、拡張の部分はアプリに配布されないそうです</li>
-</ul>
-</li>
-<li>変数の型は無視していい。</li>
-<li>Viewのデバッグ操作が出来て、より使いやすくなる</li>
-</ul>
-
-
-<h2>LT4 Haskell言語</h2>
-
-<ul>
-<li>Web Framework
-
-<ul>
-<li><a href="http://www.yesodweb.com/"></a></li>
-<li>PFM</li>
-<li>セキュリティ</li>
-<li>Routeを定義して保存すると、コンパイルされる</li>
-</ul>
-</li>
-<li>Haskell
-
-<ul>
-<li>コンパイル時メソッドなどを生成するので、実行PFMがいい</li>
-</ul>
-</li>
-<li><p>この辺は全く分からないので、後で調べる</p></li>
-<li><p>TODO : Emacs で階層を色付けするのは？</p></li>
-<li>TODO : Emacs で折り畳み・展開</li>
-<li>TODO : cdの後自動的にlsを実行数するのは？</li>
-<li>TODO : Parse.com ??
-
-<ul>
-<li>プロトタイプ作成の補助？</li>
-</ul>
-</li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-19T00:00:00+09:00" pubdate data-updated="true">May 19<span>th</span>, 2012</time></div>
-	<div class="tags">
 
 </div>
 	

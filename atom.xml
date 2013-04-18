@@ -4,7 +4,7 @@
   <title><![CDATA[蒼い惑星の記録]]></title>
   <link href="http://blueplanet.github.com/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2013-04-18T14:31:35+09:00</updated>
+  <updated>2013-04-18T22:52:21+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[噂のUp by Jawboneが届けました]]></title>
+    <link href="http://blueplanet.github.com/blog/2013/04/18/up-by-jawbone/"/>
+    <updated>2013-04-18T21:34:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2013/04/18/up-by-jawbone</id>
+    <content type="html"><![CDATA[<p>4/20 日本発売予定、先週Yoodobashiで予約したのですが、夕方19時頃いきなり届けました</p>
+
+<h2>初期設定</h2>
+
+<ul>
+<li>アプリをダウンロードして、起動すると、ガイドが出てくるので、それに従ってやればOKです。</li>
+<li>この辺は、下記の記事が細かいです。 <a href="http://weekly.ascii.jp/elem/000/000/138/138665/">噂の『UP by Jawbone』をナイキ『Fuelband』ユーザーが使ってみた</a></li>
+</ul>
+
+
+<h2>気になる箇所</h2>
+
+<ul>
+<li>サイズは小さめです
+
+<ul>
+<li>ちょっと太いので、事前調査で既に分かって、Lサイズを予約したのですが、実際使ってみたら、Lサイズを予約してよかった</li>
+<li><img src="http://blueplanet.github.com/images/up/ude.jpg" width="300"></li>
+</ul>
+</li>
+<li>設定メニュー：<img src="http://blueplanet.github.com/images/up/menu.PNG" width="300" title="設定メニュー" ></li>
+<li>アラームが１つしか設定出来ないお話しはありましたが、実際は４つまで設定できる
+
+<ul>
+<li>説明：<img src="http://blueplanet.github.com/images/up/smart_alerm.PNG" width="300" title="スマートアラーム" ></li>
+<li>アラーム：<img src="http://blueplanet.github.com/images/up/alerm.PNG" width="300" title="アラームは４つまで設定出来る" ></li>
+<li>アラーム詳細：<img src="http://blueplanet.github.com/images/up/alerm_detail.PNG" width="300" title="アラーム詳細" ></li>
+</ul>
+</li>
+<li>スポーツ関連：<img src="http://blueplanet.github.com/images/up/run.PNG" width="300" title="スポーツなどの設定" ></li>
+<li>仮寝のアラームについては、仮寝の質を監視し自動調整して目覚めてくれる上で、最大時間も設定出来る
+
+<ul>
+<li>仮寝：<img src="http://blueplanet.github.com/images/up/karine.PNG" width="300" title="仮寝の説明" ></li>
+<li>仮寝詳細：<img src="http://blueplanet.github.com/images/up/karine_detail.PNG" width="300" title="仮寝の詳細設定" ></li>
+</ul>
+</li>
+</ul>
+
+
+<h2>まとめ</h2>
+
+<p>これからこれを使って健康を管理してみる</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[いまさらの zeus + guard の導入]]></title>
@@ -5257,111 +5308,6 @@ git push origin dev</p>
 <ul>
 <li><code>Sublime Text 2</code>自体の機能もいろいろコマンドになったりしますので、既存の機能を呼び出したい場合は、まず<code>Packages\Default</code>の中を調べましょう</li>
 <li>プラグインを作るのはすっごく簡単です。どんどんやってみましょう！</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[実践 Rails コードチャレンジに参加しました]]></title>
-    <link href="http://blueplanet.github.com/blog/2012/12/20/codeiq-jissen-rails/"/>
-    <updated>2012-12-20T21:27:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2012/12/20/codeiq-jissen-rails</id>
-    <content type="html"><![CDATA[<p>昨日、<a href="http://atnd.org/event/ForkwellCodeIQ">【Forkwell＆CodeIQ共催】実践 Rails コードチャレンジ (松田明さん監修)</a> に参加しました</p>
-
-<h2>きっかけ</h2>
-
-<ul>
-<li>イベントを分かってから、参加するかどうかを悩んでました。Rails素人なので、多分回答出来ないかと思いました</li>
-<li>でも、やはり @a_matsuda さんのお話しを聞きたいですね。特に Rails 4</li>
-<li>ので、応募しちゃいました</li>
-</ul>
-
-
-<h2>過程</h2>
-
-<p>イベンとの前問題が公開されたので、17日夜からチャレンジしてみました</p>
-
-<h3>第一問</h3>
-
-<ul>
-<li>最初は1問だけだと思いました。。。。。</li>
-<li>SQLチューニングのお話しで、例のN+1の問題なので、これなら回答できそうと。</li>
-<li><code>counter cache</code>機能は分かってたが、細かい使い方は調べて回答しました。<code>migration</code>ファイルの書き方も後ほど気づいて、既存のカウント数を設定したり、<code>reset_column</code>したり追加しました</li>
-<li>回答は <a href="https://gist.github.com/4322792/revisions"> gist reversions </a> で</li>
-<li>ギリギリ前日までに回答をアップロードしたら、第二問が！！！</li>
-<li>マジ！しかも、細かい指示がなく、「コードの負債をソースレビュー視点から直してください」という</li>
-<li>まあ、素人ですし、1問できてるし、残りは他の方の回答を勉強すればという気持ちになった</li>
-</ul>
-
-
-<h3>第二問</h3>
-
-<ul>
-<li>いろいろ見ても分からなかったので、<code>PublicationController</code>だけを読んで、ある重複コードを抽出だけでした</li>
-<li>コードはここ <a href="https://github.com/blueplanet/forkwell/commit/252a67b133e6e1fc1205968ba3653be14627734c">github commit </a></li>
-</ul>
-
-
-<h3>第三問</h3>
-
-<ul>
-<li>何となくのぞってみたいので、第二問のとんでもないものをアップしてみました</li>
-<li><code>Rails 4 のstrong parametersで。。。。</code>とかなんとか、<code>strong parameters</code>ってなんでしょうか？</li>
-<li>全く分からないので、諦めて、同じテーブルの同士とちょっとワイワイ話してみました。楽しかった</li>
-</ul>
-
-
-<h3>発表</h3>
-
-<ul>
-<li>最後は、参加者が自分の回答を発表して、 @a_matsuda 先生にレビューしてもらえました</li>
-<li>1問目の回答は、やはりドキドキしちゃったので、応募出来なかった
-
-<ul>
-<li>回答した方は<code>counter cache</code>を使った方もいて、 @a_matsuda 先生に「これは満点」と褒められて、そして！なんと、github のTシャツがもらった！応募しなかった僕はすごく悔しかった！</li>
-</ul>
-</li>
-<li>2問目は、1問目のプレゼントを見てすごく欲しいので、何とかしたいが、自分のものがとんでもない修正なので、あんまり勇気がなかった</li>
-<li>が、二人の方がいろいろ発表したのですが、二人共僕の箇所に気づいてなかった、そして、うちのテーブルには、発表は１つもなかったので、やはり勇気を出して発表して見ました。</li>
-<li>なんと、@a_matsuda　先生に「おお、このやり方は DHH らしいですね！」と褒められた！すごく嬉しかった！</li>
-<li>あと、一番重要なのは、github のカップを貰いました！ありがとうございました！</li>
-</ul>
-
-
-<p><img src="https://lh4.googleusercontent.com/-iaohwghL2DU/UNMT07j553I/AAAAAAAACDE/PNcOyQVs2hk/s800/github_cup.png" alt="" /></p>
-
-<h2>@a_matsuda 先生から Rails 4 関連のお話し</h2>
-
-<ul>
-<li><code>strong parameters</code>の説明
-
-<ul>
-<li>なるほど。<code>mass assignment</code>の対策ですね。<code>model</code>の責任じゃないよ、<code>controller</code>ちゃんとやれ！的な感じですかね</li>
-</ul>
-</li>
-<li><a href="https://github.com/asakusarb/action_args">github: asakusarb / action_args</a>
-
-<ul>
-<li>@a_matsuda 先生の gem 。細かい機能はまだ理解出来てないので、後で調べる</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>まとめ</h2>
-
-<ul>
-<li>人数ちょっと少なかった気がしますが、気分はすごく良かったです。またチャンスがありましたら、また参加したいですね</li>
-<li>@a_matsuda 先生は意外に優しかった。←　いつか @a_matsuda 先生が厳しいと誤解したんだろうね</li>
-<li>もっと @a_matsuda 先生の技を勉強したいです！</li>
-<li><a href="https://github.com/CodeIQ/forkwell">github: CodeIQ/forkwell</a> 今回チャレンジ用のリポジトリに、特に<code>question_2</code>から出てきた<code>RSpec</code>の<code>requests</code>スペックの書き方は大変勉強になりました。
-
-<ul>
-<li>最近はちょうど<code>request</code>の書き方にハマっているので、すごく嬉しいです！</li>
-<li>最初は<code>requests</code>で<code>rspec</code>実行すると、すべて赤だったが、<code>jnicklas/capybara</code>の <code>Ver2.0</code>以降は、<code>features</code>じゃないとダメという仕様変更でした。</li>
-</ul>
-</li>
 </ul>
 
 ]]></content>

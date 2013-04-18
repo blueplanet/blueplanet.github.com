@@ -7,9 +7,7 @@
 	<meta name="author" content="blueplanet">
 
 	
-	<meta name="description" content="４年前のビデオですが、すごく刺激を受けたので、いろいろ調べて、自分の環境でEmacsとRSpecの環境を揃えた。 そろそろ実演をみながら、写経する 目的・ゴールドを明確に限定する
-最初は、一番簡単に動くのを考えるので、全部ガターケースにする
-２番目はすべて1ピンのケースを追加 通った &hellip;">
+	<meta name="description" content="EmacsでRSpecを書いていますが、Ruby-modeで括弧が補完してくれて、メソッドなどもendが補完してくれるけど、入力が多くなると、やはり変数名などよく入力するキーワードが自動補完したいですね。 そこは、Auto Complete Modeの出番。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +90,70 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/04/16/emacs-auto-complete/">
+		
+			Emacs Auto Complete</a>
+	</h2>
+	<div class="entry-content">
+		<p>EmacsでRSpecを書いていますが、Ruby-modeで括弧が補完してくれて、メソッドなども<code>end</code>が補完してくれるけど、入力が多くなると、やはり変数名などよく入力するキーワードが自動補完したいですね。</p>
+
+<p>そこは、<code>Auto Complete Mode</code>の出番。</p>
+
+<p>インストールは<a href="http://cx4a.org/software/auto-complete/index.ja.html">公式サイト</a>からダウンロードしてから、解凍したフォルダの<code>/etc/install.el</code>を<code>M-x RET load-file</code>でロードする。その後、<code>init.el</code>に設定を追加すればOK</p>
+
+<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;auto-complete-config</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ac-dictionary-directories</span> <span class="s">&quot;~/.emacs.d/elisp//ac-dict&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">ac-config-default</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+<hr />
+
+<p>しばらくは、３つのキーの設定を変更してみたい</p>
+
+<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">global-set-key[</span><span class="p">(</span><span class="nv">control</span> <span class="no">t</span><span class="p">)</span><span class="nv">]</span> <span class="ss">&#39;switch-to-buffer</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">global-set-key[</span><span class="p">(</span><span class="nv">control</span> <span class="nv">o</span><span class="p">)</span><span class="nv">]</span> <span class="ss">&#39;find-file</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">global-set-key[</span><span class="p">(</span><span class="nv">control</span> <span class="nv">h</span><span class="p">)</span><span class="nv">]</span> <span class="ss">&#39;backward-delete-char</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-16T00:00:00+09:00" pubdate data-updated="true">Apr 16<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/emacs/'>Emacs</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -759,109 +821,6 @@
 
 
 	<a class='category' href='/blog/categories/editor/'>Editor</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/04/06/kobita-by-qiita/">
-		
-			Kobita by Qiitaを試す</a>
-	</h2>
-	<div class="entry-content">
-		<p>昨日先行利用ユーザとして登録した<code>kobito</code>からリリースのお知らせが来ました。早速落としてみました。</p>
-
-<p><a href="http://kobitoapp.com/">公式サイト</a>にアクセスすればイメージできるので、画像とかは割愛</p>
-
-<p>今使ってる<code>Mou.app</code>とはちょっと比較してみました。</p>
-
-<p><strong>メインはJekyllのブロク書く前提とするお話し</strong></p>
-
-<ul>
-<li><p>共通の足りないところ</p>
-
-<ul>
-<li>Jekyllの対応はない　まあ、対応しているアプリはなさそうけど</li>
-</ul>
-</li>
-<li><p>Kobita</p>
-
-<ul>
-<li>位置付け：<strong>「メモアプリ」</strong>、かつQiitaに投稿するアプリ.
-
-<ul>
-<li>１行目はメモのタイトルになる</li>
-<li>タグが付けられる</li>
-</ul>
-</li>
-<li>メリット
-
-<ul>
-<li>見た目はもっとMacOSライク的な感じ</li>
-<li>ソースコードの場合は、独自の拡張（？かな）によって、より見やすい感じ</li>
-</ul>
-</li>
-<li>デメリット
-
-<ul>
-<li>任意ファイルを開いて編集するのは不可</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Mou
-
-<ul>
-<li>位置付け：<strong>Markdownファイル編集アプリ</strong></li>
-<li>メリット
-
-<ul>
-<li>Jekyllで作ったファイルを開いて編集できる</li>
-</ul>
-</li>
-<li>デメリット
-
-<ul>
-<li>特に気付いたことはない。見た目も人によっていいのもあるし、出来れば、自分でCSSを書いちゃえばいいし</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<p>うむ、メリットはそれほど多くはないので、しばらくはMouを使う</p>
-
-<p><strong>自分でJekyll専用のアプリを開発すれば良いじゃん！</strong></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-06T00:00:00+09:00" pubdate data-updated="true">Apr 6<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/blog/'>Blog</a>
 
 
 </div>
