@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails, | 蒼い惑星の記録]]></title>
   <link href="http://blueplanet.github.com/blog/categories/rails-/atom.xml" rel="self"/>
   <link href="http://blueplanet.github.com/"/>
-  <updated>2013-04-17T14:36:24+09:00</updated>
+  <updated>2013-04-18T14:31:35+09:00</updated>
   <id>http://blueplanet.github.com/</id>
   <author>
     <name><![CDATA[blueplanet]]></name>
@@ -12,6 +12,127 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[いまさらの zeus + guard の導入]]></title>
+    <link href="http://blueplanet.github.com/blog/2013/04/18/zeus-with-guard/"/>
+    <updated>2013-04-18T12:34:00+09:00</updated>
+    <id>http://blueplanet.github.com/blog/2013/04/18/zeus-with-guard</id>
+    <content type="html"><![CDATA[<p><code>guard-rspec</code>を使って、<code>spec</code>が保存される都度自動実行されるが、<code>spec</code>を増えると、やはり実行時間に気になるので、何とかしたい</p>
+
+<h2>zeus を選択する理由</h2>
+
+<ul>
+<li><code>Spork</code>と比較
+
+<ul>
+<li><code>spec-helper</code>ファイルを汚染しない</li>
+</ul>
+</li>
+<li><code>Commands</code>と比較
+
+<ul>
+<li><code>rspec</code>対応</li>
+<li><code>destroy</code>対応</li>
+<li><code>Commands</code>は両方とも使えいないらしい</li>
+</ul>
+</li>
+<li><code>Spring</code>と比較
+
+<ul>
+<li><code>destroy</code>対応</li>
+<li><code>zeus start</code>１つプロセスで、異なるセッション間で共有出来る
+
+<ul>
+<li><code>Spring</code>はセッション毎に<code>Spring server</code>が走ってるらしい</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>導入方法</h2>
+
+<ul>
+<li><code>Gemfile</code>の<code>development</code>グループに追加
+
+<ul>
+<li>`gem "zeus"</li>
+</ul>
+</li>
+<li><code>Guard</code>と併用している場合、<code>Guardfile</code>を修正
+
+<ul>
+<li><code>guard 'rspec'</code>に<code>zeus: true</code>オプションを追加</li>
+<li>このオプションによって、<code>Guard</code>が<code>rspec</code>を実行する時に<code>bundle exec zeus rspec</code>になる</li>
+<li><code>guard-zeus</code>という<code>gem</code>もありますが、これを使うと、<code>Guard</code>起動すると、<code>zeus start</code>を実行してくれるが、<code>spec</code>実行される通度、<code>zeus start</code>の内容と<code>spec</code>実行の出力とバラバラになってしまうので、却下</li>
+</ul>
+</li>
+<li><code>Cucumber</code>使わないとか、の場合は、<code>zeus.json</code>を作成
+
+<ul>
+<li>やったのは
+
+<ul>
+<li>'Cucumber'を削除</li>
+<li>'dbconsole'を削除</li>
+<li>'runner'を削除</li>
+</ul>
+</li>
+<li>ちなみに、<code>zeus init</code>を実行すると、ひな形が作成してくれる</li>
+</ul>
+</li>
+</ul>
+
+
+<p>```
+{
+  "command": "ruby -rubygems -rzeus/rails -eZeus.go",</p>
+
+<p>  "plan": {</p>
+
+<pre><code>"boot": {
+  "default_bundle": {
+    "development_environment": {
+      "prerake": {"rake": []},
+      "console": ["c"],
+      "server": ["s"],
+      "generate": ["g"],
+      "destroy": ["d"]
+    },
+    "test_environment": {
+      "test_helper": {"test": ["rspec", "testrb"]}
+    }
+  }
+}
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<h2>問題</h2>
+
+<ul>
+<li><code>spec</code>の中に、<code>shared_context</code>を使ってるせいかもしれませんが、<code>zeus rspec ...</code>を実行する都度、<code>...not found shareed_context...</code>エラーになってる
+
+<ul>
+<li>対策として、<code>spec_helper</code>の<code>require rspec/autorun</code>行を削除するとエラーがなくなった</li>
+<li>正直に言うと、その行のそもそもの役割はよく分かってない。削除しても、<code>rspec</code>とかも正常に実行出来るし</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>まとめ</h2>
+
+<ul>
+<li>こう設定すると、修正を保存する都度、<code>spec</code>が素早く実行されて、すごく快適です</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用 RSpec+Capybara 简单BDD入门 -11]]></title>
@@ -1379,304 +1500,6 @@ git branch -d f8
 </code></p>
 
 <p>下一步骤：<a href="/blog/2013/01/06/ruby-china-clone-9">使用 RSpec+Capybara 简单BDD入门 -9</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用 RSpec+Capybara 简单BDD入门 -7]]></title>
-    <link href="http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-7/"/>
-    <updated>2013-01-06T20:59:00+09:00</updated>
-    <id>http://blueplanet.github.com/blog/2013/01/06/ruby-china-clone-7</id>
-    <content type="html"><![CDATA[<p><a href="/blog/2013/01/06/ruby-china-clone-cover">目录</a>
-上一步：<a href="/blog/2013/01/06/ruby-china-clone-6">使用 RSpec+Capybara 简单BDD入门 -6</a></p>
-
-<h2>用户故事</h2>
-
-<p>访问者希望登录</p>
-
-<ul>
-<li>使用用户名登录</li>
-<li>登录后显示帖子列表</li>
-<li>在右上角显示用户名</li>
-</ul>
-
-
-<h2>环境准备</h2>
-
-<p><code>bash
-git checkout -b f7
-rails c # console
-rails s # server
-</code></p>
-
-<h2>步骤</h2>
-
-<h3>新建文件<code>spec/features/guest_can_sign_in_spec.rb</code></h3>
-
-<p>```rb</p>
-
-<h1>coding: utf-8</h1>
-
-<p>feature '访问者希望登录' do
-  background do</p>
-
-<pre><code>@user = User.create name: "test_user", email: "test@test.com"
-</code></pre>
-
-<p>  end</p>
-
-<p>  scenario '输入用户名后点击"登录"按钮，应该正常登录' do</p>
-
-<pre><code>visit "/sign_in"
-
-fill_in "user_name", with: @user.name
-click_button "登录"
-
-current_path.should == root_path
-</code></pre>
-
-<p>  end
-end
-```</p>
-
-<ul>
-<li>测试失败：<code>No route matches [GET] "/sign_in"</code></li>
-<li>原因：没有<code>sign_in</code>的路由信息</li>
-</ul>
-
-
-<h3>编辑<code>config/routes.rb</code>，增加路由信息</h3>
-
-<p><code>rb
-  match 'sign_in', to: "sessions#new"
-</code></p>
-
-<ul>
-<li>测试失败：<code>uninitialized constant SessionsController</code></li>
-<li>原因：没有<code>sessions</code>这个<code>controller</code></li>
-</ul>
-
-
-<h3>在<code>rails console</code>中执行</h3>
-
-<p>```rb
-[10] pry(main)> generate "controller sessions"</p>
-
-<pre><code>  create  app/controllers/sessions_controller.rb
-  invoke  haml
-  create    app/views/sessions
-</code></pre>
-
-<p>=> "Completed"
-[11] pry(main)>
-```</p>
-
-<ul>
-<li>测试失败：<code>The action 'new' could not be found for SessionsController</code></li>
-<li>原因：没有定义<code>new</code>方法</li>
-</ul>
-
-
-<h3>编辑<code>controllers/sessions_controller.rb</code>，增加<code>new</code>方法</h3>
-
-<p><code>rb
-class SessionsController &lt; ApplicationController
-  def new
-  end
-end
-</code></p>
-
-<ul>
-<li>测试失败：<code>Missing template sessions/new, application/new with {:lo...</code></li>
-<li>原因：没有对应的<code>new</code>模板</li>
-</ul>
-
-
-<h3>新建<code>sessions/new.html.haml</code>模板</h3>
-
-<p>拷贝<code>ui/signin.html</code>内容至当前模板</p>
-
-<p>```rb
-= render 'shared/breadcrumb', links: [["Home", ""]]</p>
-
-<p>%section#sign_in.box
-  %h1 登录
-  %form(action="" method="post" class="form-horizontal")</p>
-
-<pre><code>.control-group
-  %label(class="control-label") 用户名
-  .controls
-    %input(type="text")
-.submit-button
-  %input(type="submit" value="登录" class="btn btn-primary")
-</code></pre>
-
-<p>%section#sidebar
-  %section#has_account.box</p>
-
-<pre><code>%h2 还没有帐号?
-= link_to "注册"
-</code></pre>
-
-<p>```</p>
-
-<ul>
-<li>测试失败：<code>Unable to find field "user_name"</code></li>
-<li>原因：模板还是写死的假数据</li>
-</ul>
-
-
-<h3>修改<code>sessions/new.html.haml</code>模板</h3>
-
-<p>```rb
-= render 'shared/breadcrumb', links: [["Home", ""]]</p>
-
-<p>%section#sign_in.box
-  %h1 登录
-  = form_tag sessions_path, method: :post, class: "form-horizontal" do</p>
-
-<pre><code>.control-group
-  = label_tag :user_name, "用户名", class: "control-label"
-  .controls
-    = text_field_tag :user_name
-.submit-button
-  = submit_tag "登录", class: "btn btn-primary"
-</code></pre>
-
-<p>%section#sidebar
-  %section#has_account.box</p>
-
-<pre><code>%h2 还没有帐号?
-= link_to "注册"
-</code></pre>
-
-<p>```</p>
-
-<ul>
-<li>测试失败：`undefined local variable or methodsessions_path' for #&lt;...``</li>
-<li>原因：没有<code>sessions#create</code>的路由信息</li>
-</ul>
-
-
-<h3>编辑<code>config/routes.rb</code>，增加路由信息</h3>
-
-<p><code>rb
-  resources :sessions, only: [:create]
-</code></p>
-
-<ul>
-<li>测试失败：<code>The action 'create' could not be found for SessionsController</code></li>
-<li>原因：没有定义<code>create</code>方法</li>
-</ul>
-
-
-<h3>编辑<code>controllers/sessions_controller</code>，增加<code>create</code>方法</h3>
-
-<p><code>rb
-  def create
-  end
-</code></p>
-
-<ul>
-<li>测试失败：<code>Missing template sessions/create, application/create with {:l...</code></li>
-<li>原因：没有<code>sessions/create</code>模板</li>
-</ul>
-
-
-<h3>编辑<code>controllers/sessions_controller</code>，修改<code>create</code>方法内容</h3>
-
-<p>```rb
-  def create</p>
-
-<pre><code>session[:user_name] = params[:user_name]
-redirect_to root_path
-</code></pre>
-
-<p>  end
-```</p>
-
-<ul>
-<li>测试通过！</li>
-</ul>
-
-
-<h2>确认用户故事，增加spec</h2>
-
-<h3>编辑<code>spec/features/guest_can_sign_in_spec.rb</code></h3>
-
-<p>```rb
-  scenario '应该显示用户名称' do</p>
-
-<pre><code>visit "/sign_in"
-
-fill_in "user_name", with: @user.name
-click_button "登录"
-
-page.should have_content @user.name    
-</code></pre>
-
-<p>  end
-```</p>
-
-<ul>
-<li>测试失败：<code>expected there to be text "test_user" in "社区 会员 knowa...</code></li>
-<li>原因：还没有写显示用户名称的代码</li>
-</ul>
-
-
-<h3>编辑<code>layouts/application.html.haml</code></h3>
-
-<p>把第22行knowang的部分修改为实际代码</p>
-
-<p>```rb</p>
-
-<pre><code>        = current_user.name
-</code></pre>
-
-<p>```</p>
-
-<ul>
-<li>测试失败：`undefined local variable or methodcurrent_user' for #&lt;...``</li>
-<li>原因：没有定义<code>current_user</code>方法</li>
-</ul>
-
-
-<h3>编辑<code>controllers/application_controller.rb</code>，增加<code>current_user</code>的定义</h3>
-
-<p>```rb
-class ApplicationController &lt; ActionController::Base
-  protect_from_forgery</p>
-
-<p>  helper_method :current_user</p>
-
-<p>  private
-  def current_user</p>
-
-<pre><code>user = User.new
-user = User.find_by_name(session[:user_name]) if session[:user_name]
-user
-</code></pre>
-
-<p>  end
-end
-```</p>
-
-<ul>
-<li>测试通过！</li>
-</ul>
-
-
-<h2>完成，提交代码</h2>
-
-<p><code>bash
-git add .
-git commit
-git checkout dev
-git merge f7 --no-ff
-git branch -d f7
-</code></p>
-
-<p>下一步骤：<a href="/blog/2013/01/06/ruby-china-clone-8">使用 RSpec+Capybara 简单BDD入门 -8</a></p>
 ]]></content>
   </entry>
   

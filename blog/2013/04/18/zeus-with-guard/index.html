@@ -1,0 +1,306 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>いまさらの zeus + guard の導入 - 蒼い惑星の記録</title>
+	<meta name="author" content="blueplanet">
+
+	
+	<meta name="description" content="guard-rspecを使って、specが保存される都度自動実行されるが、specを増えると、やはり実行時間に気になるので、何とかしたい zeus を選択する理由 Sporkと比較 spec-helperファイルを汚染しない Commandsと比較 rspec対応
+destroy対応 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="蒼い惑星の記録" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">蒼い惑星の記録</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:blueplanet.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/blueplanet42" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/blueplanet" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:blueplanet.github.com">
+	</form>
+</nav>
+
+</header>
+	
+		
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/blueplanet42">blueplanet42</a> @ <a href="http://twitter.com">Twitter</a></small>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('blueplanet42', 4, false);
+	})(jQuery);
+</script>
+
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">いまさらの Zeus + Guard の導入</h2>
+	<div class="entry-content"><p><code>guard-rspec</code>を使って、<code>spec</code>が保存される都度自動実行されるが、<code>spec</code>を増えると、やはり実行時間に気になるので、何とかしたい</p>
+
+<h2>zeus を選択する理由</h2>
+
+<ul>
+<li><code>Spork</code>と比較
+
+<ul>
+<li><code>spec-helper</code>ファイルを汚染しない</li>
+</ul>
+</li>
+<li><code>Commands</code>と比較
+
+<ul>
+<li><code>rspec</code>対応</li>
+<li><code>destroy</code>対応</li>
+<li><code>Commands</code>は両方とも使えいないらしい</li>
+</ul>
+</li>
+<li><code>Spring</code>と比較
+
+<ul>
+<li><code>destroy</code>対応</li>
+<li><code>zeus start</code>１つプロセスで、異なるセッション間で共有出来る
+
+<ul>
+<li><code>Spring</code>はセッション毎に<code>Spring server</code>が走ってるらしい</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>導入方法</h2>
+
+<ul>
+<li><code>Gemfile</code>の<code>development</code>グループに追加
+
+<ul>
+<li>`gem &#8220;zeus&#8221;</li>
+</ul>
+</li>
+<li><code>Guard</code>と併用している場合、<code>Guardfile</code>を修正
+
+<ul>
+<li><code>guard 'rspec'</code>に<code>zeus: true</code>オプションを追加</li>
+<li>このオプションによって、<code>Guard</code>が<code>rspec</code>を実行する時に<code>bundle exec zeus rspec</code>になる</li>
+<li><code>guard-zeus</code>という<code>gem</code>もありますが、これを使うと、<code>Guard</code>起動すると、<code>zeus start</code>を実行してくれるが、<code>spec</code>実行される通度、<code>zeus start</code>の内容と<code>spec</code>実行の出力とバラバラになってしまうので、却下</li>
+</ul>
+</li>
+<li><code>Cucumber</code>使わないとか、の場合は、<code>zeus.json</code>を作成
+
+<ul>
+<li>やったのは
+
+<ul>
+<li>&#8216;Cucumber&#8217;を削除</li>
+<li>&#8216;dbconsole&#8217;を削除</li>
+<li>&#8216;runner&#8217;を削除</li>
+</ul>
+</li>
+<li>ちなみに、<code>zeus init</code>を実行すると、ひな形が作成してくれる</li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "command": "ruby -rubygems -rzeus/rails -eZeus.go",
+</span><span class='line'>
+</span><span class='line'>  "plan": {
+</span><span class='line'>    "boot": {
+</span><span class='line'>      "default_bundle": {
+</span><span class='line'>        "development_environment": {
+</span><span class='line'>          "prerake": {"rake": []},
+</span><span class='line'>          "console": ["c"],
+</span><span class='line'>          "server": ["s"],
+</span><span class='line'>          "generate": ["g"],
+</span><span class='line'>          "destroy": ["d"]
+</span><span class='line'>        },
+</span><span class='line'>        "test_environment": {
+</span><span class='line'>          "test_helper": {"test": ["rspec", "testrb"]}
+</span><span class='line'>        }
+</span><span class='line'>      }
+</span><span class='line'>    }
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>問題</h2>
+
+<ul>
+<li><code>spec</code>の中に、<code>shared_context</code>を使ってるせいかもしれませんが、<code>zeus rspec ...</code>を実行する都度、<code>...not found shareed_context...</code>エラーになってる
+
+<ul>
+<li>対策として、<code>spec_helper</code>の<code>require rspec/autorun</code>行を削除するとエラーがなくなった</li>
+<li>正直に言うと、その行のそもそもの役割はよく分かってない。削除しても、<code>rspec</code>とかも正常に実行出来るし</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>まとめ</h2>
+
+<ul>
+<li>こう設定すると、修正を保存する都度、<code>spec</code>が素早く実行されて、すごく快適です</li>
+</ul>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-18T12:34:00+09:00" pubdate data-updated="true">Apr 18<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails-/'>Rails,</a>, <a class='category' href='/blog/categories/guard/'>guard</a>, <a class='category' href='/blog/categories/zeus-/'>zeus,</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2013
+
+    blueplanet
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'bpgh';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blueplanet.github.com/blog/2013/04/18/zeus-with-guard/';
+        var disqus_url = 'http://blueplanet.github.com/blog/2013/04/18/zeus-with-guard/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+</body>
+</html>
