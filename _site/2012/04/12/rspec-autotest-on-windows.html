@@ -1,0 +1,54 @@
+<p>昨日Lionで環境を構築したが、今回はWindows上の構築手順</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>Windows XP</li>
+<li>RSpec 4.9.0</li>
+<li>ZenTest 4.7.0</li>
+</ul>
+
+
+<h2>基本環境手順</h2>
+
+<ul>
+<li><code>mkdir rspec</code></li>
+<li><code>cd rspec</code></li>
+<li><code>mkdir spec</code></li>
+<li><code>mkdir lib</code></li>
+<li><p>RSpecの設定ファイルを作っておく</p>
+
+<ul>
+<li><code>echo --format nested &gt; .rspec</code></li>
+<li><code>echo --color &gt;&gt; .rspec</code></li>
+</ul>
+</li>
+<li><p>この時点で<code>autotest</code>を実行すれば、ファイルが保存される都度、テストが走るはず</p></li>
+</ul>
+
+
+<h2>Growに通知</h2>
+
+<ul>
+<li><code>gem install autotest-growl</code></li>
+<li><a href="http://www.growlforwindows.com">Growl for Window</a> をインストール</li>
+<li><code>echo require 'autotest/growl' &gt; .autotest</code></li>
+<li><code>autotest</code>再起動</li>
+</ul>
+
+
+<h2>WindowsのCMDでの色表示問題を解決</h2>
+
+<p><code>.rspec</code>ファイルに色表示オプションを追加している場合は、Windowsでは色コードがうまく認識できないので、表示がおかしくなる</p>
+
+<ul>
+<li>解決方法は、こちらを参考してできました<br/>
+<a href="http://lajvard.hatenablog.com/entry/2012/03/03/194359">Windows環境でRSpecなどの出力に色を付ける</a></li>
+</ul>
+
+
+<p>以上で構築完了</p>
+
+<hr />
+
+<p>ちなみに、Growl for Windowsは、デュアルディスプレイの場合は、ちゃんと認識してくれるので、表示設定はどのディスプレイのどの部分に表示するのを設定できる。素晴らしいですね。</p>

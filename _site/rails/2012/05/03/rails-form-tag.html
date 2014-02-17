@@ -1,0 +1,17 @@
+<p>Railsでアプリを作る時、Modelがなく、単純にFormを作りたい場合、<code>form_tag</code>を使うべきという感じ</p>
+
+<p>WEB開発は全くないので、書き方すらよくわかってない。</p>
+
+<p>何かを作りたいとしても、あんまり進められない</p>
+
+<pre><code>&lt;%= form_tag(:action =&gt; "disp") do -%&gt;
+  Birthday&lt;br/&gt;
+        &lt;%= select_date Date.today,
+            :prefix =&gt; "birthday",
+            :use_month_numbers =&gt; true,
+            :start_year =&gt; 1980,
+            :end_year =&gt; 2012,
+            :discard_day =&gt; true %&gt;&lt;br/&gt;
+        &lt;%= submit_tag "display", :class =&gt; "btn btn-primary" %&gt;
+&lt;% end -%&gt;
+</code></pre>

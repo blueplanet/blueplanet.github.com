@@ -1,0 +1,55 @@
+<h2>きっかけ</h2>
+
+<p><a href="http://www.sublimetext.com/">Sublime Text 2</a> 購入してから1ヶ月ぐらいですが、ちょうど <a href="http://octopress.org/">Octopress</a> も使っているので、探してみたら、まだ専用のプラグインがないため、作ってみました。</p>
+
+<!-- more -->
+
+
+<h2>実装周り</h2>
+
+<ul>
+<li>言語は好きな<code>ruby</code>ではなく<code>python</code>なんですが、これも勉強したい言語ではなるため、特に抵抗感がありません</li>
+<li><a href="http://www.sublimetext.com/">Sublime Text 2</a> のプラグインに関するAPIのドキュメントは <a href="http://www.sublimetext.com/docs/2/api_reference.html">公式サイト</a> 以外はほとんどなくて、あっちこっち探して、苦労していました</li>
+<li>逆にデフォルトで入っている機能は、いろいろプラグインとして実装されるものが多い為、結構参考になりました。有難うございます！</li>
+<li>ハマったところ
+
+<ul>
+<li>作ったものは、<a href="http://www.sublimetext.com/">Sublime Text 2</a>で直接に<a href="http://octopress.org/">Octopress</a>のコマンドを実行するので、<a href="http://www.sublimetext.com/">Sublime Text 2</a> 自体の制限により、<a href="http://www.sublimetext.com/">Sublime Text 2</a> をコマンドラインから起動しないと、環境変数はうまく引き継げないようです。これは結構ハマってました</li>
+<li>同期・非同期はいろいろ悩んだりしていました。最初は実行出来ればよくて、同期でいやと思ったが、結局、<code>rake generate</code>を実行すると、2,3秒程度ではない為、カーソルが回ってしまいます。気持ち悪いため、非同期にしました</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>イメージ</h2>
+
+<p><img src="https://lh3.googleusercontent.com/-yFnkYy_h9bo/UHlZwhPHNKI/AAAAAAAACCE/njGTdOMnoD8/s800/Screen%2520Shot%25202012-10-13%2520at%252020.33.03.png" alt="image" /></p>
+
+<h2>サポートコマンド</h2>
+
+<ul>
+<li><code>new_post</code></li>
+<li><code>new_page</code></li>
+<li><code>generate</code></li>
+<li><code>deploy</code></li>
+<li><code>gen_deploy</code></li>
+</ul>
+
+
+<h2>TODO</h2>
+
+<ul>
+<li><code>new_post</code>または<code>new_page</code>を実行した後は、自動でカーソルをタイトルのところを選択した状態にしたい</li>
+<li>カテゴリは全部手入力だと間違いやすいので、リストで選択できたらいいなと思う</li>
+<li><code>preview</code>もしたいが、どこまでするかはまだ悩んでる</li>
+</ul>
+
+
+<h2>URL</h2>
+
+<ul>
+<li>PackageControlリポジトリに登録し、PullRequestを送りましたが、まだ承認をもらってないため、とりあえずは、直接ダウンロードだけです。</li>
+</ul>
+
+
+<p>こちらへどうぞ <a href="http://github.com/blueplanet/sublime-text-2-octopress">sublime-text-2-octopress</a></p>

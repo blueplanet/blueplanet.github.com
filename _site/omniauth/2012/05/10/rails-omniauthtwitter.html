@@ -1,0 +1,20 @@
+<p>下記の記事を参考して、写経してみた</p>
+
+<p><a href="http://npb.somewhatgood.com/blog/archives/715">【Rails】OmniAuthを使ってtwitter / facebookで認証する</a></p>
+
+<ul>
+<li><code>rails new rails_oa</code>でアプリを作成</li>
+<li>ログインリンクでtwitterに遷移出来たが、callbackはまだうまく出来てない</li>
+</ul>
+
+
+<h2>漏れたところ</h2>
+
+<ul>
+<li>Gemfileに追加した時、'gem pg'ではなく、pgだけ書いた</li>
+<li>route.rbのログアウトを定義してなかった</li>
+<li><code>heroku rake db:migrate</code>を忘れた</li>
+</ul>
+
+
+<p>一応ログイン・ログアウトは出来た</p>

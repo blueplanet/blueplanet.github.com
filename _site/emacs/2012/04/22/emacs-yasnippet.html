@@ -1,0 +1,28 @@
+<p>角谷さんのビデオでもYasnippetを使っていたらしいし、スニペットの展開が結構使われいるので、導入してみた</p>
+
+<p>もともとGoogle codeで管理していたのですが、今の時点では、既にgithubに移行したので、インストールは基本 <a href="https://github.com/capitaomorte/yasnippet">README</a>を参照すればOK。</p>
+
+<h2>インストール</h2>
+
+<ul>
+<li><code>mkdir ~/.emacs.d/plugins</code></li>
+<li><code>cd ~/.emacs.d/plugins</code></li>
+<li><code>.emacs.d</code>は既にgitで管理しているので、submoduleとして追加する
+<code>git submodule add https://github.com/capitaomorte/yasnippet .emacs.d/plugins/yasnippet</code></li>
+<li>設定ファイルに追加
+<code>require 'yasnippet)</code>
+<code>(yas/global-mode t)</code></li>
+</ul>
+
+
+<p>これでOK。</p>
+
+<p>試しに、<code>Ruby-mode</code>で<code>mm</code>入力し<code>TAB</code>キーを入力すると、<code>method_missing</code>メソッドが展開された！！！</p>
+
+<h2>RSpec スニペット</h2>
+
+<p>有志によりYASnippetの日本語ドキュメントがあるので、それ参照して、自分のスニペットを作れます</p>
+
+<p><a href="http://yasnippet-doc-jp.googlecode.com/svn/trunk/doc-jp/index.html">Yet Another Snippet extension 日本語訳</a></p>
+
+<p>らしいですが、ファイルを作って、<code>yas</code>ロードパスに追加しても、まだ展開出来ていません。後でまた調べる</p>

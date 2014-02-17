@@ -1,0 +1,144 @@
+<p><a href="/blog/2013/01/06/ruby-china-clone-cover">目录</a>
+上一步：<a href="/blog/2013/01/06/ruby-china-clone-10">使用 RSpec+Capybara 简单BDD入门 -10</a></p>
+
+<h2>用户故事</h2>
+
+<p>用户希望对帖子进行回复</p>
+
+<h2>环境准备</h2>
+
+<pre><code class="bash">git checkout -b f11
+rails c # console
+rails s # server
+</code></pre>
+
+<h2>步骤</h2>
+
+<h3>编辑<code>spec/features/guest_can_see_topic_info_spec.rb</code>，增加回复form的验证部分</h3>
+
+<pre><code class="rb">  scenario '应该显示回复用的form' do
+    visit "/topics/#{@topic.id}"
+
+    page.should have_field 'reply_content'
+    page.should have_button '提交回复'
+  end
+</code></pre>
+
+<ul>
+<li>测试失败：<code>expected to find field "replay_content" but there were no matches</code></li>
+<li>原因：没有实现的代码</li>
+</ul>
+
+
+<h3>编辑<code>topics/show.html.haml</code></h3>
+
+<p>拷贝<code>ui/topic.html</code>中回复form的部分至当前模板</p>
+
+<pre><code class="rb">  %section#reply.box
+    %form(action="" method="post")
+      %textarea(rows="4")
+      %input(type="submit" class="btn btn-primary" value="提交回复")
+</code></pre>
+
+<p>修改为</p>
+
+<pre><code class="rb">  %section#reply.box
+    = form_for [@topic, Reply.new] do |f|
+      = f.text_area :content, rows: 4
+      = f.submit "提交回复", class: "btn btn-primary"
+</code></pre>
+
+<ul>
+<li>测试失败：`undefined methodtopic_replies_path' for #&lt;#&lt;Class:0x007fc0f8``</li>
+<li>原因：没有设置路由信息</li>
+</ul>
+
+
+<h3>编辑<code>config/routes.rb</code>，增加嵌套的replay的路由设置</h3>
+
+<pre><code class="rb">  resources :topics, only: [:index, :show, :new, :create] do
+    resources :replies, only: [:create]
+  end
+</code></pre>
+
+<ul>
+<li>测试通过！</li>
+</ul>
+
+
+<h3>增加提交回复的测试用例</h3>
+
+<pre><code>  scenario '输入回复内容点击"提交回复"后，正常提交回复' do
+    visit "/topics/#{@topic.id}"
+
+    fill_in 'reply_content', with: "回复测试"
+    click_button "提交回复"
+
+    current_path.should == topic_path(@topic)
+    page.should have_content "回复测试"
+  end
+</code></pre>
+
+<ul>
+<li>测试失败：<code>uninitialized constant RepliesController</code></li>
+<li>原因：没有<code>replies</code>这个<code>controller</code></li>
+</ul>
+
+
+<h3>在<code>rails console</code>中执行</h3>
+
+<pre><code class="rb">[34] pry(main)&gt; generate "controller replies"
+      create  app/controllers/replies_controller.rb
+      invoke  haml
+      create    app/views/replies
+=&gt; "Completed"
+[35] pry(main)&gt;
+</code></pre>
+
+<ul>
+<li>测试失败：<code>The action 'create' could not be found for RepliesController</code></li>
+<li>原因：没有<code>create</code>方法</li>
+</ul>
+
+
+<h3>编辑<code>controllers/replies_controller.rb</code>，增加<code>create</code>方法</h3>
+
+<pre><code class="rb">  def create
+  end
+</code></pre>
+
+<ul>
+<li>测试失败：<code>Missing template replies/create, application/create with {:local...</code></li>
+<li>原因：没有<code>replies/create</code>模板</li>
+</ul>
+
+
+<h3>编辑<code>controllers/replies_controller.rb</code>，增加实际逻辑</h3>
+
+<pre><code class="rb">class RepliesController &lt; ApplicationController
+  def create
+    topic = Topic.find(params[:topic_id])
+    reply = topic.replies.build params[:reply]
+    reply.user = current_user
+    reply.save
+
+    redirect_to topic
+  end
+end
+</code></pre>
+
+<ul>
+<li>测试通过！</li>
+</ul>
+
+
+<h2>完成，提交代码</h2>
+
+<pre><code class="rb">git add .
+git commit 
+git checkout dev
+git merge f11 --no-ff
+git branch -d f11
+</code></pre>
+
+<p><strong>!!全部完成!!</strong></p>

@@ -1,0 +1,86 @@
+<p>RSpecを勉強したいと思って、調べてみたら、素晴らしい記事を見つけた。</p>
+
+<p><a href="http://jp.rubyist.net/magazine/?0035-RSpecInPractice"> 改めて学ぶRSpec </a></p>
+
+<h3>xUnitっぽいRSpecコードの特徴</h3>
+
+<ul>
+<li>テストメソッドはすべてフラットで定義される</li>
+<li><code>it []</code>＝＝test○○メソッド</li>
+<li><code>before</code>==<code>setup</code></li>
+</ul>
+
+
+<h3>RSpecの流儀</h3>
+
+<ul>
+<li><code>describe</code>はネストできるので、テストコードに構造が生まれるぞ！</li>
+<li><code>context</code>は<code>describe</code>のエイリアスなんでが、<code>describe</code>==テスト対象、<code>context</code>＝＝テストする時の状況</li>
+<li>メリット：段階的に仕様をテストコードに落とし込む</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="ruby"><span class="n">describe</span> <span class="err">クラス</span> <span class="k">do</span>
+  <span class="n">describe</span> <span class="err">メソッド</span> <span class="k">do</span>
+    <span class="n">context</span> <span class="err">正常値</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="p">{}</span>
+    <span class="k">end</span>
+    
+    <span class="n">context</span> <span class="err">異常値</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="p">{}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+
+
+<p>的なイメージ</p>
+
+<ul>
+<li>subject
+
+<ul>
+<li>subjectを使うことで、<code>should</code>のレシーバを省略できる</li>
+<li>メリット：テスト対象が明確になる、ほぼ強制的に一つのテストケースに一つのアサーション歯科かけなくなる</li>
+<li><code>describe</code>のネストと被ってる場合は、新たに<code>describe</code>をネストさせてもう一度subjectを定義する</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>itに文字列を渡すかどうか</h3>
+
+<ul>
+<li><code>it</code>に文字列を渡すと、コメントとコードの両方があるのは<code>DRY</code>ではないので、渡さないほうがいい</li>
+<li>デメリット：<code>--fs</code>オプションで実行する時の出力は日本語にならなくので、読みづらくなる
+
+<ul>
+<li>解決：<code>context</code>にテスト内容を細かく書く</li>
+<li>まあ、テスト結果が一番重要なので、実際はそこまでもやってない</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>letでデータ以外のぶぶんだけを共通化</h3>
+
+<ul>
+<li>ブロックの評価値</li>
+<li>値をシンボルと同名の変数に格納する</li>
+<li>テストケース毎に結果がキャッシュされる</li>
+</ul>
+
+
+<p>これはまだ理解できてない気がする</p>
+
+<h3>shared_context</h3>
+
+<ul>
+<li>メソッドの間に共通的なcontextがある場合がある</li>
+<li><code>shared_context</code>と<code>include_context</code>で共通化できる</li>
+</ul>
+
+
+<hr />
+
+<p>まだまだRubyもRSpecも初心者なので、分からないところが多いところ</p>

@@ -1,0 +1,23 @@
+<p>　<a href="http://jp.rubyist.net/magazine/?0023-Rspec">スはスペックのス 【第 2 回】 RSpec on Rails (コントローラとビュー編)</a>記事の写経</p>
+
+<ul>
+<li>Test::UnitはModelのテストをユニットテストとし、Controllerのテストを機能テストとしていますが、RSpecのほうは、Model・Controller・View・Helperのテストはすべてユニットテストとみなす</li>
+<li><p>ハマったこと</p>
+
+<ul>
+<li><code>render_template("blogs")</code>を書くと、レッドのはずだが、自分の環境では普通にグリーンになってる</li>
+<li>試してみたが、<code>blogs</code>と<code>blogs/show</code>と<code>show</code>と３つが全部OK。原因は分からず</li>
+</ul>
+</li>
+<li><p>調べたい</p>
+
+<ul>
+<li>FactoryGril</li>
+<li>Spoke</li>
+<li>浜松Rails3は資料いろいろ有りそう</li>
+</ul>
+</li>
+</ul>
+
+
+<p>　今日は、Controllerのテストまでに終わった。Viewのテストは次回で</p>
