@@ -1,0 +1,38 @@
+<p>Emacsの設定をちょっとずつ進めたいと思って、Yasnippetのカスタマイズスニペットを使いたいが、自分のスニペットのパスはどうやって設定できるかはイマイチわかってないため、出来なかった</p>
+
+<p>ちょっと調べたら、<code>RSpec-mode</code>があるのをわかって、導入してみた。</p>
+
+<p><a href="https://github.com/pezra/rspec-mode">rspec-mode</a></p>
+
+<h2>状況</h2>
+
+<ul>
+<li>インストールができて、specファイルを開いたらちゃんとrspec-modeになる</li>
+<li><code>c-c , v</code>でspecを実行するのはうまく出来てない</li>
+</ul>
+
+
+<h2>問題</h2>
+
+<ul>
+<li>この<code>rspec-mode</code>は、rails向けらしく、<code>Rakefile</code>によってプロジェクトのルートパスを確定していく
+
+<ul>
+<li>実際試したのは、<code>spec/game_spec.rb</code>と<code>lib/game.rb</code>のような２つファイルしかない軽いものなので、<code>rails</code>ではないので、困った</li>
+<li><code>touch Rakefile</code>で空のファイルを作成してみると、実行できたっぽいが、内容はおかしい。実際はspecは走ってないらしい</li>
+<li>要するに、実際は失敗のケースを実行しても、「成功したよ」とのメッセージが来るわけ</li>
+<li><a href="http://d.hatena.ne.jp/nbahide/20100721/1279676604">rspec-modeをrake意外で使う方法</a>を参考して、設定してみたら、今回は<code>zsh:rspec command not found</code>になった</li>
+</ul>
+</li>
+<li>調べてみたら、<code>zsh</code>と<code>rvm</code>とを併用する場合は、別の設定が必要らしい
+
+<ul>
+<li><a href="https://github.com/pezra/rspec-mode">rspec-mode</a>のReadmeに書かれていますが、<code>Zsh and RVM</code>だったら、また別の設定が必要</li>
+<li>設定してみたら、<code>bash :rspec command not found</code>になった</li>
+<li><code>rvm</code>の設定がおかしいかと、確認したら、問題なさそう</li>
+</ul>
+</li>
+</ul>
+
+
+<p>明日調べよう</p>

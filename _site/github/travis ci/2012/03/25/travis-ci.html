@@ -1,0 +1,42 @@
+<p>　RSpecを勉強中で、ソースもGithubに保持しているので、TravisCIも試してみる</p>
+
+<ul>
+<li>手順は公式のドキュメントを参考すれば</li>
+<li>メインは<code>.travis.yml</code>の設定
+
+<ul>
+<li>言語</li>
+<li>テストしたいバージョン</li>
+<li>ブランチ関連の管理</li>
+</ul>
+</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="yaml"><span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ruby</span>
+<span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span> <span class="s">&quot;bundle</span><span class="nv"> </span><span class="s">exec</span><span class="nv"> </span><span class="s">rake</span><span class="nv"> </span><span class="s">db:drop</span><span class="nv"> </span><span class="s">db:create</span><span class="nv"> </span><span class="s">db:migrate</span><span class="nv"> </span><span class="s">spec&quot;</span>
+<span class="l-Scalar-Plain">rvm</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.2</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.3</span>
+<span class="l-Scalar-Plain">gemfile</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Gemfile</span>
+<span class="l-Scalar-Plain">branches</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">only</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">master</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">develop</span>
+</code></pre></div>
+
+
+<ul>
+<li>感想
+
+<ul>
+<li>githubのリポジトリにPushすると、すぐ反映され、ビルドが走る</li>
+<li>ビルドステータスの画像を外部（ブログなど）に表示できる</li>
+<li>実行ログも見えるので、いろいろ確認できる</li>
+</ul>
+</li>
+</ul>
+
+
+<p><a href="http://travis-ci.org/blueplanet/StudyRSpec"><img src="https://secure.travis-ci.org/blueplanet/StudyRSpec.png?branch=master" alt="Build Status" /></a></p>

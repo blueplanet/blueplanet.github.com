@@ -1,0 +1,51 @@
+<p>　RSpecを勉強中。RSpecのテストを実行する時、何となく遅い気がしちゃいます。高速化する方法がないかと調べると、<a href="https://github.com/sporkrb/spork">github spork</a>が出ました。</p>
+
+<h3>まずは導入前後の比較、爆速ですね</h3>
+
+<table>
+<thead>
+<tr>
+<th>     </th>
+<th> user  </th>
+<th> system </th>
+<th> cpu </th>
+<th> total  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>導入前</td>
+<td> 4.32s </td>
+<td> 0.54s  </td>
+<td> 99% </td>
+<td> 4.898s </td>
+</tr>
+<tr>
+<td>導入後</td>
+<td> 0.19s </td>
+<td> 0.05s  </td>
+<td> 31% </td>
+<td> 0.788s </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>使い方もシンプル</h3>
+
+<ol>
+<li><code>Gemfile</code>に<code>gem spork</code>を追加</li>
+<li><code>spork --bootstrap</code>を実行して、必要なファイルを生成する</li>
+<li><code>spork</code>を実行して、サーバを起動する</li>
+<li>モデルの修正などを都度反映する為、テストキャッシュを無効化
+
+<ul>
+<li><code>config/environments/test.rb</code>の<code>config.cache_classes = true</code>を<code>false</code>に修正</li>
+</ul>
+</li>
+<li><code>.rspec</code>に<code>--drb</code>実行オプションを追加</li>
+<li>普通に<code>rspec spec/**/*.rb</code>を実行する　　</li>
+</ol>
+
+
+<p>以上</p>

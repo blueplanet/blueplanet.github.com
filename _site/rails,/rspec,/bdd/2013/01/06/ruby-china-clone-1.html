@@ -1,0 +1,217 @@
+<p><a href="/blog/2013/01/06/ruby-china-clone-cover">目录</a></p>
+
+<h2>用户故事</h2>
+
+<p>访问者希望看到所有帖子的列表</p>
+
+<ul>
+<li>显示帖子的标题和创建时间</li>
+</ul>
+
+
+<h2>环境准备</h2>
+
+<pre><code class="bash">git checkout -b f1
+rails c # console
+rails s # server
+</code></pre>
+
+<h2>步骤</h2>
+
+<h3>新建文件<code>spec/features/guest_can_see_all_topics_spec.rb</code></h3>
+
+<pre><code class="rb"># coding: utf-8
+feature '访问者希望看到所有帖子的列表' do
+  scenario '访问/topics, 应该显示所有帖子' do
+    visit '/topics'
+
+    page.should have_content "DHH 的公开课"
+    page.should have_content "Rails3 中 compass 的 IE 使用问题"
+    page.should have_content "这周二上海搞Ruby Tuesday么？"
+  end
+end
+</code></pre>
+
+<ul>
+<li>测试失败：No route matches [GET] "/topics"</li>
+<li>原因：没有正确的路由设置信息</li>
+</ul>
+
+
+<h3>编辑<code>config/route.rb</code>, 增加<code>topics</code>的定义</h3>
+
+<pre><code class="rb">  resources :topics, only: [:index]
+</code></pre>
+
+<ul>
+<li>测试失败：<code>uninitialized constant TopicsController</code></li>
+<li>原因：没有定义<code>TopicsController</code></li>
+</ul>
+
+
+<h3>在<code>rails console</code>中执行</h3>
+
+<pre><code class="rb">[1] pry(main)&gt; generate "controller topics"
+      create  app/controllers/topics_controller.rb
+      invoke  haml
+      create    app/views/topics
+=&gt; "Completed"
+</code></pre>
+
+<ul>
+<li>测试失败：<code>The action 'index' could not be found for TopicsController</code></li>
+<li>原因：<code>TopicsController</code>中没有定义<code>index</code>方法</li>
+</ul>
+
+
+<h3>编辑 <code>topics_controller.rb</code></h3>
+
+<pre><code class="rb">class TopicsController &lt; ApplicationController
+  def index
+  end
+end
+</code></pre>
+
+<ul>
+<li>测试失败：<code>Missing template topics/index, application/index ...</code></li>
+<li>原因：没有<code>topics/index</code>模板</li>
+</ul>
+
+
+<h3>新建文件：<code>app/views/topics/index.html.haml</code></h3>
+
+<ul>
+<li>测试失败：<code>Failure/Error: page.should have_content "DHH 的公开课"</code></li>
+<li>原因：模板中没有显示内容</li>
+</ul>
+
+
+<p>拷贝<code>ui/topics.html.haml</code>的内容至当前模板</p>
+
+<ul>
+<li>测试成功了，但是不要高兴！成功是因为页面上所有的数据都是写死的假数据。必须更改为正确的代码</li>
+</ul>
+
+
+<h3>编辑<code>app/views/topics/index.html.haml</code></h3>
+
+<pre><code class="rb">= render 'shared/breadcrumb', links: [["Home", ""], ["社区", ""]]
+
+%section#topics
+  %section#topics_info.box.box-gray.info-box
+    %span 查看： 默认
+  %ul.topics.box
+    - @topics.each do |topic|
+      %li
+        %a.span1(href="")
+          %img(src="#{gravatar_url('joe@example.com')}")
+        %article.span7
+          %p.topic_title
+            = link_to topic.title
+          %p.topic_info
+            = link_to "分享", nil, class: "node"
+            %span= "  •  "
+            = link_to "knwang", nil, class: "user_link"
+            %span= "  •  "
+            = "published #{time_ago_in_words(topic.created_at)} ago"
+        %p.replies.span1
+          %span 12
+
+%section#sidebar
+  %section#new_topic.box
+    = link_to "发布新帖", nil, class: "btn btn-success"
+  %section#stats.box
+    %ul
+      %li 社区会员: 4029 人
+      %li 帖子数: 312 篇
+      %li 回帖数: 3123 条
+</code></pre>
+
+<ul>
+<li>测试失败：`undefined methodeach' for nil:NilClass``</li>
+<li>原因：<code>TopicsController</code>的<code>index</code>方法中没有对<code>@topics</code>赋值</li>
+</ul>
+
+
+<h3>编辑<code>topics_controller.rb</code>，增加赋值部分</h3>
+
+<pre><code class="rb">class TopicsController &lt; ApplicationController
+  def index
+    @topics = Topic.all
+  end
+end
+</code></pre>
+
+<p><strong>注意：由于是示范项目所以直接使用了 Topic.all ， 实际项目中绝对不能这样做</strong></p>
+
+<ul>
+<li>测试失败：<code>uninitialized constant TopicsController::Topic</code></li>
+<li>原因：没有 <code>Topic</code> 这个 <code>model</code></li>
+</ul>
+
+
+<h3>在<code>rails conssole</code>中执行</h3>
+
+<pre><code class="rb">[2] pry(main)&gt; generate "model topic title"
+      invoke  active_record
+      create    db/migrate/20121229122838_create_topics.rb
+      create    app/models/topic.rb
+=&gt; "Completed"
+[3] pry(main)&gt;
+</code></pre>
+
+<ul>
+<li>测试失败：<code>expected there to be text "DHH 的公开课" in "社区...</code></li>
+<li>原因：测试数据库中没有对应的数据</li>
+</ul>
+
+
+<h3>编辑 <code>spec/features/guest_can_see_all_topics_spec.rb</code>，增加<code>background</code>部分</h3>
+
+<pre><code class="rb"># coding: utf-8
+feature '访问者希望看到所有帖子的列表' do
+  background do
+    Topic.delete_all
+
+    Topic.create title: "DHH 的公开课"
+    Topic.create title: "Rails3 中 compass 的 IE 使用问题"
+    Topic.create title: "这周二上海搞Ruby Tuesday么？"
+  end
+
+  scenario '访问/topics, 应该显示所有帖子' do
+    visit '/topics'
+
+    Topic.all.each do |topic|
+      page.should have_content topic.title
+    end
+  end
+end
+</code></pre>
+
+<ul>
+<li>测试成功！！完成！！</li>
+</ul>
+
+
+<h2>提交代码</h2>
+
+<p>git add .
+git commit
+git checkout dev
+git merge f1 --no-ff
+git push origin dev</p>
+
+<h2>总结</h2>
+
+<ul>
+<li>执行测试之后，按照提示的错误进行修改即可</li>
+<li>问题
+
+<ul>
+<li>目前自动测试基本不起作用，每次都需要手动执行测试</li>
+</ul>
+</li>
+</ul>
+
+
+<p>下一步骤：<a href="/blog/2013/01/06/ruby-china-clone-2">使用 RSpec+Capybara 简单BDD入门 -2</a></p>

@@ -1,0 +1,41 @@
+<p>角谷さんのビデオを見て、すっごく刺激を受けたので、自分もRSpecのAutoTest環境を構築したくなりました</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>Mac OS 10.7.3</li>
+<li>Ruby 1.9.2</li>
+<li>RSpec 2.9.0</li>
+<li>ZenTest 4.7.0</li>
+</ul>
+
+
+<h2>1.AutoTest基本環境</h2>
+
+<p>基本は公式のWikiを参考する</p>
+
+<ul>
+<li><code>mkdir rspec2</code></li>
+<li><code>mkdir spec lib</code></li>
+<li><code>echo --format nested &gt; .rspec</code></li>
+<li><code>echo --color &gt;&gt; .rspec</code></li>
+<li><code>autotest</code>を実行し、自動テストを起動する</li>
+</ul>
+
+
+<p>以降は、普通に<code>spec</code>にspecファイルを書き、<code>lib</code>にロジックファイルを書いて、保存する都度テストが再実行される</p>
+
+<p>すごく使いやすくなりましたね。前までは、<code>spec_helper</code>ファイルを作成とか、いろいろやらないといけなかったけど、もう<code>gem</code>さえインストールすれば、全部やってくれましたね!素晴らしい！</p>
+
+<h2>2.Growlに通知</h2>
+
+<ul>
+<li><code>gem install autotest-growl</code></li>
+<li><code>~/.autotest</code>ファイルに<code>require 'autotest/growl</code>を追加</li>
+<li><code>autotest</code>を再起動</li>
+</ul>
+
+
+<p>これでファイル保存する都度、Growlでテスト実行結果のアイコンが表示される</p>
+
+<p>よし!角谷さんのビデオを見ながら、写経しましょう！</p>
