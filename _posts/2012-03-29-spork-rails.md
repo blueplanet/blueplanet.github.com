@@ -3,7 +3,7 @@ layout: post
 title: "sportでRSpec on Railsのテストを高速化"
 date: 2012-03-29 23:08
 comments: true
-categories: 
+tags: 
 - spork
 - RSpec
 - Rails

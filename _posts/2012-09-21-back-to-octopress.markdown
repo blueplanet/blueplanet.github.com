@@ -3,7 +3,7 @@ layout: post
 title: "back to octopress"
 date: 2012-09-21 22:04
 comments: true
-categories: 
+tags: 
 ---
 結構放置しちゃっていたBlogですが、Octopressを試して見たら、意外に、ソースコードもちゃんとできています。
 

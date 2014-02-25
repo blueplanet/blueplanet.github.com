@@ -3,7 +3,7 @@ layout: post
 title: "第0回 Sublime Text 2 勉強会"
 date: 2012-11-11 22:21
 comments: true
-categories: Editor
+tags: Editor
 ---
 
 記事は遅れましたが、11/7 [第0回 Sublime Text 2 勉強会](http://atnd.org/events/33305)に参加しました。

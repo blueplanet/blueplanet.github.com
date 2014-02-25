@@ -3,7 +3,7 @@ layout: post
 title: "最近２年間の反省"
 date: 2013-04-17 13:27
 comments: true
-categories: Kpt
+tags: Kpt
 ---
 
 ## Problem

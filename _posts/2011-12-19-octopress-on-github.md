@@ -3,7 +3,7 @@ layout: post
 title: "GithubでOctopressを構築"
 date: 2011-12-19 23:06
 comments: true
-categories: [Blog, Github, Octopress]
+tags: [Blog, Github, Octopress]
 ---
 
 ## きっかけ

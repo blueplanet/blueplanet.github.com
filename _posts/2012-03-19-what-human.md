@@ -3,7 +3,7 @@ layout: post
 title: "どんな人間になりたい？"
 date: 2012-03-19 06:58
 comments: true
-categories: 
+tags: 
 - LifeHack
 ---
 

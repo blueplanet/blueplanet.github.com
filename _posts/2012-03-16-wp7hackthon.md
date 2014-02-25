@@ -3,7 +3,7 @@ layout: post
 title: "「Windows Phone 全国ハッカソン祭り～東京～春」に参加しました"
 date: 2012-03-16 22:03
 comments: true
-categories: 
+tags: 
 - WP7
 ---
 

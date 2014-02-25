@@ -3,7 +3,7 @@ layout: post
 title: "ブログ設定：DISQUSを使う"
 date: 2012-03-18 22:08
 comments: true
-categories: 
+tags: 
 - Octopress
 ---
 

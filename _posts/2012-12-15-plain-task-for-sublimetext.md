@@ -3,7 +3,7 @@ layout: post
 title: "PlainTasks : todo-list plugin for Sublime Text 2"
 date: 2012-12-17 07:00
 comments: true
-categories: Editor
+tags: Editor
 ---
 
 この記事は、[Sublime Text 2 Advent Calendar 2012](http://www.adventar.org/calendars/20)の17日目の記事です。

@@ -3,7 +3,7 @@ layout: post
 title: "実践 Rails コードチャレンジに参加しました"
 date: 2012-12-20 21:27
 comments: true
-categories: 
+tags: 
 ---
 昨日、[【Forkwell＆CodeIQ共催】実践 Rails コードチャレンジ (松田明さん監修)](http://atnd.org/event/ForkwellCodeIQ) に参加しました
 

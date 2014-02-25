@@ -3,7 +3,7 @@ layout: post
 title: "Ruby Association Certified Ruby Programmer Silverに合格しました"
 date: 2013-02-15 22:15
 comments: true
-categories: Ruby
+tags: Ruby
 ---
 
 Ruby on Railsを始め、Ruby言語もいじっていますが、資格を取るのは、もともと考えてなかった。

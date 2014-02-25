@@ -3,7 +3,7 @@ layout: post
 title: "OS 10.8 gem install json faild"
 date: 2012-10-04 06:25
 comments: true
-categories: 
+tags: 
 ---
 
 ## 環境

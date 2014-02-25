@@ -3,7 +3,7 @@ layout: post
 title: "sublime text 2 の octopress プラグインを作ってみました"
 date: 2012-10-16 21:36
 comments: true
-categories: [ SublimeText2, Octopress]
+tags: [ SublimeText2, Octopress]
 ---
 ## きっかけ
 [Sublime Text 2] 購入してから1ヶ月ぐらいですが、ちょうど [Octopress] も使っているので、探してみたら、まだ専用のプラグインがないため、作ってみました。

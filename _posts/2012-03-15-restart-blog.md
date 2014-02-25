@@ -3,7 +3,7 @@ layout: post
 title: "ブログを再開します"
 date: 2012-03-15 23:12
 comments: true
-categories:
+tags:
 - ブログ
 - ライフハック 
 ---

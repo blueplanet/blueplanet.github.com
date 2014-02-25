@@ -3,9 +3,9 @@ layout: post
 title: "使用 RSpec+Capybara 简单BDD入门 -1"
 date: 2013-01-06 17:17
 comments: true
-categories: Rails, RSpec, BDD
+tags: Rails, RSpec, BDD
 ---
-[目录](/blog/2013/01/06/ruby-china-clone-cover)
+[目录](/2013/01/06/ruby-china-clone-cover)
 
 ## 用户故事
 
@@ -191,4 +191,4 @@ git push origin dev
 - 问题
     - 目前自动测试基本不起作用，每次都需要手动执行测试
 
-下一步骤：[使用 RSpec+Capybara 简单BDD入门 -2](/blog/2013/01/06/ruby-china-clone-2)
+下一步骤：[使用 RSpec+Capybara 简单BDD入门 -2](/2013/01/06/ruby-china-clone-2)

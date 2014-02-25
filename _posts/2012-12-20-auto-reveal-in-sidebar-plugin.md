@@ -3,7 +3,7 @@ layout: post
 title: "簡単なプラグインの作る過程"
 date: 2012-12-20 22:48
 comments: true
-categories: 
+tags: 
 ---
 
 この記事は[Sublime Text 2 Advent Calendar 2012](http://www.adventar.org/calendars/20) の21日目の記事です。

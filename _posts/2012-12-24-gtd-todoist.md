@@ -3,7 +3,7 @@ layout: post
 title: "gtd todoist"
 date: 2012-12-24 20:39
 comments: true
-categories: GTD
+tags: GTD
 ---
 
 [Doit.im](doit.im) を一ヶ月の会員を購入してみたんですが、いつでもどこでも何回でも同期出来て、すごく使いやすいです。

@@ -2,7 +2,7 @@
 layout: post
 title: "クラウド：ニフティ　VS　さくら"
 comments: true
-categories: 
+tags: 
 - クラウド
 ---
 

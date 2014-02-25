@@ -3,7 +3,7 @@ layout: post
 title: "RSpec on Rails (4)"
 date: 2012-03-28 22:28
 comments: true
-categories: 
+tags: 
 - Ruby
 - Rails
 - RSpec

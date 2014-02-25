@@ -3,7 +3,7 @@ layout: post
 title: "渋谷EdgeRails勉強会"
 date: 2012-03-26 19:19
 comments: true
-categories: 
+tags: 
 - Rails
 - 勉強会
 ---

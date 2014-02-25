@@ -3,7 +3,7 @@ layout: post
 title: "Rspec 2.9.0 on Rails 3.2.2 + sporkで試す"
 date: 2012-03-31 23:21
 comments: true
-categories: 
+tags: 
 - Ruby
 - Rails
 - RSpec

@@ -3,7 +3,7 @@ layout: post
 title: "いまさらの zeus + guard の導入"
 date: 2013-04-18 12:34
 comments: true
-categories: Rails, zeus, guard
+tags: Rails, zeus, guard
 ---
 `guard-rspec`を使って、`spec`が保存される都度自動実行されるが、`spec`を増えると、やはり実行時間に気になるので、何とかしたい
 

@@ -3,7 +3,7 @@ layout: post
 title: "さくらクラウド"
 date: 2012-03-24 22:22
 comments: true
-categories: 
+tags: 
 - クラウド
 ---
 

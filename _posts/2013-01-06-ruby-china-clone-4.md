@@ -3,10 +3,10 @@ layout: post
 title: "使用 RSpec+Capybara 简单BDD入门 -4"
 date: 2013-01-06 19:55
 comments: true
-categories: Rails, RSpec, BDD
+tags: Rails, RSpec, BDD
 ---
-[目录](/blog/2013/01/06/ruby-china-clone-cover)
-上一步：[使用 RSpec+Capybara 简单BDD入门 -3](/blog/2013/01/06/ruby-china-clone-3)
+[目录](/2013/01/06/ruby-china-clone-cover)
+上一步：[使用 RSpec+Capybara 简单BDD入门 -3](/2013/01/06/ruby-china-clone-3)
 
 ## 用户故事
 
@@ -219,4 +219,4 @@ git merge f4 --no-ff
 git branch -d f4
 ```
 
-下一步骤：[使用 RSpec+Capybara 简单BDD入门 -5](/blog/2013/01/06/ruby-china-clone-5)
+下一步骤：[使用 RSpec+Capybara 简单BDD入门 -5](/2013/01/06/ruby-china-clone-5)

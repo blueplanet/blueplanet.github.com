@@ -3,7 +3,7 @@ layout: post
 title: "使用 RSpec+Capybara 简单BDD入门 -目录"
 date: 2013-01-06 17:14
 comments: true
-categories: Rails, RSpec, BDD
+tags: Rails, RSpec, BDD
 ---
 ## 前提
 
@@ -26,17 +26,17 @@ categories: Rails, RSpec, BDD
 
 ## 步骤
 
-1. [访问者希望看到所有帖子的列表](/blog/2013/01/06/ruby-china-clone-1)
-2. [访问者希望看到帖子的节点](/blog/2013/01/06/ruby-china-clone-2)
-3. [访问者希望看到一个节点的帖子列表](/blog/2013/01/06/ruby-china-clone-3)
-4. [访问者希望看到帖子的详细信息](/blog/2013/01/06/ruby-china-clone-4)
-5. [访问者希望看到用户的信息](/blog/2013/01/06/ruby-china-clone-5)
-6. [访问者希望注册用户](/blog/2013/01/06/ruby-china-clone-6)
-7. [访问者希望登录](/blog/2013/01/06/ruby-china-clone-7)
-8. [用户希望公开帖子](/blog/2013/01/06/ruby-china-clone-8)
-9. [用户希望看到帖子的回复列表](/blog/2013/01/06/ruby-china-clone-9)
-10. [用户希望看到最新回复的信息](/blog/2013/01/06/ruby-china-clone-10)
-11. [用户希望对帖子进行回复](/blog/2013/01/06/ruby-china-clone-11)
+1. [访问者希望看到所有帖子的列表](/2013/01/06/ruby-china-clone-1)
+2. [访问者希望看到帖子的节点](/2013/01/06/ruby-china-clone-2)
+3. [访问者希望看到一个节点的帖子列表](/2013/01/06/ruby-china-clone-3)
+4. [访问者希望看到帖子的详细信息](/2013/01/06/ruby-china-clone-4)
+5. [访问者希望看到用户的信息](/2013/01/06/ruby-china-clone-5)
+6. [访问者希望注册用户](/2013/01/06/ruby-china-clone-6)
+7. [访问者希望登录](/2013/01/06/ruby-china-clone-7)
+8. [用户希望公开帖子](/2013/01/06/ruby-china-clone-8)
+9. [用户希望看到帖子的回复列表](/2013/01/06/ruby-china-clone-9)
+10. [用户希望看到最新回复的信息](/2013/01/06/ruby-china-clone-10)
+11. [用户希望对帖子进行回复](/2013/01/06/ruby-china-clone-11)
 
 ## 可能出现的问题
 

@@ -3,7 +3,7 @@ layout: post
 title: "Amazon EC2 のCentOSでRails開発環境構築"
 date: 2012-03-20 15:43
 comments: true
-categories: 
+tags: 
 - AWS
 - クラウド
 - Rails

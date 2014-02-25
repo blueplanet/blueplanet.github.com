@@ -3,7 +3,7 @@ layout: post
 title: "BPStudy#55 "
 date: 2012-03-30 18:50
 comments: true
-categories: 
+tags: 
 - Heroku
 - 勉強会
 ---
