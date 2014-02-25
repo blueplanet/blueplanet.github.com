@@ -1,8 +1,3 @@
-* {
-  padding: 0px;
-  margin: 0px;
-}
-
 body {
   background: #1C1F21;
   color: #5388A8;
@@ -23,4 +18,22 @@ a {
 
 a:hover {
   text-shadow: 0 0 4px rgba(255, 255, 255, .5); 
+}
+
+.site-header {
+  padding: 20px 0px;
+}
+
+.site-header nav a {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: baseline;
+  font-weight: 700;
+  color: #aaa;
+  border-bottom: 1px solid #343434;
+}
+
+.site-header nav a.active, .site-header nav a:hover {
+  border-color: #9df;
+  color: #eee;
 }

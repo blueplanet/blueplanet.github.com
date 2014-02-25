@@ -1,19 +1,5 @@
-.site-header {
-  padding: 20px 0px;
-}
-
-.site-header nav a {
-  display: inline-block;
-  margin-right: 10px;
-  vertical-align: baseline;
-  font-weight: 700;
-  color: #aaa;
-  border-bottom: 1px solid #343434;
-}
-
-.site-header nav a.active, .site-header nav a:hover {
-  border-color: #9df;
-  color: #eee;
+ul.posts {
+  padding: 0px;
 }
 
 .posts li.post {
@@ -37,6 +23,7 @@
   -o-transition: 0.5s linear;
   transition: 0.5s linear;
   color: #48a; 
+  margin: 0px;
 }
 
 .post .post-link .meta {

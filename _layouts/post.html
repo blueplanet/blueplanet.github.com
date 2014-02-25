@@ -1,0 +1,22 @@
+<html>
+<head>
+  <meta content='{{ site.title }}' property='og:title'>
+  <title>{{ site.title }}</title>
+  <link href='/assets/common.css' rel='stylesheet' type='text/css' />
+</head>
+<body>
+  <div class="warpper">
+    <header class="site-header">
+      <nav>
+        <a href="/" class="active">Home</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
+    <section class="content">
+      <div class="container">
+        {{ content }}
+      </div>
+    </section>
+  </div>
+</body>
+</html>
