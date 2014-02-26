@@ -3,7 +3,7 @@ layout: post
 title: "Ruby-Chinaのオンラインライブコーディングイベントに参加した"
 date: 2012-10-12 21:24
 comments: true
-tags: [Ruby, Rails]
+tags: Ruby Rails
 ---
 
 ## きっかけ

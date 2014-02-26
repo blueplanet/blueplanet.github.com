@@ -3,7 +3,7 @@ layout: post
 title: "rails3.2 on heroku"
 date: 2012-04-02 07:29
 comments: true
-tags: [ Rails, Heroku ]
+tags: Rails Heroku
 ---
 
 Rails 3.2のアプリをHerokuにデプロイする場合、ハマったことをメモ

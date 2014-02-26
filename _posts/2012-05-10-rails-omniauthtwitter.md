@@ -3,7 +3,7 @@ layout: post
 title: "Rails OmniAuthでTwitter認証 写経"
 description: ""
 category: OmniAuth
-tags: [Rails, Twitter]
+tags: Rails Twitter
 ---
 下記の記事を参考して、写経してみた
 

@@ -3,7 +3,7 @@ layout: post
 title: "Rails開発の場合は vim と emacsとは、どっち？"
 description: ""
 category: Editor
-tags: [ Rails, Vim Emacs ]
+tags: Rails Vim Emacs
 ---
 
 Rails開発を勉強中。Editorについての考え

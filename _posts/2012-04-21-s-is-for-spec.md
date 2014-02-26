@@ -3,7 +3,7 @@ layout: post
 title: "スはスペックのス　感想"
 description: ""
 category: RSpec
-tags: [TDD, Ruby, Emacs]
+tags: TDD Ruby Emacs
 ---
 角谷さんの「スはスペックのス」という四年前のビデオを見た感想。
 

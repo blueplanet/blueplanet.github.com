@@ -3,7 +3,7 @@ layout: post
 title: "使用 RSpec+Capybara 简单BDD入门 -1"
 date: 2013-01-06 17:17
 comments: true
-tags: Rails, RSpec, BDD
+tags: Rails RSpec BDD
 ---
 [目录](/2013/01/06/ruby-china-clone-cover)
 

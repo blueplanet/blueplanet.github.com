@@ -3,7 +3,7 @@ layout: post
 title: "スはスペックのスの写経"
 description: ""
 category: RSpec
-tags: [Ruby, RSpec, TDD ]
+tags: Ruby RSpec TDD
 ---
 ４年前のビデオですが、すごく刺激を受けたので、いろいろ調べて、自分の環境でEmacsとRSpecの環境を揃えた。
 
