@@ -1,8 +1,10 @@
 ---
 layout: post
-title: "ShippableCI + rails"
+title: ShippableCI + rails
 date: "2015-09-07"
+published: true
 ---
+
 
 ## 設定メモ
 1. [www.shippable.com](www.shippable.com) にサインアップ
@@ -20,7 +22,7 @@ env:
   global:
     - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
     - APP_NAME=sns-news
-    - secure: # プロジェクトの設定ページでHEROKU_API_KEY=xxxxの値を暗号化した値をここに設定する
+    - secure: xxxxx # プロジェクトの設定ページでHEROKU_API_KEY=xxxxの値を暗号化した値をここに設定する
 
 before_install:
   - source ~/.rvm/scripts/rvm
