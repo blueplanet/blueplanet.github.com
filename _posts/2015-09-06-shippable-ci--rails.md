@@ -1,8 +1,10 @@
 ---
 layout: post
-title: "ShippableCI + rails"
+title: ShippableCI + rails
 date: "2015-09-07"
+published: true
 ---
+
 
 ## 設定メモ
 1. [www.shippable.com](www.shippable.com) にサインアップ
@@ -11,7 +13,7 @@ date: "2015-09-07"
 
 ### shippable.ymlファイル
 
-```ruby
+```
 language: ruby
 rvm:
   - 2.2.3
@@ -20,7 +22,7 @@ env:
   global:
     - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
     - APP_NAME=sns-news
-    - secure: # プロジェクトの設定ページでHEROKU_API_KEY=xxxxの値を暗号化した値をここに設定する
+    - secure: xxxxx # プロジェクトの設定ページでHEROKU_API_KEY=xxxxの値を暗号化した値をここに設定する
 
 before_install:
   - source ~/.rvm/scripts/rvm
@@ -51,7 +53,7 @@ after_success:
 - $BRANCHを判定し、masterブランチの場合だけheroukのpushするようにしている
 - `heroku git:remote`でherokuのリポジトリURLを追加すると何故か下記のエラーになった為、直接に`git remote add`にしました
 
-```shell
+```
 runtime: failed to create new OS thread (have 6 already; errno=11)
 fatal error: newosproc
 ```
