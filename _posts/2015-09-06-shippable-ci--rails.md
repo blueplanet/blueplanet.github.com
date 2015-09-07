@@ -13,7 +13,7 @@ published: true
 
 ### shippable.ymlファイル
 
-```
+```ruby
 language: ruby
 rvm:
   - 2.2.3
