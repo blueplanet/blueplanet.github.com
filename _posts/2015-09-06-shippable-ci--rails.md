@@ -14,6 +14,19 @@ published: true
 ### shippable.ymlファイル
 
 
+### 注意点
+基本的には参考記事の内容のままですが、下記の点を注意
+
+- $BRANCHを判定し、masterブランチの場合だけheroukのpushするようにしている
+- `heroku git:remote`でherokuのリポジトリURLを追加すると何故か下記のエラーになった為、直接に`git remote add`にしました
+
+```shell
+runtime: failed to create new OS thread (have 6 already; errno=11)
+fatal error: newosproc
+```
+
+
+
 
 ## 参考記事
 - [ShippableでRailsアプリをCI＆CD](http://qiita.com/na999ta/items/b89da87a3e6ebd95dde6#2-6)
