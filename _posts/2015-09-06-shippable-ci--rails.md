@@ -20,7 +20,7 @@ published: true
 - $BRANCHを判定し、masterブランチの場合だけheroukのpushするようにしている
 - `heroku git:remote`でherokuのリポジトリURLを追加すると何故か下記のエラーになった為、直接に`git remote add`にしました
 
-```shell
+```
 runtime: failed to create new OS thread (have 6 already; errno=11)
 fatal error: newosproc
 ```
