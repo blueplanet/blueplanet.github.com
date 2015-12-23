@@ -1,10 +1,8 @@
 ---
 layout: post
-title: ShippableCI + rails
+title: "shippable ci"
 date: "2015-09-07"
-published: true
 ---
-
 
 ## 設定メモ
 1. [www.shippable.com](www.shippable.com) にサインアップ
