@@ -2,7 +2,7 @@
 layout: post
 title: 'MySQL string'
 date: '2016-01-19'
-tags: Rails, MySQL
+tags: Rails MySQL
 ---
 
 ## 問題
