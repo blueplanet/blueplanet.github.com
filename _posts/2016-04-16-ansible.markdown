@@ -1,0 +1,65 @@
+---
+layout: post
+title: 'Ansible 入門メモ'
+date: "2016-04-16 13:52:16 +0900"
+tags: ansible Rails
+---
+
+## ゴール
+- ansibleを使って、Railsの運用環境を構築する(capistranoでデプロイできるまで)
+
+## 環境準備
+- MacOS 10.11.2
+- vagrant 1.8.1
+- parallel desktop 10.4.0
+- CentOS 7.1
+
+## 基本的な概念
+- インベントリファイル
+  - ini形式のファイル
+  - 管理対象を設定するファイル
+  - 下記のようにグループすることができる
+
+    ```
+    [web-servers]
+    192.168.33.11
+    192.168.33.12
+    ```
+
+  - グループを更にグループすることもできる
+
+    ```
+    [web-servers]
+    192.168.33.11
+    192.168.33.12
+    [db-servers]
+    192.168.33.51
+
+    [centos:children]
+    web-servers
+    db-servers
+    ```
+- モジュール
+  - １つ１つの実行する内容
+    - パッケージのインストール、ユーザ・グループの作成など
+- playbook
+  - 実行したい内容のまとめ
+  - 対象のホスト、実行ユーザ、タスク・ロールなどを記述する
+  - `ansible-playbook playbook-file-name`で実行する
+- roles
+  - taskのグループ
+- group_vars
+  - グループ毎の変数定義
+- host_vars
+  - ホスト毎の変数定義
+  - `host_vars`ディレクトリにホスト名またはIPと同名のファイルを作成し、中に`key: value`形式で定義できる
+
+
+
+## 参考リンク
+- [Ansible チュートリアル | Ansible Tutorial in Japanese](http://yteraoka.github.io/ansible-tutorial/#test-ansible)
+- [Vagrant+Parallels上でCentOSを動かす - Qiita](http://qiita.com/kegamin/items/8339049e876ba953e410)
+- [AnsibleのRole入門 ｜ Developers.IO](http://dev.classmethod.jp/server-side/ansible/introduction_about_role/)
+- [Ansibleのinventory入門 ｜ Developers.IO](http://dev.classmethod.jp/server-side/ansible/inventory/)
+- [構成管理ツール Ansible について - apatheia.info](http://apatheia.info/blog/2013/04/06/about-ansible/)
+- [Ansibleを使い出す前に押さえておきたかったディレクトリ構成のベストプラクティス - 双六工場日誌](http://sechiro.hatenablog.com/entry/2015/01/06/Ansible%E3%82%92%E44月D4月F%E3%81%84%E5%874月A%E3%81%99%E5%89%8D%E3%81土曜日B%E6%8A4月C%E3%81%95%E3%81%88%E3%81土曜日6%E3%81%8A%E3%81%8D%E3%81%9F%E3%81%8B%E3%81土曜日3%E3%81%9F%E3%83%87%E3%82土曜日3%E3%83土曜日C%E3%82土曜日F)
