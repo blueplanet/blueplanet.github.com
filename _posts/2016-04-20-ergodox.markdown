@@ -1,0 +1,51 @@
+---
+layout: post
+title: "Ergodox EZ 届けました"
+date: "2016-04-20 19:29:32 +0900"
+---
+
+<iframe src="https://www.indiegogo.com/project/ergodox-ez-an-incredible-mechanical-keyboard/embedded" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
+
+**結論を先に言いますと、最高です！！！**
+
+## 良いところ
+- キーボード自体のデザイン、タイピングするときの感覚は、HHKBに負けないレベル
+- 両手は結構距離を開けていて、体がリラックスしている感じ
+
+## 買った経緯
+- HHKB Pro 2 を二年程使っていますが、最近肩こりや腰の痛みが出ていて、人間工学キーボードを探してみたら、 [ErgoDox EZ: An incredible mechanical keyboard | Indiegogo](https://www.indiegogo.com/projects/ergodox-ez-an-incredible-mechanical-keyboard#/) と出会いました
+- 年も35超えたので体に対して投資するということでささっと注文しちゃいました
+
+## 手に入れるまでかかった時間
+- `3/11`上記サイトで注文しちゃいました
+  - 既に買った方の記事を読んで、日本に届けるまでは1ヶ月半程かかると覚悟しました
+  - 今週月曜日 [Sendagaya.rb #145 - Sendagaya.rb | Doorkeeper](https://sendagayarb.doorkeeper.jp/events/43038) 参加した時、このキーボードを注文したよと話したら、「クラウドファンディングの品物はほとんど約束の納期を守らないよ」と、実際クラウドファンディングで品物を買って一年半後届いた方に言われました
+  - へーーーと言いながら、仕方が無いのでもっと長く待ちましょうと更に覚悟しました
+- `4/19`出荷メールが来ました
+  - 長く待とうと覚悟した翌日、なんと出荷メールが来ました。(もっと早めに覚悟したらもっと早めに来る？)
+  - twitterで検索してみたら、`3/22`頃注文した方も同じく昨日出荷メールが来たので、おそらくある程度の注文が集まったら一回製造するじゃないかと思ったりします
+- `4/20(今日)`届けました
+  - 海外なので今週中届けたらいいなと思ったが、今日届けました！！！
+
+## コスト
+- 合計：39108円
+- キーボード
+  - ErgoDox EZ Bundle: Blank	$295 USD
+  - 日本への送料 $30 USD
+  - 日本円で37808円
+- 届いた時払った税金（？） 1300円
+
+## keymapの変更
+- デフォルトのkeymapは、普通のQWERTレイアウトと違うのでやはり使えないレベルで、 [ErgoDox EZのキーマップを変更する - Qiita](http://qiita.com/ReSTARTR/items/f84f8f3c4c51c876cb2f) を参考して変更しました
+- ソースからビルドするのも良いですが、 GUIがある、かつ、現状は`LEDの設定や特殊なキーの挙動`周りは別になくてもよいので、 [Ergodox Configurator - Massdrop](https://keyboard-configurator.massdrop.com/ext/ergodox) を使って変更しました
+  - サインインしないとダウンロード出来ないので、最初からサインインしましょう
+  - default の設定をロードできるので、`load`ボタンでロードしましょう
+  - 普通のキーはマウスクリックして設定できます、特殊なキーは右クリックで選択できる
+  - 現状設定した設定です [Ergodox Configurator - Massdrop](https://keyboard-configurator.massdrop.com/ext/ergodox/?referer=DKLQUF&hash=8d2478b2bc7071f03dea01c0831e824f)
+
+## 慣れてないところ
+- レイアウトは上下直線になっているので、今までのキーボードとキーの半分程度の位置がズレています
+- 中央の`b`キーの右にあるキーは、最初は位置が良いので、活用しようと思ったんですが、実際使ってみると、結構`b`キーを間違って押しちゃうので、それほど活用できないところ
+
+## これから購入する人へのアドバイス
+- 腕のところは、何もないとタイピングは無理と思いますので、オールインワンの「ErgoDox EZ Bundle: Blank	$295 USD」のほうをオススメです
