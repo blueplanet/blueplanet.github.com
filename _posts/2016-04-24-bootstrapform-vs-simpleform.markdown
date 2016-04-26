@@ -18,6 +18,7 @@ Formをシンプルに書きたいので、両者を比較するメモ
 - 縦レウアウトのフォーム
   - 日付フィールドのほうは`bootstrap_form`が楽勝
   - simple_form
+
     ```
       = simple_form_for @post, url: simple_forms_path do |f|
         = f.input :title
@@ -28,6 +29,7 @@ Formをシンプルに書きたいので、両者を比較するメモ
     ```
 
   - bootstrap_form
+
     ```
       = bootstrap_form_for @post, url: bootstrap_forms_path do |f|
         = f.text_field :title
@@ -39,6 +41,7 @@ Formをシンプルに書きたいので、両者を比較するメモ
 
 - 横レイアウトのフォーム
   - simple_form
+
     ```
       = simple_form_for @post, url: simple_forms_path, wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
         = f.input :title
@@ -52,6 +55,7 @@ Formをシンプルに書きたいので、両者を比較するメモ
             = f.button :submit
     ```
   - bootstrap_form
+
     ```
       = bootstrap_form_for @post, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10', url: bootstrap_forms_path do |f|
         = f.text_field :title
@@ -69,10 +73,12 @@ Formをシンプルに書きたいので、両者を比較するメモ
       - CSSの表現もデフォルトで付いている
     - bootstrap_form
       - デフォルトはCSSのクラス付与だけ、どう表現するかは自分でCSSを書く必要がある
+
         ```
         label.required:before
           content: " *"
         ```
+
   - `maxlength`, `size`は両方とも生成されない
 
 - エラー情報の表示
@@ -82,8 +88,3 @@ Formをシンプルに書きたいので、両者を比較するメモ
 - 入力フィールドの種類
   - [simple_form Available input types and defaults for each column type](https://github.com/plataformatec/simple_form#available-input-types-and-defaults-for-each-column-type)
   - [bootstrap_form form-helpers](https://github.com/bootstrap-ruby/rails-bootstrap-forms#form-helpers)
-
-## 画面
-|simple_form|bootstrap_form|
-|-----------|--------------|
-|![simple_form]({{site.baseurl}}/images/simple_form.png)|![bootstrap_form]({{site.baseurl}}/images/simple_form.png)|
