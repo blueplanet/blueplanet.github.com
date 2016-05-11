@@ -1,0 +1,26 @@
+---
+layout: post
+title: "Vivaldiブラウザを二日間使ってみた感想"
+date: "2016-05-11 19:52:48 +0900"
+---
+
+ちょっと話題になったブラウザ[Vivaldi](https://vivaldi.com/?lang=ja_JP)を二日間使ってみた結果、Chromeに戻りました。
+
+## 自分が使って不便と感じた箇所
+- 全体的にChromeより重い気がする
+- Cmd+数字でタブを切り替えられない
+- Cmd+9で最後のタブに移動できない
+
+## 便利そうな機能を使ってみた感想
+- タブ位置をカスタマイズできる
+  - たとえ左または右などに配置できるは確かに出来ますが、それほど便利と感じされなかった
+  - 微妙にカレントタブが気づきにくい
+- QuickCommand機能
+  - Chromeのようにタブ移動などができるなら、それほどコマンドを使う場面がない
+  - タブ＋ブックマーク＋履歴から検索できるが、曖昧検索ができてないのは不便
+- WEBページに対してメモを付ける機能
+  - これは欲しかった機能ですが、[Sendagaya.rb #148 - Sendagaya.rb | Doorkeeper](https://sendagayarb.doorkeeper.jp/events/44607) で紹介して頂いた [Hypothesis | The Internet, peer reviewed. | Hypothesis](https://hypothes.is/)が解決してくれた
+- Chromeの拡張機能がそのまま使える！！！
+  - やはり使えたり使えなかったりする、特にToggl拡張機能が使えないのは不便
+
+後でまた試してみるかも
