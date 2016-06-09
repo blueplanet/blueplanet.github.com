@@ -1,0 +1,25 @@
+---
+layout: post
+title: "PivotalTrackerPrというgemを作ってみました"
+date: "2016-06-10 08:47:03 +0900"
+---
+
+新しいプロジェクトでPRを出すときに、PivotalTrackerのリンクとタイトルを入れるルールがあります。
+リンクだけなら一回のコピベでよいだが、タイトルはもう一回しないといけないので、めんどい。
+
+というわけで、gemを作りました。
+
+## gemの実装内容
+- `git`のブランチ名に数値がある時、それを`PivotalTracker`のストリーIDとみなす
+- ストリーIDがある場合は、`PivotalTracker`のAPIを呼び出してストリー内容を取得する
+- 指定の内容で`hub`コマンド経由して`PullRequest`を作成する
+
+イメージ
+
+![PullRequest command](https://raw.github.com/wiki/blueplanet/pivotal_tracker_pr/images/pt_pr_cmd.png)
+![PullRequest github](https://raw.github.com/wiki/blueplanet/pivotal_tracker_pr/images/pt_pr_github.png)
+
+## 使い方など
+`github`のREADMEに書いているので、興味がある方はぜひご意見を。
+
+https://github.com/blueplanet/pivotal_tracker_pr
