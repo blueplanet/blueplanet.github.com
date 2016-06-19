@@ -1,0 +1,102 @@
+---
+layout: post
+title: "REDIS_URL環境変数は'redis://hostname:6379'のようにスキマー(redis://)を含めるほうが良いお話"
+date: "2016-06-17 09:22:01 +0900"
+---
+
+ほぼタイトルのままですが、`REDIS_URL`環境変数を使って`redis`のURLを設定する場合は、フルで`redis://`の部分を含めるほうが良い結論に至っています。
+
+今まではフルにしたり`localhost:6379`にしたりしていました。
+
+## 結論まで至った経緯
+- アプリケーションのキャッシュは`Redis`を使っていました
+
+```
+# config/application.rb
+
+config.cache_store = :redis_store, 'redis://localhost:6379/1/redis_try/cache', { expires_in: 90.minutes }
+```
+
+- `redis`の`URL`を環境変数に切り出したいので、`REDIS_URL`環境を変数を定義して`rails c`を実行したら、下記のエラーになって、起動失敗しました
+
+```
+➜  redis_cache_try git:(master) REDIS_URL=localhost:6379/1/ttt rails c
+/Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/redis-3.3.0/lib/redis/client.rb:416:in `_parse_options': invalid uri scheme 'localhost' (ArgumentError)
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/redis-3.3.0/lib/redis/client.rb:81:in `initialize'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/redis-3.3.0/lib/redis.rb:51:in `new'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/redis-3.3.0/lib/redis.rb:51:in `initialize'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/redis-store-1.1.7/lib/redis/store.rb:10:in `initialize'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/redis-store-1.1.7/lib/redis/store/factory.rb:27:in `new'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/redis-store-1.1.7/lib/redis/store/factory.rb:27:in `create'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/redis-store-1.1.7/lib/redis/store/factory.rb:10:in `create'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/redis-activesupport-4.1.5/lib/active_support/cache/redis_store.rb:50:in `initialize'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/activesupport-4.2.5/lib/active_support/cache.rb:60:in `new'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/activesupport-4.2.5/lib/active_support/cache.rb:60:in `lookup_store'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/railties-4.2.5/lib/rails/application/bootstrap.rb:76:in `block in <module:Bootstrap>'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/railties-4.2.5/lib/rails/initializable.rb:30:in `instance_exec'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/railties-4.2.5/lib/rails/initializable.rb:30:in `run'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/railties-4.2.5/lib/rails/initializable.rb:55:in `block in run_initializers'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/2.3.0/tsort.rb:228:in `block in tsort_each'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/2.3.0/tsort.rb:350:in `block (2 levels) in each_strongly_connected_component'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/2.3.0/tsort.rb:431:in `each_strongly_connected_component_from'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/2.3.0/tsort.rb:349:in `block in each_strongly_connected_component'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/2.3.0/tsort.rb:347:in `each'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/2.3.0/tsort.rb:347:in `call'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/2.3.0/tsort.rb:347:in `each_strongly_connected_component'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/2.3.0/tsort.rb:226:in `tsort_each'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/2.3.0/tsort.rb:205:in `tsort_each'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/railties-4.2.5/lib/rails/initializable.rb:54:in `run_initializers'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/railties-4.2.5/lib/rails/application.rb:352:in `initialize!'
+        from /Users/blueplanet/sandbox/redis_cache_try/config/environment.rb:5:in `<top (required)>'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/spring-1.7.1/lib/spring/application.rb:92:in `require'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/spring-1.7.1/lib/spring/application.rb:92:in `preload'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/spring-1.7.1/lib/spring/application.rb:143:in `serve'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/spring-1.7.1/lib/spring/application.rb:131:in `block in run'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/spring-1.7.1/lib/spring/application.rb:125:in `loop'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/spring-1.7.1/lib/spring/application.rb:125:in `run'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/spring-1.7.1/lib/spring/application/boot.rb:19:in `<top (required)>'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+        from /Users/blueplanet/.rbenv/versions/2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+        from -e:1:in `<main>'
+```
+
+- なぜ？と思って調べてみたら、どうやら`redis`gemの中で、`redis`のデフォルト値を取得するの処理が`REDIS_URL`環境変数の値を受けています。
+  - まずはソース
+
+```
+# https://github.com/redis/redis-rb/blob/master/lib/redis/client.rb#L398-L406
+url = options[:url] || defaults[:url]
+
+# Override defaults from URL if given
+if url
+  require "uri"
+
+  uri = URI(url)
+
+  if uri.scheme == "unix"
+    defaults[:path]   = uri.path
+  elsif uri.scheme == "redis" || uri.scheme == "rediss"
+    defaults[:scheme]   = uri.scheme
+    defaults[:host]     = uri.host if uri.host
+    defaults[:port]     = uri.port if uri.port
+    defaults[:password] = CGI.unescape(uri.password) if uri.password
+    defaults[:db]       = uri.path[1..-1].to_i if uri.path
+    defaults[:role] = :master
+  else
+    raise ArgumentError, "invalid uri scheme '#{uri.scheme}'"
+  end
+  ...
+```
+
+  - `options`hashは`config.cache_store = :redis_store, 'redis://localhost:6379/1/redis_try/cache', { expires_in: 90.minutes }`で設定した値のURLから後ろの部分になる
+  - `defaults`はデフォルト値で、その中、`defaults[:url]`の値は環境変数`REDIS_URL`の値を取得しています
+  - `options`の値には`url`の値が設定されてないので、`defaults[:url]`の値になってしまいます
+  - そして、もし`redis://`の部分が含めてない場合は、`raise ArgumentError, "invalid uri scheme '#{uri.scheme}'"`になってしまうわけです
+- よって、アプリケーション側の`config.cache_store`設定値と関係なく、`REDIS_URL`環境変数のURLに`redis://`のスキマー部分を含めないと上記エラーになってしまう
+
+## まとめ
+- 最初エラーが出た時、アプリ側設定しておけば、`REDIS_URL`環境変数を見に行かないでしょ！と勝手に思って、エラーはどうしても理解出来なかった。
+  - 思い込みをしないこと
+  - エラー内容をじっくり読むこと
+- 当たり前かもしれませんが、`REDIS_URL`環境変数（だけではなく）で`redis`のURLを設定するときは、`redis://`の部分も含めましょう。
+  - まあ、そもそも`URL`と言う概念には`プロトコル`または`スキマー`を含めるでしょうけど
