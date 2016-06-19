@@ -100,3 +100,8 @@ if url
   - エラー内容をじっくり読むこと
 - 当たり前かもしれませんが、`REDIS_URL`環境変数（だけではなく）で`redis`のURLを設定するときは、`redis://`の部分も含めましょう。
   - まあ、そもそも`URL`と言う概念には`プロトコル`または`スキマー`を含めるでしょうけど
+
+## 参考リンク
+- 再現コード [blueplanet/redis_cache_try](https://github.com/blueplanet/redis_cache_try)
+  - ローカルに`clone`して`bundle install`した後、`REDIS_URL=localhost:6379/1/ttt rails c`を実行すればエラーがでるはずです。
+- [redis-rails RailsのセッションをRedisで管理 - 酒と泪とRubyとRailsと](http://morizyun.github.io/blog/redis-rails-session-ruby/)
