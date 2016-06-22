@@ -15,6 +15,12 @@ date: "2016-06-23 06:00:34 +0900"
   - `gem autoload`
     - [[ruby]requireとautoloadについて](http://d.hatena.ne.jp/saronpasu/20080227/1204097516)
 
+## 横展開
+- `require`と`load`
+  - `require`は二重読み込まない
+  - `load`は、必ず読み込む
+  - よって、設定ファイルを際読み込む場合は`load`を使う
+
 ## まとめ
 - `autoload`は、Rubyのメソッドであり、`autoload :Hoge, 'lib/hoge'`のように書くと、必要なタイミングでロードしてくれるだけ
   - `require`と`autoload`は、今回のケースに対しては同じ、つまり、使っているクラスであればどっちでも書かないといけない
