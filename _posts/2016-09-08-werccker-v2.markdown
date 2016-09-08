@@ -1,0 +1,37 @@
+---
+layout: post
+title: "werccker v2"
+date: "2016-09-08 19:32:15 +0900"
+---
+
+最近 wercker の docker ベースコンテナに切り替えてみて、いろいろハマってました。
+
+結論から良いますと、プロジェクト専用の Docker イメージを作るほうが一番やりやすいと思います。
+
+## はまったこと
+- `bundle install`でタイムアウトエラー
+  - 仕方が無いので、 retry 回数と並列ジョブ数を設定しました
+
+  ```
+  - bundle-install:
+    jobs: 4
+    retry: 5
+    clear-path: false
+  ```
+
+- redis に接続できない
+  - 公式ドキュメントに services で redis を書けば良いと書かれてありますが、spec で接続できないエラーでした
+  - 解決方法：下記のように REDIS_URL 環境変数を設定しておく
+  - 参考資料： http://devcenter.wercker.com/docs/services/linking-services.html
+
+  ```
+  build:
+    steps:
+      - script:
+          name: Set REDIS_UURL
+          code: export REDIS_URL=redis://$REDIS_PORT_6379_TCP_ADDR:$REDIS_PORT_6379_TCP_PORT
+
+  ```
+
+- phantomjs を使ってますが、インストールでタイムアウトエラー
+  - 結局自分の Docker イメージを作りました。 https://github.com/blueplanet/rails_test/blob/master/Dockerfile
