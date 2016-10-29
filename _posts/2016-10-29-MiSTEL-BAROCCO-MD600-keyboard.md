@@ -1,3 +1,9 @@
+---
+layout: post
+title: "MiSTEL BAROCCO MD600キーボード"
+date: "2016-10-29 20:00 +0900"
+---
+
 「MiSTEL BAROCCO MD600」キーボードが届きましたので、初回のレビュー
 
 ## 全体印象
@@ -27,4 +33,3 @@
 しばらくはフルタイムで使ってみる
 
 <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=erguolinge-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B01KN6LBDU&linkId=6672fc31a3b405553e2c945cd8d28875"></iframe>
-
